@@ -2,8 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const puppeteer = require('puppeteer');
+ 
+const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+
+
+  
 
 async function crawlHomePage(url) {
   const browser = await puppeteer.launch({
@@ -50,41 +55,30 @@ async function analyzePage(url) {
   return pageAnalysis;
 }
 
-async function crwaller(url) {
+async function crwaller() {
+  const url = "https://doubtbuddy.com/";
   const links = await crawlHomePage(url);
 
   const analyses = await Promise.all(
     links.map(async (link) => {
       const analysis = await analyzePage(link);
-      return analysis;  
+      return analysis; // Only return valid analysis
     })
   );
 
+  // Filter out null results (pages that failed)
   const validAnalyses = analyses.filter(analysis => analysis !== null);
   console.log("Valid analyses:", validAnalyses);
 }
 
-async function fn(url) {
-        const links = await crawlHomePage(url);
+
+async function fn() {
+        const links = await crawlHomePage("https://doubtbuddy.com/");
         console.log("links", links);
 }
 
-app.post("/analyze", async (req, res) => {
-  const { websiteUrl } = req.body;
 
-  if (!websiteUrl || websiteUrl.trim() === "") {
-    return res.status(400).json({ error: "Website URL is required." });
-  }
+fn();
+crwaller();
 
-  try {
-    fn(websiteUrl);
-    crwaller(websiteUrl);
-  } catch (error) {
-    console.log(error);
-  }
-
-})
-
-app.listen(3001, () => {
-  console.log("App is working on http://localhost:3001");
-});
+ 

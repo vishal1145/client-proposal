@@ -1,9 +1,9 @@
-const puppeteer = require('puppeteer');
+import puppeteer from 'puppeteer';
 
 async function analyzePage(url) {
   const browser = await puppeteer.launch({
     args: ['--ignore-certificate-errors', '--disable-web-security'],
-    headless: true
+    headless: true,
   });
 
   const page = await browser.newPage();
@@ -14,31 +14,25 @@ async function analyzePage(url) {
     const description = document.querySelector('meta[name="description"]')?.content || '';
     const headings = Array.from(document.querySelectorAll('h1, h2, h3')).map(h => h.innerText);
 
-    return {
-      title,
-      description,
-      headings
-    };
+    return { title, description, headings };
   });
 
   await browser.close();
   return pageAnalysis;
 }
 
-async function crwaller(links) {
+export const crwaller = async (links) => {
   const analyses = await Promise.all(
     links.map(async (link) => {
       try {
         const analysis = await analyzePage(link);
-        return { url: link, analysis };  
+        return { url: link, analysis };
       } catch (error) {
         console.error(`Error analyzing ${link}:`, error);
-        return null;  
+        return null;
       }
     })
   );
 
   return analyses.filter(analysis => analysis !== null);
-}
-
-module.exports = { crwaller };
+};

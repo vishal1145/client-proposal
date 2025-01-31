@@ -44,7 +44,6 @@ async function getLinks(url) {
       }
     }
 
-
     if (validLinks.length === 0) {
       console.log("No valid SSL links found.");
       return;

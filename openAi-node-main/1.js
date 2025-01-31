@@ -19,7 +19,7 @@ async function isSSLCertificateValid(url) {
   }
 }
 
-async function scrapeAndAnalyze(url) {
+async function getLinks(url) {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
@@ -36,8 +36,6 @@ async function scrapeAndAnalyze(url) {
           !/\.(pdf|zip|exe|dmg|mp4|mp3|apk)$/i.test(href)
         );
     });
-
-    console.log("Extracted Links:", links);
 
     const validLinks = [];
     for (const link of links) {
@@ -56,8 +54,7 @@ async function scrapeAndAnalyze(url) {
       `Here are extracted links from the website: \n\n${validLinks.join("\n")}\n\nIdentify and return the most relevant ones donot include social media and downloaded links return data in json formate.`
     );
 
-    console.log("Important Links:", response);
-
+   return response;
   } catch (error) {
     console.error("Error:", error.message);
   } finally {
@@ -65,4 +62,4 @@ async function scrapeAndAnalyze(url) {
   }
 }
 
-scrapeAndAnalyze("https://doubtbuddy.com/");
+export default getLinks

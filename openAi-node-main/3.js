@@ -1,39 +1,36 @@
-import { ChatGroq } from "@langchain/groq";
+// import getLinks  from "./1.js";
+import scrapeWebsite from "./2.js";
 
-const model = new ChatGroq({
-  model: "mixtral-8x7b-32768",
-  temperature: 0,
-});
+// let links = await getLinks("https://doubtbuddy.com/");
+// links = JSON.parse(links);
 
-const links = [
-  "https://doubtbuddy.com/",
-  "https://doubtbuddy.com/#Features",
-  "https://doubtbuddy.com/question/",
-  "https://blog.doubtbuddy.com/",
-  "https://doubtbuddy.com/#Contact",
-  "https://play.google.com/store/apps/details?id=com.doubtbuddy.student&pli=1",
-  "https://doubtbuddy.com/privacy-policy",
-  "https://doubtbuddy.com/tnc",
-  "https://twitter.com/doubtbuddy",
-  "https://m.facebook.com/doubtbuddy",
-  "https://www.instagram.com/doubtbuddyapp/",
-];
+// const allLink = links?.links;
 
-const getImportantLinks = async () => {
-  const structuredLlm = model.withStructuredOutput({
-    schema: {
-      type: "array",
-      items: { type: "string" },
-    },
-    method: "json_mode",
-    name: "important_links",
-  });
+// console.log(allLink);
 
-  const data = await structuredLlm.invoke(
-    `Given the following links: ${JSON.stringify(links)}, return only the most important links for reading website content. Respond in JSON array format.`
-  );
+const allLink = [
+  { url: 'https://doubtbuddy.com/' },
+  { url: 'https://doubtbuddy.com/#Features' },
+  { url: 'https://doubtbuddy.com/question/' },
+  { url: 'https://doubtbuddy.com/#Contact' },
+  { url: 'https://doubtbuddy.com/privacy-policy' },
+  { url: 'https://doubtbuddy.com/tnc' }
+]
 
-  console.log("Filtered Important Links:", data);
-};
+async function getAllhtml (){
+  let allHtml = [];
 
-getImportantLinks();
+  for(let i=0; i<allLink.length; i++){
+    let html = await scrapeWebsite(allLink[i].url);
+     allHtml.push(html);
+  }
+  
+  allHtml = allHtml.join("/n");
+  console.log("allHtml", allHtml);
+
+  return allHtml;
+}
+
+
+export default getAllhtml;
+ 

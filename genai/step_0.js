@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import sslChecker from "ssl-checker";
 import { URL } from "url";
-import  getAIResponse from "./llm.js";
+import  {getAIResponse} from "./llm.js";
 
 async function isSSLCertificateValid(url) {
   try {
@@ -44,7 +44,6 @@ async function getLinks(url) {
       console.log("No valid SSL links found.");
       return [];
     }
-
 
     let response = await getAIResponse(`Here are extracted links from the website: \n\n${validLinks.join(
       "\n"

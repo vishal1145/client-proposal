@@ -1,5 +1,6 @@
 import getLinks  from "./step_0.js";
 import getHtmlFromUrl from "./step_1.js";
+import {getNatureOfBusiness} from "./step_2.js";
 
 const startProcess = async () => {
   // let links = await getLinks("https://doubtbuddy.com/");
@@ -28,20 +29,15 @@ const startProcess = async () => {
     }
   ]
 
-
-  var allHtml= [];
   for(var i = 0; i < (links || []).length; i++){
-    let html= await getHtmlFromUrl(links[i].url);
-    allHtml.push(html);
+    let html = await getHtmlFromUrl(links[i].url);
+    links[i].html = html;
   }
-   console.log(allHtml);
 
-  // console.log("alhtml", allHtml);
-  // var all_services = []
-  // for(var hi = 0; hi < (allHtml || []).length; hi++){
-  //   let services= await getNatureOfBusiness(allHtml[hi].html);
-  //   all_services.push(...services);
-  // }
+  for(var i = 0; i < (links || []).length; i++){
+    let services= await getNatureOfBusiness(links[i].html);
+    links[i].services = services;
+  }
 
   // finalize services to make proposal
 

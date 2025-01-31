@@ -48,7 +48,7 @@ async function getLinks(url) {
     let response = await getAIResponse(`Here are extracted links from the website: \n\n${validLinks.join(
       "\n"
     )}\n\nIdentify and return the most relevant ones do not include social media and downloaded links return data in json 
-    formate.`)
+    formate only.`)
     response = JSON.parse(response);
     const allLink = response?.links;
     return allLink;

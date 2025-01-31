@@ -4,6 +4,16 @@ import { PromptTemplate } from "@langchain/core/prompts";
 
 dotenv.config();
 
+import { ChatGroq } from "@langchain/groq";
+
+// const openai = new ChatGroq({
+//   model: "mixtral-8x7b-32768",
+//   temperature: 0,
+//   maxTokens: undefined,
+//   maxRetries: 2,
+//   // other params...
+// });
+
 const openai = new OpenAI({
   modelName: "gpt-4",
   temperature: 0.3,

@@ -1,10 +1,11 @@
+import { getAIResponse } from "./llm.js";
 import getLinks  from "./step_0.js";
 import getHtmlFromUrl from "./step_1.js";
 import {getNatureOfBusiness} from "./step_2.js";
 
 const startProcess = async () => {
   // let links = await getLinks("https://doubtbuddy.com/");
-    
+   
   const links = [
     { url: 'https://doubtbuddy.com/', description: 'Home Page' },
     {
@@ -39,6 +40,7 @@ const startProcess = async () => {
     links[i].services = services;
   }
 
+
   // finalize services to make proposal
 
   // let proposal = await writeBusinessProposal();
@@ -47,7 +49,23 @@ const startProcess = async () => {
 
 };
 
+let services =["Educational App", "Personalized Tutoring", "Doubt Resolution", "Performance Reporting", "Edtech Chatbot Integration", "Personalized Practice", "AI Model Integration"]
 
-startProcess().then((rs) => {
-    console.log(rs);
-})
+let servicesInString = services.join(",");
+
+async function getProposal(){
+  let response = await getAIResponse(`
+  You are a highly experienced marketing specialist with global expertise. Here are the services offered on the website:
+
+  ${servicesInString}
+  
+  Using your expertise and knowledge, explain in detail how each of these services can benefit businesses worldwide. Focus on explaining why each service is essential for global growth and provide actionable marketing strategies that are tailored to a global audience. While you cannot search the web in real time, use your extensive training to generate a comprehensive response.
+`);
+  console.log(response);
+}
+
+getProposal()
+
+// startProcess().then((rs) => {
+    // console.log(rs);
+// })

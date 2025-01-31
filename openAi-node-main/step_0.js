@@ -1,16 +1,11 @@
 import puppeteer from "puppeteer";
-import { OpenAI } from "@langchain/openai";
-import sslChecker from "ssl-checker"; 
-import { URL } from "url"; 
-
-const openai = new OpenAI({
-  model: "gpt-4",
-  temperature: 0.3,
-});
+import sslChecker from "ssl-checker";
+import { URL } from "url";
+import  getAIResponse from "llm";
 
 async function isSSLCertificateValid(url) {
   try {
-    const parsedUrl = new URL(url); 
+    const parsedUrl = new URL(url);
     const domain = parsedUrl.hostname;
     const sslInfo = await sslChecker(domain, { method: "GET", timeout: 5000 });
     return sslInfo.valid;
@@ -29,11 +24,12 @@ async function getLinks(url) {
     const links = await page.evaluate(() => {
       return Array.from(document.querySelectorAll("a"))
         .map((a) => a.href)
-        .filter((href) => 
-          href.startsWith("http") &&
-          !href.includes("facebook.com") &&
-          !href.includes("twitter.com") &&
-          !/\.(pdf|zip|exe|dmg|mp4|mp3|apk)$/i.test(href)
+        .filter(
+          (href) =>
+            href.startsWith("http") &&
+            !href.includes("facebook.com") &&
+            !href.includes("twitter.com") &&
+            !/\.(pdf|zip|exe|dmg|mp4|mp3|apk)$/i.test(href)
         );
     });
 
@@ -46,14 +42,22 @@ async function getLinks(url) {
 
     if (validLinks.length === 0) {
       console.log("No valid SSL links found.");
-      return;
+      return [];
     }
 
-    const response = await openai.invoke(
-      `Here are extracted links from the website: \n\n${validLinks.join("\n")}\n\nIdentify and return the most relevant ones donot include social media and downloaded links return data in json formate.`
-    );
+    let links1 = await getAIResponse(`Here are extracted links from the website: \n\n${validLinks.join(
+      "\n"
+    )}\n\nIdentify and return the most relevant ones do not include social media and downloaded links return data in json 
+    formate.`)
 
-   return response;
+    links = JSON.parse(links);
+
+    const allLink = links?.links;
+  
+    console.log(allLink);
+
+    return allLink;
+
   } catch (error) {
     console.error("Error:", error.message);
   } finally {
@@ -61,4 +65,4 @@ async function getLinks(url) {
   }
 }
 
-export default getLinks
+export default getLinks;

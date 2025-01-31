@@ -6,7 +6,7 @@ const openai = new OpenAI({
 
 const MAX_TOKENS = 4000; 
 
-async function getBusinessProposal(allHtml) {
+async function writeBusinessProposal(allHtml) {
   try {
     const trimmedHtml = allHtml.slice(0, MAX_TOKENS);
 

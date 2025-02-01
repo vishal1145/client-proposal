@@ -1,10 +1,11 @@
 import dotenv from "dotenv";
 import { OpenAI } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
-
 dotenv.config();
 
 import { ChatGroq } from "@langchain/groq";
+import service from "./model/service.js";
+import DBConnect from "./config/database.js";
 
 // const openai = new ChatGroq({
 //   model: "mixtral-8x7b-32768",
@@ -14,15 +15,23 @@ import { ChatGroq } from "@langchain/groq";
 //   // other params...
 // });
 
+DBConnect();
+
 const openai = new OpenAI({
   modelName: "gpt-4",
   temperature: 0.3,
   openAIApiKey: process.env.API_KEY,  
 });
 
-const getAIResponse = async (input_prompt) => {
+const getAIResponse = async (input_prompt, save_in_db=false) => {
   try {
     const response = await openai.invoke(input_prompt);
+    if(save_in_db){
+      const newService = await new service({
+        service:response
+      })
+      await newService.save();
+    }
     return response;
   } catch (error) {
     console.error("Error invoking OpenAI:", error);
@@ -37,7 +46,7 @@ const getNatureResponse = async (input_data, input_prompt) => {
     });
 
     const formattedPrompt = await prompt.format({ text: input_data });
-    const response = await openai.call(formattedPrompt);
+    const response = await openai.call(formattedPrompt);  
     return response;
   } catch (error) {
     console.error("Error invoking OpenAI:", error);

@@ -60,7 +60,7 @@ async function getProposal(){
   ${servicesInString}
   
   Using your expertise and knowledge, explain in detail how each of these services can benefit businesses worldwide. Focus on explaining why each service is essential for global growth and provide actionable marketing strategies that are tailored to a global audience. While you cannot search the web in real time, use your extensive training to generate a comprehensive response.
-`);
+`, true);
   console.log(response);
 }
 

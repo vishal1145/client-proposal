@@ -1,7 +1,10 @@
+import dotenv from "dotenv"; 
 import puppeteer from "puppeteer";
 import sslChecker from "ssl-checker";
 import { URL } from "url";
 import  {getAIResponse} from "./llm.js";
+dotenv.config();
+
 
 async function isSSLCertificateValid(url) {
   try {
@@ -45,13 +48,21 @@ async function getLinks(url) {
       return [];
     }
 
+
     let response = await getAIResponse(`Here are extracted links from the website: \n\n${validLinks.join(
       "\n"
-    )}\n\nIdentify and return the most relevant ones do not include social media and downloaded links return data in json 
+    )}\n\nIdentify and return the most relevant ones do not include social media, same links and downloaded links return data in array of string in json 
     formate only.`)
-    response = JSON.parse(response);
-    const allLink = response?.links;
-    return allLink;
+
+    if(process.env.Open_Ai == 1){
+      response = JSON.parse(response);
+    }else{
+      response = JSON.parse(response?.content);
+    }
+
+    console.log("response", response)
+
+    return  response;
   } catch (error) {
     console.error("Error:", error.message);
   } finally {

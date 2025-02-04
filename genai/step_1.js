@@ -15,24 +15,3 @@ import puppeteer from "puppeteer";
 }
 
 export default getHtmlFromUrl;
-
-
-// import * as cheerio from 'cheerio';
-// import getAllhtml from "./3.js";
-
-// const allHtml = await getAllhtml();
-// const $ = cheerio.load(allHtml);
-
-// $('style, script, noscript').remove();
-
-// const extractedText = $('body')
-//   .find('*')  
-//   .contents()   
-//   .filter(function () {
-//     return this.type === 'text';   
-//   })
-//   .text()   
-//   .trim();  
- 
-//   const data = extractedText.substring(0, 40);
-//   console.log(data);

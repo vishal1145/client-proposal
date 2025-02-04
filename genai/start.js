@@ -4,28 +4,26 @@ import getHtmlFromUrl from "./step_1.js";
 import {getNatureOfBusiness} from "./step_2.js";
 dotenv.config();import { getAIResponse } from "./llm.js";
 
-const startProcess = async () => {
-  // let links = await getLinks("https://doubtbuddy.com/");
-  // console.log('links', links)
-  // const allHtml = [];
+export const startProcess = async () => {
+  let links = await getLinks("https://doubtbuddy.com/");
+  console.log('links', links)
+  const allHtml = [];
 
-  // for(var i = 0; i < (links || []).length; i++){
-  //   let html = await getHtmlFromUrl(links[i]);
-  //   allHtml.push(html);
-  // }
+  for(var i = 0; i < (links || []).length; i++){
+    let html = await getHtmlFromUrl(links[i]);
+    allHtml.push(html);
+  }
 
-  // let allServices = new Set();
+  let allServices = new Set();
 
-  // for (var i = 0; i < (allHtml || []).length; i++) {
-  //   console.log("i", i);
-  //   let services = await getNatureOfBusiness(allHtml[i]);
-  //   services.forEach(service => allServices.add(service)); 
-  // }
+  for (var i = 0; i < (allHtml || []).length; i++) {
+    let services = await getNatureOfBusiness(allHtml[i]);
+    services.forEach(service => allServices.add(service)); 
+  }
   
-  // allServices = Array.from(allServices); 
+  allServices = Array.from(allServices); 
 
-  // let servicesInString = allServices.join(",");
-  let servicesInString = `Doubt resolution chatbot integration for education companies,Personalized tutoring experience with AI model,24x7 doubt resolution and concept clarity,Targeted practice quizzes,Holistic education for students,Big data of students for better iterations,Doubt resolution,Personalized practice,Performance reporting,Integration of doubt-solving chatbot for education companies,Quizzes for targeted practice,Support for NEET preparation,Detailed solutions to doubts,24x7 support system,Mathematics Tutoring,Probability and Sets,Venn Diagrams,Aptitude Practice,AI-based Solution Feedback,Performance Reporting,Set Theory and Algebra,Problem Solving,Set Operations,Prime Numbers,Set Membership,Relations and Functions,Sets, Relations and Functions,Probability,Maths,Education Services,Financial Services,Customer care services,Fraud and money laundering prevention checks,Compliance with laws, rules, and regulations,Product and service updates and promotions,Payment processing and transaction security,Product improvement and survey participation,Contest notifications and promotional materials,Phone number based marketing retargeting,Marketing Activities,User Identification,Receive Email, Telephone, WhatsApp, or Text Messages,Privacy Protection,Confidentiality Assurance,Email Communication for Provision of Services,External Service Providers,Data Sharing with Other Corporate Entities,Potential Merger or Acquisition,Cooperation with Law Enforcement,Accessing and Reviewing Information,Subscription based Q&A service,Practice access to topics,Long-term subscription discounts,Premium service`
+  let servicesInString = allServices.join(",");
   let serviceDetail = await getServiceInDetail(servicesInString);
 
 
@@ -35,9 +33,6 @@ const startProcess = async () => {
 
 };
 
-// let services =["Educational App", "Personalized Tutoring", "Doubt Resolution", "Performance Reporting", "Edtech Chatbot Integration", "Personalized Practice", "AI Model Integration"]
-
-// let servicesInString = services.join(",");
 
 async function getServiceInDetail(services){
   let response = await getAIResponse(`
@@ -54,22 +49,60 @@ if(process.env.Open_Ai == 0){
 }
 
 
-startProcess().then((rs) => {
-    console.log(rs);
-})
-
-async function getClientProposal(data){
+async function getClientProposal(serviceDetail) {
   let response = await getAIResponse(`
-  You are a highly experienced marketing specialist with global expertise. Here are the services offered on the website:
-  ${data}
-  Using your expertise and knowledge,  olease make a professional client prosposal.
+  You are a highly experienced marketing specialist with global expertise, and your name is Algofolks.
+
+  **Objective:**  
+  Generate a professional, structured, and client-centric proposal for our marketing services, ensuring that the provided service details are utilized effectively and persuasively.
+
+  **Service Overview:**  
+  ${serviceDetail}
+
+  **Proposal Structure:**  
+  1. **Company Overview**  
+     - Provide a compelling introduction to our company, emphasizing our expertise, achievements, and past successful projects.  
+
+  2. **Comprehensive Service Offerings**  
+     - List all our marketing, branding, and advertising services, emphasizing expertise and differentiators.  
+
+  3. **Proposed Team**  
+     - Include brief but impactful profiles of our key team members, focusing on their experience, skills, and roles in the project.  
+
+  4. **Project Scope & Deliverables**  
+     - Clearly define the client's needs based on service details and how we will fulfill them.  
+     - Outline the proposed approach, strategies, and expected outcomes.  
+
+  5. **Strategic Insights & Market Analysis**  
+     - Provide key industry insights relevant to the client’s needs.  
+     - Highlight potential challenges and our solutions.  
+
+  6. **Implementation Plan & Timeline**  
+     - Provide a professional project roadmap with clear milestones.  
+
+  7. **Conclusion & Next Steps**  
+     - Summarize key points and reinforce why we are the best choice.  
+
+  8. **Contact Details**  
+     - Provide multiple professional contact options.  
+
+  **Guidelines:**  
+  - Maintain a professional, polished, and persuasive tone.  
+  - Ensure the proposal is well-structured and easy to navigate.  
+  - Directly incorporate relevant data from service details where applicable.  
+
+  **Deliver a refined and compelling proposal without placeholders like [Client Name].**
   `, true);
 
-  if(process.env.Open_Ai == 0){
-  response = response?.content;
+  if (process.env.Open_Ai == 0) {
+      response = response?.content;
   }
 
   return response;
 }
 
-// getClientProposal();
+
+startProcess().then((rs) => {
+  console.log(rs);
+})
+

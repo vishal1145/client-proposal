@@ -53,7 +53,6 @@ const extractJsonFromResponse = (responseText) => {
 };
 
 const getNatureOfBusiness = async (html) => {
-  console.log("length", html.length);
   const $ = cheerio.load(html);
   const newHtml = $("body").text().replace(/\s+/g, " ").trim();
   const chunks = splitTextIntoChunks(newHtml);
@@ -71,7 +70,6 @@ const getNatureOfBusiness = async (html) => {
     responses.push(...response);
   }
 
-  console.log("response", responses);
   return responses;
 };
 

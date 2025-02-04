@@ -33,14 +33,6 @@ DBConnect();
 const getAIResponse = async (input_prompt, save_in_db=false) => {
   try {
     const response = await openai.invoke(input_prompt);
-
-    console.log("line 33", response);
-    if(save_in_db){
-      const newService = await new service({
-        service:response
-      })
-      await newService.save();
-    }
     return response;
   } catch (error) {
     console.error("Error invoking OpenAI:", error);

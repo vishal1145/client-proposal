@@ -51,16 +51,15 @@ async function getLinks(url) {
 
     let response = await getAIResponse(`Here are extracted links from the website: \n\n${validLinks.join(
       "\n"
-    )}\n\nIdentify and return the most relevant ones do not include social media, same links and downloaded links return data in array of string in json 
-    formate only.`)
-
+    )}\n\nIdentify and return the most relevant ones do not include social media, contact, payment & payment related links, same links and downloaded links return data of array of string in json 
+    formate only. please return array only without any string`)
+ 
     if(process.env.Open_Ai == 1){
       response = JSON.parse(response);
     }else{
       response = JSON.parse(response?.content);
     }
 
-    console.log("response", response)
 
     return  response;
   } catch (error) {

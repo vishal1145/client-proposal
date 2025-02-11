@@ -5,12 +5,16 @@ import * as cheerio from "cheerio";
 
 let prompt = `
 Analyze the following HTML content and extract the nature of business or services provided.
-Return ONLY a JSON array of services. Do NOT include any explanations, headers, or extra text.
+
+- Return ONLY a JSON array of services.
+- Do NOT include any explanations, headers, or extra text.
+- If no services are found, return an empty JSON array [].
+- The response must be a valid JSON array of strings.
 
 HTML Content:
 {text}
 
-Response format:
+Response format (strictly JSON):
 ["Service 1", "Service 2", "Service 3"]
 `;
 
@@ -38,39 +42,34 @@ const splitTextIntoChunks = (text, chunkSize = 4000) => {
 const extractJsonFromResponse = (responseText) => {
   try {
     return JSON.parse(responseText);
-  } catch (error) {
-    console.warn("Invalid JSON response, attempting to extract JSON...");
-    const match = responseText.match(/\[.*?\]/s);
-    if (match) {
-      try {
-        return JSON.parse(match[0]);
-      } catch (err) {
-        console.error("Failed to extract valid JSON:", err);
-      }
-    }
+  } catch (error) { 
     return [];
   }
 };
 
 const getNatureOfBusiness = async (html) => {
-  const $ = cheerio.load(html);
-  const newHtml = $("body").text().replace(/\s+/g, " ").trim();
-  const chunks = splitTextIntoChunks(newHtml);
-
-  let responses = [];
-  for (const chunk of chunks) {
-    let response = await getNatureResponse(chunk, prompt);
-
-    if (process.env.Open_Ai == 1) {
-      response = extractJsonFromResponse(response);
-    } else {
-      response = extractJsonFromResponse(response?.content);
+  try {
+    const $ = cheerio.load(html);
+    const newHtml = $("body").text().replace(/\s+/g, " ").trim();
+    const chunks = splitTextIntoChunks(newHtml);
+  
+    let responses = [];
+    for (const chunk of chunks) {
+      let response = await getNatureResponse(chunk, prompt);
+  
+      if (process.env.Open_Ai == 1) {
+        response = extractJsonFromResponse(response);
+      } else {
+        response = extractJsonFromResponse(response?.content);
+      }
+  
+      responses.push(...response);
     }
-
-    responses.push(...response);
+  
+    return responses;
+  } catch (error) {
+    console.log(error);
   }
-
-  return responses;
 };
 
 export { getNatureOfBusiness };

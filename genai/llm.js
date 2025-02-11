@@ -30,7 +30,7 @@ openAiConnect();
 
 DBConnect();
 
-const getAIResponse = async (input_prompt, save_in_db=false) => {
+const getAIResponse = async (input_prompt) => {
   try {
     const response = await openai.invoke(input_prompt);
     return response;

@@ -3,31 +3,78 @@ import getLinks  from "./step_0.js";
 import getHtmlFromUrl from "./step_1.js";
 import {getNatureOfBusiness} from "./step_2.js";
 dotenv.config();import { getAIResponse } from "./llm.js";
+import service from "./model/service.js";
 
 export const startProcess = async () => {
   let links = await getLinks("https://doubtbuddy.com/");
-  console.log('links', links)
-  const allHtml = [];
-
-  for(var i = 0; i < (links || []).length; i++){
-    let html = await getHtmlFromUrl(links[i]);
-    allHtml.push(html);
+ 
+  if(!links){
+    links = await getLinks("https://doubtbuddy.com/");
   }
 
-  let allServices = new Set();
 
-  for (var i = 0; i < (allHtml || []).length; i++) {
-    let services = await getNatureOfBusiness(allHtml[i]);
-    services.forEach(service => allServices.add(service)); 
-  }
+  console.log("links", links)
+
+  // for(var i = 0; i < (links || []).length; i++){
+  //   let html = await getHtmlFromUrl(links[i].url);
+  //   links[i].html = html;
+  // }
+
+  // for (var i = 0; i < (links || []).length; i++) {
+  //   let services = await getNatureOfBusiness(links[i].html);
+  //   console.log("services", services);
+  //   links[i].services = services;
+  // }
+
+  // console.log("links", links);
   
-  allServices = Array.from(allServices); 
+  // let allServices = [];
+
+
+  // for (var i = 0; i < (links || []).length; i++) {
+  //   if (Array.isArray(links[i].services)) {
+  //     allServices.push(...links[i].services);
+  //   }
+  // }
+  
+
+  let allServices =  [
+    'Online Privacy Protection',
+    'Personal Information Management',
+    'Product Purchase',
+    'Fraud Detection',
+    'customer care services',
+    'fraud and money laundering prevention checks',
+    'compliance with laws, rules, and regulations',
+    'information and offers on products and services',
+    'product improvement efforts',
+    'contact as a survey respondent',
+    'notify you if you win any contest',
+    'promotional materials from contest sponsors or advertisers',
+    'transactions with payment-related financial information',
+    'security practices for internet transactions',
+    'marketing retargeting',
+    'updates, promotions, and information about the app',
+    'User Identification',
+    'Marketing Retargeting',
+    'Receive alerts and information related to services',
+    'Access to third-party services and resources',
+    'External Service Providers',
+    'Other Corporate Entities',
+    'Subscription tiers (Monthly, Weekly, Daily) with access to all features',
+    'Special offers or discounts for long-term subscriptions',
+    'Free Tier with 5 doubts and access to practice one chapter of each topic',
+    'Cancellation within 1-2 days of subscribing',
+    'Refunds for accidental payments within 24 hours'
+  ]
 
   let servicesInString = allServices.join(",");
+
   let serviceDetail = await getServiceInDetail(servicesInString);
-
-
+  
+  console.log("service detail", serviceDetail);
   let proposal = await getClientProposal(serviceDetail);
+  console.log("services detail", serviceDetail)
   console.log(proposal);
   // convert to pdf 
 
@@ -45,9 +92,13 @@ if(process.env.Open_Ai == 0){
   response = response?.content;
 }
 
+// let newService = new service({
+//   services:response
+// }) 
+
+//   await newService.save()
   return response;
 }
-
 
 async function getClientProposal(serviceDetail) {
   let response = await getAIResponse(`
@@ -94,6 +145,7 @@ async function getClientProposal(serviceDetail) {
   **Deliver a refined and compelling proposal without placeholders like [Client Name].**
   `, true);
 
+  console.log("response line 148", response);
   if (process.env.Open_Ai == 0) {
       response = response?.content;
   }

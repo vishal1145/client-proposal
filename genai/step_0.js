@@ -48,11 +48,17 @@ async function getLinks(url) {
       return [];
     }
 
+    let response = await getAIResponse(`Here are the extracted links from the website:\n\n${validLinks.join("\n")}
 
-    let response = await getAIResponse(`Here are extracted links from the website: \n\n${validLinks.join(
-      "\n"
-    )}\n\nIdentify and return the most relevant ones do not include social media, contact, payment & payment related links, same links and downloaded links return data of array of string in json 
-    formate only. please return array only without any string`)
+    Please identify and return only the most relevant links. Exclude the following:
+    - Social media links  
+    - Contact pages  
+    - Payment and payment-related links  
+    - Duplicate links  
+    - Downloaded files or links  
+    
+    Return the result strictly in JSON format as an array of objects. Each object should contain only the "title" and "url" fields. Do not include any additional text or explanation.`);  
+    
  
     if(process.env.Open_Ai == 1){
       response = JSON.parse(response);

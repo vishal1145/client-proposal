@@ -6,26 +6,72 @@ dotenv.config();import { getAIResponse } from "./llm.js";
 
 export const startProcess = async () => {
   let links = await getLinks("https://doubtbuddy.com/");
-  console.log('links', links)
-  const allHtml = [];
+ 
+  if(!links){
+    links = await getLinks("https://doubtbuddy.com/");
+  }
+
+
+  console.log("links", links)
 
   for(var i = 0; i < (links || []).length; i++){
-    let html = await getHtmlFromUrl(links[i]);
-    allHtml.push(html);
+    let html = await getHtmlFromUrl(links[i].url);
+    links[i].html = html;
   }
 
-  let allServices = new Set();
+  for (var i = 0; i < (links || []).length; i++) {
+    let services = await getNatureOfBusiness(links[i].html);
+    console.log("services", services);
+    links[i].services = services;
+  }
 
-  for (var i = 0; i < (allHtml || []).length; i++) {
-    let services = await getNatureOfBusiness(allHtml[i]);
-    services.forEach(service => allServices.add(service)); 
+  console.log("links", links);
+  
+  let allServices = [];
+
+
+  for (var i = 0; i < (links || []).length; i++) {
+    if (Array.isArray(links[i].services)) {
+      allServices.push(...links[i].services);
+    }
   }
   
-  allServices = Array.from(allServices); 
+
+  // let allServices =  [
+  //   'Online Privacy Protection',
+  //   'Personal Information Management',
+  //   'Product Purchase',
+  //   'Fraud Detection',
+  //   'customer care services',
+  //   'fraud and money laundering prevention checks',
+  //   'compliance with laws, rules, and regulations',
+  //   'information and offers on products and services',
+  //   'product improvement efforts',
+  //   'contact as a survey respondent',
+  //   'notify you if you win any contest',
+  //   'promotional materials from contest sponsors or advertisers',
+  //   'transactions with payment-related financial information',
+  //   'security practices for internet transactions',
+  //   'marketing retargeting',
+  //   'updates, promotions, and information about the app',
+  //   'User Identification',
+  //   'Marketing Retargeting',
+  //   'Receive alerts and information related to services',
+  //   'Access to third-party services and resources',
+  //   'External Service Providers',
+  //   'Other Corporate Entities',
+  //   'Subscription tiers (Monthly, Weekly, Daily) with access to all features',
+  //   'Special offers or discounts for long-term subscriptions',
+  //   'Free Tier with 5 doubts and access to practice one chapter of each topic',
+  //   'Cancellation within 1-2 days of subscribing',
+  //   'Refunds for accidental payments within 24 hours'
+  // ]
 
   let servicesInString = allServices.join(",");
-  let serviceDetail = await getServiceInDetail(servicesInString);
 
+  console.log(servicesInString);
+
+  let serviceDetail = await getServiceInDetail(servicesInString);
 
   let proposal = await getClientProposal(serviceDetail);
   console.log(proposal);

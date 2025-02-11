@@ -81,4 +81,14 @@ export async function getProposalSections(links) {
     }
 }   
 
+export async function getClientProposal(sections) {
+    try {
+        // Return a hardcoded proposal
+        return "This is a hardcoded response to save costs during development. You can customize this response based on your needs.";
+    } catch (error) {       
+        console.error("Error with hardcoded response:", error);
+        throw error;
+    }
+}
+
 

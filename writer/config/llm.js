@@ -42,3 +42,8 @@ export async function getNatureResponse(html) {
 export async function getProposalSections(links) {
     return provider.getProposalSections(links);
 }
+
+export async function getClientProposal(sections) {
+    return provider.getClientProposal(sections);
+}
+

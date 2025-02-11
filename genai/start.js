@@ -71,8 +71,10 @@ export const startProcess = async () => {
   let servicesInString = allServices.join(",");
 
   let serviceDetail = await getServiceInDetail(servicesInString);
-
+  
+  console.log("service detail", serviceDetail);
   let proposal = await getClientProposal(serviceDetail);
+  console.log("services detail", serviceDetail)
   console.log(proposal);
   // convert to pdf 
 
@@ -90,11 +92,11 @@ if(process.env.Open_Ai == 0){
   response = response?.content;
 }
 
-let newService = new service({
-  services:response
-}) 
+// let newService = new service({
+//   services:response
+// }) 
 
-  await newService.save()
+//   await newService.save()
   return response;
 }
 

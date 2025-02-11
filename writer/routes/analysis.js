@@ -1,5 +1,5 @@
 import express from 'express';
-import { startProcess } from '../start.js';
+import { startProcess } from '../services/start.js';
 import Analysis from '../model/analysis.js';
 
 const router = express.Router();

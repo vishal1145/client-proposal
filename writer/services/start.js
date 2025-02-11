@@ -3,7 +3,7 @@ import getLinks from "./step_0.js";
 import getHtmlFromUrl from "./step_1.js";
 import { getNatureOfBusiness } from "./step_2.js";
 dotenv.config();
-import Analysis from './model/analysis.js';
+import Analysis from '../model/analysis.js';
 
 export const startProcess = async (url) => {
   if (!url) {

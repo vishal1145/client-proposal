@@ -48,24 +48,28 @@ const extractJsonFromResponse = (responseText) => {
 };
 
 const getNatureOfBusiness = async (html) => {
-  const $ = cheerio.load(html);
-  const newHtml = $("body").text().replace(/\s+/g, " ").trim();
-  const chunks = splitTextIntoChunks(newHtml);
-
-  let responses = [];
-  for (const chunk of chunks) {
-    let response = await getNatureResponse(chunk, prompt);
-
-    if (process.env.Open_Ai == 1) {
-      response = extractJsonFromResponse(response);
-    } else {
-      response = extractJsonFromResponse(response?.content);
+  try {
+    const $ = cheerio.load(html);
+    const newHtml = $("body").text().replace(/\s+/g, " ").trim();
+    const chunks = splitTextIntoChunks(newHtml);
+  
+    let responses = [];
+    for (const chunk of chunks) {
+      let response = await getNatureResponse(chunk, prompt);
+  
+      if (process.env.Open_Ai == 1) {
+        response = extractJsonFromResponse(response);
+      } else {
+        response = extractJsonFromResponse(response?.content);
+      }
+  
+      responses.push(...response);
     }
-
-    responses.push(...response);
+  
+    return responses;
+  } catch (error) {
+    console.log(error);
   }
-
-  return responses;
 };
 
 export { getNatureOfBusiness };

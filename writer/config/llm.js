@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
-import * as openAIProvider from '../config/openai.js';
-import * as groqProvider from '../config/groq.js';
-import * as hardcodeProvider from '../config/hardcode.js';
+import * as openAIProvider from './openai.js';
+import * as groqProvider from './groq.js';
+import * as hardcodeProvider from './hardcode.js';
 dotenv.config();
 
 let provider;
@@ -37,4 +37,8 @@ export async function extractLinksFromHomePage(input_prompt) {
 
 export async function getNatureResponse(html) {
     return provider.getNatureResponse(html);
+}
+
+export async function getProposalSections(links) {
+    return provider.getProposalSections(links);
 }

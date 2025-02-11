@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import puppeteer from "puppeteer";
 import sslChecker from "ssl-checker";
 import { URL } from "url";
-import { extractLinksFromHomePage } from "./llm.js";
+import { extractLinksFromHomePage } from "../config/llm.js";
 dotenv.config();
 
 

@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-import { getNatureResponse } from "./llm.js";
+import { getNatureResponse } from "../config/llm.js";
 import * as cheerio from "cheerio";
 
 let prompt = `

@@ -67,22 +67,6 @@ export const startProcess = async (url) => {
   }
 };
 
-async function getServiceInDetail(services) {
-  let response = await getAIResponse(
-    `
-  You are a highly experienced marketing specialist with global expertise. Here are the services offered on the website:
-  ${services}
-  Using your expertise and knowledge, explain in detail how each of these services can benefit businesses worldwide. Focus on explaining why each service is essential for global growth and provide actionable marketing strategies that are tailored to a global audience. While you cannot search the web in real time, use your extensive training to generate a comprehensive response.
-`,
-    true
-  );
-
-  if (process.env.Open_Ai == 0) {
-    response = response?.content;
-  }
-
-  return response;
-}
 
 async function getClientProposal(serviceDetail) {
   let response = await getAIResponse(

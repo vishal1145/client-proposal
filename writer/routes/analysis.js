@@ -1,6 +1,7 @@
 import express from 'express';
 import { startProcess } from '../services/start.js';
 import Analysis from '../model/analysis.js';
+import { getProposalSections } from '../config/llm.js';
 
 const router = express.Router();
 
@@ -66,4 +67,36 @@ router.get('/', async (req, res) => {
     }
 });
 
-export default router; 
+// POST /api/analysis/proposal - Generate proposal section from links
+router.post('/proposal-section', async (req, res) => {
+    try {
+        const { links } = req.body;
+
+        if (!links || !Array.isArray(links) || links.length === 0) {
+            return res.status(400).json({
+                success: false,
+                error: "Array of links is required in request body"
+            });
+        }
+
+        // TODO: Add proposal generation service logic here
+        // const proposal = await generateProposal(links);
+        var sections = await getProposalSections(links);
+
+
+        res.status(200).json({
+            success: true,
+            message: "Proposal generation endpoint ready",
+            data: sections
+        });
+
+    } catch (error) {
+        console.error('Error generating proposal:', error);
+        res.status(500).json({
+            success: false,
+            error: "Failed to generate proposal"
+        });
+    }
+});
+
+export default router;

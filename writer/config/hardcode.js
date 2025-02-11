@@ -57,3 +57,28 @@ export async function getNatureResponse(html) {
         throw error;
     }
 } 
+
+export async function getProposalSections(links) {
+    try {
+        // Return array with proposal sections
+        return [
+            {
+                section: "Company Overview",
+                content: "This is a hardcoded response to save costs during development. You can customize this response based on your needs."
+            },
+            {
+                section: "Comprehensive Service Offerings",
+                content: "This is a hardcoded response to save costs during development. You can customize this response based on your needs."
+            },
+            {
+                section: "Proposed Team",
+                content: "This is a hardcoded response to save costs during development. You can customize this response based on your needs."
+            }
+        ]
+    } catch (error) {
+        console.error("Error with hardcoded response:", error);
+        throw error;
+    }
+}   
+
+

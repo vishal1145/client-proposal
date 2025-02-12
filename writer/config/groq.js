@@ -16,12 +16,22 @@ export function initialize(apiKey) {
 
 export async function extractLinksFromHomePage(input_prompt) {
     try {
-        return [
-            "https://example.com/about-us",
-            "https://example.com/our-services",
-            "https://example.com/contact-us",
-            "https://example.com/portfolio"
-        ];
+        const response = await groqInstance.invoke(input_prompt);
+        
+        let parsedLinks;
+        try {
+            parsedLinks = JSON.parse(response.content);
+            
+            if (Array.isArray(parsedLinks)) {
+                return parsedLinks;
+            }
+            
+            throw new Error('Response is not in expected array format');
+            
+        } catch (parseError) {
+            console.error("Error parsing response:", parseError);
+            return [];
+        }
     } catch (error) {
         console.error("Error extracting links with Groq:", error);
         throw error;

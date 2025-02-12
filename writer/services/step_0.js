@@ -48,10 +48,26 @@ async function getLinks(url) {
       return [];
     }
 
-    validLinks = await extractLinksFromHomePage(validLinks.join());
+    const prompt = `Here are the extracted links from the website:\n\n${validLinks.join("\n")}
+
+    Analyze these links and return only the most relevant ones that provide valuable content about the website's main purpose. 
+
+    Strict exclusion criteria:
+    - Social media profiles or sharing links
+    - Contact/support/help pages
+    - Payment gateways or checkout pages
+    - Duplicate URLs with different parameters
+    - File downloads (PDFs, documents, media)
+    - Login/signup pages
+    - Legal pages (privacy policy, terms of service)
+    - External advertisement links
+    - play store links
+    - app store links
+
+    Return the result as a JSON array of strings.`;
+
+    validLinks = await extractLinksFromHomePage(prompt);
     return validLinks;
-
-
   } catch (error) {
     console.error("Error:", error.message);
   } finally {

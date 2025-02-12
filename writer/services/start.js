@@ -17,13 +17,11 @@ export const startProcess = async (url) => {
     services: [],
   }));
 
-  for (var i = 0; i < links.length; i++) {
-    // Get HTML for each link
+  for (var i = 0; i < links.length; i++) { 
     links[i].html = await getHtmlFromUrl(links[i].url);
   }
 
-  for (var i = 0; i < links.length; i++) {
-    //Get services for each link
+  for (var i = 0; i < links.length; i++) { 
     let services = await getNatureOfBusiness(links[i].html);
     links[i].services = services;
   }
@@ -34,9 +32,7 @@ export const startProcess = async (url) => {
   });
 
   allServices = Array.from(allServices);
-
-  console.log("allServices", allServices);
-
+ 
   var analysis = {};
   analysis.url = url;
   analysis.links = links;
@@ -56,9 +52,18 @@ export const startProcess = async (url) => {
     };
 
     // Save to database
+    const alreadyExists = await Analysis.findOne({ url: url });
+    if (alreadyExists) {
+      const updatedAnalysis = await Analysis.findByIdAndUpdate(
+        alreadyExists._id,
+        analysisModel,
+        { new: true }  
+      );
+      console.log('Analysis updated to database successfully');
+      return updatedAnalysis;
+    }
     const newAnalysis = new Analysis(analysisModel);
     await newAnalysis.save();
-    
     console.log('Analysis saved to database successfully');
     return newAnalysis;
   } catch (error) {

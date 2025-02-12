@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     try {
-        const { url } = req.body;
-        
+        let { url } = req.body;
+
         if (!url) {
             return res.status(400).json({ 
                 success: false, 
@@ -16,7 +16,10 @@ router.post('/', async (req, res) => {
             });
         }
 
-        // Start the analysis process
+        if(url.endsWith("/")) {
+            url = url.slice(0, -1);
+        }
+      
         await startProcess(url);
 
         res.status(200).json({
@@ -170,10 +173,7 @@ router.post('/generate-proposal', async (req, res) => {
 
 router.get('/all', async (req, res) => {
     try {
-
-        console.log('all data');
         const analyses = await Analysis.find().sort({ createdAt: -1 });
-        
         res.status(200).json({
             success: true,
             data: analyses

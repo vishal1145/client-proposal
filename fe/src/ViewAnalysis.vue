@@ -1,29 +1,25 @@
 <template>
   <div class="analysis-container">
-    <!-- Services Section -->
-    <section class="services-section">
-      <h2 class="section-title">Services</h2>
-      <div class="services-grid">
-        <div v-for="(service, index) in services" :key="index" class="service-card">
-          <h3>{{ service.nature }}</h3>
-          <p>{{ service.description }}</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Links Section -->
-    <section class="links-section">
-      <h2 class="section-title">Useful Links</h2>
-      <div class="links-grid">
-        <a v-for="(link, index) in links" 
-           :key="index" 
-           :href="link.url" 
-           target="_blank"
-           class="link-card">
-          {{ link.url }}
-        </a>
-      </div>
-    </section>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Links</th>
+          <th>Services</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loading state -->
+        <tr v-if="isLoading" v-for="i in 3" :key="`loader-${i}`">
+          <td><div class="skeleton-loader"></div></td>
+          <td><div class="skeleton-loader"></div></td>
+        </tr>
+        <!-- Data state -->
+        <tr v-else v-for="i in Math.max(links.length, services.length)" :key="i">
+          <td>{{ links[i-1]?.url || '' }}</td>
+          <td>{{ services[i-1] || '' }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -35,18 +31,23 @@ export default {
   data() {
     return {
       services: [],
-      links: []
+      links: [],
+      isLoading: true
     }
   },
   async created() {
     try {
-      // Replace with your actual API endpoint
+      this.isLoading = true;
       const apiUrl = 'http://localhost:4000/api';
       const response = await axios.get(`${apiUrl}/analysis?id=${this.$route.params.id}`);
       this.services = response.data.analysis.allServices;
       this.links = response.data.analysis.links;
+      console.log("services", response.data.analysis.allServices);
+      console.log("links", response.data.analysis.links);
     } catch (error) {
       console.error('Error fetching data:', error);
+    } finally {
+      this.isLoading = false;
     }
   }
 }
@@ -127,6 +128,52 @@ export default {
   
   .section-title {
     font-size: 1.5rem;
+  }
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.data-table th,
+.data-table td {
+  padding: 1rem;
+  text-align: left;
+  border: 1px solid #dee2e6;
+}
+
+.data-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  color: #333;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.data-table tr:hover {
+  background-color: #e9ecef;
+}
+
+.skeleton-loader {
+  height: 20px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 </style>

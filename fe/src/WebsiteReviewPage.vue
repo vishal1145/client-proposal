@@ -25,6 +25,28 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
+              <tr v-if="isLoading">
+                <td colspan="2" class="px-6 py-4">
+                  <div class="animate-pulse space-y-4">
+                    <!-- Skeleton rows -->
+                    <div v-for="i in 3" :key="i" class="flex items-center justify-between">
+                      <div class="flex items-center">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full mr-3"></div>
+                        <div class="h-4 w-64 bg-gray-200 rounded"></div>
+                      </div>
+                      <div class="flex space-x-4">
+                        <div class="h-8 w-20 bg-gray-200 rounded-lg"></div>
+                        <div class="h-8 w-24 bg-gray-200 rounded-lg"></div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr v-else-if="urlList.length === 0">
+                <td colspan="2" class="px-6 py-10 text-center text-gray-500">
+                  No analyses found. Add one to get started.
+                </td>
+              </tr>
               <tr v-for="(item, index) in urlList" :key="index" class="hover:bg-gray-50 transition-colors">
                 <td class="px-6 py-5">
                   <div class="flex items-center">
@@ -51,11 +73,16 @@
                     <button 
                       class="inline-flex items-center px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-700 font-medium rounded-lg transition-colors"
                       @click="reanalyzeUrl(item)"
+                      :disabled="reanalyzingIds.has(item._id)"
                     >
-                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg v-if="reanalyzingIds.has(item._id)" class="animate-spin w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      <svg v-else class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                       </svg>
-                      Reanalyze
+                      {{ reanalyzingIds.has(item._id) ? 'Reanalyzing...' : 'Reanalyze' }}
                     </button>
                   </div>
                 </td>
@@ -113,8 +140,13 @@
               type="button"
               class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
               @click="saveUrl"
+              :disabled="isSaving"
             >
-              Add
+              <svg v-if="isSaving" class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              {{ isSaving ? 'Adding...' : 'Add' }}
             </button>
             <button 
               type="button"
@@ -139,7 +171,10 @@ export default {
     return {
       showModal: false,
       newUrl: '',
-      urlList: [] // This will store your URLs
+      urlList: [],
+      isLoading: false,
+      isSaving: false,
+      reanalyzingIds: new Set() // Track which items are being reanalyzed
     }
   },
   async created() {
@@ -155,19 +190,21 @@ export default {
     },
     async fetchAnalyses() {
       const apiUrl = 'http://localhost:4000/api';
+      this.isLoading = true;
       try {
-        console.log(`${apiUrl}`);
         const response = await axios.get(`${apiUrl}/analysis/all`)
         if (response.data.success) {
           this.urlList = response.data.data
         }
       } catch (error) {
         console.error('Error fetching analyses:', error)
-        // You might want to add error handling UI here
+      } finally {
+        this.isLoading = false;
       }
     },
     async saveUrl() {
       if (this.newUrl.trim()) {
+        this.isSaving = true;
         try {
           const apiUrl = 'http://localhost:4000/api';
           const response = await axios.post(`${apiUrl}/analysis`, {
@@ -175,12 +212,13 @@ export default {
           });
           
           if (response.data.success) {
-            await this.fetchAnalyses(); // Refresh the list after saving
+            await this.fetchAnalyses();
             this.closeModal();
           }
         } catch (error) {
           console.error('Error saving URL:', error);
-          // You might want to add error handling UI here
+        } finally {
+          this.isSaving = false;
         }
       }
     },
@@ -188,18 +226,20 @@ export default {
       this.$router.push(`/analysis/${item._id}`);
     },
     async reanalyzeUrl(item) {
+      this.reanalyzingIds.add(item._id);
       try {
         const apiUrl = 'http://localhost:4000/api';
-        const response = await axios.put(`${apiUrl}/analysis/${item._id}`, {
-          status: 'pending' // or any other data you want to update
+        const response = await axios.post(`${apiUrl}/analysis`, {
+          url: item.url
         });
         
         if (response.data.success) {
-          await this.fetchAnalyses(); // Refresh the list after reanalyzing
+          await this.fetchAnalyses();
         }
       } catch (error) {
         console.error('Error reanalyzing URL:', error);
-        // You might want to add error handling UI here
+      } finally {
+        this.reanalyzingIds.delete(item._id);
       }
     }
   }

@@ -38,18 +38,27 @@ export async function extractLinksFromHomePage(input_prompt) {
     }
 }
 
-export async function getNatureResponse(input_data, input_prompt) {
+export async function getNatureResponse(input_data) {
     try {
-        const prompt = new PromptTemplate({
-            template: input_prompt,
-            inputVariables: ["text"],
-        });
+        const systemPrompt = `You are a business analyst who extracts the nature of business and services from website content.`;
+        
+        const userPrompt = `Analyze the following content and extract the nature of business or services provided.
+Return ONLY a JSON array of services.
+Do NOT include any explanations, headers, or extra text.
+If no services are found, return an empty JSON array [].
+The response must be a valid JSON array of strings.
 
-        const formattedPrompt = await prompt.format({ text: input_data });
-        const response = await groqInstance.invoke(formattedPrompt);
+Content to analyze:
+${input_data}`;
+
+        const response = await groqInstance.invoke([
+            { role: "system", content: systemPrompt },
+            { role: "user", content: userPrompt }
+        ]);
+
         return response;
     } catch (error) {
         console.error("Error invoking Groq:", error);
-        throw error;
+        return { content: "[]" };
     }
 } 

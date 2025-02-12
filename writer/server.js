@@ -1,12 +1,14 @@
 import express from 'express';
 import DBConnect from './config/database.js';
 import analysisRouter from './routes/analysis.js';
+import cors from 'cors';
 
 const app = express();
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // Initialize connections before starting server
 async function initializeConnections() {

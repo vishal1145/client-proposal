@@ -5,7 +5,6 @@ import { getProposalSections, getClientProposal } from '../config/llm.js';
 
 const router = express.Router();
 
-// POST /api/analysis - Create new analysis for a URL
 router.post('/', async (req, res) => {
     try {
         const { url } = req.body;
@@ -33,30 +32,68 @@ router.post('/', async (req, res) => {
     }
 });
 
-// GET /api/analysis - Get analysis by URL
-router.get('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
-        const { url } = req.query;
+        const { id } = req.params;
+        const updateData = req.body;
 
-        if (!url) {
-            return res.status(400).json({ 
-                success: false, 
-                error: "URL is required as query parameter" 
+        if (!id) {
+            return res.status(400).json({
+                success: false,
+                error: "Analysis ID is required"
             });
         }
 
-        const analysis = await Analysis.findOne({ url }).sort({ createdAt: -1 });
+        const updatedAnalysis = await Analysis.findByIdAndUpdate(
+            id,
+            updateData,
+            { new: true } // Returns the updated document
+        );
 
-        if (!analysis) {
-            return res.status(404).json({ 
-                success: false, 
-                error: "No analysis found for this URL" 
+        if (!updatedAnalysis) {
+            return res.status(404).json({
+                success: false,
+                error: "Analysis not found"
             });
         }
 
         res.status(200).json({
             success: true,
-            data: analysis
+            data: updatedAnalysis
+        });
+    } catch (error) {
+        console.error('Error updating analysis:', error);
+        res.status(500).json({
+            success: false,
+            error: "Failed to update analysis"
+        });
+    }
+});
+
+router.get('/', async (req, res) => {
+    try {
+        console.log('get analysis');
+        const { id } = req.query;
+
+        if (!id) {
+            return res.status(400).json({ 
+                success: false, 
+                error: "id is required as query parameter" 
+            });
+        }
+
+        const analysis = await Analysis.findById(id);
+
+        if (!analysis) {
+            return res.status(404).json({ 
+                success: false, 
+                error: "No analysis found for this ID" 
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            analysis
         });
     } catch (error) {
         console.error('Error fetching analysis:', error);
@@ -67,7 +104,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// POST /api/analysis/proposal - Generate proposal section from links
 router.post('/proposal-section', async (req, res) => {
     try {
         const { links } = req.body;
@@ -99,7 +135,6 @@ router.post('/proposal-section', async (req, res) => {
     }
 });
 
-// POST /api/analysis/generate-proposal - Generate full proposal from sections
 router.post('/generate-proposal', async (req, res) => {
     try {
         const { sections } = req.body;
@@ -133,5 +168,23 @@ router.post('/generate-proposal', async (req, res) => {
     }
 });
 
+router.get('/all', async (req, res) => {
+    try {
+
+        console.log('all data');
+        const analyses = await Analysis.find().sort({ createdAt: -1 });
+        
+        res.status(200).json({
+            success: true,
+            data: analyses
+        });
+    } catch (error) {
+        console.error('Error fetching all analyses:', error);
+        res.status(500).json({ 
+            success: false, 
+            error: "Failed to fetch analyses" 
+        });
+    }
+});
 
 export default router;

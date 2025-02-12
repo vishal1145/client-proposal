@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-
+import Link from "next/link";
 export function FooterSection() {
   return (
     <footer className="bg-white pt-20 pb-10">
@@ -16,14 +16,19 @@ export function FooterSection() {
               className="mb-4"
             />
             <p className="text-gray-600">
-              Search amanzign individuals around the globe, find a mentor, expand your network,
+              Search amanzign individuals around the globe, find a mentor,
+              expand your network,
             </p>
             <div>
-              <a href="mailto:info@itservices.com" className="text-[#0B1B2B] font-semibold text-lg">
+              <a
+                href="mailto:info@itservices.com"
+                className="text-[#0B1B2B] font-semibold text-lg"
+              >
                 info@itservices.com
               </a>
               <p className="text-gray-600 mt-2">
-                245, Central Street, Havel Tower South City,<br />
+                245, Central Street, Havel Tower South City,
+                <br />
                 New York, USA
               </p>
             </div>
@@ -33,9 +38,7 @@ export function FooterSection() {
                 placeholder="Enter your email"
                 className="w-full bg-gray-100 rounded-full py-3 px-6 pr-32 focus:outline-none"
               />
-              <Button 
-                className="absolute right-1 top-1 bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-2"
-              >
+              <Button className="absolute right-1 top-1 bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-2">
                 Submit Now
               </Button>
             </div>
@@ -43,21 +46,22 @@ export function FooterSection() {
 
           {/* Branch Address */}
           <div>
-            <h3 className="text-xl font-bold text-[#0B1B2B] mb-6">Branch Address</h3>
+            <h3 className="text-xl font-bold text-[#0B1B2B] mb-6">
+              Branch Address
+            </h3>
             <p className="text-gray-600 mb-4">
-              167 Great Portland Street, DEON<br />
+              167 Great Portland Street, DEON
+              <br />
               Australia - 47889 55
             </p>
             <div className="space-y-2">
-              <p className="text-gray-600">
-                Mail : Solutions@Example.Com
-              </p>
-              <p className="text-gray-600">
-                Ph : 012 456 789 0459
-              </p>
+              <p className="text-gray-600">Mail : Solutions@Example.Com</p>
+              <p className="text-gray-600">Ph : 012 456 789 0459</p>
             </div>
             <div className="mt-6">
-              <h4 className="text-xl font-bold text-[#0B1B2B] mb-2">Call Centre:</h4>
+              <h4 className="text-xl font-bold text-[#0B1B2B] mb-2">
+                Call Centre:
+              </h4>
               <p className="text-gray-600">+91 180 5478 987</p>
             </div>
           </div>
@@ -66,30 +70,76 @@ export function FooterSection() {
           <div>
             <h3 className="text-xl font-bold text-[#0B1B2B] mb-6">About Us</h3>
             <ul className="space-y-4">
-              <li><a href="#" className="text-gray-600 hover:text-blue-600">About Us</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-blue-600">Mission</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-blue-600">Terms & Conditions</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-blue-600">Contact</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-blue-600">News & Blog</a></li>
+              <Link href="/about" className="text-gray-600 hover:text-blue-600">
+                About Us
+              </Link>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600">
+                  Mission
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600">
+                  Terms & Conditions
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600">
+                  Contact
+                </a>
+              </li>
+              <li>
+                <Link href="/blog" className="text-gray-600 hover:text-blue-600">
+                  Blog & News
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Information */}
           <div>
-            <h3 className="text-xl font-bold text-[#0B1B2B] mb-6">Information</h3>
+            <h3 className="text-xl font-bold text-[#0B1B2B] mb-6">
+              Information
+            </h3>
             <ul className="space-y-4">
-              <li><a href="#" className="text-gray-600 hover:text-blue-600">Expert Tips</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-blue-600">A Sustainable Future</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-blue-600">Fresh Start</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-blue-600">Clean Spaces</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-blue-600">Tips & Strategies</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-blue-600">Career</a></li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600">
+                  Expert Tips
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600">
+                  A Sustainable Future
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600">
+                  Fresh Start
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600">
+                  Clean Spaces
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600">
+                  Tips & Strategies
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600">
+                  Career
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* News Feeds */}
           <div>
-            <h3 className="text-xl font-bold text-[#0B1B2B] mb-6">News Feeds</h3>
+            <h3 className="text-xl font-bold text-[#0B1B2B] mb-6">
+              News Feeds
+            </h3>
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
@@ -138,4 +188,4 @@ export function FooterSection() {
       </div>
     </footer>
   );
-} 
+}

@@ -317,7 +317,7 @@ export function GetQuoteSection() {
                   {/* Header */}
                   <div className="flex items-center justify-between mb-8">
                     <div>
-                      <span className="text-sm text-gray-600 mb-2 block">
+                      <span className="text-sm text-gray-600 mb-2  border border-gray-300 p-1 rounded-3xl inline-block">
                         Recently Viewed It Services
                       </span>
                       <h2 className="text-[28px] font-bold text-[#0B1B2B]">

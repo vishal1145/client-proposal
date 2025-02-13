@@ -9,16 +9,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Updated CORS configuration
+// Updated CORS configuration with wildcard
 app.use(cors({
-    origin: [
-        'https://proposal.algofolks.com',
-        'https://proposal.algofolks.com/api',
-        'https://proposal.algofolks.com/',
-        'https://proposal.algofolks.com/api/',
-        'http://localhost:3000'
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    origin: '*', // Allow all origins with wildcard
+    methods: '*', // Allow all methods
+    allowedHeaders: '*', // Allow all headers
+    exposedHeaders: '*',
+    credentials: false  // Note: Must be false when using '*' origin
 }));
 
 // Initialize connections before starting server

@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { HeroSection } from "@/components/sections/HeroSection";
 import { GetQuoteSection } from "@/components/sections/GetQuoteSection";
 import Footer from "@/components/sections/Footer";
 
-// This would typically come from an API or database
 const serviceDetails = {
   "cybersecurity-services": {
     title: "Cybersecurity Services",
@@ -31,20 +29,22 @@ const serviceDetails = {
   }
 };
 
-type Params = { slug: string };
+interface PageProps {
+  params: { slug: string };
+}
 
-// @ts-ignore
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+// Ensure `params` is properly passed
+export function generateMetadata({ params }: PageProps): Metadata {
   const service = serviceDetails[params.slug as keyof typeof serviceDetails];
-  
+
   return {
-    title: service ? `${service.title} - IT Services` : 'Service Not Found - IT Services',
-    description: service ? service.description : 'Service not found',
+    title: service ? `${service.title} - IT Services` : "Service Not Found - IT Services",
+    description: service ? service.description : "Service not found",
   };
 }
 
-// @ts-ignore
-export default async function Page({ params }: { params: Params }) {
+// Ensure `params` is correctly typed
+export default function Page({ params }: PageProps) {
   const service = serviceDetails[params.slug as keyof typeof serviceDetails];
 
   if (!service) {
@@ -60,19 +60,8 @@ export default async function Page({ params }: { params: Params }) {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* <HeroSection 
-        title={service.title}
-        subtitle={service.subtitle}
-        description={service.description}
-        showCarousel={false}
-        backgroundImage={service.image}
-        buttonText="Get Started"
-        buttonLink="/get-quote"
-      /> */}
-
       <GetQuoteSection />
-      
       <Footer />
     </main>
   );
-} 
+}

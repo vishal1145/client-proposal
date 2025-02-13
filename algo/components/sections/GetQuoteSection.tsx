@@ -61,7 +61,7 @@ export function GetQuoteSection() {
         <div className="container mx-auto px-4">
           <div className="max-w-9xl mx-auto">
             <h2 className="text-3xl font-bold text-[#0B1B2B] ">
-              Monitoring And Maintaining Your Firm's Network For Uptime And
+              Monitoring And Maintaining Your Firm&apos; Network For Uptime And
               Security.
             </h2>
 
@@ -94,8 +94,8 @@ export function GetQuoteSection() {
                   A Latin Professor At Hampden-Sydney College In Virginia, There
                   It Is Many Variations Of Passages Of Lorem Ipsum Available,
                   But The Majority Have Suffered Alteration In Some Form, By
-                  Injected Humour, Or Randomised Words Which Don't Look Even
-                  Slightly Believable.
+                  Injected Humour, Or Randomised Words Which Don&apos;t Look
+                  Even Slightly Believable.
                 </p>
 
                 {/* Additional Service Images */}
@@ -123,15 +123,9 @@ export function GetQuoteSection() {
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Contrary to popular belief, Lorem Ipsum is not simply random
-                  text. It has roots in a piece of classical Latin literature
-                  from 45 BC, making it over 2000 years old. Richard McClintock,
-                  a Latin professor at H ampden Sydney College in Virginia.
-                  Contrary to popular belief, Lorem Ipsum is not simply random
-                  text. It has roots in a piece of classical Latin literature
-                  from 45 BC, making it over 2000 years old. R ichard
-                  McClintock, a Latin professor at Hampden Sydney College in
-                  Virginia.
+                  Here&apos;s what our clients say about our services.
+                  We&apos;re proud to have helped businesses achieve their
+                  goals.
                 </p>
               </div>
             </div>

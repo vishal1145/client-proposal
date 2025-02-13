@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Footer from "@/components/sections/Footer";
+import Link from "next/link";
 
 export default function BlogPage() {
   return (
@@ -99,12 +100,15 @@ export default function BlogPage() {
                   </h3>
                   <p className="text-gray-500 text-sm mb-3 line-clamp-2">
                     Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the industry's
-                    standard dummy.
+                    typesetting industry. Lorem ipsum has been the
+                    industry&apos;s standard dummy.
                   </p>
-                  <button className="text-[#4461F2] text-sm font-medium">
+                  <Link
+                    href={`/blog/future-of-it-legal-field`}
+                    className="text-[#4461F2] text-sm font-medium hover:underline"
+                  >
                     Read More →
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -128,12 +132,15 @@ export default function BlogPage() {
                   </h3>
                   <p className="text-gray-500 text-sm mb-3 line-clamp-2">
                     Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the industry's
-                    standard dummy.
+                    typesetting industry. Lorem ipsum has been the
+                    industry&apos;s standard dummy.
                   </p>
-                  <button className="text-[#4461F2] text-sm font-medium">
+                  <Link
+                    href={`/blog/cybersecurity-tips`}
+                    className="text-[#4461F2] text-sm font-medium hover:underline"
+                  >
                     Read More →
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -157,12 +164,15 @@ export default function BlogPage() {
                   </h3>
                   <p className="text-gray-500 text-sm mb-3 line-clamp-2">
                     Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the industry's
-                    standard dummy.
+                    typesetting industry. Lorem ipsum has been the
+                    industry&apos;s standard dummy.
                   </p>
-                  <button className="text-[#4461F2] text-sm font-medium">
+                  <Link
+                    href={`/blog/it-compliance`}
+                    className="text-[#4461F2] text-sm font-medium hover:underline"
+                  >
                     Read More →
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -186,12 +196,15 @@ export default function BlogPage() {
                   </h3>
                   <p className="text-gray-500 text-sm mb-3 line-clamp-2">
                     Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the industry's
-                    standard dummy.
+                    typesetting industry. Lorem ipsum has been the
+                    industry&apos;s standard dummy.
                   </p>
-                  <button className="text-[#4461F2] text-sm font-medium">
+                  <Link
+                    href={`/blog/future-of-it-legal-field`}
+                    className="text-[#4461F2] text-sm font-medium hover:underline"
+                  >
                     Read More →
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -215,12 +228,15 @@ export default function BlogPage() {
                   </h3>
                   <p className="text-gray-500 text-sm mb-3 line-clamp-2">
                     Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the industry's
-                    standard dummy.
+                    typesetting industry. Lorem ipsum has been the
+                    industry&apos;s standard dummy.
                   </p>
-                  <button className="text-[#4461F2] text-sm font-medium">
+                  <Link
+                    href={`/blog/cybersecurity-tips`}
+                    className="text-[#4461F2] text-sm font-medium hover:underline"
+                  >
                     Read More →
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -244,12 +260,15 @@ export default function BlogPage() {
                   </h3>
                   <p className="text-gray-500 text-sm mb-3 line-clamp-2">
                     Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the industry's
-                    standard dummy.
+                    typesetting industry. Lorem ipsum has been the
+                    industry&apos;s standard dummy.
                   </p>
-                  <button className="text-[#4461F2] text-sm font-medium">
+                  <Link
+                    href={`/blog/it-compliance`}
+                    className="text-[#4461F2] text-sm font-medium hover:underline"
+                  >
                     Read More →
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

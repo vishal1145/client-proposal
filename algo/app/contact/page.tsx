@@ -188,14 +188,15 @@ export default function ContactPage() {
               </p>
 
               <h2 className="text-4xl font-bold text-[#0B1B2B] leading-tight mb-6">
-                We're The Future OF{" "}
+                We&apos;re The Future Of{" "}
                 <span className="text-[#0561FC]">IT Industry</span>,
                 <br />
                 Further Contact Us
               </h2>
               <p className="text-gray-500 text-sm leading-relaxed mb-12">
                 Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting
-                Industry. Lorem Ipsum Has Been The Industry's Standard Dummy
+                Industry. Lorem Ipsum Has Been The Industry&apos;s Standard
+                Dummy
               </p>
 
               {/* Contact Details */}

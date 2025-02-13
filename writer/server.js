@@ -13,9 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     origin: '*', // Allow all origins with wildcard
     methods: '*', // Allow all methods
-    allowedHeaders: '*', // Allow all headers
-    exposedHeaders: '*',
-    credentials: false  // Note: Must be false when using '*' origin
 }));
 
 // Initialize connections before starting server

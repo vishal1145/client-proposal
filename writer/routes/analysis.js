@@ -7,7 +7,10 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     try {
+        console.log("start analysis");
         let { url } = req.body;
+        console.log("start analysis1");
+
 
         if (!url) {
             return res.status(400).json({ 

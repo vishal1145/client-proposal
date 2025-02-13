@@ -2,6 +2,7 @@ import express from 'express';
 import DBConnect from './config/database.js';
 import analysisRouter from './routes/analysis.js';
 import cors from 'cors';
+import userRoutes from './routes/user.js';
 
 const app = express();
 
@@ -27,6 +28,8 @@ async function initializeConnections() {
 }
 
 // Routes
+
+app.use('/users', userRoutes); 
 app.use('/analysis', analysisRouter);
 
 // Start server after initializing connections

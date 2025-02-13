@@ -189,7 +189,7 @@ export default {
       this.showModal = false
     },
     async fetchAnalyses() {
-      const apiUrl = 'http://localhost:4000/api';
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
       this.isLoading = true;
       try {
         const response = await axios.get(`${apiUrl}/analysis/all`)
@@ -206,7 +206,7 @@ export default {
       if (this.newUrl.trim()) {
         this.isSaving = true;
         try {
-          const apiUrl = 'http://localhost:4000/api';
+          const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
           const response = await axios.post(`${apiUrl}/analysis`, {
             url: this.newUrl.trim()
           });
@@ -228,7 +228,7 @@ export default {
     async reanalyzeUrl(item) {
       this.reanalyzingIds.add(item._id);
       try {
-        const apiUrl = 'http://localhost:4000/api';
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
         const response = await axios.post(`${apiUrl}/analysis`, {
           url: item.url
         });

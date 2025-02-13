@@ -11,9 +11,16 @@ app.use(express.urlencoded({ extended: true }));
 
 // Updated CORS configuration
 app.use(cors({
-    origin: ['https://proposal.algofolks.com', 'http://localhost:5173'], // Add your domain and localhost for development
+    origin: [
+        'https://proposal.algofolks.com',
+        'https://proposal.algofolks.com/api',
+        'https://proposal.algofolks.com/',
+        'https://proposal.algofolks.com/api/',
+        'http://localhost:3000'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }));
 
 // Initialize connections before starting server

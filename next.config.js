@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     domains: ["img.freepik.com"],
+    unoptimized: true,
   },
 };
 

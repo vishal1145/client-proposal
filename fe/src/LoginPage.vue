@@ -47,7 +47,18 @@ export default {
           })
         });
 
-        const data = await response.json();
+        // Check for service unavailable first
+        if (response.status === 503) {
+          throw new Error('Service is temporarily unavailable. Please try again later.');
+        }
+
+        let data;
+        try {
+          data = await response.json();
+        } catch (parseError) {
+          throw new Error('Invalid response from server. Please try again later.');
+        }
+
         if (response.ok) {
           localStorage.setItem('proposal-writer-token', data.token);
           this.$router.push('/');
@@ -55,7 +66,7 @@ export default {
           this.error = data.msg || 'Login failed';
         }
       } catch (err) {
-        this.error = 'An error occurred during login';
+        this.error = err.message || 'An error occurred during login';
         console.error('Login error:', err);
       } finally {
         this.loading = false;

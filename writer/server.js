@@ -26,7 +26,7 @@ app.use('/api/analysis', analysisRouter);
 
 // Start server after initializing connections
 initializeConnections().then(() => {
-    app.listen(4000, () => {
+    app.listen(1111, () => {
         console.log('Server connected on port 4000');
     });
 }).catch(err => {

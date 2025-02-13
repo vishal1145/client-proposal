@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import * as openAIProvider from './openai.js';
 import * as groqProvider from './groq.js';
 import * as hardcodeProvider from './hardcode.js';
+import * as deepseekProvider from './deepseek.js';
 dotenv.config();
 
 let provider;
@@ -17,6 +18,10 @@ switch(llmProvider) {
     case 'groq':
         provider = groqProvider;
         provider.initialize(process.env.API_KEY2);
+        break;
+    case 'deepseek':
+        provider = deepseekProvider;
+        provider.initialize();
         break;
     case 'hardcode':
     default:

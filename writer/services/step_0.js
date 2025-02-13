@@ -43,6 +43,7 @@ async function getLinks(url) {
       }
     }
 
+
     if (validLinks.length === 0) {
       console.log("No valid SSL links found.");
       return [];
@@ -64,7 +65,7 @@ async function getLinks(url) {
     - play store links
     - app store links
 
-    Return the result as a JSON array of strings.`;
+    Return the result as a JSON array of strings only and no other text compulsorily.`;
 
     validLinks = await extractLinksFromHomePage(prompt);
     return validLinks;

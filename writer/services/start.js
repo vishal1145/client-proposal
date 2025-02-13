@@ -11,7 +11,7 @@ export const startProcess = async (url) => {
   }
 
   let linksTemp = await getLinks(url);
-  let links = [linksTemp[0]].map((link) => ({
+  let links = linksTemp.map((link) => ({
     url: link,
     html: null,
     services: [],

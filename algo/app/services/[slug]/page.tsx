@@ -60,7 +60,7 @@ export default async function Page({ params }: { params: Params }) {
 
   return (
     <main className="min-h-screen bg-white">
-      <HeroSection 
+      {/* <HeroSection 
         title={service.title}
         subtitle={service.subtitle}
         description={service.description}
@@ -68,7 +68,7 @@ export default async function Page({ params }: { params: Params }) {
         backgroundImage={service.image}
         buttonText="Get Started"
         buttonLink="/get-quote"
-      />
+      /> */}
 
       <GetQuoteSection />
       

@@ -1,72 +1,107 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
 
-interface GetQuoteSectionProps {
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  buttonText?: string;
-  buttonLink?: string;
-}
-
-export function GetQuoteSection({
-  title = "Ready to Start Your Project?",
-  subtitle = "Get Started Today",
-  description = "Let's discuss your requirements and create a solution that perfectly fits your needs.",
-  buttonText = "Get Started",
-  buttonLink = "/get-quote"
-}: GetQuoteSectionProps) {
-  const router = useRouter();
-
+export function GetQuoteSection() {
   return (
-    <section className="bg-gradient-to-r from-[#4461F2] to-[#3451D2] py-24 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        {/* Large Circle */}
-        <div className="absolute -right-40 -top-40 w-[500px] h-[500px] rounded-full bg-white opacity-5"></div>
-        <div className="absolute -left-20 -bottom-20 w-[300px] h-[300px] rounded-full bg-white opacity-5"></div>
-        
-        {/* Floating Elements */}
-        <div className="absolute left-1/4 top-1/2 transform -translate-y-1/2">
-          <div className="w-20 h-20 rounded-lg bg-white/10 rotate-45 animate-float"></div>
+    <>
+      {/* Hero Section */}
+      <section className="relative bg-[#F6F0E4] py-20 overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
+          <Image
+            src="/images/hand.png"
+            alt="Hand with Rocket"
+            width={300}
+            height={200}
+            className="w-auto h-auto opacity-90"
+          />
         </div>
-        <div className="absolute right-1/4 top-1/3">
-          <div className="w-16 h-16 rounded-full bg-white/10 animate-float-delay"></div>
-        </div>
-      </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto">
-          <div 
-            className="bg-white/10 backdrop-blur-sm rounded-3xl p-12 text-center hover:bg-white/20 transition-all duration-300 cursor-pointer"
-            onClick={() => router.push(buttonLink)}
-          >
-            <span className="inline-block text-orange-400 font-medium text-sm mb-4">
-              {subtitle}
-            </span>
-            <h2 className="text-4xl font-bold text-white mb-6">
-              {title}
-            </h2>
-            <p className="text-lg text-white/80 mb-8 max-w-xl mx-auto">
-              {description}
-            </p>
-            <Button 
-              className="bg-white text-[#4461F2] hover:bg-gray-50 rounded-full px-8 py-4 text-lg font-medium group transition-all duration-300 transform hover:scale-105"
-              onClick={(e) => {
-                e.stopPropagation();
-                router.push(buttonLink);
-              }}
-            >
-              {buttonText}
-              <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Button>
+        <div className="absolute right-20 top-1/2 -translate-y-1/2 z-10">
+          <Image
+            src="/images/message.png"
+            alt="Chat Bubble"
+            width={80}
+            height={80}
+            className="w-auto h-auto opacity-80"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-20">
+          <div className="text-center max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <h1 className="text-3xl font-bold text-[#0B1B2B]">
+                Designing IT Services
+              </h1>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-gray-600">
+              <span>Home</span>
+              <span>-</span>
+              <span>Service Detail</span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-1/4 z-10">
+          <Image
+            src="/images/decorative.png"
+            alt="Decorative Element"
+            width={100}
+            height={100}
+            className="w-auto h-auto opacity-30"
+          />
+        </div>
+      </section>
+
+      {/* Main Content Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-[#0B1B2B] mb-8">
+              Monitoring And Maintaining Your Firm's Network For Uptime And
+              Security.
+            </h2>
+
+            {/* Service Card */}
+            <div className="">
+              {/* Card Header */}
+              <div className="p-8 flex items-start gap-4"></div>
+
+              {/* Main Image */}
+              <div className="w-full">
+                <Image
+                  src="/images/service 1.png"
+                  alt="Service Main"
+                  width={1200}
+                  height={400}
+                  className="w-full h-auto"
+                  priority
+                />
+              </div>
+
+              {/* Card Content */}
+              <div className="p-8">
+                <h4 className="text-lg font-semibold text-[#0B1B2B] mb-4">
+                  Commercial IT Requirements
+                </h4>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Contrary To Popular Belief, Lorem Ipsum Is Not Simply Random
+                  Text. It Has Roots In A Piece Of Classical Latin Literature
+                  From 45 BC, Making It Over 2000 Years Old. Richard McClintock,
+                  A Latin Professor At Hampden-Sydney College In Virginia, There
+                  It Is Many Variations Of Passages Of Lorem Ipsum Available,
+                  But The Majority Have Suffered Alteration In Some Form, By
+                  Injected Humour, Or Randomised Words Which Don't Look Even
+                  Slightly Believable.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
-} 
+}

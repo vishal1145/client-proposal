@@ -19,8 +19,6 @@ app.use(cors({
         'http://localhost:3000'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
 }));
 
 // Initialize connections before starting server

@@ -8,7 +8,14 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+// Updated CORS configuration
+app.use(cors({
+    origin: ['https://proposal.algofolks.com', 'http://localhost:5173'], // Add your domain and localhost for development
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
 
 // Initialize connections before starting server
 async function initializeConnections() {

@@ -1,70 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1440" height="800" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g opacity="0.5">
-    <!-- World Map Dots Pattern -->
-    <circle cx="200" cy="150" r="4" fill="currentColor"/>
-    <circle cx="220" cy="150" r="4" fill="currentColor"/>
-    <circle cx="240" cy="150" r="4" fill="currentColor"/>
-    <circle cx="260" cy="150" r="4" fill="currentColor"/>
-    <circle cx="280" cy="150" r="4" fill="currentColor"/>
-    
-    <circle cx="190" cy="180" r="4" fill="currentColor"/>
-    <circle cx="210" cy="180" r="4" fill="currentColor"/>
-    <circle cx="230" cy="180" r="4" fill="currentColor"/>
-    <circle cx="250" cy="180" r="4" fill="currentColor"/>
-    <circle cx="270" cy="180" r="4" fill="currentColor"/>
-    <circle cx="290" cy="180" r="4" fill="currentColor"/>
-    
-    <circle cx="180" cy="210" r="4" fill="currentColor"/>
-    <circle cx="200" cy="210" r="4" fill="currentColor"/>
-    <circle cx="220" cy="210" r="4" fill="currentColor"/>
-    <circle cx="240" cy="210" r="4" fill="currentColor"/>
-    <circle cx="260" cy="210" r="4" fill="currentColor"/>
-    <circle cx="280" cy="210" r="4" fill="currentColor"/>
-    <circle cx="300" cy="210" r="4" fill="currentColor"/>
-    
-    <!-- Europe -->
-    <circle cx="700" cy="200" r="4" fill="currentColor"/>
-    <circle cx="720" cy="200" r="4" fill="currentColor"/>
-    <circle cx="740" cy="200" r="4" fill="currentColor"/>
-    <circle cx="760" cy="200" r="4" fill="currentColor"/>
-    
-    <circle cx="690" cy="230" r="4" fill="currentColor"/>
-    <circle cx="710" cy="230" r="4" fill="currentColor"/>
-    <circle cx="730" cy="230" r="4" fill="currentColor"/>
-    <circle cx="750" cy="230" r="4" fill="currentColor"/>
-    <circle cx="770" cy="230" r="4" fill="currentColor"/>
-    
-    <!-- Asia -->
-    <circle cx="900" cy="250" r="4" fill="currentColor"/>
-    <circle cx="920" cy="250" r="4" fill="currentColor"/>
-    <circle cx="940" cy="250" r="4" fill="currentColor"/>
-    <circle cx="960" cy="250" r="4" fill="currentColor"/>
-    
-    <circle cx="890" cy="280" r="4" fill="currentColor"/>
-    <circle cx="910" cy="280" r="4" fill="currentColor"/>
-    <circle cx="930" cy="280" r="4" fill="currentColor"/>
-    <circle cx="950" cy="280" r="4" fill="currentColor"/>
-    <circle cx="970" cy="280" r="4" fill="currentColor"/>
-    
-    <!-- Africa -->
-    <circle cx="700" cy="400" r="4" fill="currentColor"/>
-    <circle cx="720" cy="400" r="4" fill="currentColor"/>
-    <circle cx="740" cy="400" r="4" fill="currentColor"/>
-    
-    <circle cx="690" cy="430" r="4" fill="currentColor"/>
-    <circle cx="710" cy="430" r="4" fill="currentColor"/>
-    <circle cx="730" cy="430" r="4" fill="currentColor"/>
-    <circle cx="750" cy="430" r="4" fill="currentColor"/>
-    
-    <!-- Australia -->
-    <circle cx="1000" cy="500" r="4" fill="currentColor"/>
-    <circle cx="1020" cy="500" r="4" fill="currentColor"/>
-    <circle cx="1040" cy="500" r="4" fill="currentColor"/>
-    
-    <circle cx="990" cy="530" r="4" fill="currentColor"/>
-    <circle cx="1010" cy="530" r="4" fill="currentColor"/>
-    <circle cx="1030" cy="530" r="4" fill="currentColor"/>
-    <circle cx="1050" cy="530" r="4" fill="currentColor"/>
-  </g>
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Pattern for blue dots -->
+  <pattern id="dots-blue" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1" fill="#0561FC"/>
+  </pattern>
+  
+  <!-- Pattern for gray dots -->
+  <pattern id="dots-gray" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1" fill="#94A3B8"/>
+  </pattern>
+
+  <!-- Main regions with blue dots -->
+  <path d="M200,150 L400,150 L400,300 L200,300 Z" fill="url(#dots-blue)"/>
+  <path d="M600,200 L800,200 L800,350 L600,350 Z" fill="url(#dots-blue)"/>
+  <path d="M900,250 L1100,250 L1100,400 L900,400 Z" fill="url(#dots-blue)"/>
+
+  <!-- Secondary regions with gray dots -->
+  <path d="M300,350 L500,350 L500,500 L300,500 Z" fill="url(#dots-gray)"/>
+  <path d="M700,100 L900,100 L900,250 L700,250 Z" fill="url(#dots-gray)"/>
+  <path d="M400,250 L600,250 L600,400 L400,400 Z" fill="url(#dots-gray)"/>
 </svg> 

@@ -57,18 +57,26 @@ export default function ContactPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="relative">
+            {/* World Map Background */}
             <Image
               src="/images/Layer_1.png"
               alt="World Map"
               width={1200}
               height={600}
-              className="w-full h-auto opacity-20"
+              className="w-full h-auto opacity-90"
             />
-            {/* Contact Info Box */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#4461F2] text-white px-8 py-6 rounded-lg">
-              <p className="text-sm">IT Services & Software Solutions</p>
-              <p className="text-sm">245, North London, WC1N 3BH</p>
-              <p className="text-sm">Ph: +44 020 7946 0859</p>
+
+            {/* Singapore Office */}
+            <div className="absolute top-[52%] left-[75%]">
+              <div className="relative">
+                <div className="w-1 h-1 bg-[#0561FC] rounded-full animate-ping absolute opacity-75"></div>
+                <div className="w-2 h-2 bg-[#0561FC] rounded-full relative z-10"></div>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-[#0561FC] text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg">
+                  <p>IT Services & Software Solutions</p>
+                  <p>45, Singapore</p>
+                  <p>Ph: +65 123 456 789</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -79,112 +87,155 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {/* Chat For Sales */}
-            <div className="bg-white p-6 rounded-xl text-center">
-              <div className="w-12 h-12 bg-[#F5F6FE] rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white p-8 rounded-xl text-left hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-[#F5F6FE] rounded-full flex items-start justify-start mb-4">
                 <svg
-                  className="w-6 h-6 text-[#4461F2]"
-                  fill="none"
+                  className="w-7 h-7 text-[#0561FC]"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  fill="none"
                 >
                   <path
+                    d="M17 9C17 12.87 13.87 16 10 16C6.13 16 3 12.87 3 9C3 5.13 6.13 2 10 2"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  />
+                  <path
+                    d="M21 16C21 18.76 18.76 21 16 21C13.24 21 11 18.76 11 16C11 13.24 13.24 11 16 11C18.76 11 21 13.24 21 16Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
-              <h3 className="text-[#0B1B2B] font-semibold mb-2">
+              <h3 className="text-[#0B1B2B] font-semibold text-lg mb-2">
                 Chat For Sales
               </h3>
               <p className="text-gray-500 text-sm mb-4">
-                Company To Digital Level Lorem
+                Contrary To Popular Belief, Lorem
               </p>
-              <button className="bg-[#4461F2] text-white text-sm px-6 py-2 rounded-full">
-                Chat With Sales
+              <button className="text-white text-sm font-medium bg-[#0561FC] px-6 py-2.5 rounded-full hover:bg-[#0561FC]/90 transition-colors">
+                Sales@Example.Com →
               </button>
             </div>
 
             {/* Chat For Support */}
-            <div className="bg-white p-6 rounded-xl text-center">
-              <div className="w-12 h-12 bg-[#F5F6FE] rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white p-8 rounded-xl text-left hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-[#F5F6FE] rounded-full flex  mb-4">
                 <svg
-                  className="w-6 h-6 text-[#4461F2]"
-                  fill="none"
+                  className="w-7 h-7 text-[#0561FC]"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  fill="none"
                 >
                   <path
+                    d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
+                  />
+                  <path
+                    d="M8 14C8.5 15.5 10 16.5 12 16.5C14 16.5 15.5 15.5 16 14"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M9 9H9.01"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M15 9H15.01"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
-              <h3 className="text-[#0B1B2B] font-semibold mb-2">
+              <h3 className="text-[#0B1B2B] font-semibold text-lg mb-2">
                 Chat For Support
               </h3>
               <p className="text-gray-500 text-sm mb-4">
-                Company To Digital Level Lorem
+                Contrary To Popular Belief, Lorem
               </p>
-              <button className="bg-[#4461F2] text-white text-sm px-6 py-2 rounded-full">
-                Chat With Support
+              <button className="text-white text-sm font-medium bg-[#0561FC] px-6 py-2.5 rounded-full hover:bg-[#0561FC]/90 transition-colors">
+                Get In Touch →
               </button>
             </div>
 
             {/* Visit Our Site */}
-            <div className="bg-white p-6 rounded-xl text-center">
-              <div className="w-12 h-12 bg-[#F5F6FE] rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#0561FC] p-8 rounded-xl text-left hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-white/10 rounded-full flex  mb-4">
                 <svg
-                  className="w-6 h-6 text-[#4461F2]"
-                  fill="none"
+                  className="w-7 h-7 text-white"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  fill="none"
                 >
                   <path
+                    d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                  <path
+                    d="M7.5 12H16.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M12 7.5V16.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
-              <h3 className="text-[#0B1B2B] font-semibold mb-2">
+              <h3 className="text-white font-semibold text-lg mb-2">
                 Visit Our Site
               </h3>
-              <p className="text-gray-500 text-sm mb-4">
-                Company To Digital Level Lorem
+              <p className="text-white/80 text-sm mb-4">
+                Contrary To Popular Belief, Lorem
               </p>
-              <button className="bg-[#4461F2] text-white text-sm px-6 py-2 rounded-full">
-                www.itservices.com
+              <button className="text-[#0561FC] text-sm font-medium bg-white px-6 py-2.5 rounded-full hover:bg-white/90 transition-colors">
+                www.itservices.com →
               </button>
             </div>
 
             {/* Contact Us */}
-            <div className="bg-white p-6 rounded-xl text-center">
-              <div className="w-12 h-12 bg-[#F5F6FE] rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white p-8 rounded-xl text-left hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-[#F5F6FE] rounded-full flex  mb-4">
                 <svg
-                  className="w-6 h-6 text-[#4461F2]"
-                  fill="none"
+                  className="w-7 h-7 text-[#0561FC]"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  fill="none"
                 >
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    d="M21.97 18.33C21.97 18.69 21.89 19.06 21.72 19.42C21.55 19.78 21.33 20.12 21.04 20.44C20.55 20.98 20.01 21.37 19.4 21.62C18.8 21.87 18.15 22 17.45 22C16.43 22 15.34 21.76 14.19 21.27C13.04 20.78 11.89 20.12 10.75 19.29C9.6 18.45 8.51 17.52 7.47 16.49C6.44 15.45 5.51 14.36 4.68 13.22C3.86 12.08 3.2 10.94 2.72 9.81C2.24 8.67 2 7.58 2 6.54C2 5.86 2.12 5.21 2.36 4.61C2.6 4 2.98 3.44 3.51 2.94C4.15 2.31 4.85 2 5.59 2C5.87 2 6.15 2.06 6.4 2.18C6.66 2.3 6.89 2.48 7.07 2.74L9.39 6.01C9.57 6.26 9.7 6.49 9.79 6.71C9.88 6.92 9.93 7.13 9.93 7.32C9.93 7.56 9.86 7.8 9.72 8.03C9.59 8.26 9.4 8.5 9.16 8.74L8.4 9.53C8.29 9.64 8.24 9.77 8.24 9.93C8.24 10.01 8.25 10.08 8.27 10.16C8.3 10.24 8.33 10.3 8.35 10.36C8.53 10.69 8.84 11.12 9.28 11.64C9.73 12.16 10.21 12.69 10.73 13.22C11.27 13.75 11.79 14.24 12.32 14.69C12.84 15.13 13.27 15.43 13.61 15.61C13.66 15.63 13.72 15.66 13.79 15.69C13.87 15.72 13.95 15.73 14.04 15.73C14.21 15.73 14.34 15.67 14.45 15.56L15.21 14.81C15.46 14.56 15.7 14.37 15.93 14.25C16.16 14.11 16.39 14.04 16.64 14.04C16.83 14.04 17.03 14.08 17.25 14.17C17.47 14.26 17.7 14.39 17.95 14.56L21.26 16.91C21.52 17.09 21.7 17.31 21.81 17.55C21.91 17.8 21.97 18.05 21.97 18.33Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeMiterlimit="10"
                   />
                 </svg>
               </div>
-              <h3 className="text-[#0B1B2B] font-semibold mb-2">Contact Us</h3>
+              <h3 className="text-[#0B1B2B] font-semibold text-lg mb-2">
+                Contact Us
+              </h3>
               <p className="text-gray-500 text-sm mb-4">
-                Company To Digital Level Lorem
+                Contrary To Popular Belief, Lorem
               </p>
-              <button className="bg-[#4461F2] text-white text-sm px-6 py-2 rounded-full">
-                +44 020 7946 0859
+              <button className="text-white text-sm font-medium bg-[#0561FC] px-6 py-2.5 rounded-full hover:bg-[#0561FC]/90 transition-colors">
+                +81.000.2323.2 →
               </button>
             </div>
           </div>
@@ -200,7 +251,7 @@ export default function ContactPage() {
               <p className="text-sm text-gray-500 mb-2">Contact Address</p>
               <h2 className="text-3xl font-bold text-[#0B1B2B] mb-6">
                 We're The Future OF{" "}
-                <span className="text-[#4461F2]">IT Industry</span>,
+                <span className="text-[#0561FC]">IT Industry</span>,
                 <br />
                 Further Contact Us
               </h2>
@@ -215,7 +266,7 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-[#F5F6FE] flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-5 h-5 text-[#4461F2]"
+                      className="w-5 h-5 text-[#0561FC]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -250,7 +301,7 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-[#F5F6FE] flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-5 h-5 text-[#4461F2]"
+                      className="w-5 h-5 text-[#0561FC]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -276,7 +327,7 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-[#F5F6FE] flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-5 h-5 text-[#4461F2]"
+                      className="w-5 h-5 text-[#0561FC]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -302,7 +353,7 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-[#E0EFFF] flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-5 h-5 text-[#4461F2]"
+                      className="w-5 h-5 text-[#0561FC]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -327,7 +378,7 @@ export default function ContactPage() {
             </div>
 
             {/* Right Side - Contact Form */}
-            <div className="bg-[#4461F2] rounded-2xl p-8">
+            <div className="bg-[#0561FC] rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-white mb-6">Get Quotes</h3>
               <p className="text-white/80 mb-8">
                 The Point Of Using Lorem Ipsum Is That It Has More-Or-Less
@@ -356,7 +407,7 @@ export default function ContactPage() {
                   className="w-full bg-white/10 text-white placeholder-white/60 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/20"
                 ></textarea>
 
-                <button className="bg-white text-[#4461F2] px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors">
+                <button className="bg-white text-[#0561FC] px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors">
                   Submit Now →
                 </button>
               </form>

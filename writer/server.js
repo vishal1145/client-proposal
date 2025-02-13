@@ -22,7 +22,7 @@ async function initializeConnections() {
 }
 
 // Routes
-app.use('/api/analysis', analysisRouter);
+app.use('/analysis', analysisRouter);
 
 // Start server after initializing connections
 initializeConnections().then(() => {

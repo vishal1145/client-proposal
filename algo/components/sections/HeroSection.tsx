@@ -46,7 +46,7 @@ export function HeroSection() {
               href="#contact"
               className="inline-flex items-center gap-2 bg-[#0561FC] text-white px-8 py-4 rounded-full hover:bg-blue-700 transition-colors"
             >
-              Let's Talk
+              Let&apos;s Talk
               <svg
                 width="20"
                 height="20"

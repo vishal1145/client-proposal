@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+
 
 export function WhyChooseUsSection() {
-  const features = [
-    { title: "Customized" },
-    { title: "High Quality" },
-    { title: "Experience" },
-    { title: "Support" },
-  ];
+  // const features = [
+  //   { title: "Customized" },
+  //   { title: "High Quality" },
+  //   { title: "Experience" },
+  //   { title: "Support" },
+  // ];
 
   return (
     <section className="bg-[#0B1B2B] py-20 mb-5">
@@ -97,7 +97,7 @@ export function WhyChooseUsSection() {
             <div className="flex items-center gap-12">
               {/* Title */}
               <div className="text-white whitespace-nowrap">
-                <p className="text-sm font-medium">We're Proud To</p>
+                <p className="text-sm font-medium">We&apos;re Proud To</p>
                 <p className="text-sm font-medium">Collaborate With:</p>
               </div>
 

@@ -2,8 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 // import { HeroSection } from "@/components/sections/HeroSection";
-import { GetQuoteSection } from "@/components/sections/GetQuoteSection";
+// import { GetQuoteSection } from "@/components/sections/GetQuoteSection";
 import Footer from "@/components/sections/Footer";
 
 const services = [
@@ -139,7 +140,7 @@ export default function Page() {
         {/* Left Side Illustration */}
         <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
           <div className="relative">
-            <img
+            <Image
               src="/images/hand.png"
               alt="Hand with Rocket"
               width={300}
@@ -151,7 +152,7 @@ export default function Page() {
 
         {/* Right Side Chat Icon */}
         <div className="absolute right-20 top-1/2 -translate-y-1/2 z-10">
-          <img
+          <Image
             src="/images/message.png"
             alt="Chat Bubble"
             width={80}
@@ -174,7 +175,7 @@ export default function Page() {
 
         {/* Additional Decorative Elements */}
         <div className="absolute top-0 left-1/4 z-10">
-          <img
+          <Image
             src="/images/decorative.png"
             alt="Decorative Element"
             width={100}
@@ -183,7 +184,7 @@ export default function Page() {
           />
         </div>
         <div className="absolute bottom-0 right-1/4 z-10">
-          <img
+          <Image
             src="/images/decorative.png"
             alt="Decorative Element"
             width={80}

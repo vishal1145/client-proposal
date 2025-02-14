@@ -47,8 +47,8 @@ export function TestimonialsSection() {
                 />
                 <div className="flex-1">
                   <p className="text-[13px] text-gray-600 leading-relaxed mb-3">
-                    "Shared Lorem Ipsum Into The Information Age With Its
-                    Desktop Software Aldus PageMaker."
+                  &apos;Shared Lorem Ipsum Into The Information Age With Its
+                    Desktop Software Aldus PageMaker.&apos;
                   </p>
                   <h4 className="text-[12px] font-medium text-[#1B224B] uppercase tracking-wide">
                     JHON - MANAGER
@@ -81,8 +81,8 @@ export function TestimonialsSection() {
                 />
                 <div className="flex-1">
                   <p className="text-[13px] text-white leading-relaxed mb-3">
-                    "Shared Lorem Ipsum Into The Information Age With Its
-                    Desktop Software Aldus PageMaker."
+                  &apos;Shared Lorem Ipsum Into The Information Age With Its
+                    Desktop Software Aldus PageMaker.&apos;
                   </p>
                   <h4 className="text-[12px] font-medium text-white uppercase tracking-wide">
                     JHON - MANAGER
@@ -115,8 +115,8 @@ export function TestimonialsSection() {
                 />
                 <div className="flex-1">
                   <p className="text-[13px] text-gray-600 leading-relaxed mb-3">
-                    "Shared Lorem Ipsum Into The Information Age With Its
-                    Desktop Software Aldus PageMaker."
+                  &apos;Shared Lorem Ipsum Into The Information Age With Its
+                    Desktop Software Aldus PageMaker.&apos;
                   </p>
                   <h4 className="text-[12px] font-medium text-[#1B224B] uppercase tracking-wide">
                     JHON - MANAGER

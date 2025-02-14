@@ -86,7 +86,7 @@ const PricingSection = () => {
               <h3 className="font-[Public Sans] font-medium text-[25px] leading-[29.38px] tracking-[0%]">Basic Service Plan</h3>
               <div className="font-[Public Sans] font-medium text-[50px] leading-[58.75px] tracking-[0%] mt-4 mb-4">$ 99.00</div>
               <p className="text-sm opacity-90 mb-4">
-                Got Car Troubles? We've Got Solutions!The Art of Automotive Care Empowering Your Vehicle
+                Got Car Troubles? We&apos;ve Got Solutions!The Art of Automotive Care Empowering Your Vehicle
               </p>
               <hr className="border-t border-[rgba(10,34,60,0.3)] mb-4"/>
 
@@ -124,7 +124,7 @@ const PricingSection = () => {
               <h3 className="font-[Public Sans] font-medium text-[25px] leading-[29.38px] tracking-[0%]">Basic Standard Plan</h3>
               <div className="font-[Public Sans] font-medium text-[50px] leading-[58.75px] tracking-[0%] mt-4 mb-4">$ 199.00</div>
               <p className="text-sm opacity-90 mb-4">
-                Got Car Troubles? We've Got Solutions!The Art of Automotive Care Empowering Your Vehicle
+                Got Car Troubles? We&apos;ve Got Solutions!The Art of Automotive Care Empowering Your Vehicle
               </p>
               <hr className="border-t border-[rgba(10,34,60,0.3)] mb-4"/>
               
@@ -164,7 +164,7 @@ const PricingSection = () => {
               <h3 className="font-[Public Sans] font-medium text-[25px] leading-[29.38px] tracking-[0%]">Basic Comprehensive Plan</h3>
               <div className="font-[Public Sans] font-medium text-[50px] leading-[58.75px] tracking-[0%] mt-4 mb-4">$ 299.00</div>
               <p className="text-sm text-gray-600 mb-4">
-                Got Car Troubles? We've Got Solutions!The Art of Automotive Care Empowering Your Vehicle
+                Got Car Troubles? We&apos;ve Got Solutions!The Art of Automotive Care Empowering Your Vehicle
               </p>
               <hr className="border-t border-[rgba(10,34,60,0.3)] mb-4"/>
               

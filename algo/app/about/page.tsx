@@ -147,7 +147,7 @@ export default function AboutPage() {
                 <p className="text-[#64748B] text-[15px] leading-[1.8]">
                   Contrary To Popular Belief, Lorem Ipsum Is Not Simply Random
                   Text. It Has Roots In A Piece Latin Literature From 45 BC,
-                  Making It Over 2000 Years Old. Richard Mc Clinock's Latin
+                  Making It Over 2000 Years Old. Richard Mc Clinock&apos;s Latin
                   Literature From 45.
                 </p>
               </div>
@@ -381,7 +381,7 @@ export default function AboutPage() {
               <div className="flex items-center gap-12">
                 {/* Title */}
                 <div className="text-white whitespace-nowrap">
-                  <p className="text-sm font-medium">We're Proud To</p>
+                  <p className="text-sm font-medium">We&apos;re Proud To</p>
                   <p className="text-sm font-medium">Collaborate With:</p>
                 </div>
 
@@ -452,7 +452,7 @@ export default function AboutPage() {
                 What Our Clients Say About{" "}
                 <span className="text-[#4461F2]">Our Work</span>
               </h2>
-              <p className="text-[15px] text-gray-500 mb-12 leading-relaxed">
+              <p className="text-gray-600 text-sm leading-relaxed">
                 There&apos;s Many Variations Of Passages Of Lorem Ipsum
                 Available, But The Majority Have Suffered Alteration In
               </p>

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { notFound } from "next/navigation";
+import { use } from "react";
 import Footer from "@/components/sections/Footer";
 import { BlogDetail } from "@/components/sections/BlogDetail";
 
-// Define blog details type
+// Blog details type
 type BlogDetail = {
   title: string;
   category: string;
@@ -12,7 +13,7 @@ type BlogDetail = {
   content: string;
 };
 
-// Define blog details object
+// Blog details object
 const blogDetails: Record<string, BlogDetail> = {
   "future-of-it-legal-field": {
     title: "The Future Of IT In The Legal Field Trends To Watch",
@@ -43,16 +44,12 @@ const blogDetails: Record<string, BlogDetail> = {
   },
 };
 
-// Define correct params type for Next.js
-type Props = {
-  params: {
-    slug: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-// Generate metadata
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+// Generate metadata dynamically for SEO
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const blog = blogDetails[params.slug];
 
   return {
@@ -63,22 +60,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function Page({ params }: Props) {
-  const blog = blogDetails[params.slug];
+// Generate static paths dynamically
+export async function generateStaticParams() {
+  return Object.keys(blogDetails).map((slug) => ({
+    slug,
+  }));
+}
+
+// Page component using use hook
+export default function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = use(params);
+
+  if (!slug) {
+    notFound();
+  }
+
+  const blog = blogDetails[slug];
 
   if (!blog) {
-    return (
-      <div className="min-h-screen bg-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold text-[#0B1B2B] mb-4">
-            404 - Blog Not Found
-          </h1>
-          <p className="text-gray-600 mb-8">
-            The blog post you&apos;re looking for doesn&apos;t exist.
-          </p>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   return (

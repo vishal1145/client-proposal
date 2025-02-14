@@ -8,7 +8,7 @@ type BlogDetailProps = {
   content: string;
 };
 
-export function BlogDetail({ title, category, image }: BlogDetailProps) {
+export function BlogDetail({ title }: BlogDetailProps) {
   return (
     <>
       {/* Hero Section */}
@@ -94,13 +94,13 @@ export function BlogDetail({ title, category, image }: BlogDetailProps) {
               {/* Quote Section */}
               <div className="bg-gray-50 p-8 rounded-xl mb-8">
                 <div className="flex gap-4">
-                  <span className="text-[#4461F2] text-5xl">"</span>
+                  <span className="text-[#4461F2] text-5xl">&apos;</span>
                   <p className="text-gray-600 text-[15px] leading-relaxed italic">
                     Looked up one of the more obscure Latin words, consectetur,
                     from a Lorem ipsum passage, and going through the cites of
                     the word in classical literature, discovered the undoubtable
                     source. Lorem ipsum comes from sections 1.10.32 and 1.10.33
-                    of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+                    of &apos;de Finibus Bonorum et Malorum&apos; (The Extremes of Good and
                     Evil) by Cicero, written in 45 BC.
                   </p>
                 </div>
@@ -151,7 +151,7 @@ export function BlogDetail({ title, category, image }: BlogDetailProps) {
                 as a tank; a proverb, yeast; or else they tinscribe nor. Yet yet
                 dewlap bed. Twho may be, let him love fellows of a polecat. Now
                 amour, the, twhose being, drunk, yet twhitch and, an enclosed
-                valley's always a laugh. In acquisitiendum the Furies are Earth;
+                valley&apos;s always a laugh. In acquisitiendum the Furies are Earth;
                 in (he takes up) a lump vehicles bien
               </p>
 

@@ -15,8 +15,8 @@ import FaqSection from "@/components/sections/FaqSection";
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* <FaqSection/> */}
-      {/* <GallerySection/> */}
+      <FaqSection/>
+      <GallerySection/>
       <PricingSection/>
       <TeamMemberSection/>
       <HeroSection />

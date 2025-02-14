@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react';
+import Image from 'next/image';
 
 const FaqSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -28,37 +29,109 @@ const FaqSection = () => {
   ];
 
   return (
-    <div className="max-w-[1200px] mx-auto px-4">
-      <div className="text-center mb-8">
-        <p className="text-sm mb-2">Latest Updates</p>
-        <h2 className="text-3xl font-semibold">Frequently Asked Questions</h2>
-      </div>
+    <div className='relative'>
+      <section className="relative bg-[#F6F0E4] py-20 overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
+          <Image
+            src="/images/hand.png"
+            alt="Hand with Rocket"
+            width={300}
+            height={200}
+            className="w-auto h-auto opacity-90"
+          />
+        </div>
+
+        <div className="absolute right-20 top-1/2 -translate-y-1/2 z-10">
+          <Image
+            src="/images/message.png"
+            alt="Chat Bubble"
+            width={80}
+            height={80}
+            className="w-auto h-auto opacity-80"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-20">
+          <div className="text-center max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <h1 className="text-3xl font-bold text-[#0B1B2B]">
+              Frequently Asked Questions
+              </h1>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-gray-600">
+              <span>Home</span>
+              <span>-</span>
+              <span>FAQ</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-1/4 z-10">
+          <Image
+            src="/images/decorative.png"
+            alt="Decorative Element"
+            width={100}
+            height={100}
+            className="w-auto h-auto opacity-30"
+          />
+        </div>
+      </section>
+    <div className="   px-44 mt-24 px-4  pb-32">
+    
+    <div className="text-center mb-12">
+          <span className="w-[198px] text-black h-[30px] px-4 py-1 border border-1 rounded-[60px]">Latest Updates</span>
+          <p className=" font-['Public_Sans'] mt-1 font-semibold text-[40px] leading-[56px] tracking-[0%]">  Frequently Asked Questions</p>
+        </div>
+
+ 
 
       <div className="space-y-4">
         {faqData.map((faq, index) => (
           <div 
             key={index}
-            className="bg-gray-50 rounded-lg overflow-hidden"
+            className="bg-[rgba(246,246,246,1)] rounded-lg overflow-hidden"
           >
             <button
               className="w-full text-left flex justify-between items-center px-8 py-6"
               onClick={() => setActiveIndex(activeIndex === index ? null : index)}
             >
-              <p className="font-['Public_Sans'] font-medium text-[30px] leading-[30px] tracking-[0%]">{faq.question}</p>
-              <span className="transform transition-transform duration-200">
-                {activeIndex === index ? '−' : '+'}
+              <p className="font-['Public_Sans'] font-medium text-[30px] leading-[30px] tracking-normal">{faq.question}</p>
+              <span className={`transform transition-transform duration-200 text-gray-400 ${activeIndex === index ? 'rotate-180' : ''}`}>
+                ▼
               </span>
             </button>
             
             {activeIndex === index && (
-              <div className=" py-4">
-                <p className="font-['Public_Sans'] font-normal text-[16px] leading-[30px] tracking-[0%]">{faq.answer}</p>
+              <div className="px-8 pb-4">
+                <p className="font-['Public_Sans'] font-normal text-[16px] leading-[30px] tracking-normal">{faq.answer}</p>
               </div>
             )}
           </div>
         ))}
       </div>
     </div>
+
+    <div className="absolute bottom-0   z-10 flex flex-col items-end gap-12">
+        <Image
+          src="/images/triangle.png"
+          alt="Triangle decoration"
+          width={30}
+          height={59}
+          className="w-auto h-auto"
+        />
+        <Image
+          src="/images/dot.png"
+          alt="Dots pattern decoration"
+          width={100}
+          height={60}
+          className="w-auto h-auto  "
+        />
+      </div>
+    </div>
+    
   );
 };
 

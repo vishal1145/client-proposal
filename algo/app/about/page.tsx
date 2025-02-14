@@ -356,15 +356,18 @@ export default function AboutPage() {
                 />
 
                 {/* Blue Badge */}
-                <div className="absolute bottom-6 right-6">
-                  <div className="bg-[#0561FC] text-white px-8 py-6 rounded-2xl">
-                    <div className="flex flex-col items-center">
-                      <span className="text-base font-medium">IT Services</span>
-                      <span className="text-base font-medium">&</span>
-                      <span className="text-base font-medium">Software</span>
-                    </div>
-                  </div>
-                </div>
+                <div className="relative pb-12"> {/* Ensures space for the absolute element */}
+  <div className="absolute bottom-0 right-6">
+    <div className="bg-[#0561FC] text-white px-8 py-6 rounded-2xl">
+      <div className="flex flex-col items-center">
+        <span className="text-base font-medium">IT Services</span>
+        <span className="text-base font-medium">&</span>
+        <span className="text-base font-medium">Software</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 
                
               </div>

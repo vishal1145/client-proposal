@@ -366,25 +366,7 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* Decorative Elements */}
-                <div className="absolute -top-4 -left-4 z-0">
-                  <Image
-                    src="/images/aboutdot.png"
-                    alt="Decorative Pattern"
-                    width={80}
-                    height={80}
-                    className="w-[80px] h-[80px] opacity-80"
-                  />
-                </div>
-                <div className="absolute -bottom-4 right-20 z-0">
-                  <Image
-                    src="/images/aboutring.png"
-                    alt="Decorative Ring"
-                    width={90}
-                    height={90}
-                    className="w-[90px] h-[90px] opacity-80"
-                  />
-                </div>
+               
               </div>
             </div>
           </div>

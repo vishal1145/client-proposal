@@ -1,79 +1,90 @@
-import { Button } from '@/components/ui/button';
+import Image from "next/image";
+import Link from "next/link";
 
 export function PlatformsSection() {
-  const platforms = [
-    {
-      title: "Graphic Design",
-      bgColor: "bg-[#0F1B2C] hover:bg-[#1a2942]"
-    },
-    {
-      title: "App Design",
-      bgColor: "bg-[#4461F2] hover:bg-[#3651d4]"
-    },
-    {
-      title: "Web Development",
-      bgColor: "bg-[#0F1B2C] hover:bg-[#1a2942]"
-    }
-  ];
-
   return (
-    <section className="bg-[#0B1B2B] py-32 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B2B] via-[#0B1B2B] to-transparent z-10"></div>
+    <section className="bg-[#0B1B2B] relative">
+      <div className="flex">
+        {/* Left Content */}
+        <div className="w-1/2 py-16 pl-20 pr-10 bg-[#0A1628]">
+          <div className="max-w-sm">
+            <p className="text-gray-400 text-sm mb-1">What We Are Expert In</p>
+            <h2 className="text-2xl font-medium text-white mb-10">
+              Several Platforms
+            </h2>
 
-      <div className="container mx-auto px-4 relative z-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
+            {/* Platform List */}
             <div className="space-y-4">
-              <span className="text-gray-400 text-sm">What We Are Expert In</span>
-              <h2 className="text-5xl font-bold text-white leading-tight">
-                Several Platforms
-              </h2>
-            </div>
+              {/* Graphic Design */}
+              <div className="flex items-center justify-between bg-[#162432] rounded-lg p-3 hover:bg-[#1C2C3C] transition-colors cursor-pointer group">
+                <span className="text-[15px] text-gray-200">
+                  Graphic Design
+                </span>
+                <div className="w-2.5 h-2.5 rounded-full bg-[#FF6B00] group-hover:bg-white transition-colors"></div>
+              </div>
 
-            <div className="space-y-4">
-              {platforms.map((platform, index) => (
-                <div
-                  key={index}
-                  className={`${platform.bgColor} rounded-2xl p-6 flex items-center justify-between transition-all duration-300 group cursor-pointer`}
-                >
-                  <span className="text-xl text-white font-medium">
-                    {platform.title}
-                  </span>
-                  <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white transform transition-transform group-hover:translate-x-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              ))}
-            </div>
+              {/* App Design */}
+              <div className="flex items-center justify-between bg-[#0561FC] rounded-lg p-3 hover:bg-blue-600 transition-colors cursor-pointer group">
+                <span className="text-[15px] text-white">App Design</span>
+                <div className="w-2.5 h-2.5 rounded-full bg-white transition-colors"></div>
+              </div>
 
-            <Button 
-              className="bg-[#4461F2] hover:bg-blue-700 text-white rounded-full px-8 py-6 text-lg flex items-center gap-2"
-            >
-              Know More
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Button>
-          </div>
-
-          {/* Right Content - 3D Elements */}
-          <div className="relative h-[600px]">
-            <div className="absolute inset-0">
-              <div className="relative w-full h-full">
-                {/* Add floating 3D elements here */}
-                <div className="absolute top-1/4 right-1/4 w-20 h-20 bg-gradient-to-br from-pink-400 to-purple-500 rounded-lg transform rotate-45 animate-float"></div>
-                <div className="absolute top-1/2 right-1/3 w-16 h-16 bg-gradient-to-br from-orange-400 to-pink-500 rounded transform -rotate-12 animate-float-delay"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-br from-blue-400 to-teal-500 rounded-full animate-float-slow"></div>
-                <div className="absolute top-1/3 right-1/2 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg transform rotate-12 animate-float"></div>
+              {/* Web Development */}
+              <div className="flex items-center justify-between bg-[#162432] rounded-lg p-3 hover:bg-[#1C2C3C] transition-colors cursor-pointer group">
+                <span className="text-[15px] text-gray-200">
+                  Web Development
+                </span>
+                <div className="w-2.5 h-2.5 rounded-full bg-[#FF6B00] group-hover:bg-white transition-colors"></div>
               </div>
             </div>
+
+            {/* Read More Button */}
+            <Link
+              href="#"
+              className="inline-flex items-center text-[13px] text-white mt-8 px-5 py-2 bg-[#0561FC] rounded-full hover:bg-blue-600 transition-colors"
+            >
+              Read More
+              <svg
+                className="ml-1 w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14m-7-7l7 7-7 7" />
+              </svg>
+            </Link>
           </div>
+        </div>
+
+        {/* Right Image Section */}
+        <div className="w-1/2 relative">
+          <Image
+            src="/images/platform1.png"
+            alt="Platform Illustration"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Orange Circle Button */}
+          <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#FF6B00] rounded-full flex items-center justify-center hover:bg-[#ff8533] transition-colors">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
   );
-} 
+}

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 
 export function ServicesSection() {
   const stats = [
@@ -12,7 +12,7 @@ export function ServicesSection() {
             <div className="text-orange-500 text-xl">!</div>
           </div>
         </div>
-      )
+      ),
     },
     {
       number: "8K",
@@ -20,12 +20,20 @@ export function ServicesSection() {
       icon: (
         <div className="absolute -top-12 -right-2">
           <div className="w-14 h-14 bg-white shadow-lg rounded-full flex items-center justify-center">
-            <svg className="w-6 h-6 text-orange-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
+            <svg
+              className="w-6 h-6 text-orange-500"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                fill="currentColor"
+              />
             </svg>
           </div>
         </div>
-      )
+      ),
     },
     {
       number: "32",
@@ -33,12 +41,20 @@ export function ServicesSection() {
       icon: (
         <div className="absolute -top-12 -right-2">
           <div className="w-14 h-14 bg-white shadow-lg rounded-full flex items-center justify-center">
-            <svg className="w-6 h-6 text-orange-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" fill="currentColor"/>
+            <svg
+              className="w-6 h-6 text-orange-500"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
+                fill="currentColor"
+              />
             </svg>
           </div>
         </div>
-      )
+      ),
     },
     {
       number: "1K",
@@ -46,13 +62,21 @@ export function ServicesSection() {
       icon: (
         <div className="absolute -top-12 -right-2">
           <div className="w-14 h-14 bg-white shadow-lg rounded-full flex items-center justify-center">
-            <svg className="w-6 h-6 text-orange-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z" fill="currentColor"/>
+            <svg
+              className="w-6 h-6 text-orange-500"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"
+                fill="currentColor"
+              />
             </svg>
           </div>
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   return (
@@ -64,8 +88,9 @@ export function ServicesSection() {
             What We Offer
           </span>
           <h2 className="text-4xl font-bold text-[#0B1B2B] mb-4">
-            We Have Been Processing<br />
-            For Over <span className="text-[#4461F2]">25 Years</span>
+            We Have Been Processing
+            <br />
+            For Over <span className="text-[#0561FC]">25 Years</span>
           </h2>
         </div>
 
@@ -75,9 +100,11 @@ export function ServicesSection() {
             {stats.map((stat, index) => (
               <div key={index} className="relative flex items-center gap-4">
                 {stat.icon}
-                <span className="text-[80px] text-[#0B1B2B] leading-none">{stat.number}</span>
+                <span className="text-[80px] text-[#0B1B2B] leading-none">
+                  {stat.number}
+                </span>
                 <div className="text-gray-500 text-sm leading-tight">
-                  {stat.text.split(' ').map((word, i) => (
+                  {stat.text.split(" ").map((word, i) => (
                     <div key={i}>{word}</div>
                   ))}
                 </div>
@@ -102,10 +129,12 @@ export function ServicesSection() {
               />
             </div>
             <div className="flex flex-col gap-4">
-              <h3 className="text-2xl font-bold text-[#0B1B2B]">Graphic Designing</h3>
-              <Button 
+              <h3 className="text-2xl font-bold text-[#0B1B2B]">
+                Graphic Designing
+              </h3>
+              <Button
                 variant="outline"
-                className="rounded-full bg-[#4461F2] text-white hover:bg-blue-700 transition-colors px-6 py-2 text-sm w-fit"
+                className="rounded-full bg-[#0561FC] text-white hover:bg-blue-700 transition-colors px-6 py-2 text-sm w-fit"
               >
                 Explore More →
               </Button>
@@ -141,4 +170,4 @@ export function ServicesSection() {
       </div>
     </section>
   );
-} 
+}

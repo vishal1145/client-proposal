@@ -20,7 +20,7 @@ export function HeroSection() {
         {/* Main Content */}
         <div className="relative z-20 max-w-6xl mx-auto">
           {/* Text Content */}
-          <div className="text-center mb-16">
+          <div className="text-center ">
             <div className="flex justify-center mb-4">
               <Image
                 src="/images/wifi.png"
@@ -37,7 +37,7 @@ export function HeroSection() {
             <h2 className="text-4xl font-bold text-[#1B224B] mb-8">
               Design, App & Developments
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-gray-600 max-w-3xl mx-auto ">
               There Are Many Variations Of Passages Of Lorem Ipsum Available,
               But The Majority Have Suffered Alteration In Some Form, By
               Injected Humour, As Opposed
@@ -64,7 +64,7 @@ export function HeroSection() {
 
           {/* Image Grid */}
           <div className="relative">
-            <div className="flex gap-6">
+            <div className="flex gap-6 items-end">
               {/* First Image - Design & Development */}
               <div className="flex-1 rounded-3xl">
                 <div className="relative h-[400px]">
@@ -72,50 +72,51 @@ export function HeroSection() {
                     src="/images/home3.png"
                     alt="Design & Development"
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-3xl shadow-lg"
+                    priority
                   />
                 </div>
               </div>
 
               {/* Second Image - AI Hand */}
               <div className="flex-1 rounded-3xl">
-                <div className="relative h-[300px]">
+                <div className="relative h-[200px]">
                   <Image
                     src="/images/home4.png"
                     alt="AI Development"
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-3xl shadow-lg"
                   />
                 </div>
               </div>
 
               {/* Third Image - Person */}
               <div className="flex-1 rounded-3xl">
-                <div className="relative h-[300px]">
+                <div className="relative h-[300px] ">
                   <Image
                     src="/images/home5.png"
                     alt="UI/UX Design"
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-3xl shadow-lg"
                   />
                 </div>
               </div>
 
               {/* Fourth Image - UI Design */}
               <div className="flex-1 rounded-3xl">
-                <div className="relative h-[300px] bg-[#B4E4FF]">
+                <div className="relative h-[400px] ">
                   <Image
                     src="/images/home6.png"
                     alt="Web Development"
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-3xl shadow-lg"
                   />
                 </div>
               </div>
             </div>
 
             {/* Navigation Arrows */}
-            <button className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white p-4 rounded-full shadow-lg hover:bg-gray-50">
+            <button className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white p-4 rounded-full shadow-lg hover:bg-gray-50">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M15 18l-6-6 6-6"
@@ -125,7 +126,7 @@ export function HeroSection() {
                 />
               </svg>
             </button>
-            <button className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-white p-4 rounded-full shadow-lg hover:bg-gray-50">
+            <button className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white p-4 rounded-full shadow-lg hover:bg-gray-50">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M9 6l6 6-6 6"

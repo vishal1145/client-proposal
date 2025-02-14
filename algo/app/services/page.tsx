@@ -205,14 +205,14 @@ export default function Page() {
               </span>
               <h2 className="text-4xl font-bold text-[#0B1B2B] leading-tight">
                 Exclusive Technology To Provide{" "}
-                <span className="text-[#4461F2]">IT Solutions</span>
+                <span className="text-[#0561FC]">IT Solutions</span>
               </h2>
               <p className="text-gray-600 leading-relaxed max-w-xl">
                 Contrary To Popular Belief, Lorem Ipsum Is Not Simply Random
                 Text. It Has Roots In A Piece Latin Literature From 45 BC,
                 Making It Over 2000 Years Old. Richard Mc Clintock Latin
               </p>
-              <Button className="bg-[#4461F2] hover:bg-blue-700 text-white rounded-full px-6 py-2 flex items-center gap-2 mt-4">
+              <Button className="bg-[#0561FC] hover:bg-blue-700 text-white rounded-full px-6 py-2 flex items-center gap-2 mt-4">
                 More Services
                 <svg
                   className="w-4 h-4"
@@ -235,7 +235,7 @@ export default function Page() {
               {/* Designing IT Services Card */}
               <Link
                 href="/services/designing-it-services"
-                className="bg-[#4461F2] rounded-3xl p-8 text-white group hover:shadow-lg transition-all duration-300"
+                className="bg-[#0561FC] rounded-3xl p-8 text-white group hover:shadow-lg transition-all duration-300"
               >
                 <div className="mb-6">
                   <svg
@@ -260,7 +260,7 @@ export default function Page() {
                 <p className="text-gray-100 mb-6 truncate">
                   Contrary To Popular Belief, Lorem Ipsuis
                 </p>
-                <div className="w-10 h-10 rounded-full bg-white text-[#4461F2] flex items-center justify-center group-hover:bg-gray-100 transition-colors">
+                <div className="w-10 h-10 rounded-full bg-white text-[#0561FC] flex items-center justify-center group-hover:bg-gray-100 transition-colors">
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -284,7 +284,7 @@ export default function Page() {
               >
                 <div className="mb-6">
                   <svg
-                    className="w-12 h-12 text-[#4461F2]"
+                    className="w-12 h-12 text-[#0561FC]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -372,7 +372,7 @@ export default function Page() {
       </section>
 
       {/* Get Quote Section */}
-      <GetQuoteSection />
+      {/* <GetQuoteSection /> */}
 
       {/* Footer */}
       <Footer />

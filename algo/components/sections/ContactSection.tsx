@@ -1,139 +1,227 @@
 "use client";
+import Image from "next/image";
 
 export function ContactSection() {
   return (
-    <section className="bg-[#0B1B2B] text-white py-40 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div 
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: 'url("/images/world-map-dots.svg")',
-          backgroundSize: '100% auto',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          mixBlendMode: 'luminosity'
-        }}
-      />
-      
+    <section className="py-16 bg-[#0B1628] relative">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/Layer_1.png"
+          alt="World Map Background"
+          fill
+          className="object-contain opacity-80"
+          priority
+        />
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-40">
-          <div className="max-w-2xl">
-            <span className="text-sm text-gray-400 mb-6 block uppercase tracking-wider">Contact Address</span>
-            <h2 className="text-5xl font-bold mb-10 leading-tight">
-              We&apos;re The Future Of{' '}
-              <span className="text-blue-500">IT Industry</span>,
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-40">
+          {/* Left Side - Contact Info */}
+          <div>
+            <p className="text-sm text-gray-500 border border-gray-400 font-medium mb-4 inline-block px-3 py-1 rounded-full">
+              Contact Address
+            </p>
+
+            <h2 className="text-4xl font-bold text-[#fcfeff] leading-tight mb-6">
+              We&apos;re The Future Of{" "}
+              <span className="text-[#0561FC]">IT Industry</span>,
               <br />
               Further Contact Us
             </h2>
-            <p className="text-gray-400 mb-24 text-lg leading-relaxed">
+            <p className="text-white text-sm leading-relaxed mb-12">
               Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting
               Industry. Lorem Ipsum Has Been The Industry&apos;s Standard Dummy
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-20 relative">
-              {/* Vertical Divider */}
-              <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gray-700/50"></div>
-
-              {/* Address Section */}
-              <div>
-                <div className="flex items-start gap-8">
-                  <div className="w-16 h-16 rounded-full border border-gray-700/50 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-4">Address</h3>
-                    <p className="text-gray-400 text-lg leading-relaxed">42 Mamnoun Street, Saba</p>
-                    <p className="text-gray-400 text-lg leading-relaxed">Carpet And Antiques Store, UK</p>
-                  </div>
+            {/* Contact Details */}
+            <div className="grid grid-cols-2 gap-x-8 gap-y-10 relative">
+              {/* Address */}
+              <div className="flex items-start gap-4">
+                <div className="p-3  rounded-lg">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="text-[#f7f8f9]"
+                  >
+                    <path
+                      d="M12 13.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M12 22s8-6 8-12a8 8 0 00-16 0c0 6 8 12 8 12z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-base font-medium text-white mb-2">
+                    Address
+                  </h4>
+                  <p className="text-sm text-white leading-relaxed">
+                    42 Mammoun Street, Saba
+                    <br />
+                    Carpet And Antiques Store, UK
+                  </p>
                 </div>
               </div>
 
-              {/* Phone Number Section */}
-              <div>
-                <div className="flex items-start gap-8">
-                  <div className="w-16 h-16 rounded-full border border-gray-700/50 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-4">Phone Number</h3>
-                    <p className="text-gray-400 text-lg leading-relaxed">+561 541 578 861</p>
-                    <p className="text-gray-400 text-lg leading-relaxed">+95 185 996 159</p>
-                  </div>
+              {/* Phone Number */}
+              <div className="flex items-start gap-4">
+                <div className="p-3  rounded-lg">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="text-[#f9fafb]"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-base font-medium text-[#f4f5f7] mb-2">
+                    Phone Number
+                  </h4>
+                  <p className="text-sm text-white leading-relaxed">
+                    +561 541 578 961
+                    <br />
+                    +95 183 996 159
+                  </p>
                 </div>
               </div>
 
-              {/* Email Section */}
-              <div className="bg-[#132537] p-10 rounded-3xl">
-                <div className="flex items-start gap-8">
-                  <div className="w-16 h-16 rounded-full border border-gray-700/50 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-4">Email Id</h3>
-                    <p className="text-gray-400 text-lg leading-relaxed">Info@Service.Com</p>
-                    <p className="text-gray-400 text-lg leading-relaxed">Enquiry@Service.Com</p>
-                  </div>
+              {/* Email Id */}
+              <div className="flex items-start gap-4">
+                <div className="p-3  rounded-lg">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="text-[#ffffff]"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M22 6l-10 7L2 6"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-base font-medium text-white mb-2">
+                    Email Id
+                  </h4>
+                  <p className="text-sm text-white leading-relaxed">
+                    Info@Service.Com
+                    <br />
+                    Enquiry@Service.Com
+                  </p>
                 </div>
               </div>
 
-              {/* Opening Hours Section */}
-              <div>
-                <div className="flex items-start gap-8">
-                  <div className="w-16 h-16 rounded-full border border-gray-700/50 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-4">Opening Hours</h3>
-                    <p className="text-gray-400 text-lg leading-relaxed">Mon -Sat -Mrg 09.00am To</p>
-                    <p className="text-gray-400 text-lg leading-relaxed">09.00pm, Sun -Holiday</p>
-                  </div>
+              {/* Opening Hours */}
+              <div className="flex items-start gap-4">
+                <div className="p-3  rounded-lg">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="text-white"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M12 6v6l4 2"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-base font-medium text-white mb-2">
+                    Opening Hours
+                  </h4>
+                  <p className="text-sm text-white leading-relaxed">
+                    Mon - Sat : M/g (09.00am To
+                    <br />
+                    09.00pm, Sun - Holiday
+                  </p>
                 </div>
               </div>
+
+              {/* Divider Lines */}
+              <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-300"></div>
+              <div className="absolute left-0 right-0 top-[45%] h-px bg-gray-300"></div>
             </div>
           </div>
 
-          <div className="bg-blue-600 p-14 rounded-[2.5rem]">
-            <div className="mb-14">
-              <h3 className="text-4xl font-bold mb-5">Get Quotes</h3>
-              <p className="text-gray-200 text-lg leading-relaxed">
-                The Point Of Using Lorem Ipsum Is That It Has More-Or-Less Normal
-              </p>
-            </div>
-            <form className="space-y-8">
-              <input
-                type="text"
-                placeholder="Full Name"
-                className="w-full p-6 bg-blue-700/50 rounded-xl border border-blue-400/30 placeholder-gray-300 focus:outline-none focus:border-blue-300 text-lg"
-              />
-              <input
-                type="email"
-                placeholder="Email Id"
-                className="w-full p-6 bg-blue-700/50 rounded-xl border border-blue-400/30 placeholder-gray-300 focus:outline-none focus:border-blue-300 text-lg"
-              />
-              <input
-                type="text"
-                placeholder="Your Enquires!"
-                className="w-full p-6 bg-blue-700/50 rounded-xl border border-blue-400/30 placeholder-gray-300 focus:outline-none focus:border-blue-300 text-lg"
-              />
-              <textarea
-                placeholder="Message"
-                rows={4}
-                className="w-full p-6 bg-blue-700/50 rounded-xl border border-blue-400/30 placeholder-gray-300 focus:outline-none focus:border-blue-300 text-lg resize-none"
-              ></textarea>
-              <button className="w-full bg-white text-blue-600 py-6 px-8 rounded-xl font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-3 text-lg">
-                Submit Now
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+          {/* Right Side - Contact Form */}
+          <div className="bg-[#0561FC] rounded-3xl p-10 ">
+            <h3 className="text-2xl font-bold text-white mb-2">Get Quotes</h3>
+            <p className="text-white/80 text-sm mb-8">
+              The Point Of Using Lorem Ipsum Is That It Has More-Or-Less Normal
+            </p>
+
+            <form className="space-y-6">
+              {/* Full Name */}
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60"
+                />
+              </div>
+
+              {/* Email Id */}
+              <div className="relative">
+                <input
+                  type="email"
+                  placeholder="Email Id"
+                  className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60"
+                />
+              </div>
+
+              {/* Your Enquired */}
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Your Enquired"
+                  className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60"
+                />
+              </div>
+
+              {/* Message */}
+              <div className="relative">
+                <textarea
+                  placeholder="Message"
+                  rows={4}
+                  className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60 resize-none"
+                ></textarea>
+              </div>
+
+              {/* Submit Button */}
+              <button className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 transition-colors">
+                Submit Now <span className="ml-1">→</span>
               </button>
             </form>
           </div>
@@ -141,4 +229,4 @@ export function ContactSection() {
       </div>
     </section>
   );
-} 
+}

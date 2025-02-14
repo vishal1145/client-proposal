@@ -32,14 +32,14 @@ export function FooterSection() {
                 New York, USA
               </p>
             </div>
-            <div className="relative">
+            <div className="relative w-[400px]">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full bg-gray-100 rounded-full py-3 px-6 pr-32 focus:outline-none"
+                className="w-full bg-white border border-gray-200 rounded-full py-3 px-6 pr-36 focus:outline-none"
               />
-              <Button className="absolute right-1 top-1 bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-2">
-                Submit Now
+              <Button className="absolute right-1 top-1 bg-[#0066FF] hover:bg-[#0066FF] text-white rounded-full px-6 py-2 text-sm font-medium flex items-center gap-2">
+                Submit Now <span className="text-lg">→</span>
               </Button>
             </div>
           </div>
@@ -89,7 +89,10 @@ export function FooterSection() {
                 </a>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-600 hover:text-blue-600">
+                <Link
+                  href="/blog"
+                  className="text-gray-600 hover:text-blue-600"
+                >
                   Blog & News
                 </Link>
               </li>

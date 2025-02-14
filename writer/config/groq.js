@@ -61,4 +61,48 @@ ${input_data}`;
         console.error("Error invoking Groq:", error);
         return { content: "[]" };
     }
+}
+
+export async function generateBusinessProposal(links, services) {
+    try {
+        const systemPrompt = `You are a professional business consultant who creates compelling business proposals.`;
+        
+        const userPrompt = `Create a concise business proposal based on the following website links and identified services.
+Format the proposal in JSON with the following structure:
+{
+    "title": "Business Proposal",
+    "executive_summary": "Brief overview",
+    "proposed_solutions": ["solution1", "solution2"],
+    "value_proposition": "Why client should choose us",
+    "next_steps": ["step1", "step2"]
+}
+
+Website Links:
+${JSON.stringify(links, null, 2)}
+
+Identified Services:
+${JSON.stringify(services, null, 2)}`;
+
+        const response = await groqInstance.invoke([
+            { role: "system", content: systemPrompt },
+            { role: "user", content: userPrompt }
+        ]);
+
+        try {
+            const proposal = JSON.parse(response.content);
+            return proposal;
+        } catch (parseError) {
+            console.error("Error parsing proposal:", parseError);
+            return {
+                title: "Business Proposal",
+                executive_summary: "Error generating proposal",
+                proposed_solutions: [],
+                value_proposition: "",
+                next_steps: []
+            };
+        }
+    } catch (error) {
+        console.error("Error generating business proposal:", error);
+        throw error;
+    }
 } 

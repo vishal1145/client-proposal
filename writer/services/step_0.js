@@ -68,6 +68,7 @@ async function getLinks(url) {
     Return the result as a JSON array of strings only and no other text compulsorily.`;
 
     validLinks = await extractLinksFromHomePage(prompt);
+    console.log('line 46 validLinks', validLinks);
     return validLinks;
   } catch (error) {
     console.error("Error:", error.message);

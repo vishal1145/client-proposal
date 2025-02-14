@@ -1,6 +1,6 @@
 import express from 'express';
 import { startProcess } from '../services/start.js';
-import Analysis from '../model/analysis.js';
+import Analysis from '../models/analysis.js';
 import { getProposalSections, getClientProposal } from '../config/llm.js';
 
 const router = express.Router();
@@ -8,7 +8,6 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     try {
         let { url } = req.body;
-
 
         if (!url) {
             return res.status(400).json({ 
@@ -21,11 +20,18 @@ router.post('/', async (req, res) => {
             url = url.slice(0, -1);
         }
       
-        await startProcess(url);
-
         res.status(200).json({
             success: true,
             message: "Analysis started successfully"
+        });
+
+        setImmediate(async () => {
+            try {
+                await startProcess(url);
+                console.log(`Analysis completed for: ${url}`);
+            } catch (err) {
+                console.error(`Error processing ${url}:`, err);
+            }
         });
     } catch (error) {
         console.error('Error in analysis:', error);
@@ -76,7 +82,7 @@ router.put('/:id', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        console.log('get analysis');
+        
         const { id } = req.query;
 
         if (!id) {

@@ -3,7 +3,7 @@ import DBConnect from './config/database.js';
 import analysisRouter from './routes/analysis.js';
 import cors from 'cors';
 import userRoutes from './routes/user.js';
-
+import proposalRouter from './routes/proposal.js';
 const app = express();
 
 // Middleware
@@ -31,6 +31,7 @@ async function initializeConnections() {
 
 app.use('/users', userRoutes); 
 app.use('/analysis', analysisRouter);
+app.use('/proposals', proposalRouter);
 
 // Start server after initializing connections
 initializeConnections().then(() => {

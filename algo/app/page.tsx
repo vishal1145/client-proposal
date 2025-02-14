@@ -7,10 +7,18 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { BlogSection } from "@/components/sections/BlogSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { FooterSection } from "@/components/sections/FooterSection";
+import TeamMemberSection from "./team-member/page";
+import PricingSection from "@/components/sections/PricingSection";
+import GallerySection from "@/components/sections/GallerySection";
+import FaqSection from "@/components/sections/FaqSection";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      {/* <FaqSection/> */}
+      {/* <GallerySection/> */}
+      <PricingSection/>
+      <TeamMemberSection/>
       <HeroSection />
       <ServicesSection />
       <WhyChooseUsSection />

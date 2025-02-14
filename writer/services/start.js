@@ -3,20 +3,22 @@ import getLinks from "./step_0.js";
 import getHtmlFromUrl from "./step_1.js";
 import { getNatureOfBusiness } from "./step_2.js";
 dotenv.config();
-import Analysis from '../model/analysis.js';
+import Analysis from '../models/analysis.js';
 
 export const startProcess = async (url) => {
   if (!url) {
     throw new Error("URL is required");
   }
-
+   
+  console.log('line 12 url', url);
   let linksTemp = await getLinks(url);
-  let links = linksTemp.map((link) => ({
+  let links = [linksTemp[0]].map((link) => ({
     url: link,
     html: null,
     services: [],
   }));
 
+  console.log('line 21 links', links);
   for (var i = 0; i < links.length; i++) { 
     links[i].html = await getHtmlFromUrl(links[i].url);
   }
@@ -26,17 +28,20 @@ export const startProcess = async (url) => {
     links[i].services = services;
   }
 
+  console.log('line 28 links');
   let allServices = new Set();
   links.forEach((link) => {
     link.services.forEach((service) => allServices.add(service));
   });
 
   allServices = Array.from(allServices);
+  console.log('line 28 links');
  
   var analysis = {};
   analysis.url = url;
   analysis.links = links;
   analysis.allServices = allServices;
+  console.log('line 28 links');
 
   // Save analysis to database
   try {
@@ -50,6 +55,7 @@ export const startProcess = async (url) => {
       })),
       allServices: analysis.allServices
     };
+    console.log('line 28 links');
 
     // Save to database
     const alreadyExists = await Analysis.findOne({ url: url });

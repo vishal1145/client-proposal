@@ -2,18 +2,23 @@
   <div class="analysis-container">
     <!-- Replace table with tabs -->
     <div class="tabs-container">
-      <div class="tabs">
-        <button 
-          :class="['tab-button', { active: activeTab === 'links' }]" 
-          @click="activeTab = 'links'"
-        >
-          Links
-        </button>
-        <button 
-          :class="['tab-button', { active: activeTab === 'services' }]" 
-          @click="activeTab = 'services'"
-        >
-          Services
+      <div class="header-container">
+        <div class="tabs">
+          <button 
+            :class="['tab-button', { active: activeTab === 'links' }]" 
+            @click="activeTab = 'links'"
+          >
+            Links
+          </button>
+          <button 
+            :class="['tab-button', { active: activeTab === 'services' }]" 
+            @click="activeTab = 'services'"
+          >
+            Services
+          </button>
+        </div>
+        <button class="proposal-button" @click="fetchProposals">
+          Generate Proposals
         </button>
       </div>
 
@@ -51,7 +56,7 @@ export default {
       services: [],
       links: [],
       isLoading: true,
-      activeTab: 'links'
+      activeTab: 'links',
     }
   },
   async created() {
@@ -67,6 +72,26 @@ export default {
       console.error('Error fetching data:', error);
     } finally {
       this.isLoading = false;
+    }
+  },
+  methods: {
+    async fetchProposals() {
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+        const response = await axios.post(`${apiUrl}/proposals/generate-proposal`, {
+          analysisId: this.$route.params.id
+        });
+        console.log("proposals", response.data.proposal);
+      } catch (error) {
+        console.error('Error fetching proposals:', error);
+      }
+    }
+  },
+  watch: {
+    activeTab(newTab) {
+      if (newTab === 'proposals') {
+        this.fetchProposals();
+      }
     }
   }
 }
@@ -204,9 +229,16 @@ export default {
   overflow: hidden;
 }
 
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
 .tabs {
   display: flex;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: none;
 }
 
 .tab-button {
@@ -252,5 +284,21 @@ export default {
 /* Update skeleton loader for tabs */
 .skeleton-loader {
   margin-bottom: 1rem;
+}
+
+.proposal-button {
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.proposal-button:hover {
+  background-color: #0056b3;
 }
 </style>

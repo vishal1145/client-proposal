@@ -23,6 +23,7 @@ export async function extractLinksFromHomePage(input_prompt) {
         });
 
         const data = await response.json();
+        console.log('line 20 data', data);
         try {
             let contentStr = data.message.content;
             
@@ -105,5 +106,68 @@ ${input_data}`;
     } catch (error) {
         console.error("Error invoking Deepseek:", error);
         return { content: "[]" };
+    }
+}
+
+export async function generateBusinessProposal(links, services) {
+    try {
+        const systemPrompt = `You are a professional business consultant who creates compelling business proposals.`;
+        
+        const userPrompt = `Create a concise business proposal based on the following website links and identified services.
+Format the proposal in JSON with the following structure:
+{
+    "title": "Business Proposal",
+    "executive_summary": "Brief overview",
+    "proposed_solutions": ["solution1", "solution2"],
+    "value_proposition": "Why client should choose us",
+    "next_steps": ["step1", "step2"]
+}
+
+Website Links:
+${JSON.stringify(links, null, 2)}
+
+Identified Services:
+${JSON.stringify(services, null, 2)}`;
+
+        const response = await fetch('https://deepseek.algofolks.com/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                model: "deepseek-v2:16b",
+                messages: [
+                    {
+                        role: "system",
+                        content: systemPrompt
+                    },
+                    {
+                        role: "user",
+                        content: userPrompt
+                    }
+                ],
+                stream: false
+            })
+        });
+
+
+        const data = await response.json();
+        console.log("data", data);
+        try {
+            const proposal = JSON.parse(data.message.content);
+            return proposal;
+        } catch (parseError) {
+            console.error("Error parsing proposal:", parseError);
+            return {
+                title: "Business Proposal",
+                executive_summary: "Error generating proposal",
+                proposed_solutions: [],
+                value_proposition: "",
+                next_steps: []
+            };
+        }
+    } catch (error) {
+        console.error("Error generating business proposal:", error);
+        throw error;
     }
 }

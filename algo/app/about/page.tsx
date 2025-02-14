@@ -81,17 +81,17 @@ export default function AboutPage() {
               {/* Main Images Container */}
               <div className="relative">
                 {/* Person Image */}
-                <div className="relative z-20 bg-white rounded-2xl shadow-lg">
+                <div className="relative z-20 e rounded-2xl">
                   <Image
-                    src="/images/about2.jpeg"
+                    src="/images/about9.jpg"
                     alt="Person working on laptop"
                     width={380}
                     height={280}
-                    className="w-[380px] h-[280px] rounded-2xl object-cover"
+                    className="w-[580px] h-[480px] rounded-2xl object-cover"
                   />
                 </div>
 
-                {/* Pink UI Image */}
+                {/* Pink UI Image
                 <div className="absolute -bottom-16 -left-16 z-10">
                   <Image
                     src="/images/about1.jpeg"
@@ -100,10 +100,10 @@ export default function AboutPage() {
                     height={200}
                     className="w-[280px] h-[200px] rounded-2xl object-cover shadow-lg"
                   />
-                </div>
+                </div> */}
 
                 {/* Experience Badge */}
-                <div className="absolute -right-10 top-0 z-30">
+                {/* <div className="absolute -right-10 top-0 z-30">
                   <Image
                     src="/images/25 years Experience.png"
                     alt="25 Years Experience"
@@ -111,10 +111,10 @@ export default function AboutPage() {
                     height={100}
                     className="w-[100px] h-[100px]"
                   />
-                </div>
+                </div> */}
 
                 {/* Decorative Elements */}
-                <Image
+                {/* <Image
                   src="/images/aboutdot.png"
                   alt="Decorative Dots"
                   width={70}
@@ -127,7 +127,7 @@ export default function AboutPage() {
                   width={80}
                   height={80}
                   className="absolute -bottom-8 left-20 z-0 w-[80px] h-[80px] opacity-80"
-                />
+                /> */}
               </div>
             </div>
 
@@ -356,20 +356,21 @@ export default function AboutPage() {
                 />
 
                 {/* Blue Badge */}
-                <div className="relative pb-12"> {/* Ensures space for the absolute element */}
-  <div className="absolute bottom-0 right-6">
-    <div className="bg-[#0561FC] text-white px-8 py-6 rounded-2xl">
-      <div className="flex flex-col items-center">
-        <span className="text-base font-medium">IT Services</span>
-        <span className="text-base font-medium">&</span>
-        <span className="text-base font-medium">Software</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-               
+                <div className="relative pb-12">
+                  {" "}
+                  {/* Ensures space for the absolute element */}
+                  <div className="absolute bottom-0 right-6">
+                    <div className="bg-[#0561FC] text-white px-8 py-6 rounded-2xl">
+                      <div className="flex flex-col items-center">
+                        <span className="text-base font-medium">
+                          IT Services
+                        </span>
+                        <span className="text-base font-medium">&</span>
+                        <span className="text-base font-medium">Software</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -37,7 +37,7 @@ export function HeroSection() {
             <h2 className="text-4xl font-bold text-[#1B224B] mb-8">
               Design, App & Developments
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto ">
+            <p className="text-gray-600 max-w-3xl mx-auto mb-4">
               There Are Many Variations Of Passages Of Lorem Ipsum Available,
               But The Majority Have Suffered Alteration In Some Form, By
               Injected Humour, As Opposed
@@ -140,7 +140,7 @@ export function HeroSection() {
         </div>
 
         {/* Decorative Elements */}
-        <div className="absolute left-10 top-16">
+        <div className="absolute left-0 top-16">
           <Image
             src="/images/homehand.png"
             alt="Decorative Shape"

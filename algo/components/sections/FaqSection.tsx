@@ -56,7 +56,7 @@ const FaqSection = () => {
         <div className="container mx-auto px-4 relative z-20">
           <div className="text-center max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <h1 className="text-3xl font-bold text-[#0B1B2B]">
+              <h1 className="text-[36px] font-bold text-[#0B1B2B]">
               Frequently Asked Questions
               </h1>
             </div>
@@ -79,7 +79,7 @@ const FaqSection = () => {
           />
         </div>
       </section>
-    <div className="   px-44 mt-24 px-4  pb-32">
+    <div className="   px-44 mt-24    pb-32">
     
     <div className="text-center mb-12">
           <span className="w-[198px] text-black h-[30px] px-4 py-1 border border-1 rounded-[60px]">Latest Updates</span>
@@ -98,7 +98,7 @@ const FaqSection = () => {
               className="w-full text-left flex justify-between items-center px-8 py-6"
               onClick={() => setActiveIndex(activeIndex === index ? null : index)}
             >
-              <p className="font-['Public_Sans'] font-medium text-[30px] leading-[30px] tracking-normal">{faq.question}</p>
+              <p className="font-['Public_Sans'] font-medium text-[24px] leading-[30px] tracking-normal">{faq.question}</p>
               <span className={`transform transition-transform duration-200 text-gray-400 ${activeIndex === index ? 'rotate-180' : ''}`}>
                 ▼
               </span>
@@ -106,7 +106,7 @@ const FaqSection = () => {
             
             {activeIndex === index && (
               <div className="px-8 pb-4">
-                <p className="font-['Public_Sans'] font-normal text-[16px] leading-[30px] tracking-normal">{faq.answer}</p>
+                <p className="font-['Public_Sans'] font-normal text-[14px] leading-[30px] tracking-normal">{faq.answer}</p>
               </div>
             )}
           </div>

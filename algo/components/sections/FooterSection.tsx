@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 export function FooterSection() {
   return (
-    <footer className="bg-white pt-20 pb-10">
+    <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
           {/* Logo and Description */}
@@ -70,30 +70,44 @@ export function FooterSection() {
           <div>
             <h3 className="text-xl font-bold text-[#0B1B2B] mb-6">About Us</h3>
             <ul className="space-y-4">
-              <Link href="/about" className="text-gray-600 hover:text-blue-600">
-                About Us
-              </Link>
               <li>
-                <a href="#" className="text-gray-600 hover:text-blue-600">
-                  Mission
-                </a>
+                <Link href="/about" className="text-gray-600 hover:text-blue-600">
+                  About Us
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-blue-600">
-                  Terms & Conditions
-                </a>
+                <Link href="/team-member" className="text-gray-600 hover:text-blue-600">
+                  Our Team
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-blue-600">
+                <Link href="/gallery" className="text-gray-600 hover:text-blue-600">
+                  Gallery
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="text-gray-600 hover:text-blue-600">
+                  Pricing
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="text-gray-600 hover:text-blue-600">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-gray-600 hover:text-blue-600">
                   Contact
-                </a>
+                </Link>
               </li>
               <li>
-                <Link
-                  href="/blog"
-                  className="text-gray-600 hover:text-blue-600"
-                >
+                <Link href="/blog" className="text-gray-600 hover:text-blue-600">
                   Blog & News
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="text-gray-600 hover:text-blue-600">
+                  Terms & Conditions
                 </Link>
               </li>
             </ul>

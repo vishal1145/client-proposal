@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 export function FooterSection() {
   return (
+    <>
+    
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
@@ -199,10 +201,22 @@ export function FooterSection() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-16 pt-8 border-t border-gray-200 text-center">
+        <div className="mt-16 pt-8 border-t border-gray-200 flex justify-between items-center">
           <p className="text-gray-600">Copyright © 2024 ItServices.com</p>
+          <div className="space-x-6">
+            <Link href="/cancellation-policy" className="text-gray-600 hover:text-blue-600">
+              Cancellation Policy
+            </Link>
+            <Link href="/refund-policy" className="text-gray-600 hover:text-blue-600">
+              Refund Policy
+            </Link>
+            <Link href="/privacy-policy" className="text-gray-600 hover:text-blue-600">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
+    </>
   );
 }

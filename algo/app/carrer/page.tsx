@@ -311,6 +311,50 @@ export default function CareerPage() {
           </div>
         </div>
       </div>
+
+      {/* Who We Are Section */}
+      <div className="bg-blue-600 text-white p-6 md:p-12 rounded-lg mt-16 relative overflow-hidden max-h-[800px]">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/images/blue-waves.jpg" 
+            alt="Background Pattern" 
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-10 flex flex-col md:flex-row gap-6">
+          {/* Text Content */}
+          <div className="md:w-1/2">
+            <p className="text-sm mb-2">Who we are</p>
+            
+            <h2 className="text-4xl font-bold mb-3">
+              Crafting a Brighter Tomorrow with Innovation
+            </h2>
+            
+            <p className="text-base mb-4">
+              At Algofolks, we are committed to shaping a brighter future through innovation 
+              and collective knowledge. Join us on our journey of transformation, where we 
+              build the future, one innovative solution at a time.
+            </p>
+            
+            <div className="flex items-center gap-2 text-sm">
+              <span>Get to know about us</span>
+              <span className="inline-block">→</span>
+            </div>
+          </div>
+
+          {/* Image Section */}
+          <div className="md:w-1/2">
+            <img 
+              src="/images/carrer1.jpg" 
+              alt="Who We Are" 
+              className="w-full h-[400px] object-cover"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

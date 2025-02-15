@@ -1,4 +1,6 @@
-import { Metadata } from "next";
+"use client";
+
+import { useParams } from "next/navigation";
 import { GetQuoteSection } from "@/components/sections/GetQuoteSection";
 import Footer from "@/components/sections/Footer";
 
@@ -46,29 +48,10 @@ const serviceDetails: Record<string, ServiceDetail> = {
   },
 };
 
-// ✅ Correct PageProps Type
-type PageProps = Awaited<{
-  params: { slug: string };
-  searchParams?: Record<string, string | string[] | undefined>;
-}>;
+export default function ServicePage() {
+  const { slug } = useParams();
 
-// ✅ Fix `generateMetadata` Function
-export async function generateMetadata({
-  params,
-}: Awaited<PageProps>): Promise<Metadata> {
-  const service = serviceDetails[params.slug];
-
-  return {
-    title: service
-      ? `${service.title} - IT Services`
-      : "Service Not Found - IT Services",
-    description: service?.description || "Service not found",
-  };
-}
-
-// ✅ Fixed ServicePage Component
-export default function ServicePage({ params }: Awaited<PageProps>) {
-  const service = serviceDetails[params.slug];
+  const service = serviceDetails[slug as string];
 
   if (!service) {
     return (

@@ -104,7 +104,7 @@ export default function BlogPage() {
                     industry&apos;s standard dummy.
                   </p>
                   <Link
-                    href={`/blog/future-of-it-legal-field`}
+                    href={`/blog/the-future-of-it-in-the-legal-field-trends-to-watch`}
                     className="text-[#4461F2] text-sm font-medium hover:underline"
                   >
                     Read More →
@@ -136,7 +136,7 @@ export default function BlogPage() {
                     industry&apos;s standard dummy.
                   </p>
                   <Link
-                    href={`/blog/cybersecurity-tips`}
+                    href={`/blog/Cybersecurity-Tips-For-Law-Firms&Its-Legal-Aids`}
                     className="text-[#4461F2] text-sm font-medium hover:underline"
                   >
                     Read More →
@@ -168,7 +168,7 @@ export default function BlogPage() {
                     industry&apos;s standard dummy.
                   </p>
                   <Link
-                    href={`/blog/it-compliance`}
+                                 href={`/blog/IT-Compliance-And-Data-Protection-For-Law-Firms`}
                     className="text-[#4461F2] text-sm font-medium hover:underline"
                   >
                     Read More →
@@ -200,7 +200,7 @@ export default function BlogPage() {
                     industry&apos;s standard dummy.
                   </p>
                   <Link
-                    href={`/blog/future-of-it-legal-field`}
+                    href={`/blog/the-future-of-it-in-the-legal-field-trends-to-watch`}
                     className="text-[#4461F2] text-sm font-medium hover:underline"
                   >
                     Read More →
@@ -232,7 +232,7 @@ export default function BlogPage() {
                     industry&apos;s standard dummy.
                   </p>
                   <Link
-                    href={`/blog/cybersecurity-tips`}
+                    href={`/blog/Cybersecurity-Tips-For-Law-Firms&Its-Legal-Aids`}
                     className="text-[#4461F2] text-sm font-medium hover:underline"
                   >
                     Read More →
@@ -264,7 +264,7 @@ export default function BlogPage() {
                     industry&apos;s standard dummy.
                   </p>
                   <Link
-                    href={`/blog/it-compliance`}
+                    href={`/blog/IT-Compliance-And-Data-Protection-For-Law-Firms`}
                     className="text-[#4461F2] text-sm font-medium hover:underline"
                   >
                     Read More →

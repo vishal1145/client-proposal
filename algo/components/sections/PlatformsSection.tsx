@@ -8,7 +8,9 @@ export function PlatformsSection() {
         {/* Left Content */}
         <div className="w-1/2 py-16 pl-20 pr-10 bg-[#0A1628]">
           <div className="max-w-sm">
-            <p className="text-gray-400 text-sm mb-1 border border-gray-800 p-1 rounded-2xl inline-block">What We Are Expert In</p>
+            <p className="text-gray-400 text-sm mb-1 border border-gray-800 p-1 rounded-2xl inline-block">
+              What We Are Expert In
+            </p>
             <h2 className="text-2xl font-medium text-white mb-10">
               Several Platforms
             </h2>

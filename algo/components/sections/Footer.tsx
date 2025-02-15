@@ -82,7 +82,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                     placeholder="Enter your email"
                     className="w-full bg-[#132537] text-white rounded-full py-4 px-6 pr-32 border border-gray-700 focus:outline-none focus:border-[#4461F2]"
                   />
-                  <Button className="absolute right-1 top-1 bg-[#4461F2] hover:bg-blue-700 text-white rounded-full px-6 py-3">
+                  <Button className="absolute right-1 top-2 bg-[#4461F2] hover:bg-blue-700 text-white rounded-full px-6 py-3">
                     Submit Now
                   </Button>
                 </div>

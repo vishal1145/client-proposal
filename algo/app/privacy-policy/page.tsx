@@ -1,4 +1,4 @@
-import { FooterSection } from "@/components/sections/FooterSection";
+import Footer from "@/components/sections/Footer";
 import Image from "next/image";
 
 export default function PrivacyPolicyPage() {
@@ -156,7 +156,7 @@ export default function PrivacyPolicyPage() {
         </div>
       </div>
       
-      <FooterSection/>
+      <Footer/>
     </>
   );
 } 

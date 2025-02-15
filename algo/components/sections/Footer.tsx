@@ -119,6 +119,34 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                       Industry Registrations
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                     href="/team-member" 
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      Our Team
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                    href="/gallery"
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      Gallery
+                    </Link>
+                  </li>
+
+
+
+                  <li>
+                    <Link
+                     href="/pricing"
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                        Pricing
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
@@ -142,6 +170,21 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                       Mission
                     </Link>
                   </li>
+
+                
+
+
+
+                  <li>
+                    <Link
+                     href="/faq"
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      FAQ
+                    </Link>
+                  </li>
+
+
                   <li>
                     <Link
                       href="#"
@@ -150,6 +193,9 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                       Terms & Conditions
                     </Link>
                   </li>
+
+
+
                   <li>
                     <Link
                       href="#"
@@ -275,8 +321,19 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
         </div>
 
         {/* Copyright */}
-        <div className="text-center pt-8 border-t border-gray-800">
-          <p className="text-gray-400">Copyright © 2024 ItServices.com</p>
+        <div className="mt-16 pt-8 border-t border-gray-200 flex justify-between items-center">
+          <p className="text-gray-600">Copyright © 2024 ItServices.com</p>
+          <div className="space-x-6">
+            <Link href="/cancellation-policy" className="text-gray-600 hover:text-blue-600">
+              Cancellation Policy
+            </Link>
+            <Link href="/refund-policy" className="text-gray-600 hover:text-blue-600">
+              Refund Policy
+            </Link>
+            <Link href="/privacy-policy" className="text-gray-600 hover:text-blue-600">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

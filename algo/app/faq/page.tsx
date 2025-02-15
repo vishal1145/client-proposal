@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
 import Image from 'next/image';
-import { FooterSection } from '@/components/sections/FooterSection';
+import Footer from '@/components/sections/Footer';
 
 const FaqSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -133,7 +133,7 @@ const FaqSection = () => {
         />
       </div>
     </div>
-<FooterSection/>
+    <Footer/>
     </>
     
   );

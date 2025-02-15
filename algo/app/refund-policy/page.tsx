@@ -1,4 +1,4 @@
-import { FooterSection } from "@/components/sections/FooterSection";
+import Footer from "@/components/sections/Footer";
 import Image from "next/image";
 
 export default function RefundPolicyPage() {
@@ -129,7 +129,7 @@ export default function RefundPolicyPage() {
         </div>
       </div>
 
-      <FooterSection/>
+      <Footer/>
     </>
   );
 }

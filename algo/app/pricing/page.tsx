@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from "next/image";
-import { FooterSection } from '@/components/sections/FooterSection';
+import Footer from '@/components/sections/Footer';
 
 const PricingSection = () => {
   // Example team member data - you can replace this with your actual data or API call
@@ -201,7 +201,7 @@ const PricingSection = () => {
         </div>
       </section>
 
-<FooterSection/>
+<Footer/>
      </>
   );
 };

@@ -27,8 +27,8 @@ export default function PrivacyPolicyPage() {
         </div>
 
         {/* Content */}
-        <div className="container mx-auto px-4 relative z-20">
-          <div className="text-center max-w-2xl mx-auto">
+        <div className="container   px-4 relative z-20">
+          <div className="text-center  ">
             <div className="flex items-center justify-center gap-3 mb-4">
               <h1 className="text-3xl font-bold text-[#0B1B2B]">
                 Privacy Policy
@@ -54,8 +54,8 @@ export default function PrivacyPolicyPage() {
         </div>
       </section>
 
-      <div className="container mx-auto py-16 px-4">
-        <div className="max-w-3xl mx-auto">
+      <div className="container   py-16 px-4">
+        <div className=" ">
           <h1 className="text-[24px] font-bold mb-6 text-gray-900">Privacy Policy</h1>
           
           <div className="space-y-8">

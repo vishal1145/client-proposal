@@ -1,3 +1,4 @@
+import { FooterSection } from "@/components/sections/FooterSection";
 import Image from "next/image";
 
 export default function RefundPolicyPage() {
@@ -57,43 +58,78 @@ export default function RefundPolicyPage() {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-[24px] font-bold mb-6 text-gray-900">Refund Policy</h1>
           
-          <div className="space-y-8">
-            <p className="text-[14px] text-gray-700 leading-relaxed">
-              At Algofolks, we strive to ensure complete satisfaction with our services. Our refund policy is designed to be fair and transparent while maintaining the quality of our service delivery.
-            </p>
+          <p className="text-[14px] text-gray-700 leading-relaxed mb-8">
+            At Algofolks, we strive to deliver high-quality IT services tailored to your business needs. However, in the event of cancellations or disputes, the following refund policy applies:
+          </p>
 
-            <div className="space-y-8">
-              <section className="space-y-4">
-                <h2 className="text-[24px] font-semibold text-gray-900">1. Eligibility for Refunds</h2>
-                <p className="text-[14px] text-gray-700 leading-relaxed">
-                  Refund requests are evaluated on a case-by-case basis and must be submitted within 30 days of service delivery. Valid reasons for refund requests include significant deviation from agreed-upon deliverables or failure to meet specified quality standards.
-                </p>
-              </section>
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-[18px] font-semibold text-gray-900 mb-2">1. Eligibility for Refunds:</h2>
+              <ul className="list-disc pl-6">
+                <li className="text-[14px] text-gray-700 leading-relaxed">
+                  Refunds will only be considered for services not delivered or milestones not met due to issues caused by Algofolks.
+                </li>
+              </ul>
+            </div>
 
-              <section className="space-y-4">
-                <h2 className="text-[24px] font-semibold text-gray-900">2. Refund Process</h2>
-                <p className="text-[14px] text-gray-700 leading-relaxed">
-                  To request a refund, please email support@algofolks.com with your order details and reason for the refund. Our team will review your request and respond within 5 business days.
-                </p>
-              </section>
+            <div>
+              <h2 className="text-[18px] font-semibold text-gray-900 mb-2">2. Partial Refunds:</h2>
+              <ul className="list-disc pl-6">
+                <li className="text-[14px] text-gray-700 leading-relaxed">
+                  If a project is canceled midway, a partial refund may be provided after deducting charges for completed work and any applicable administrative fees.
+                </li>
+              </ul>
+            </div>
 
-              <section className="space-y-4">
-                <h2 className="text-[24px] font-semibold text-gray-900">3. Non-Refundable Items</h2>
-                <p className="text-[14px] text-gray-700 leading-relaxed">
-                  Certain services, including but not limited to custom development work, consultation fees, and completed milestone deliverables, are non-refundable unless otherwise specified in the service agreement.
-                </p>
-              </section>
+            <div>
+              <h2 className="text-[18px] font-semibold text-gray-900 mb-2">3. Non-Refundable Fees:</h2>
+              <ul className="list-disc pl-6">
+                <li className="text-[14px] text-gray-700 leading-relaxed">
+                  Setup fees, consultation charges, and any third-party service fees paid on behalf of the client are non-refundable.
+                </li>
+              </ul>
+            </div>
 
-              <section className="space-y-4">
-                <h2 className="text-[24px] font-semibold text-gray-900">4. Refund Processing</h2>
-                <p className="text-[14px] text-gray-700 leading-relaxed">
-                  Approved refunds will be processed using the original payment method. Please allow 7-14 business days for the refund to appear in your account after approval.
-                </p>
-              </section>
+            <div>
+              <h2 className="text-[18px] font-semibold text-gray-900 mb-2">4. Refund Request Process:</h2>
+              <ul className="list-disc pl-6">
+                <li className="text-[14px] text-gray-700 leading-relaxed">
+                  Refund requests must be submitted in writing to billing@algofolks.com within 14 days of cancellation or service termination.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-[18px] font-semibold text-gray-900 mb-2">5. Timeframe for Refund Processing:</h2>
+              <ul className="list-disc pl-6">
+                <li className="text-[14px] text-gray-700 leading-relaxed">
+                  Refunds will be processed within 15-20 business days upon approval of the request.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-[18px] font-semibold text-gray-900 mb-2">6. Force Majeure:</h2>
+              <ul className="list-disc pl-6">
+                <li className="text-[14px] text-gray-700 leading-relaxed">
+                  Refunds will not be granted for delays or interruptions caused by factors beyond Algofolks' control, such as natural disasters, technical failures, or third-party disruptions.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-[18px] font-semibold text-gray-900 mb-2">7. Agreement:</h2>
+              <ul className="list-disc pl-6">
+                <li className="text-[14px] text-gray-700 leading-relaxed">
+                  By engaging with Algofolks, clients agree to adhere to these policies. For any questions, please contact our support team.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
+
+      <FooterSection/>
     </>
   );
 }

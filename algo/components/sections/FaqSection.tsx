@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
 import Image from 'next/image';
-
+import { FooterSection } from './FooterSection';
 const FaqSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -29,6 +29,7 @@ const FaqSection = () => {
   ];
 
   return (
+    <>
     <div className='relative'>
       <section className="relative bg-[#F6F0E4] py-20 overflow-hidden">
         {/* Background Decorative Elements */}
@@ -131,7 +132,8 @@ const FaqSection = () => {
         />
       </div>
     </div>
-    
+    <FooterSection/>
+    </>
   );
 };
 

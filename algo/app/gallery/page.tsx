@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { FooterSection } from '@/components/sections/FooterSection';
 interface GalleryItem {
   id: number;
   imageUrl: string;
@@ -125,6 +126,7 @@ const GallerySection: React.FC = () => {
         </div>
       </div>
     </section>
+    <FooterSection/>
     </>
   );
 };

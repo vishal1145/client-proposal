@@ -10,56 +10,56 @@ const TeamMemberSection = () => {
       id: 1,
       name: 'Dr. Nagarajan',
       role: 'Project Lead',
-      image: '/images/team-member-1.png',
+      image: '/images/teammember2.png',
       hasSocial: true
     },
     {
       id: 2,
       name: 'Dr. Vaishali',
       role: 'Project Lead',
-      image: '/images/team-member-1.png',
+      image: '/images/teammember2.png',
       hasSocial: true
     },
     {
       id: 3,
       name: 'Dr. Smith',
       role: 'Senior Researcher',
-      image: '/images/team-member-1.png',
+      image: '/images/teammember2.png',
       hasSocial: true
     },
     {
       id: 4,
       name: 'Dr. Johnson',
       role: 'Data Scientist',
-      image: '/images/team-member-1.png',
+      image: '/images/teammember2.png',
       hasSocial: true
     },
     {
       id: 5,
       name: 'Dr. Williams',
       role: 'AI Specialist',
-      image: '/images/team-member-1.png',
+      image: '/images/teammember2.png',
       hasSocial: true
     },
     {
       id: 6,
       name: 'Dr. Brown',
       role: 'Research Analyst',
-      image: '/images/team-member-1.png',
+      image: '/images/teammember2.png',
       hasSocial: true
     },
     {
       id: 7,
       name: 'Dr. Davis',
       role: 'ML Engineer',
-      image: '/images/team-member-1.png',
+      image: '/images/teammember2.png',
       hasSocial: true
     },
     {
       id: 8,
       name: 'Dr. Miller',
       role: 'Technical Lead',
-      image: '/images/team-member-1.png',
+      image: '/images/teammember2.png',
       hasSocial: true
     }
   ];
@@ -132,7 +132,7 @@ const TeamMemberSection = () => {
                       src={member.image}
                       alt={member.name}
                       fill
-                      className="object-cover"
+                      className="object-cover rounded-full"
                     />
                   </div>
                   
@@ -144,7 +144,7 @@ const TeamMemberSection = () => {
                           src={member.image}
                           alt={member.name}
                           fill
-                          className="object-cover mix-blend-overlay"
+                          className="object-cover rounded-full mix-blend-overlay"
                         />
                         <div className="absolute bottom-8 inset-x-0 flex items-center justify-center gap-4">
                           <a href="#" className="bg-black/90 p-2 rounded-full text-white hover:bg-black transform hover:scale-110 transition-transform duration-300">

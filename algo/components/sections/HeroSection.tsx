@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-[#F6F0E4] overflow-hidden">
+    <section className="relative  bg-[#F6F0E4] overflow-x-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0">
         <Image

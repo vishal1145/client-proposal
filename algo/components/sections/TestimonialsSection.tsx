@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function TestimonialsSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white overflow-x-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -34,7 +34,7 @@ export function TestimonialsSection() {
 
         {/* Testimonials Slider */}
         <div className="max-w-6xl mx-auto relative">
-          <div className="flex gap-6">
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-12">
             {/* Testimonial Card 1 */}
             <div className="flex-1 bg-white rounded-2xl p-6 border border-gray-100">
               <div className="flex items-start gap-3">
@@ -47,8 +47,7 @@ export function TestimonialsSection() {
                 />
                 <div className="flex-1">
                   <p className="text-[13px] text-gray-600 leading-relaxed mb-3">
-                  &apos;Shared Lorem Ipsum Into The Information Age With Its
-                    Desktop Software Aldus PageMaker.&apos;
+                    &apos;Shared Lorem Ipsum Into The Information Age With Its Desktop Software Aldus PageMaker.&apos;
                   </p>
                   <h4 className="text-[12px] font-medium text-[#1B224B] uppercase tracking-wide">
                     JHON - MANAGER
@@ -81,8 +80,7 @@ export function TestimonialsSection() {
                 />
                 <div className="flex-1">
                   <p className="text-[13px] text-white leading-relaxed mb-3">
-                  &apos;Shared Lorem Ipsum Into The Information Age With Its
-                    Desktop Software Aldus PageMaker.&apos;
+                    &apos;Shared Lorem Ipsum Into The Information Age With Its Desktop Software Aldus PageMaker.&apos;
                   </p>
                   <h4 className="text-[12px] font-medium text-white uppercase tracking-wide">
                     JHON - MANAGER
@@ -115,8 +113,7 @@ export function TestimonialsSection() {
                 />
                 <div className="flex-1">
                   <p className="text-[13px] text-gray-600 leading-relaxed mb-3">
-                  &apos;Shared Lorem Ipsum Into The Information Age With Its
-                    Desktop Software Aldus PageMaker.&apos;
+                    &apos;Shared Lorem Ipsum Into The Information Age With Its Desktop Software Aldus PageMaker.&apos;
                   </p>
                   <h4 className="text-[12px] font-medium text-[#1B224B] uppercase tracking-wide">
                     JHON - MANAGER

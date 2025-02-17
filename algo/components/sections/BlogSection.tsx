@@ -8,7 +8,7 @@ const text2 = "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting 
 
 export function BlogSection() {
   return (
-    <section className="py-32 bg-[#FDF8F3]">
+    <section className="py-12 bg-[#FDF8F3] overflow-x-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <span className="text-sm text-gray-600 mb-2 block">Recent Updated</span>
@@ -17,14 +17,14 @@ export function BlogSection() {
 
         {/* Featured Blog Post */}
         <div className="mb-16">
-          <div className="bg-white rounded-3xl overflow-hidden">
+          <div className=" overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="flex flex-col justify-center p-8">
                 <div className="mb-4 text-sm text-gray-600">22 March-2024</div>
-                <h3 className="text-3xl font-bold mb-4 text-[#0B1B2B]">
+                <h3 className="text-xl font-bold mb-4 text-[#0B1B2B]">
                   Legal Practice Automation: Boosting Efficiency And Productivity
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-600 mb-6 text-sm">
                   {text}
                 </p>
                 <Button 
@@ -66,10 +66,10 @@ export function BlogSection() {
                 <span className="text-sm text-gray-600">22 March-2024</span>
                 <span className="text-sm text-gray-600">By Krishna</span>
               </div>
-              <h3 className="font-bold text-2xl mb-4 text-[#0B1B2B] group-hover:text-blue-600 transition-colors">
+              <h3 className="font-bold text-xl mb-4 text-[#0B1B2B] group-hover:text-blue-600 transition-colors">
                 The Future Of IT In The Legal Field: Trends To Watch
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 text-sm">
                 {text2}
               </p>
               <Button 
@@ -99,10 +99,10 @@ export function BlogSection() {
                 <span className="text-sm text-gray-600">22 March-2024</span>
                 <span className="text-sm text-gray-600">By Krishna</span>
               </div>
-              <h3 className="font-bold text-2xl mb-4 text-[#0B1B2B] group-hover:text-blue-600 transition-colors">
+              <h3 className="font-bold text-xl mb-4 text-[#0B1B2B] group-hover:text-blue-600 transition-colors">
                 Cybersecurity Tips For Law Firms & Its Legal Ads
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 text-sm">
                 {text2}
               </p>
               <Button 
@@ -132,10 +132,10 @@ export function BlogSection() {
                 <span className="text-sm text-gray-600">22 March-2024</span>
                 <span className="text-sm text-gray-600">By Krishna</span>
               </div>
-              <h3 className="font-bold text-2xl mb-4 text-[#0B1B2B] group-hover:text-blue-600 transition-colors">
+              <h3 className="font-bold text-xl mb-4 text-[#0B1B2B] group-hover:text-blue-600 transition-colors">
                 IT Compliance And Data Protection For Law Firms
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 text-sm">
                 {text2}
               </p>
               <Button 

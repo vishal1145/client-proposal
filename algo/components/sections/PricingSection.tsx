@@ -10,7 +10,7 @@ const PricingSection = () => {
   return (
      <>
       {/* Hero Section */}
-      <section className="relative bg-[#F6F0E4] py-20 overflow-hidden">
+      <section className="relative bg-[#F6F0E4] py-20 overflow-x-hidden">
         {/* Background Decorative Elements */}
         <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
           <Image

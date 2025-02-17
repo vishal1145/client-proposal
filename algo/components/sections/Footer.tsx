@@ -10,7 +10,7 @@ interface FooterProps {
 
 export default function Footer({ showSubscribe = true }: FooterProps) {
   return (
-    <footer className="bg-[#0B1B2B] text-white py-20">
+    <footer className="bg-[#0B1B2B] text-white py-20 overflow-x-hidden">
       <div className="container mx-auto px-4">
         {/* Top Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">

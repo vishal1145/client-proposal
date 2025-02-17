@@ -6,7 +6,7 @@ export function GetQuoteSection() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-[#F6F0E4] py-20 overflow-hidden">
+      <section className="relative bg-[#F6F0E4] py-20 overflow-x-hidden">
         {/* Background Decorative Elements */}
         <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
           <Image
@@ -136,7 +136,7 @@ export function GetQuoteSection() {
               <div className="container mx-auto px-4">
                 <div className="max-w-6xl mx-auto">
                   {/* Two Column Layout */}
-                  <div className="grid grid-cols-3 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-3  gap-8">
                     {/* Left Column - Content */}
                     <div className="col-span-2">
                       {/* Top List Items */}
@@ -168,7 +168,7 @@ export function GetQuoteSection() {
                         </p>
 
                         {/* Image and List Section */}
-                        <div className="grid grid-cols-2 gap-8 mb-12">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
                           {/* Left Side - Image */}
                           <div className=" p-6 rounded-xl">
                             <Image
@@ -328,7 +328,7 @@ export function GetQuoteSection() {
                   </div>
 
                   {/* Service Cards Grid */}
-                  <div className="grid grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                     {/* Graphics Design Card */}
                     <div className="group cursor-pointer">
                       <div className="rounded-2xl overflow-hidden mb-4">

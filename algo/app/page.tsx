@@ -9,7 +9,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { FooterSection } from "@/components/sections/FooterSection";
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <HeroSection />
       <ServicesSection />
       <WhyChooseUsSection />

@@ -3,9 +3,9 @@ import Footer from "@/components/sections/Footer";
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       {/* Hero Section */}
-      <div className="relative bg-[#F6F0E4] py-20 overflow-hidden">
+      <div className="relative bg-[#F6F0E4] py-20 ">
         {/* Background Decorative Elements */}
         <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
           <Image
@@ -55,20 +55,30 @@ export default function ContactPage() {
 
       {/* World Map Section */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-0">
           <div className="relative">
             {/* World Map Background */}
             <Image
               src="/images/Layer_1.png"
               alt="World Map"
-              width={1200}
-              height={600}
-              className="w-full h-auto opacity-90"
+              width={1000}
+              height={200}
+              className="opacity-90"
             />
-
+             <div className="absolute top-[32%] left-[45%]">
+ <div className="relative">
+ <div className="w-2 h-2 bg-gray-500 rounded-full relative z-10"></div>
+  </div>
+  </div>
+ <div className="absolute top-[52%] left-[15%]">
+ <div className="relative">
+ <div className="w-2 h-2 bg-gray-500 rounded-full relative z-10"></div>
+  </div>
+  </div>
             {/* Singapore Office */}
             <div className="absolute top-[52%] left-[75%]">
               <div className="relative">
+              
                 <div className="w-1 h-1 bg-[#0561FC] rounded-full animate-ping absolute opacity-75"></div>
                 <div className="w-2 h-2 bg-[#0561FC] rounded-full relative z-10"></div>
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-[#0561FC] text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg">
@@ -200,7 +210,7 @@ export default function ContactPage() {
               </p>
 
               {/* Contact Details */}
-              <div className="grid grid-cols-2 gap-x-8 gap-y-10 relative">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10 relative">
                 {/* Address */}
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
@@ -294,8 +304,8 @@ export default function ContactPage() {
                 </div>
 
                 {/* Divider Lines */}
-                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-300"></div>
-                <div className="absolute left-0 right-0 top-[45%] h-px bg-gray-300"></div>
+                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 hidden sm-block"></div>
+                <div className="absolute left-0 right-0 top-[45%] h-px bg-gray-300 hidden sm-block"></div>
               </div>
             </div>
 

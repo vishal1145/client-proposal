@@ -21,7 +21,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="w-full">
+    <header className="w-full overflow-x-hidden">
       {/* Top Bar */}
       <div className="bg-[#0B1B2B] text-white py-2">
         <div className="container mx-auto px-4">

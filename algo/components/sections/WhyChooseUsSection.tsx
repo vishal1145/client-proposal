@@ -4,15 +4,10 @@ import Image from "next/image";
 
 
 export function WhyChooseUsSection() {
-  // const features = [
-  //   { title: "Customized" },
-  //   { title: "High Quality" },
-  //   { title: "Experience" },
-  //   { title: "Support" },
-  // ];
+ 
 
   return (
-    <section className="bg-[#0B1B2B] py-20 mb-5">
+    <section className="bg-[#0B1B2B] py-20 mb-5 overflow-x-hidden">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -21,7 +16,7 @@ export function WhyChooseUsSection() {
               <p className="text-xs uppercase tracking-wide text-gray-400 mb-2">
                 IT Services & Software
               </p>
-              <h2 className="text-3xl font-bold mb-4">Why You Choose Us?</h2>
+              <h2 className="text-3xl font-bold mb-6">Why You Choose Us?</h2>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Classical Latin Literature From 45 BC, Making It Over 2000 Years
                 Old. Richard McClintock, A Latin Professor At Hampden-Sydney
@@ -29,32 +24,38 @@ export function WhyChooseUsSection() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Customized</h3>
-                <div className="flex items-center">
-                  <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-2">High Quality</h3>
-                <div className="flex items-center">
-                  <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Experience</h3>
-                <div className="flex items-center">
-                  <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Support</h3>
-                <div className="flex items-center">
-                  <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
-                </div>
-              </div>
-            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+  <div>
+    
+    <div className="flex items-center justify-start sm:justify-end">
+    <h3 className="text-lg font-semibold ">Customized</h3>
+      <div className="h-[1px] w-8 bg-white ml-auto"></div>
+    </div>
+  </div>
+  <div>
+    
+    <div className="flex items-center justify-start sm:justify-end">
+    <h3 className="text-lg font-semibold">High Quality</h3>
+      <div className="h-[1px] w-8 bg-white ml-auto"></div>
+    </div>
+  </div>
+  <div>
+   
+    <div className="flex items-center justify-start sm:justify-end">
+    <h3 className="text-lg font-semibold ">Experience</h3>
+      <div className="h-[1px] w-8 bg-white ml-auto"></div>
+    </div>
+  </div>
+  <div>
+   
+    <div className="flex items-center justify-start sm:justify-end">
+       <h3 className="text-lg font-semibold ">Support</h3>
+      <div className="h-[1px] w-8 bg-white ml-auto"></div>
+    </div>
+  </div>
+</div>
+
+
 
             <button className="bg-[#0561FC] text-white px-7 py-3 rounded-3xl hover:bg-blue-700 transition-colors text-[12px] font-medium">
               Explore More
@@ -92,66 +93,70 @@ export function WhyChooseUsSection() {
         </div>
 
         {/* Partner Logos Section */}
-        <div className="mt-16 bg-[#0B1B2B] py-12">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center gap-12">
-              {/* Title */}
-              <div className="text-white whitespace-nowrap">
-                <p className="text-sm font-medium">We&apos;re Proud To</p>
-                <p className="text-sm font-medium">Collaborate With:</p>
-              </div>
+        <div className="mt-16 bg-[#0B1B2B]">
+  <div className="container mx-auto px-4">
+    <div className="flex flex-col sm:flex-row items-center gap-12">
+      {/* Title */}
+      <div className="text-white whitespace-nowrap">
+        <p className="text-lg font-medium">We&apos;re Proud To</p>
+        <p className="text-lg font-medium">Collaborate With:</p>
+      </div>
 
-              {/* Partner Logos */}
-              <div className="flex items-center justify-between gap-12 flex-1">
-                <Image
-                  src="/images/about6.png"
-                  alt="Global Technology"
-                  width={120}
-                  height={40}
-                  className="w-auto h-8"
-                />
-                <Image
-                  src="/images/about7.png"
-                  alt="Concept"
-                  width={120}
-                  height={40}
-                  className="w-auto h-8"
-                />
-                <Image
-                  src="/images/about8.png"
-                  alt="Global"
-                  width={120}
-                  height={40}
-                  className="w-auto h-8"
-                />
-                <Image
-                  src="/images/about9.png"
-                  alt="Innovation"
-                  width={120}
-                  height={40}
-                  className="w-auto h-8"
-                />
-                <div className="bg-gray-200 p-3 rounded-lg">
-                  <Image
-                    src="/images/about11.png"
-                    alt="Connect"
-                    width={120}
-                    height={40}
-                    className="w-auto h-8"
-                  />
-                </div>
-
-                <Image
-                  src="/images/about10.png"
-                  alt="Hex"
-                  width={120}
-                  height={40}
-                  className="w-auto h-8"
-                />
-              </div>
-            </div>
-          </div>
+      {/* Partner Logos */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-12 sm:gap-12 flex-1">
+        <Image
+          src="/images/about6.png"
+          alt="Global Technology"
+          width={140}
+          height={60}
+          className="w-auto h-12"
+        />
+        <Image
+          src="/images/about7.png"
+          alt="Concept"
+          width={120}
+          height={40}
+          className="w-auto h-12"
+        />
+        <div className="bg-gray-200 p-4 rounded-lg">
+          <Image
+            src="/images/about11.png"
+            alt="Connect"
+            width={120}
+            height={40}
+            className="w-auto h-12"
+          />
         </div>
+
+        <Image
+          src="/images/about9.png"
+          alt="Innovation"
+          width={120}
+          height={40}
+          className="w-auto h-12"
+        />
+
+        <Image
+          src="/images/about8.png"
+          alt="Global"
+          width={120}
+          height={40}
+          className="w-auto h-12"
+        />
+
+        <Image
+          src="/images/about10.png"
+          alt="Hex"
+          width={120}
+          height={40}
+          className="w-auto h-12"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+       
       </div>
     </section>
   );

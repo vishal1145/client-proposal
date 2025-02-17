@@ -79,7 +79,7 @@ export default function BlogPage() {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-col1 sm:grid-cols-3 gap-6">
               {/* Blog Post 1 */}
               <div className="bg-white rounded-xl overflow-hidden shadow-sm">
                 <div className="relative h-48">

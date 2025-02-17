@@ -80,7 +80,7 @@ export default function ProjectsPage() {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-2 gap-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-24">
             {/* Left Column */}
             <div className="grid gap-8">
               {/* Mobile Application */}
@@ -196,7 +196,7 @@ export default function ProjectsPage() {
           </div>
 
           {/* Third Row Projects */}
-          <div className="grid grid-cols-2 gap-24 mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-24 mt-8">
             {/* Left Side - Web Application */}
             <Link
               href={`/projects/web-application`}
@@ -246,7 +246,7 @@ export default function ProjectsPage() {
           </div>
 
           {/* Fourth Row Projects */}
-          <div className="grid grid-cols-2 gap-24 mt-8">
+          <div className="grid grid-cols-1  sm:grid-cols-2 gap-24 mt-8">
             {/* Left Side - Poster Magazine */}
             <Link
               href={`/projects/poster-magazine-2`}

@@ -304,8 +304,9 @@ export default function ContactPage() {
                 </div>
 
                 {/* Divider Lines */}
-                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 hidden sm-block"></div>
-                <div className="absolute left-0 right-0 top-[45%] h-px bg-gray-300 hidden sm-block"></div>
+                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 hidden md:block"></div>
+<div className="absolute left-0 right-0 top-[45%] h-px bg-gray-300 hidden md:block"></div>
+
               </div>
             </div>
 

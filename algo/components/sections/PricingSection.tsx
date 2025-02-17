@@ -120,7 +120,7 @@ const PricingSection = () => {
             </div>
 
             {/* Basic Standard Plan */}
-            <div className="border relative bg-blue-600 !important text-white border border-blue-600 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <div className=" relative bg-blue-600 !important text-white border border-blue-600 rounded-2xl p-8 hover:shadow-lg transition-shadow">
               <h3 className="font-[Public Sans] font-medium text-[25px] leading-[29.38px] tracking-[0%]">Basic Standard Plan</h3>
               <div className="font-[Public Sans] font-medium text-[50px] leading-[58.75px] tracking-[0%] mt-4 mb-4">$ 199.00</div>
               <p className="text-sm opacity-90 mb-4">

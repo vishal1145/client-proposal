@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       {/* Hero Section with Background */}
-      <div className="relative bg-[#F6F0E4] py-20 overflow-hidden">
+      <div className="relative bg-[#F6F0E4] py-20 ">
         {/* Background Decorative Elements */}
 
         {/* Left Side Illustration */}
@@ -75,21 +75,22 @@ export default function AboutPage() {
       {/* Main Content Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-16 items-center">
             {/* Left Column - Images */}
-            <div className="relative w-[480px]">
-              {/* Main Images Container */}
-              <div className="relative">
-                {/* Person Image */}
-                <div className="relative z-20 e rounded-2xl">
-                  <Image
-                    src="/images/about9.jpg"
-                    alt="Person working on laptop"
-                    width={380}
-                    height={280}
-                    className="w-[580px] h-[480px] rounded-2xl object-cover"
-                  />
-                </div>
+            <div className="relative w-full max-w-md mx-auto sm:max-w-none">
+      <div className="relative">
+        <div className="relative z-20 rounded-2xl">
+          <Image
+            src="/images/about9.jpg"
+            alt="Person working on laptop"
+            width={380}
+            height={280}
+            className="w-full max-w-[580px] h-auto rounded-2xl object-cover"
+          />
+        </div>
+     
+    
+
 
                 {/* Pink UI Image
                 <div className="absolute -bottom-16 -left-16 z-10">
@@ -225,7 +226,7 @@ export default function AboutPage() {
             The Number Reflect Our Reputation
           </h2>
 
-          <div className="flex justify-center items-center gap-16 px-4">
+          <div className="flex justify-center flex-wrap items-center sm:items-start gap-16 px-4">
             {/* Years of Experience */}
             <div className="flex items-center">
               <div className="flex flex-col items-center w-32">
@@ -293,149 +294,156 @@ export default function AboutPage() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="bg-[#0B1B2B] py-20 mb-5">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="text-white space-y-8">
-              <div>
-                <p className="text-xs uppercase tracking-wide text-gray-400 mb-2">
-                  IT Services & Software
-                </p>
-                <h2 className="text-3xl font-bold mb-4">Why You Choose Us?</h2>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  Classical Latin Literature From 45 BC, Making It Over 2000
-                  Years Old. Richard McClintock, A Latin Professor At
-                  Hampden-Sydney College In Virginia. There&apos;s Many
-                  Variations.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Customized</h3>
-                  <div className="flex items-center">
-                    <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">High Quality</h3>
-                  <div className="flex items-center">
-                    <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Experience</h3>
-                  <div className="flex items-center">
-                    <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Support</h3>
-                  <div className="flex items-center">
-                    <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
-                  </div>
-                </div>
-              </div>
-
-              <button className="bg-[#0561FC] text-white px-7 py-3 rounded-3xl hover:bg-blue-700 transition-colors text-[12px] font-medium">
-                Explore More
-              </button>
+      <section className="bg-[#0B1B2B] py-20 mb-5 overflow-x-hidden">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="text-white space-y-8">
+            <div>
+              <p className="text-xs uppercase tracking-wide text-gray-400 mb-2">
+                IT Services & Software
+              </p>
+              <h2 className="text-3xl font-bold mb-6">Why You Choose Us?</h2>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Classical Latin Literature From 45 BC, Making It Over 2000 Years
+                Old. Richard McClintock, A Latin Professor At Hampden-Sydney
+                College In Virginia. There&apos;s Many Variations.
+              </p>
             </div>
 
-            {/* Right Image */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden">
-                {/* Main Image */}
-                <Image
-                  src="/images/about3.jpeg"
-                  alt="Why Choose Us Illustration"
-                  width={500}
-                  height={400}
-                  className="w-[500px] h-[400px] rounded-2xl object-cover"
-                />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+  <div>
+    
+    <div className="flex items-center justify-start sm:justify-end">
+    <h3 className="text-lg font-semibold ">Customized</h3>
+      <div className="h-[1px] w-8 bg-white ml-auto"></div>
+    </div>
+  </div>
+  <div>
+    
+    <div className="flex items-center justify-start sm:justify-end">
+    <h3 className="text-lg font-semibold">High Quality</h3>
+      <div className="h-[1px] w-8 bg-white ml-auto"></div>
+    </div>
+  </div>
+  <div>
+   
+    <div className="flex items-center justify-start sm:justify-end">
+    <h3 className="text-lg font-semibold ">Experience</h3>
+      <div className="h-[1px] w-8 bg-white ml-auto"></div>
+    </div>
+  </div>
+  <div>
+   
+    <div className="flex items-center justify-start sm:justify-end">
+       <h3 className="text-lg font-semibold ">Support</h3>
+      <div className="h-[1px] w-8 bg-white ml-auto"></div>
+    </div>
+  </div>
+</div>
 
-                {/* Blue Badge */}
-                <div className="relative pb-12">
-                  {" "}
-                  {/* Ensures space for the absolute element */}
-                  <div className="absolute bottom-0 right-6">
-                    <div className="bg-[#0561FC] text-white px-8 py-6 rounded-2xl">
-                      <div className="flex flex-col items-center">
-                        <span className="text-base font-medium">
-                          IT Services
-                        </span>
-                        <span className="text-base font-medium">&</span>
-                        <span className="text-base font-medium">Software</span>
-                      </div>
+
+
+            <button className="bg-[#0561FC] text-white px-7 py-3 rounded-3xl hover:bg-blue-700 transition-colors text-[12px] font-medium">
+              Explore More
+            </button>
+          </div>
+
+          {/* Right Image */}
+          <div className="relative">
+            <div className="relative rounded-2xl overflow-hidden">
+              {/* Main Image */}
+              <Image
+                src="/images/about3.jpeg"
+                alt="Why Choose Us Illustration"
+                width={500}
+                height={400}
+                className="w-[500px] h-[400px] rounded-2xl object-cover"
+              />
+
+              {/* Blue Badge */}
+              <div className="relative pb-12">
+                {" "}
+                {/* Ensures space for the absolute element */}
+                <div className="absolute bottom-0 right-6">
+                  <div className="bg-[#0561FC] text-white px-8 py-6 rounded-2xl">
+                    <div className="flex flex-col items-center">
+                      <span className="text-base font-medium">IT Services</span>
+                      <span className="text-base font-medium">&</span>
+                      <span className="text-base font-medium">Software</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
           {/* Partner Logos Section */}
-          <div className="mt-16 bg-[#0B1B2B] py-12">
-            <div className="container mx-auto px-4">
-              <div className="flex items-center gap-12">
-                {/* Title */}
-                <div className="text-white whitespace-nowrap">
-                  <p className="text-sm font-medium">We&apos;re Proud To</p>
-                  <p className="text-sm font-medium">Collaborate With:</p>
-                </div>
+          <div className="mt-16 bg-[#0B1B2B] ">
+  <div className="container mx-auto px-4">
+    <div className="flex flex-col sm:flex-row items-center gap-12">
+      {/* Title */}
+      <div className="text-white whitespace-nowrap">
+        <p className="text-lg font-medium">We&apos;re Proud To</p>
+        <p className="text-lg font-medium">Collaborate With:</p>
+      </div>
 
-                {/* Partner Logos */}
-                <div className="flex items-center justify-between gap-12 flex-1">
-                  <Image
-                    src="/images/about6.png"
-                    alt="Global Technology"
-                    width={120}
-                    height={40}
-                    className="w-auto h-8"
-                  />
-                  <Image
-                    src="/images/about7.png"
-                    alt="Concept"
-                    width={120}
-                    height={40}
-                    className="w-auto h-8"
-                  />
-                  <Image
-                    src="/images/about8.png"
-                    alt="Global"
-                    width={120}
-                    height={40}
-                    className="w-auto h-8"
-                  />
-                  <Image
-                    src="/images/about9.png"
-                    alt="Innovation"
-                    width={120}
-                    height={40}
-                    className="w-auto h-8"
-                  />
-                  <div className="bg-gray-200 p-3 rounded-lg">
-                    <Image
-                      src="/images/about11.png"
-                      alt="Connect"
-                      width={120}
-                      height={40}
-                      className="w-auto h-8"
-                    />
-                  </div>
+      {/* Partner Logos */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-12 sm:gap-12 flex-1">
+        <Image
+          src="/images/about6.png"
+          alt="Global Technology"
+          width={140}
+          height={60}
+          className="w-auto h-12"
+        />
+        <Image
+          src="/images/about7.png"
+          alt="Concept"
+          width={120}
+          height={40}
+          className="w-auto h-12"
+        />
+        <div className="bg-gray-200 p-4 rounded-lg">
+          <Image
+            src="/images/about11.png"
+            alt="Connect"
+            width={120}
+            height={40}
+            className="w-auto h-12"
+          />
+        </div>
 
-                  <Image
-                    src="/images/about10.png"
-                    alt="Hex"
-                    width={120}
-                    height={40}
-                    className="w-auto h-8"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+        <Image
+          src="/images/about9.png"
+          alt="Innovation"
+          width={120}
+          height={40}
+          className="w-auto h-12"
+        />
+
+        <Image
+          src="/images/about8.png"
+          alt="Global"
+          width={120}
+          height={40}
+          className="w-auto h-12"
+        />
+
+        <Image
+          src="/images/about10.png"
+          alt="Hex"
+          width={120}
+          height={40}
+          className="w-auto h-12"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+
         </div>
       </section>
 

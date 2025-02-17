@@ -13,8 +13,8 @@ export function FooterSection() {
             <Image
               src="/images/logo.png"
               alt="Logo"
-              width={150}
-              height={50}
+              width={140}
+              height={40}
               className="mb-4"
             />
             <p className="text-gray-600">

@@ -82,14 +82,7 @@ export function Header() {
 
             {/* Navigation Links */}
             <nav className="hidden lg:flex items-center gap-8">
-              <Link 
-                href="/" 
-                className={`font-medium ${
-                  isActive('/') ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'
-                } transition-colors`}
-              >
-                Home
-              </Link>
+             
               <Link 
                 href="/services" 
                 className={`font-medium ${

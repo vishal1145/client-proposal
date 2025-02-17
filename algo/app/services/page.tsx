@@ -14,7 +14,7 @@ const services = [
     slug: "cybersecurity-services",
     icon: (
       <svg
-        className="w-12 h-12 text-[#4461F2]"
+        className="w-12 h-12 text-[#0561FC] group-hover:text-white"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ const services = [
     slug: "managed-it-services",
     icon: (
       <svg
-        className="w-12 h-12 text-[#4461F2]"
+        className="w-12 h-12 text-[#0561FC] group-hover:text-white"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -54,7 +54,7 @@ const services = [
     slug: "network-and-infrastructure",
     icon: (
       <svg
-        className="w-12 h-12 text-[#4461F2]"
+        className="w-12 h-12 text-[#0561FC] group-hover:text-white"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -74,7 +74,7 @@ const services = [
     slug: "it-consulting-services",
     icon: (
       <svg
-        className="w-12 h-12 text-[#4461F2]"
+        className="w-12 h-12 text-[#0561FC] group-hover:text-white"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -94,7 +94,7 @@ const services = [
     slug: "legal-technology-services",
     icon: (
       <svg
-        className="w-12 h-12 text-[#4461F2]"
+        className="w-12 h-12 text-[#0561FC] group-hover:text-white"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -114,7 +114,7 @@ const services = [
     slug: "software-development",
     icon: (
       <svg
-        className="w-12 h-12 text-[#4461F2]"
+        className="w-12 h-12 text-[#0561FC] group-hover:text-white"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -233,142 +233,144 @@ export default function Page() {
 
             {/* Right Content - Featured Service Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Designing IT Services Card */}
-              <Link
-                href="/services/designing-it-services"
-                className="bg-[#0561FC] rounded-3xl p-8 text-white group hover:shadow-lg transition-all duration-300"
-              >
-                <div className="mb-6">
-                  <svg
-                    className="w-12 h-12"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1.5"
-                      d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-4 min-h-[4rem] leading-tight">
-                  Designing IT
-                  <br />
-                  Services
-                </h3>
-                <p className="text-gray-100 mb-6 truncate">
-                  Contrary To Popular Belief, Lorem Ipsuis
-                </p>
-                <div className="w-10 h-10 rounded-full bg-white text-[#0561FC] flex items-center justify-center group-hover:bg-gray-100 transition-colors">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </div>
-              </Link>
+  {/* Designing IT Services Card */}
+  <Link
+    href="/services/designing-it-services"
+    className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:bg-[#0561FC] group-hover:text-white transition-all duration-300 group"
+  >
+    <div className="mb-6">
+      <svg
+        className="w-12 h-12 text-[#0561FC] group-hover:text-white"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
+          d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+        />
+      </svg>
+    </div>
+    <h3 className="text-xl font-bold text-[#0B1B2B] mb-4 min-h-[4rem] leading-tight group-hover:text-white">
+      Designing IT
+      <br />
+      Services
+    </h3>
+    <p className="text-gray-600 mb-6 truncate group-hover:text-white">
+      Contrary To Popular Belief, Lorem Ipsuis
+    </p>
+    <div className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center group-hover:bg-orange-600 transition-colors">
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+    </div>
+  </Link>
 
-              {/* Cloud IT Services Card */}
-              <Link
-                href="/services/cloud-it-services"
-                className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group"
-              >
-                <div className="mb-6">
-                  <svg
-                    className="w-12 h-12 text-[#0561FC]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1.5"
-                      d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-[#0B1B2B] mb-4 min-h-[4rem] leading-tight">
-                  Cloud IT
-                  <br />
-                  Services
-                </h3>
-                <p className="text-gray-600 mb-6 truncate">
-                  Contrary To Popular Belief, Lorem Ipsuis
-                </p>
-                <div className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center group-hover:bg-orange-600 transition-colors">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </div>
-              </Link>
-            </div>
+  {/* Cloud IT Services Card */}
+  <Link
+    href="/services/cloud-it-services"
+    className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:bg-[#0561FC] group-hover:text-white transition-all duration-300 group"
+  >
+    <div className="mb-6">
+      <svg
+        className="w-12 h-12 text-[#0561FC] group-hover:text-white"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
+          d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
+        />
+      </svg>
+    </div>
+    <h3 className="text-xl font-bold text-[#0B1B2B] mb-4 min-h-[4rem] leading-tight group-hover:text-white">
+      Cloud IT
+      <br />
+      Services
+    </h3>
+    <p className="text-gray-600 mb-6 truncate group-hover:text-white">
+      Contrary To Popular Belief, Lorem Ipsuis
+    </p>
+    <div className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center group-hover:bg-orange-600 transition-colors">
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+    </div>
+  </Link>
+</div>
+
           </div>
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <Link
-                key={index}
-                href={`/services/${service.slug}`}
-                className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 group"
-              >
-                {/* Icon */}
-                <div className="mb-6">{service.icon}</div>
+          {services.map((service) => (
+  <Link
+    key={service.slug}
+    href={`/services/${service.slug}`}
+      className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 group hover:bg-[#0561FC] hover:text-white"
+    >
+      {/* Icon */}
+      <div className="mb-6 group-hover:text-white">{service.icon}</div>
 
-                {/* Content */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-[#0B1B2B] min-h-[4rem] leading-tight">
-                    {service.title.split(" ").slice(0, -1).join(" ")}
-                    <br />
-                    {service.title.split(" ").slice(-1)}
-                  </h3>
-                  <p className="text-gray-600 text-sm truncate">
-                    {service.description}
-                  </p>
-                </div>
+      {/* Content */}
+      <div className="space-y-4">
+        <h3 className="text-xl font-bold text-[#0B1B2B] min-h-[4rem] leading-tight group-hover:text-white">
+          {service.title.split(" ").slice(0, -1).join(" ")}
+          <br />
+          {service.title.split(" ").slice(-1)}
+        </h3>
+        <p className="text-gray-600 text-sm truncate group-hover:text-white">
+          {service.description}
+        </p>
+      </div>
 
-                {/* Arrow Button */}
-                <div className="mt-8">
-                  <div className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center group-hover:bg-orange-600 transition-colors">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+      {/* Arrow Button */}
+      <div className="mt-8">
+        <div className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center group-hover:bg-orange-600 transition-colors">
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
+      </div>
+    </Link>
+  ))}
+</div>
+
         </div>
       </section>
 

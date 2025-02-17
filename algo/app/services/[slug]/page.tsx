@@ -46,6 +46,70 @@ const serviceDetails: Record<string, ServiceDetail> = {
     image:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072",
   },
+  "network-and-infrastructure": {
+    title: "Network And Infrastructure",
+    subtitle: "Building Robust Digital Foundations",
+    description:
+      "We design and implement reliable network infrastructure solutions that form the backbone of your digital operations.",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072",
+  },
+  "it-consulting-services": {
+    title: "IT Consulting Services",
+    subtitle: "Strategic Technology Guidance",
+    description:
+      "Our expert consultants help you navigate the complex technology landscape and make informed decisions for your business.",
+    image:
+      "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070",
+  },
+  "legal-technology-services": {
+    title: "Legal Technology Services",
+    subtitle: "Digital Solutions for Legal Sector",
+    description:
+      "Specialized technology solutions designed for law firms and legal departments to enhance efficiency and compliance.",
+    image:
+      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
+  },
+  "software-development": {
+    title: "Software Development",
+    subtitle: "Custom Software Solutions",
+    description:
+      "We create tailored software solutions that address your unique business challenges and drive innovation.",
+    image:
+      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
+  },
+  "managed-teams": {
+    title: "Managed Teams",
+    subtitle: "Dedicated Development Teams",
+    description:
+      "Build and scale your development capabilities with our managed team solutions, providing the right expertise when you need it.",
+    image:
+      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
+  },
+  "technology-consulting": {
+    title: "Technology Consulting",
+    subtitle: "Expert Technology Guidance",
+    description:
+      "Strategic technology consulting to help you make informed decisions and optimize your technology investments.",
+    image:
+      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
+  },
+  "support-and-maintenance": {
+    title: "Support & Maintenance",
+    subtitle: "Reliable Technical Support",
+    description:
+      "Comprehensive support and maintenance services to keep your systems running smoothly and efficiently.",
+    image:
+      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
+  },
+  "product-development": {
+    title: "Product Development",
+    subtitle: "Innovative Product Solutions",
+    description:
+      "End-to-end product development services from concept to launch, helping you bring your ideas to life.",
+    image:
+      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
+  },
 };
 
 export default function ServicePage() {
@@ -70,7 +134,7 @@ export default function ServicePage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <GetQuoteSection />
+      <GetQuoteSection title={service.title} />
       <Footer />
     </main>
   );

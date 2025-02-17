@@ -10,6 +10,7 @@ export function FooterSection() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
           {/* Logo and Description */}
           <div className="space-y-6">
+            <Link href="/">
             <Image
               src="/images/logo.png"
               alt="Logo"
@@ -17,21 +18,22 @@ export function FooterSection() {
               height={40}
               className="mb-4"
             />
+            </Link>
             <p className="text-gray-600">
               Search amanzign individuals around the globe, find a mentor,
               expand your network,
             </p>
             <div>
               <a
-                href="mailto:info@itservices.com"
+                href="mailto:  hr@algofolks.com"
                 className="text-[#0B1B2B] font-semibold text-lg"
               >
-                info@itservices.com
+            hr@algofolks.com
               </a>
               <p className="text-gray-600 mt-2">
-                245, Central Street, Havel Tower South City,
-                <br />
-                New York, USA
+              Algofolks Private Limited, C-104 Sector 65 Noida
+
+
               </p>
             </div>
             <div className="relative w-[400px]">
@@ -52,19 +54,24 @@ export function FooterSection() {
               Branch Address
             </h3>
             <p className="text-gray-600 mb-4">
-              167 Great Portland Street, DEON
-              <br />
-              Australia - 47889 55
+            Algofolks Private Limited, C-104 Sector 65 Noida
             </p>
             <div className="space-y-2">
-              <p className="text-gray-600">Mail : Solutions@Example.Com</p>
-              <p className="text-gray-600">Ph : 012 456 789 0459</p>
+            <a
+                href="mailto:  hr@algofolks.com"
+                className="text-[#0B1B2B] font-semibold text-lg"
+              >
+            hr@algofolks.com
+              </a>
+              <p className="text-gray-600">Ph : 
+              +91 8743045170</p>
             </div>
             <div className="mt-6">
               <h4 className="text-xl font-bold text-[#0B1B2B] mb-2">
                 Call Centre:
               </h4>
-              <p className="text-gray-600">+91 180 5478 987</p>
+              <p className="text-gray-600">
+              +91 8743045170</p>
             </div>
           </div>
 
@@ -202,7 +209,7 @@ export function FooterSection() {
 
         {/* Copyright */}
         <div className="mt-16 pt-8 border-t border-gray-200 flex justify-between items-center">
-          <p className="text-gray-600">Copyright © 2024 ItServices.com</p>
+          <p className="text-gray-600">©2024 Algofolks Private Limited</p>
           <div className="space-x-6">
             <Link href="/cancellation-policy" className="text-gray-600 hover:text-blue-600">
               Cancellation Policy

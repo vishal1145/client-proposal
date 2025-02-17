@@ -81,7 +81,7 @@ export default function BlogPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-col1 sm:grid-cols-3 gap-6">
               {/* Blog Post 1 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]">
                 <div className="relative h-48">
                   <Image
                     src="/images/man.jpg"
@@ -113,7 +113,7 @@ export default function BlogPage() {
               </div>
 
               {/* Blog Post 2 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]" >
                 <div className="relative h-48">
                   <Image
                     src="/images/man.jpg"
@@ -145,7 +145,7 @@ export default function BlogPage() {
               </div>
 
               {/* Blog Post 3 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]">
                 <div className="relative h-48">
                   <Image
                     src="/images/man.jpg"
@@ -177,7 +177,7 @@ export default function BlogPage() {
               </div>
 
               {/* Blog Post 4 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]">
                 <div className="relative h-48">
                   <Image
                     src="/images/man.jpg"
@@ -209,7 +209,7 @@ export default function BlogPage() {
               </div>
 
               {/* Blog Post 5 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]">
                 <div className="relative h-48">
                   <Image
                     src="/images/man.jpg"
@@ -241,7 +241,7 @@ export default function BlogPage() {
               </div>
 
               {/* Blog Post 6 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]">
                 <div className="relative h-48">
                   <Image
                     src="/images/man.jpg"

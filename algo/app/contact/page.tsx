@@ -54,138 +54,141 @@ export default function ContactPage() {
       </div>
 
       {/* World Map Section */}
-      <section className="py-16">
+      <section className="py-10">
         <div className="container mx-auto px-0">
-          <div className="relative">
-            {/* World Map Background */}
-            <Image
-              src="/images/Layer_1.png"
-              alt="World Map"
-              width={1000}
-              height={200}
-              className="opacity-90"
-            />
-             <div className="absolute top-[32%] left-[45%]">
- <div className="relative">
- <div className="w-2 h-2 bg-gray-500 rounded-full relative z-10"></div>
+        <div className="relative">
+  {/* World Map Background */}
+  <div className="flex justify-center">
+    <Image
+      src="/images/Layer_1.png"
+      alt="World Map"
+      width={900}
+      height={150}
+      className="opacity-90"
+    />
   </div>
+  <div className="absolute top-[32%] left-[45%]">
+    <div className="relative">
+      <div className="w-2 h-2 bg-gray-500 rounded-full relative z-10"></div>
+    </div>
   </div>
- <div className="absolute top-[52%] left-[15%]">
- <div className="relative">
- <div className="w-2 h-2 bg-gray-500 rounded-full relative z-10"></div>
+  <div className="absolute top-[52%] left-[15%]">
+    <div className="relative">
+      <div className="w-2 h-2 bg-gray-500 rounded-full relative z-10"></div>
+    </div>
   </div>
+  {/* Singapore Office */}
+  <div className="absolute top-[52%] left-[75%]">
+    <div className="relative">
+      <div className="w-1 h-1 bg-[#0561FC] rounded-full animate-ping absolute opacity-75"></div>
+      <div className="w-2 h-2 bg-[#0561FC] rounded-full relative z-10"></div>
+      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-[#0561FC] text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg">
+        <p>IT Services & Software Solutions</p>
+        <p>45, Singapore</p>
+        <p>Ph: +65 123 456 789</p>
+      </div>
+    </div>
   </div>
-            {/* Singapore Office */}
-            <div className="absolute top-[52%] left-[75%]">
-              <div className="relative">
-              
-                <div className="w-1 h-1 bg-[#0561FC] rounded-full animate-ping absolute opacity-75"></div>
-                <div className="w-2 h-2 bg-[#0561FC] rounded-full relative z-10"></div>
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-[#0561FC] text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg">
-                  <p>IT Services & Software Solutions</p>
-                  <p>45, Singapore</p>
-                  <p>Ph: +65 123 456 789</p>
-                </div>
-              </div>
-            </div>
-          </div>
+</div>
+
         </div>
       </section>
 
       {/* Contact Options */}
-      <section className="py-16 bg-[#F8F9FF]">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {/* Chat For Sales */}
-            <div className="bg-white p-8 rounded-xl text-left shadow-xl transition-shadow">
-              <div className="w-14 h-14  rounded-full flex items-center justify-center mb-4">
-                <Image
-                  src="/images/sales.png"
-                  alt="Chat Sales Icon"
-                  width={28}
-                  height={28}
-                  className="text-[#0561FC]"
-                />
-              </div>
-              <h3 className="text-[#0B1B2B] font-semibold text-lg mb-2">
-                Chat For Sales
-              </h3>
-              <p className="text-gray-500 text-sm mb-4">
-                Contrary To Popular Belief, Lorem
-              </p>
-              <button className="text-white text-sm font-medium bg-[#0561FC] px-6 py-2.5 rounded-full hover:bg-[#0561FC]/90 transition-colors">
-                Sales@Example.Com →
-              </button>
-            </div>
-
-            {/* Chat For Support */}
-            <div className="bg-white p-8 rounded-xl text-left shadow-xl transition-shadow">
-              <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                <Image
-                  src="/images/chat.png"
-                  alt="Chat Support Icon"
-                  width={28}
-                  height={28}
-                  className="text-[#0561FC]"
-                />
-              </div>
-              <h3 className="text-[#0B1B2B] font-semibold text-lg mb-2">
-                Chat For Support
-              </h3>
-              <p className="text-gray-500 text-sm mb-4">
-                Contrary To Popular Belief, Lorem
-              </p>
-              <button className="text-white text-sm font-medium bg-[#0561FC] px-6 py-2.5 rounded-full hover:bg-[#0561FC]/90 transition-colors">
-                Get In Touch →
-              </button>
-            </div>
-
-            {/* Visit Our Site */}
-            <div className="bg-[#0561FC] p-8 rounded-xl text-left shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center mb-4">
-                <Image
-                  src="/images/site.png"
-                  alt="Visit Site Icon"
-                  width={28}
-                  height={28}
-                  className="text-white"
-                />
-              </div>
-              <h3 className="text-white font-semibold text-lg mb-2">
-                Visit Our Site
-              </h3>
-              <p className="text-white/80 text-sm mb-4">
-                Contrary To Popular Belief, Lorem
-              </p>
-              <button className="text-white text-sm font-medium border border-white px-6 py-2.5 rounded-full hover:bg-white/90 transition-colors">
-                www.itservices.com →
-              </button>
-            </div>
-
-            {/* Contact Us */}
-            <div className="bg-white p-8 rounded-xl text-left shadow-xl transition-shadow">
-              <div className="w-14 h-14  rounded-full flex items-center justify-center mb-4">
-                <Image
-                  src="/images/contact.png"
-                  alt="Contact Us Icon"
-                  width={28}
-                  height={28}
-                  className="text-[#0561FC]"
-                />
-              </div>
-              <h3 className="text-[#0B1B2B] font-semibold text-lg mb-2">
-                Contact Us
-              </h3>
-              <p className="text-gray-500 text-sm mb-4">
-                Contrary To Popular Belief, Lorem
-              </p>
-              <button className="text-white text-sm font-medium bg-[#0561FC] px-6 py-2.5 rounded-full hover:bg-[#0561FC]/90 transition-colors">
-                +81.000.2323.2 →
-              </button>
-            </div>
-          </div>
+      <section className="py-16 bg-[#F8F9FF] ">
+  <div className="container mx-auto px-4">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      {/* Chat For Sales */}
+      <div className="bg-white p-6 rounded-xl text-left shadow-xl transition-all group hover:bg-[#0561FC] hover:text-white">
+        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3">
+          <Image
+            src="/images/sales.png"
+            alt="Chat Sales Icon"
+            width={24}
+            height={24}
+            className="text-[#0561FC] group-hover:fill-white transition-all"
+          />
         </div>
-      </section>
+        <h3 className="text-[#0B1B2B] font-semibold text-base mb-2 group-hover:text-white transition-all">
+          Chat For Sales
+        </h3>
+        <p className="text-gray-500 text-sm mb-4 group-hover:text-white transition-all">
+          Contrary To Popular Belief, Lorem
+        </p>
+        <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
+          Sales@Example.Com →
+        </button>
+      </div>
+
+      {/* Chat For Support */}
+      <div className="bg-white p-6 rounded-xl text-left shadow-xl transition-all group hover:bg-[#0561FC] hover:text-white">
+        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3">
+          <Image
+            src="/images/chat.png"
+            alt="Chat Support Icon"
+            width={24}
+            height={24}
+            className="text-[#0561FC]"
+          />
+        </div>
+        <h3 className="text-[#0B1B2B] font-semibold text-base mb-2 group-hover:text-white transition-all">
+          Chat For Support
+        </h3>
+        <p className="text-gray-500 text-sm mb-4 group-hover:text-white transition-all">
+          Contrary To Popular Belief, Lorem
+        </p>
+        <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
+          Get In Touch →
+        </button>
+      </div>
+
+      {/* Visit Our Site */}
+      <div className="bg-white p-6 rounded-xl text-left shadow-xl transition-all group hover:bg-[#0561FC] hover:text-white">
+        <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-3">
+          <Image
+            src="/images/site.png"
+            alt="Visit Site Icon"
+            width={24}
+            height={24}
+            className="text-black bg-black rounded-full"
+          />
+        </div>
+        <h3 className="text-[#0B1B2B] font-semibold text-base mb-2 group-hover:text-white transition-all">
+          Visit Our Site
+        </h3>
+        <p className="text-gray-500 text-sm mb-4 group-hover:text-white transition-all">
+          Contrary To Popular Belief, Lorem
+        </p>
+        <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
+          www.itservices.com →
+        </button>
+      </div>
+
+      {/* Contact Us */}
+      <div className="bg-white p-6 rounded-xl text-left shadow-xl transition-all group hover:bg-[#0561FC] hover:text-white">
+        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3">
+          <Image
+            src="/images/contact.png"
+            alt="Contact Us Icon"
+            width={24}
+            height={24}
+            className="text-[#0561FC]"
+          />
+        </div>
+        <h3 className="text-[#0B1B2B] font-semibold text-base mb-2 group-hover:text-white transition-all">
+          Contact Us
+        </h3>
+        <p className="text-gray-500 text-sm mb-4 group-hover:text-white transition-all">
+          Contrary To Popular Belief, Lorem
+        </p>
+        <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
+          +81.000.2323.2 →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Contact Form Section */}
       <section className="py-16 bg-[#E0EFFF]">

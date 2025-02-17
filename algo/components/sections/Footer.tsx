@@ -15,15 +15,17 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
         {/* Top Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
           {/* Left Side - Logo Section (25%) */}
-          <div className="lg:col-span-3 space-y-6">
-          <Image
-              src="/images/logo.png"
-              alt="Logo"
-              width={150}
-              height={50}
-              className="mb-4"
-            />
-            <p className="text-gray-400 text-[14px]">
+          <div className="relative lg:col-span-4 space-y-6 ">
+            <Link href="/">
+              <Image
+                src="/images/logo.png"
+                alt="Logo"
+                width={150}
+                height={50}
+                className="mb-4"
+              />
+            </Link>
+            <p className="text-gray-400 text-[14px] pb-8 border-b border-b-gray-700">
               Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting
               Industry. Lorem Ipsum Has Been The Industry&apos;s Standard Dummy
             </p>
@@ -65,12 +67,13 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                 </svg>
               </a>
             </div>
+            <div className="absolute -top-28 right-0 h-[840px] w-[1px] bg-gray-700"></div>
           </div>
 
           {/* Right Side - Content Section (75%) */}
-          <div className="lg:col-span-9">
+          <div className="lg:col-span-8 ">
             {showSubscribe && (
-              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12 pb-10 border-b border-b-gray-700">
                 <h2 className="text-[24px] font-bold mb-4 lg:mb-0">
                   Enough Talks,
                   <br />
@@ -82,19 +85,23 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                     placeholder="Enter your email"
                     className="w-full text-[14px] bg-transparent text-white rounded-full py-2 px-6 pr-44 border border-gray-700/30 focus:outline-none focus:border-[#4461F2] placeholder:text-gray-400"
                   />
-                  <Button 
-                    className="absolute h-[2.6rem] text-[14px] right-0 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px-8 py-2.6 flex items-center gap-2 transition-colors"
-                  >
+                  <Button className="absolute h-[2.6rem] text-[14px] right-0 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px-8 py-2.6 flex items-center gap-2 transition-colors">
                     Submit Now
-                    <svg 
-                      width="16" 
-                      height="16" 
-                      viewBox="0 0 16 16" 
-                      fill="none" 
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       className="ml-1"
                     >
-                      <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path
+                        d="M1 8H15M15 8L8 1M15 8L8 15"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </Button>
                 </div>
@@ -105,63 +112,106 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Quick Links */}
               <div>
-                <h3 className="text-[18px] font-semibold mb-6">Quick Links</h3>
+                <h3 className="text-[18px] font-semibold mb-6">Services</h3>
                 <ul className="space-y-4">
                   <li>
                     <Link
-                      href="#"
+                      href="/services/cybersecurity-services"
                       className="text-gray-400 text-[14px] hover:text-white transition-colors"
                     >
-                      Browse Factories
+                      Cybersecurity Services
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/services/managed-it-services"
                       className="text-gray-400 text-[14px] hover:text-white transition-colors"
                     >
-                      Industry Registrations
+                      Managed IT Services
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/services/network-and-infrastructure"
                       className="text-gray-400 text-[14px] hover:text-white transition-colors"
                     >
-                      Industry Registrations
+                      Network And Infrastructure
                     </Link>
                   </li>
                   <li>
                     <Link
-                     href="/team-member" 
+                      href="/services/it-consulting-services"
                       className="text-gray-400 text-[14px] hover:text-white transition-colors"
                     >
-                      Our Team
+                      IT Consulting Services
                     </Link>
                   </li>
-
                   <li>
                     <Link
-                    href="/gallery"
+                      href="/services/legal-technology-services"
                       className="text-gray-400 text-[14px] hover:text-white transition-colors"
                     >
-                      Gallery
+                      Legal Technology Services
                     </Link>
                   </li>
-
-
-
                   <li>
                     <Link
-                     href="/pricing"
+                      href="/services/software-development"
                       className="text-gray-400 text-[14px] hover:text-white transition-colors"
                     >
-                        Pricing
+                      Software Development
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/services/designing-it-services"
+                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
+                    >
+                      Designing IT Services
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/services/cloud-it-services"
+                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
+                    >
+                      Cloud IT Services
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/services/managed-teams"
+                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
+                    >
+                      Managed Teams
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/services/technology-consulting"
+                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
+                    >
+                      Technology Consulting
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/services/support-and-maintenance"
+                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
+                    >
+                      Support & Maintenance
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/services/product-development"
+                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
+                    >
+                      Product Development
                     </Link>
                   </li>
                 </ul>
               </div>
-
               {/* About Us */}
               <div>
                 <h3 className="text-[18px] font-semibold mb-6">About Us</h3>
@@ -169,49 +219,47 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                   <li>
                     <Link
                       href="/about"
-                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
+                      className="text-gray-400 text-[14px] hover:text-white"
                     >
                       About Us
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"      
-                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
+                      href="/team-member"
+                      className="text-gray-400 text-[14px] hover:text-white"
                     >
-                      Mission
+                      Our Team
                     </Link>
                   </li>
-
-                
-
-
-
                   <li>
                     <Link
-                     href="/faq"
-                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
+                      href="/gallery"
+                      className="text-gray-400 text-[14px] hover:text-white"
+                    >
+                      Gallery
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/pricing"
+                      className="text-gray-400 text-[14px] hover:text-white"
+                    >
+                      Pricing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/faq"
+                      className="text-gray-400 text-[14px] hover:text-white"
                     >
                       FAQ
                     </Link>
                   </li>
-
-
                   <li>
                     <Link
-                      href="#"
-                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
-                    >
-                      Terms & Conditions
-                    </Link>
-                  </li>
-
-
-
-                  <li>
-                    <Link
-                      href="#"
-                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
+                      href="/contact"
+                      className="text-gray-400 text-[14px] hover:text-white"
                     >
                       Contact
                     </Link>
@@ -219,14 +267,21 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                   <li>
                     <Link
                       href="/blog"
-                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
+                      className="text-gray-400 text-[14px] hover:text-white"
                     >
-                      News & Blog
+                      Blog & News
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/terms"
+                      className="text-gray-400 text-[14px] hover:text-white"
+                    >
+                      Terms & Conditions
                     </Link>
                   </li>
                 </ul>
               </div>
-
               {/* Information */}
               <div>
                 <h3 className="text-[18px] font-semibold mb-6">Information</h3>
@@ -281,68 +336,70 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                   </li>
                 </ul>
               </div>
-
-              {/* Social */}
               <div>
-                <h3 className="text-[18px] font-semibold mb-6">Social</h3>
+                <h3 className="text-[18px] font-semibold mb-6">Expert</h3>
                 <ul className="space-y-4">
                   <li>
                     <Link
-                      href="#"
+                      href="/experts"
                       className="text-gray-400 text-[14px] hover:text-white transition-colors"
                     >
-                      Why Choose Us
+                      Experts
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/developers"
                       className="text-gray-400 text-[14px] hover:text-white transition-colors"
                     >
-                      Our Solutions
+                      Developers
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/designers"
                       className="text-gray-400 text-[14px] hover:text-white transition-colors"
                     >
-                      Partners
+                      Designers
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/skills-directory"
                       className="text-gray-400 text-[14px] hover:text-white transition-colors"
                     >
-                      Core Values
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
-                    >
-                      Our Projects
+                      Skills Directory
                     </Link>
                   </li>
                 </ul>
               </div>
+             
             </div>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="mt-16 pt-8 border-t border-gray-200 flex justify-between items-center">
-          <p className="text-gray-600 text-[14px]">Copyright © 2024 ItServices.com</p>
+        <div className="mt-16 pt-8 border-t border-gray-700 flex justify-between items-center">
+          <p className="text-gray-600 text-[14px]">
+            ©2024 Algofolks Private Limited
+          </p>
           <div className="space-x-6">
-            <Link href="/cancellation-policy" className="text-gray-600 hover:text-blue-600">
+            <Link
+              href="/cancellation-policy"
+              className="text-gray-600 hover:text-blue-600"
+            >
               Cancellation Policy
             </Link>
-            <Link href="/refund-policy" className="text-gray-600 text-[14px] hover:text-blue-600">
+            <Link
+              href="/refund-policy"
+              className="text-gray-600 text-[14px] hover:text-blue-600"
+            >
               Refund Policy
             </Link>
-            <Link href="/privacy-policy" className="text-gray-600 text-[14px] hover:text-blue-600">
+            <Link
+              href="/privacy-policy"
+              className="text-gray-600 text-[14px] hover:text-blue-600"
+            >
               Privacy Policy
             </Link>
           </div>

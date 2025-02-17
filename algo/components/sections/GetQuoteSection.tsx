@@ -1,8 +1,11 @@
 "use client";
 
 import Image from "next/image";
+interface GetQuoteSectionProps {
+  title: string;
+}
 
-export function GetQuoteSection() {
+export function GetQuoteSection({ title }: GetQuoteSectionProps) {
   return (
     <>
       {/* Hero Section */}
@@ -32,9 +35,7 @@ export function GetQuoteSection() {
         <div className="container mx-auto px-4 relative z-20">
           <div className="text-center max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <h1 className="text-3xl font-bold text-[#0B1B2B]">
-                Designing IT Services
-              </h1>
+              <h1 className="text-3xl font-bold text-[#0B1B2B]">{title}</h1>
             </div>
             <div className="flex items-center justify-center gap-2 text-gray-600">
               <span>Home</span>

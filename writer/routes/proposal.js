@@ -8,29 +8,21 @@ const router = express.Router();
 // Create a new proposal
 router.post('/generate-proposal', async (req, res) => {
     try {
-        const { analysisId } = req.body;
+        const { links, services } = req.body;
 
-        const analysis = await Analysis.findById(analysisId);
-
-        if(!analysis) {
-            return res.status(404).json({
+        if(!services) {
+            return res.status(400).json({
                 success: false,
-                message: "Analysis not found"
+                message: "Links are required"
             });
         }
 
-        let links = analysis.links;
-        links = links.map(link => link.url);
-        links = links.join(", ");
-        let services = analysis.allServices;
-        services = services.join(", ");
+        const proposal = await generateBusinessProposal(links, (services || []));
 
-        const proposal = await generateBusinessProposal(links, services);
-
-      res.status(200).json({
-        success: true,
-        data: analysis
-      });   
+        res.status(200).json({
+            success: true,
+            data: proposal
+        });   
 
     } catch (error) {
         res.status(500).json({

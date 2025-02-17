@@ -10,7 +10,7 @@ export const startProcess = async (url) => {
     throw new Error("URL is required");
   }
    
-  //let linksTemp = await getLinks(url);
+  let linksTemp = await getLinks(url);
   //let linksTemp = [
     //{ link: 'https://www.amarisadoption.com/adopting', title: 'Services' },
   //]
@@ -33,12 +33,12 @@ export const startProcess = async (url) => {
 
   for (var i = 0; i < links.length; i++) { 
     let services = await getNatureOfBusiness(links[i]);
-    links[i].services = services;
+    links[i].services = services || [];
   }
 
   let allServices = new Set();
   links.forEach((link) => {
-    link.services.forEach((service) => allServices.add(service));
+    (link.services || []).forEach((service) => allServices.add(service));
   });
 
   allServices = Array.from(allServices);

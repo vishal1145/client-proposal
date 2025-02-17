@@ -54,7 +54,7 @@ export default function CancellationPolicyPage() {
         </div>
       </section>
 
-      <div className="container  py-16 px-4">
+      <div className="container px-4">
         <div className="   ">
           <h1 className="text-[24px] font-bold mb-6 text-gray-900">Cancellation Policy</h1>
           
@@ -63,7 +63,7 @@ export default function CancellationPolicyPage() {
             At Algofolks, we value our customers and aim to provide seamless IT services including QA, web development, app development, and more. However, we understand that there may be instances where you need to cancel an order or terminate a service agreement. Please read the following cancellation policy carefully:
             </p>
 
-            <div className="space-y-8">
+            <div className=" ">
               <section className="space-y-4">
                 <h2 className="text-[24px] font-semibold text-gray-900">1. Service Cancellation:</h2>
                 <ul className="list-disc pl-6 space-y-3">

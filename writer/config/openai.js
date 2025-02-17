@@ -17,6 +17,12 @@ export function initialize(apiKey) {
 
 export async function extractLinksFromHomePage(input_prompt) {
     try {
+        const systemPrompt = fs.readFileSync('./config/prompts/extract-link.txt', 'utf8');
+        console.log('systemPrompt', systemPrompt);
+        const userPrompt = `Here are the extracted html from the website:\n\n${html}`;
+        //console.log('userPrompt', userPrompt);
+        const response = await openaiInstance.invoke(systemPrompt, userPrompt);
+        console.log('response', response);
         return [
             "https://example.com/about",
             "https://example.com/services",

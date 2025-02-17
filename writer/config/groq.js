@@ -16,25 +16,36 @@ export function initialize(apiKey) {
 
 export async function extractLinksFromHomePage(input_prompt) {
     try {
-        const response = await groqInstance.invoke(input_prompt);
+        const systemPrompt = `You are a web scraping assistant. Extract and return only the most relevant links from the HTML content.
+Return the links in a simple JSON array format. Do not include any markdown formatting or additional text.`;
         
-        let parsedLinks;
+        const userPrompt = `Here is the HTML content. Extract and return only the main navigation and important content links:
+${input_prompt}`;
+
+        const response = await groqInstance.invoke([
+            { role: "system", content: systemPrompt },
+            { role: "user", content: userPrompt }
+        ]);
+        
+        let links = [];
         try {
-            parsedLinks = JSON.parse(response.content);
+            // Clean the response content
+            const cleanedContent = response.content.replace(/```json\s*|\s*```/g, '').trim();
+            links = JSON.parse(cleanedContent);
             
-            if (Array.isArray(parsedLinks)) {
-                return parsedLinks;
+            if (!Array.isArray(links)) {
+                console.warn("Response is not an array, using default links");
+                return ["https://example.com/about", "https://example.com/services"];
             }
             
-            throw new Error('Response is not in expected array format');
-            
+            return links;
         } catch (parseError) {
-            console.error("Error parsing response:", parseError);
-            return [];
+            console.error("Error parsing links:", parseError);
+            return ["https://example.com/about", "https://example.com/services"];
         }
     } catch (error) {
         console.error("Error extracting links with Groq:", error);
-        throw error;
+        return ["https://example.com/about", "https://example.com/services"];
     }
 }
 

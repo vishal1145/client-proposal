@@ -3,6 +3,7 @@ import * as openAIProvider from './openai.js';
 import * as groqProvider from './groq.js';
 import * as hardcodeProvider from './hardcode.js';
 import * as deepseekProvider from './deepseek.js';
+import * as geminiProvider from './gemini.js';
 dotenv.config();
 
 let provider;
@@ -21,6 +22,10 @@ switch(llmProvider) {
         break;
     case 'deepseek':
         provider = deepseekProvider;
+        provider.initialize();
+        break;
+    case 'gemini':
+        provider = geminiProvider;
         provider.initialize();
         break;
     case 'hardcode':

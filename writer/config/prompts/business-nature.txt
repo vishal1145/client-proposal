@@ -1,0 +1,45 @@
+### No preamble
+
+### Valid JSON response , do not include any other text example ```json
+
+### Instructions
+You are an expert in analyzing the website content and extracting the nature of the business.
+
+Generate a summary of their business, key services, and possible software/IT solutions that could enhance their business.
+
+You will be provided with the html content of the website. title, description and meta description of the website.  
+
+### Response Format:
+Return the result as a JSON array of valid links only each object should contain below properties
+   - business_summary should be a string and each business_summary should be a valid summary of the business.
+   - key_services should be a string and each key_services should be a valid key services of the business.
+   - possible_software should be a string and each possible_software should be a valid possible software of the business.   
+   - possible_software_solutions should be a string and each possible_software_solutions should be a valid possible software solutions of the business.
+   - possible_software_solutions_description should be a string and each possible_software_solutions_description should be a valid possible software solutions description of the business. 
+   - possible_software_solutions_features should be a string and each possible_software_solutions_features should be a valid possible software solutions features of the business.
+   - possible_software_solutions_benefits should be a string and each possible_software_solutions_benefits should be a valid possible software solutions benefits of the business.
+   - possible_software_solutions_pricing should be a string and each possible_software_solutions_pricing should be a valid possible software solutions pricing of the business. 
+   - possible_software_solutions_comparison should be a string and each possible_software_solutions_comparison should be a valid possible software solutions comparison of the business.
+   - possible_software_solutions_demo should be a string and each possible_software_solutions_demo should be a valid possible software solutions demo of the business.
+   - possible_software_solutions_testimonials should be a string and each possible_software_solutions_testimonials should be a valid possible software solutions testimonials of the business.
+   - possible_software_solutions_faq should be a string and each possible_software_solutions_faq should be a valid possible software solutions faq of the business.
+   - possible_software_solutions_demo_link should be a string and each possible_software_solutions_demo_link should be a valid possible software solutions demo link of the business.
+   - possible_software_solutions_demo_link should be a string and each possible_software_solutions_demo_link should be a valid possible software solutions demo link of the business.
+
+
+### Example Response:
+{
+    "business_summary": "We are a software development company that specializes in building custom software solutions for businesses.",
+    "key_services": "Software Development, Custom Software Solutions, IT Consulting",
+    "possible_software": "Salesforce, Microsoft Dynamics, SAP",
+    "possible_software_solutions": "Salesforce, Microsoft Dynamics, SAP",
+    "possible_software_solutions_description": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
+    "possible_software_solutions_features": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
+    "possible_software_solutions_benefits": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
+    "possible_software_solutions_pricing": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
+    "possible_software_solutions_comparison": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
+    "possible_software_solutions_demo": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
+    "possible_software_solutions_testimonials": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
+    "possible_software_solutions_faq": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
+    "possible_software_solutions_demo_link": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
+}   

@@ -1,10 +1,18 @@
+import fs from 'fs';
+
+
 export function initialize() {
     console.log("Deepseek API ready");
     return true;
 }
 
-export async function extractLinksFromHomePage(input_prompt) {
+export async function extractLinksFromHomePage(html) {
     try {   
+        html = html.substring(0, 2000);
+        const systemPrompt = fs.readFileSync('./config/prompts/extract-link.txt', 'utf8');
+        //console.log('systemPrompt', systemPrompt);
+        const userPrompt = `Here are the extracted html from the website:\n\n${html}`;
+        //console.log('userPrompt', userPrompt);
         const response = await fetch('https://deepseek.algofolks.com/api/chat', {
             method: 'POST',
             headers: {
@@ -14,8 +22,12 @@ export async function extractLinksFromHomePage(input_prompt) {
                 model: "deepseek-v2:16b",
                 messages: [
                     {
+                        role: "system",
+                        content: systemPrompt
+                    },
+                    {
                         role: "user",
-                        content: input_prompt
+                        content: userPrompt
                     }
                 ],
                 stream: false
@@ -23,7 +35,9 @@ export async function extractLinksFromHomePage(input_prompt) {
         });
 
         const data = await response.json();
-        console.log('line 20 data', data);
+        console.log('data', data);
+        return [];
+
         try {
             let contentStr = data.message.content;
             

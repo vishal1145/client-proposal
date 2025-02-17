@@ -23,55 +23,12 @@ async function getLinks(url) {
 
   try {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
-
-    const links = await page.evaluate(() => {
-      return Array.from(document.querySelectorAll("a"))
-        .map((a) => a.href)
-        .filter(
-          (href) =>
-            href.startsWith("http") &&
-            !href.includes("facebook.com") &&
-            !href.includes("twitter.com") &&
-            !/\.(pdf|zip|exe|dmg|mp4|mp3|apk)$/i.test(href)
-        );
-    });
-
-    let validLinks = [];
-    for (const link of links) {
-      if (await isSSLCertificateValid(link)) {
-        validLinks.push(link);
-      }
-    }
-
-
-    if (validLinks.length === 0) {
-      console.log("No valid SSL links found.");
-      return [];
-    }
-
-    const prompt = `Here are the extracted links from the website:\n\n${validLinks.join("\n")}
-
-    Analyze these links and return only the most relevant ones that provide valuable content about the website's main purpose. 
-
-    Strict exclusion criteria:
-    - Social media profiles or sharing links
-    - Contact/support/help pages
-    - Payment gateways or checkout pages
-    - Duplicate URLs with different parameters
-    - File downloads (PDFs, documents, media)
-    - Login/signup pages
-    - Legal pages (privacy policy, terms of service)
-    - External advertisement links
-    - play store links
-    - app store links
-
-    Return the result as a JSON array of strings only and no other text compulsorily.`;
-
-    validLinks = await extractLinksFromHomePage(prompt);
-    console.log('line 46 validLinks', validLinks);
+    const html = await page.content();
+    const validLinks = await extractLinksFromHomePage(html);
     return validLinks;
   } catch (error) {
     console.error("Error:", error.message);
+    return [];
   } finally {
     await browser.close();
   }

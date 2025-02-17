@@ -10,38 +10,43 @@ export const startProcess = async (url) => {
     throw new Error("URL is required");
   }
    
-  console.log('line 12 url', url);
-  let linksTemp = await getLinks(url);
-  let links = [linksTemp[0]].map((link) => ({
-    url: link,
+  //let linksTemp = await getLinks(url);
+  //let linksTemp = [
+    //{ link: 'https://www.amarisadoption.com/adopting', title: 'Services' },
+  //]
+
+  let links = linksTemp.map((link) => ({
+    url: link.link,
+    title: "",  
+    description: "",
     html: null,
     services: [],
   }));
 
-  console.log('line 21 links', links);
   for (var i = 0; i < links.length; i++) { 
-    links[i].html = await getHtmlFromUrl(links[i].url);
+    var htmlDetails = await getHtmlFromUrl(links[i].url);
+    links[i].html = htmlDetails.html;
+    links[i].title = htmlDetails.title;
+    links[i].description = htmlDetails.description;
+    links[i].meta_description = htmlDetails.meta_description; 
   }
 
   for (var i = 0; i < links.length; i++) { 
-    let services = await getNatureOfBusiness(links[i].html);
+    let services = await getNatureOfBusiness(links[i]);
     links[i].services = services;
   }
 
-  console.log('line 28 links');
   let allServices = new Set();
   links.forEach((link) => {
     link.services.forEach((service) => allServices.add(service));
   });
 
   allServices = Array.from(allServices);
-  console.log('line 28 links');
  
   var analysis = {};
   analysis.url = url;
   analysis.links = links;
   analysis.allServices = allServices;
-  console.log('line 28 links');
 
   // Save analysis to database
   try {
@@ -51,11 +56,13 @@ export const startProcess = async (url) => {
       links: analysis.links.map(link => ({
         url: link.url,
         html: link.html,
+        title: link.title,
+        description: link.description,
+        meta_description: link.meta_description,  
         services: link.services
       })),
       allServices: analysis.allServices
     };
-    console.log('line 28 links');
 
     // Save to database
     const alreadyExists = await Analysis.findOne({ url: url });

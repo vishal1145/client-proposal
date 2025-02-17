@@ -121,7 +121,7 @@ const FaqSection = () => {
         </div>
 
         {/* Decorative Elements */}
-        <div className="absolute bottom-0  z-10 flex flex-col items-end gap-8 sm:gap-12 hidden sm:flex">
+        <div className="absolute bottom-0  z-10  flex-col items-end gap-8 sm:gap-12 hidden sm:flex">
           <Image
             src="/images/triangle.png"
             alt="Triangle decoration"

@@ -1,7 +1,58 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function CareerPage() {
   return (
+    <>
+          <section className="relative bg-[#F6F0E4] py-20 overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
+          <Image
+            src="/images/hand.png"
+            alt="Hand with Rocket"
+            width={300}
+            height={200}
+            className="w-auto h-auto opacity-90"
+          />
+        </div>
+
+        <div className="absolute right-20 top-1/2 -translate-y-1/2 z-10">
+          <Image
+            src="/images/message.png"
+            alt="Chat Bubble"
+            width={80}
+            height={80}
+            className="w-auto h-auto opacity-80"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-20">
+          <div className="text-center max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <h1 className="text-3xl font-bold text-[#0B1B2B]">
+                Career
+              </h1>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-gray-600">
+              <span>Home</span>
+              <span>-</span>
+              <span>Our Career</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-1/4 z-10">
+          <Image
+            src="/images/decorative.png"
+            alt="Decorative Element"
+            width={100}
+            height={100}
+            className="w-auto h-auto opacity-30"
+          />
+        </div>
+      </section>
     <div className="min-h-screen p-8 md:p-16 mt-24">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 mb-16">
         {/* Left Content Section */}
@@ -236,8 +287,8 @@ export default function CareerPage() {
       <div className="max-w-6xl mx-auto mb-16">
         {/* Contact Header */}
         <div className="text-center border rounded-lg p-8 mb-12">
-          <h2 className="text-[#1e293b] text-[32px] font-bold mb-4">Contact Our Team</h2>
-          <button className="px-6 py-2 bg-[#26c6da] text-white rounded-md text-sm">
+          <h2 className="text-[#1e293b] text-[32px] font-[22px] mb-4">Contact Our Team</h2>
+          <button className="px-6 py-2 bg-[#26c6da] text-white rounded-md text-[14px]">
             view open roles
           </button>
         </div>
@@ -247,10 +298,10 @@ export default function CareerPage() {
           {/* Flexibility Card */}
           <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
             <div className="flex items-center gap-3 mb-3">
-              <img src="/images/flexibility-icon.svg" alt="" className="w-6 h-6" />
-              <h3 className="text-lg font-medium">Flexibility</h3>
+              <img src="/images/algo5.jpg" alt="" className="w-6 h-6" />
+              <h3 className="text-lg font-[17px]">Flexibility</h3>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-gray-700 text-[13px] leading-relaxed">
               We provide a hybrid work model- with an ambient mix of in-office and work from home options. We believe in obtaining on-point deliverables rather than on-time card punching.
             </p>
           </div>
@@ -258,10 +309,10 @@ export default function CareerPage() {
           {/* Transparency Card */}
           <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
             <div className="flex items-center gap-3 mb-3">
-              <img src="/images/transparency-icon.svg" alt="" className="w-6 h-6" />
-              <h3 className="text-lg font-medium">Transparency</h3>
+              <img src="/images/algo6.jpg" alt="" className="w-6 h-6" />
+              <h3 className="text-lg font-[17px]">Transparency</h3>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-gray-700 text-[13px] leading-relaxed">
               Secrets are for spies- not for us! We are 100% honest and straightforward in all our interactions to boost credibility and confidence among past and present clients.
             </p>
           </div>
@@ -269,10 +320,10 @@ export default function CareerPage() {
           {/* Celebration Card */}
           <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
             <div className="flex items-center gap-3 mb-3">
-              <img src="/images/celebration-icon.svg" alt="" className="w-6 h-6" />
-              <h3 className="text-lg font-medium">Celebration</h3>
+              <img src="/images/algo7.jpg" alt="" className="w-6 h-6" />
+              <h3 className="text-lg font-[17px]">Celebration</h3>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-gray-700 text-[13px] leading-relaxed">
               Whether it is a tea party or sit-down dinner, celebrating the small and big wins are equally important- we do it all to keep the morale high, and the efforts acknowledged!
             </p>
           </div>
@@ -280,10 +331,10 @@ export default function CareerPage() {
           {/* Community Outreach Card */}
           <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
             <div className="flex items-center gap-3 mb-3">
-              <img src="/images/community-icon.svg" alt="" className="w-6 h-6" />
-              <h3 className="text-lg font-medium">Community outreach</h3>
+              <img src="/images/algo8.jpg" alt="" className="w-6 h-6" />
+                <h3 className="text-lg font-medium">Community outreach</h3>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-gray-700 text-[13px] leading-relaxed">
               At Algofolks, we believe in the concept of community development. Our outreach programs with NGOs and government organizations reflect the Mahatma's belief system, which is instilled among our founders.
             </p>
           </div>
@@ -291,10 +342,10 @@ export default function CareerPage() {
           {/* Communication Card */}
           <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
             <div className="flex items-center gap-3 mb-3">
-              <img src="/images/communication-icon.svg" alt="" className="w-6 h-6" />
-              <h3 className="text-lg font-medium">Communication</h3>
+              <img src="/images/algo9.jpg" alt="" className="w-6 h-6" />
+              <h3 className="text-lg font-[17px]">Communication</h3>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-gray-700 text-[13px] leading-relaxed">
               There is no gap in communication- if not f2f, then over skype, Google Meet, slack, or emails- all queries are answered and all points debated.
             </p>
           </div>
@@ -302,10 +353,10 @@ export default function CareerPage() {
           {/* Learning Card */}
           <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
             <div className="flex items-center gap-3 mb-3">
-              <img src="/images/learning-icon.svg" alt="" className="w-6 h-6" />
-              <h3 className="text-lg font-medium">Learning</h3>
+                <img src="/images/algo10.jpg" alt="" className="w-6 h-6" />
+                <h3 className="text-lg font-[17px]">Learning</h3>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-gray-700 text-[13px] leading-relaxed">
               Technology is ever-evolving, and so is team Algofolks. We keep ourselves constantly updated with the latest trends and innovations about tools and software so that our clients can benefit from our knowledge & expertise!
             </p>
           </div>
@@ -313,48 +364,48 @@ export default function CareerPage() {
       </div>
 
       {/* Who We Are Section */}
-      <div className="bg-blue-600 text-white p-6 md:p-12 rounded-lg mt-16 relative overflow-hidden max-h-[800px]">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img 
-            src="/images/blue-waves.jpg" 
-            alt="Background Pattern" 
-            className="w-full h-full object-cover opacity-20"
-          />
-        </div>
-
-        {/* Content Container */}
-        <div className="relative z-10 flex flex-col md:flex-row gap-6">
-          {/* Text Content */}
-          <div className="md:w-1/2">
-            <p className="text-sm mb-2">Who we are</p>
-            
-            <h2 className="text-4xl font-bold mb-3">
-              Crafting a Brighter Tomorrow with Innovation
-            </h2>
-            
-            <p className="text-base mb-4">
-              At Algofolks, we are committed to shaping a brighter future through innovation 
-              and collective knowledge. Join us on our journey of transformation, where we 
-              build the future, one innovative solution at a time.
-            </p>
-            
-            <div className="flex items-center gap-2 text-sm">
-              <span>Get to know about us</span>
-              <span className="inline-block">→</span>
+      <div className='px-8'>
+        
+      <div className="bg-[#0066FF] text-white p-16 rounded-[24px] mt-16 relative overflow-hidden">
+        <div className="max-w-[650px] relative z-10">
+          <p className="text-[13px] mb-6">Who we are</p>
+          
+          <h2 className="text-[36px] font-normal leading-[1.15] mb-8">
+            Crafting a Brighter<br />
+            Tomorrow with Innovation<br />
+            and Collective Wisdom
+          </h2>
+          
+          <p className="text-[13px] leading-[1.5] mb-16 opacity-80 max-w-[600px]">
+            At Algofolks, we are committed to shaping a brighter future through the relentless pursuit of 
+            innovation and harnessing the collective knowledge of our dedicated team. We thrive on the 
+            frontiers of technology, continually pushing the boundaries of what's possible. Join us on our 
+            journey of transformation, where we build the future, one innovative solution at a time.
+          </p>
+          
+          <div className="flex items-center">
+            <div className="flex-1">
+              <div className="border-t border-white/10"></div>
+            </div>
+            <div className="flex items-center gap-3 ml-6 text-[14px]">
+              Get to know about us
+              <div className="bg-white/10 rounded-full p-2">
+                <svg width="30" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.172 11L10.808 5.63598L12.222 4.22198L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z" fill="white"/>
+                </svg>
+              </div>
             </div>
           </div>
-
-          {/* Image Section */}
-          <div className="md:w-1/2">
-            <img 
-              src="/images/carrer1.jpg" 
-              alt="Who We Are" 
-              className="w-full h-[400px] object-cover"
-            />
-          </div>
+        </div>
+        
+        {/* Background Pattern */}
+        <div className="absolute top-0 right-0 w-1/2 h-full">
+          <div className="w-full h-full bg-[url('/images/carrer1.jpg')] bg-cover bg-center opacity-30"></div>
         </div>
       </div>
+      </div>
+
     </div>
+    </>
   )
 }

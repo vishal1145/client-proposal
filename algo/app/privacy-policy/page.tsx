@@ -85,7 +85,7 @@ export default function PrivacyPolicyPage() {
                     in order to fulfil the legal obligations incumbent on the administrator on the basis of generally applicable laws, including tax and accounting regulations, the legal basis of the processing is art. 6 par. point c of the Regulation 2016/679;
                   </li>
                   <li className="text-[14px] text-gray-700 leading-relaxed">
-                    for analytical and statistical purposes – the legal basis for processing is the legitimate interest of the administrator (Article 6 (1) letter f of Regulation 2016/679), it is justified by the administrator's interest to analyse the results of business operations.
+                    for analytical and statistical purposes – the legal basis for processing is the legitimate interest of the administrator (Article 6 (1) letter f of Regulation 2016/679), it is justified by the administrator&apos;s interest to analyse the results of business operations.
                   </li>
                   <li className="text-[14px] text-gray-700 leading-relaxed">
                     in order to collect your data for the purpose of establishing cooperation with a co-worker in the recruitment process.

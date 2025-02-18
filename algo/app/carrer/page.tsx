@@ -134,7 +134,7 @@ export default function CareerPage() {
           We are growth accelerator partners for startups and small businesses
         </h2>
         <p className="text-gray-600">
-          At Algofolks we believe that if we don't deliver 1000% for every project, then it's not worth doing. This makes us an industry favorite with organizations- big and small.
+          At Algofolks we believe that if we don&apos;t deliver 1000% for every project, then it&apos;s not worth doing. This makes us an industry favorite with organizations- big and small.
         </p>
       </div>
 
@@ -255,7 +255,7 @@ export default function CareerPage() {
                       <h3 className="text-[17px] font-[500]">Champion the Camaraderie</h3>
             </div>
             <p className="leading-[16px] text-[13px] font-normal text-black opacity-75">
-              There is no lonewolf in the team. We believe in respect, equality and honesty, and owning up to one's mistakes. As part of the team, these core values help foster a happy and positive workplace.
+              There is no lonewolf in the team. We believe in respect, equality and honesty, and owning up to one&apos;s mistakes. As part of the team, these core values help foster a happy and positive workplace.
             </p>
           </div>
 
@@ -335,7 +335,7 @@ export default function CareerPage() {
                 <h3 className="text-lg font-medium">Community outreach</h3>
             </div>
             <p className="text-gray-700 text-[13px] leading-relaxed">
-              At Algofolks, we believe in the concept of community development. Our outreach programs with NGOs and government organizations reflect the Mahatma's belief system, which is instilled among our founders.
+              At Algofolks, we believe in the concept of community development. Our outreach programs with NGOs and government organizations reflect the Mahatma&apos;s belief system, which is instilled among our founders.
             </p>
           </div>
 
@@ -379,7 +379,7 @@ export default function CareerPage() {
           <p className="text-[13px] leading-[1.5] mb-16 opacity-80 max-w-[600px]">
             At Algofolks, we are committed to shaping a brighter future through the relentless pursuit of 
             innovation and harnessing the collective knowledge of our dedicated team. We thrive on the 
-            frontiers of technology, continually pushing the boundaries of what's possible. Join us on our 
+            frontiers of technology, continually pushing the boundaries of what&apos;s possible. Join us on our 
             journey of transformation, where we build the future, one innovative solution at a time.
           </p>
           

@@ -112,7 +112,7 @@ export default function RefundPolicyPage() {
               <h2 className="text-[18px] font-semibold text-gray-900 mb-2">6. Force Majeure:</h2>
               <ul className="list-disc pl-6">
                 <li className="text-[14px] text-gray-700 leading-relaxed">
-                  Refunds will not be granted for delays or interruptions caused by factors beyond Algofolks' control, such as natural disasters, technical failures, or third-party disruptions.
+                  Refunds will not be granted for delays or interruptions caused by factors beyond Algofolks&apos; control, such as natural disasters, technical failures, or third-party disruptions.
                 </li>
               </ul>
             </div>

@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/home/prabhukumar/Desktop/Algofolks/client-proposal/algo/app/layout":["static/media/8bf7b2ceda89477b-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';

@@ -10,7 +10,7 @@ const publicSans = Public_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ITS - IT Services & Solutions",
+  title: "Algofolks",
   description: "Expert IT Services in Design, App & Development",
 };
 

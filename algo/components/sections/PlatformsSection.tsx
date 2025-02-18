@@ -5,9 +5,10 @@ export function PlatformsSection() {
   return (
     <section className="bg-[#0B1B2B] relative overflow-x-hidden">
       <div className="flex flex-col md:flex-row">
-        {/* Left Content */}
-        <div className="w-full md:w-1/2 py-16 px-6 md:pl-20 md:pr-10 bg-[#0A1628]">
-          <div className="max-w-sm">
+        {/* Left Content */} 
+        
+             <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-10 lg:p-16 xl:pl-28 bg-[#0A1628]">
+          <div className="max-w-sm mx-auto md:mx-0"> 
             <p className="text-gray-400 text-sm mb-1 border border-gray-800 p-1 rounded-2xl inline-block">
               What We Are Expert In
             </p>
@@ -21,7 +22,7 @@ export function PlatformsSection() {
               <div className="relative group">
                 <div className="absolute inset-0 rounded-2xl"></div>
                 <div
-                  className="relative flex items-center justify-between rounded-2xl p-8 transition-colors cursor-pointer"
+                  className="relative flex items-center justify-between rounded-2xl p-4 transition-colors cursor-pointer"
                   style={{
                     borderImage:
                       "linear-gradient(to right, rgba(22, 36, 50, 1) 60%, rgba(22, 36, 50, 0)) 1",
@@ -53,7 +54,7 @@ export function PlatformsSection() {
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0561FC] via-[#0561FC]/50 to-transparent"></div>
                 <div
-                  className="relative flex items-center justify-between rounded-2xl p-8 transition-colors cursor-pointer"
+                  className="relative flex items-center justify-between rounded-2xl p-4 transition-colors cursor-pointer"
                   style={{
                     background:
                       "linear-gradient(to right, #0561FC 40%, #0561FC/30 70%, transparent 100%)",
@@ -81,7 +82,7 @@ export function PlatformsSection() {
               <div className="relative group">
                 <div className="absolute inset-0 rounded-2xl"></div>
                 <div
-                  className="relative flex items-center justify-between rounded-2xl p-8 transition-colors cursor-pointer"
+                  className="relative flex items-center justify-between rounded-2xl p-4 transition-colors cursor-pointer"
                   style={{
                     background: "transparent",
                     borderImage:
@@ -115,7 +116,7 @@ export function PlatformsSection() {
             {/* Know More Button */}
             <div className="mt-8">
               <Link
-                href="#"
+                href="services"
                 className="inline-flex items-center text-[13px] text-white px-6 py-3 bg-[#0561FC] rounded-full hover:bg-blue-600 transition-colors"
               >
                 Know More

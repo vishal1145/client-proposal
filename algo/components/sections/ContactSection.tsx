@@ -15,7 +15,7 @@ export function ContactSection() {
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-40">
           {/* Left Side - Contact Info */}
           <div>
@@ -61,9 +61,7 @@ export function ContactSection() {
     <div>
       <h4 className="text-base font-medium text-white mb-2">Address</h4>
       <p className="text-sm text-white leading-relaxed">
-        42 Mammoun Street, Saba
-        <br />
-        Carpet And Antiques Store, UK
+       C-104 Sector 65 Noida
       </p>
     </div>
   </div>
@@ -88,9 +86,7 @@ export function ContactSection() {
     <div>
       <h4 className="text-base font-medium text-[#f4f5f7] mb-2">Phone Number</h4>
       <p className="text-sm text-white leading-relaxed">
-        +561 541 578 961
-        <br />
-        +95 183 996 159
+      +91 8743045170
       </p>
     </div>
   </div>
@@ -120,9 +116,7 @@ export function ContactSection() {
     <div>
       <h4 className="text-base font-medium text-white mb-2">Email Id</h4>
       <p className="text-sm text-white leading-relaxed">
-        Info@Service.Com
-        <br />
-        Enquiry@Service.Com
+       hii@algofolks.com
       </p>
     </div>
   </div>
@@ -165,7 +159,7 @@ export function ContactSection() {
   <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 hidden sm:block"></div>
 
   {/* Horizontal Divider (Visible on all screens) */}
-  <div className="absolute left-0 right-0 top-[45%] h-px bg-gray-300 hidden sm:block"></div>
+  <div className="absolute left-0 right-0 top-[45%] h-px bg-gray-300 hidden sm:block "></div>
 </div>
 
           </div>
@@ -196,14 +190,8 @@ export function ContactSection() {
                 />
               </div>
 
-              {/* Your Enquired */}
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Your Enquired"
-                  className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60"
-                />
-              </div>
+             
+              
 
               {/* Message */}
               <div className="relative">
@@ -215,7 +203,7 @@ export function ContactSection() {
               </div>
 
               {/* Submit Button */}
-              <button className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 transition-colors">
+              <button className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors">
                 Submit Now <span className="ml-1">→</span>
               </button>
             </form>

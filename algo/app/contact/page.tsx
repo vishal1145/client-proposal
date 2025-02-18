@@ -359,7 +359,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Submit Button */}
-                <button className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 transition-colors">
+                <button className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors">
                   Submit Now <span className="ml-1">→</span>
                 </button>
               </form>

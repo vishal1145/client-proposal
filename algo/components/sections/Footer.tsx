@@ -18,7 +18,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
           <div className="relative lg:col-span-4 space-y-6 ">
             <Link href="/">
               <Image
-                src="/images/logo.png"
+                src="/images/logo(1).png"
                 alt="Logo"
                 width={150}
                 height={50}
@@ -373,7 +373,6 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                   </li>
                 </ul>
               </div>
-             
             </div>
           </div>
         </div>

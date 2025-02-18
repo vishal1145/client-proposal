@@ -54,7 +54,7 @@ export default function ContactPage() {
       </div>
 
       {/* World Map Section */}
-      <section className="py-10">
+      <section className="pt-10 pb-3">
         <div className="container mx-auto px-0">
         <div className="relative">
   {/* World Map Background */}
@@ -63,7 +63,7 @@ export default function ContactPage() {
       src="/images/Layer_1.png"
       alt="World Map"
       width={900}
-      height={150}
+      height={100}
       className="opacity-90"
     />
   </div>
@@ -82,7 +82,7 @@ export default function ContactPage() {
     <div className="relative">
       <div className="w-1 h-1 bg-[#0561FC] rounded-full animate-ping absolute opacity-75"></div>
       <div className="w-2 h-2 bg-[#0561FC] rounded-full relative z-10"></div>
-      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-[#0561FC] text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg">
+      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-[#0561FC] text-white px-4 py-2 rounded-lg text-xs whitespace-nowrap shadow-lg">
         <p>IT Services & Software Solutions</p>
         <p>45, Singapore</p>
         <p>Ph: +65 123 456 789</p>
@@ -95,11 +95,11 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Options */}
-      <section className="py-16 bg-[#F8F9FF] ">
+      <section className="pb-16 pt-0 bg-white ">
   <div className="container mx-auto px-4">
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
       {/* Chat For Sales */}
-      <div className="bg-white p-6 rounded-xl text-left shadow-xl transition-all group hover:bg-[#0561FC] hover:text-white">
+      <div className="bg-white p-6 rounded-xl text-left shadow-2xl transition-all group hover:bg-[#0561FC] hover:text-white">
         <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3">
           <Image
             src="/images/sales.png"
@@ -121,7 +121,7 @@ export default function ContactPage() {
       </div>
 
       {/* Chat For Support */}
-      <div className="bg-white p-6 rounded-xl text-left shadow-xl transition-all group hover:bg-[#0561FC] hover:text-white">
+      <div className="bg-white p-6 rounded-xl text-left shadow-2xl transition-all group hover:bg-[#0561FC] hover:text-white">
         <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3">
           <Image
             src="/images/chat.png"
@@ -143,7 +143,7 @@ export default function ContactPage() {
       </div>
 
       {/* Visit Our Site */}
-      <div className="bg-white p-6 rounded-xl text-left shadow-xl transition-all group hover:bg-[#0561FC] hover:text-white">
+      <div className="bg-white p-6 rounded-xl text-left shadow-2xl transition-all group hover:bg-[#0561FC] hover:text-white">
         <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-3">
           <Image
             src="/images/site.png"
@@ -165,7 +165,7 @@ export default function ContactPage() {
       </div>
 
       {/* Contact Us */}
-      <div className="bg-white p-6 rounded-xl text-left shadow-xl transition-all group hover:bg-[#0561FC] hover:text-white">
+      <div className="bg-white p-6 rounded-xl text-left shadow-2xl transition-all group hover:bg-[#0561FC] hover:text-white">
         <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3">
           <Image
             src="/images/contact.png"
@@ -230,9 +230,7 @@ export default function ContactPage() {
                       Address
                     </h4>
                     <p className="text-sm text-gray-500 leading-relaxed">
-                      42 Mammoun Street, Saba
-                      <br />
-                      Carpet And Antiques Store, UK
+                    C-104 Sector 65 Noida
                     </p>
                   </div>
                 </div>
@@ -253,9 +251,7 @@ export default function ContactPage() {
                       Phone Number
                     </h4>
                     <p className="text-sm text-gray-500 leading-relaxed">
-                      +561 541 578 961
-                      <br />
-                      +95 183 996 159
+                    +91 8743045170
                     </p>
                   </div>
                 </div>
@@ -276,9 +272,7 @@ export default function ContactPage() {
                       Email Id
                     </h4>
                     <p className="text-sm text-gray-500 leading-relaxed">
-                      Info@Service.Com
-                      <br />
-                      Enquiry@Service.Com
+                     hii@algofolks.com
                     </p>
                   </div>
                 </div>
@@ -340,14 +334,7 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {/* Your Enquired */}
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Your Enquired"
-                    className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60"
-                  />
-                </div>
+               
 
                 {/* Message */}
                 <div className="relative">

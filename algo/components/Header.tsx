@@ -30,9 +30,14 @@ export function Header() {
       {/* Top Bar */}
       <div className="bg-[#0B1B2B] text-white py-2">
         <div className="container mx-auto px-4">
-          <div className="flex  justify-end">
+          <div className="flex  justify-between items-center">
            
+          <div className="flex items-center gap-6">
+       
 
+        {/* Company Tagline */}
+        <span className="text-sm opacity-80">Innovating the Future of IT Solutions</span>
+      </div>
             {/* Contact Info */}
             <div className="flex  gap-8 text-sm">
             <div className="flex items-center gap-2">

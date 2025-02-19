@@ -1,12 +1,81 @@
 import type { Metadata } from "next";
 import Footer from "@/components/sections/Footer";
 import Image from "next/image";
+import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About Us - IT Solutions",
   description:
     "Learn about our company and our 25 years of experience in providing exclusive technology and IT solutions.",
 };
+
+const stats = [
+  {
+    number: "25",
+    text: "Years Experience",
+    icon: (
+      <div className="absolute -top-8 md:-top-12 -right-1 overflow-visible">
+        <div className="w-12 h-12 md:w-14 md:h-14 relative">
+          <Image
+            src="/images/Icons.png"
+            alt="Graphic Design"
+            fill
+            className="object-contain"
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "8K",
+    text: "Skilled Professional",
+    icon: (
+      <div className="absolute -top-12 -right-1 overflow-visible">
+        <div className="w-12 h-12 relative">
+          <Image
+            src="/images/Icons (1).png"
+            alt="Graphic Design"
+            fill
+            className="object-contain"
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "32",
+    text: "Visited Conferences",
+    icon: (
+      <div className="absolute -top-12 -right-1 overflow-visible">
+        <div className="w-12 h-12 relative">
+          <Image
+            src="/images/Icons (2).png"
+            alt="Graphic Design"
+            fill
+            className="object-contain"
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    number: "1K",
+    text: "Software Worldwide",
+    icon: (
+      <div className="absolute -top-12 -right-1 overflow-visible">
+        <div className="w-12 h-12 relative">
+          <Image
+            src="/images/Icons (3).png"
+            alt="Graphic Design"
+            fill
+            className="object-contain"
+          />
+        </div>
+      </div>
+    ),
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -74,23 +143,20 @@ export default function AboutPage() {
 
       {/* Main Content Section */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-16 items-center">
             {/* Left Column - Images */}
             <div className="relative w-full max-w-md mx-auto sm:max-w-none">
-      <div className="relative">
-        <div className="relative z-20 rounded-2xl">
-          <Image
-            src="/images/about9.jpg"
-            alt="Person working on laptop"
-            width={380}
-            height={280}
-            className="w-full max-w-[580px] h-auto rounded-2xl object-cover"
-          />
-        </div>
-     
-    
-
+              <div className="relative">
+                <div className="relative z-20 rounded-2xl">
+                  <Image
+                    src="/images/aboutm.jpeg"
+                    alt="Person working on laptop"
+                    width={380}
+                    height={280}
+                    className="w-full max-w-[580px] h-auto rounded-2xl object-cover"
+                  />
+                </div>
 
                 {/* Pink UI Image
                 <div className="absolute -bottom-16 -left-16 z-10">
@@ -136,10 +202,10 @@ export default function AboutPage() {
             <div className="space-y-10">
               {/* Header */}
               <div className="space-y-5">
-                <h4 className="text-sm text-gray-500  bg-[#fcfaf4] rounded-2xl inline-block p-2 font-medium uppercase tracking-wide">
+                <h4 className="text-sm text-gray-700  bg-[#fcfaf4] rounded-2xl inline-block p-2 tracking-wide">
                   About Our IT Company
                 </h4>
-                <h2 className="text-[42px] font-bold text-[#0B1B2B] leading-[1.2]">
+                <h2 className="text-[42px] font-medium text-[#0B1B2B] leading-[1]">
                   Exclusive Technology To{" "}
                   <div className="inline">
                     Provide <span className="text-[#0561FC]">IT Solutions</span>
@@ -157,32 +223,33 @@ export default function AboutPage() {
               <div className="space-y-8">
                 {/* Feature 1 */}
                 <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="w-4 h-4 rounded-full bg-[#0561FC] flex items-center justify-center">
-                      <div className="w-1 h-1 bg-white rounded-full"></div>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <h3 className="text-[20px] font-bold text-[#0B1B2B]">
-                      Artificial Intelligence And Machine Learning
-                    </h3>
-                    <p className="text-[#64748B] text-[15px] leading-[1.8]">
-                      Contrary To Popular Belief, Lorem Ipsum Is Not Simply
-                      Random Text. It Has Roots In A Piece Latin Literature From
-                      45 BC, Making It Over 2000 Years Old.
-                    </p>
-                  </div>
-                </div>
+  <div className="flex-shrink-0 mt-2 relative w-4 h-4">
+    {/* Black border circle */}
+    <div className="absolute w-5 h-5 border-[1.5px] border-gray-600 rounded-full"></div>
+    {/* Blue overlapping circle */}
+    <div className="absolute w-5 h-5 bg-[#0561FC] rounded-full bottom-[-10px] right-[-9px]"></div>
+  </div>
+  <div className="space-y-3">
+    <h3 className="text-[26px] font-medium text-[#0B1B2B]">
+      Artificial Intelligence And Machine Learning
+    </h3>
+    <p className="text-[#64748B] text-[15px] leading-[1.8]">
+      Contrary To Popular Belief, Lorem Ipsum Is Not Simply Random Text. It Has Roots In A Piece Latin Literature From 45 BC, Making It Over 2000 Years Old.
+    </p>
+  </div>
+</div>
+
 
                 {/* Feature 2 */}
                 <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="w-4 h-4 rounded-full bg-[#0561FC] flex items-center justify-center">
-                      <div className="w-1 h-1 bg-white rounded-full"></div>
-                    </div>
-                  </div>
+                <div className="flex-shrink-0 mt-2 relative w-4 h-4">
+    {/* Black border circle */}
+    <div className="absolute w-5 h-5 border-[1.5px] border-gray-600 rounded-full"></div>
+    {/* Blue overlapping circle */}
+    <div className="absolute w-5 h-5 bg-[#0561FC] rounded-full bottom-[-10px] right-[-9px]"></div>
+  </div>
                   <div className="space-y-3">
-                    <h3 className="text-[20px] font-bold text-[#0B1B2B]">
+                    <h3 className="text-[26px] font-medium text-[#0B1B2B]">
                       Techno Services Through IT Solutions
                     </h3>
                     <p className="text-[#64748B] text-[15px] leading-[1.8]">
@@ -196,23 +263,12 @@ export default function AboutPage() {
 
               {/* Action Buttons */}
               <div className="flex items-center gap-8 pt-2">
-                <button className="bg-[#0561FC] text-white px-7 py-4 rounded-full text-[15px] font-medium hover:bg-blue-700 transition-colors">
-                  Get In Touch
+                <Link href="/contact">
+                <button className="bg-[#0561FC] text-white px-7 py-2 rounded-full text-[15px] font-medium hover:bg-blue-700 transition-colors">
+                  Get In Touch 
                 </button>
-                <button className="flex items-center gap-4 text-[15px] font-medium text-[#0B1B2B]">
-                  <div className="w-12 h-12 rounded-full bg-[#EEF1FF] flex items-center justify-center">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      className="text-[#0561FC] ml-1"
-                    >
-                      <path d="M8 5v14l11-7z" fill="currentColor" />
-                    </svg>
-                  </div>
-                  Play A Video
-                </button>
+                </Link>
+               
               </div>
             </div>
           </div>
@@ -222,234 +278,55 @@ export default function AboutPage() {
       {/* Statistics Section */}
       <section className="py-2 pb-16 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-[26px] font-bold text-[#0B1B2B] text-center mb-12">
+          <h2 className="text-[30px] font-medium text-[#0B1B2B] text-center mb-12">
             The Number Reflect Our Reputation
           </h2>
 
-          <div className="flex justify-center flex-wrap items-center sm:items-start gap-16 px-4">
-            {/* Years of Experience */}
-            <div className="flex items-center">
-              <div className="flex flex-col items-center w-32">
-                <div className="flex items-center gap-1">
-                  <span className="text-[40px] font-bold text-[#0B1B2B] leading-none">
-                    25
+          <div className="max-w-5xl mx-auto mb-12 sm:mb-20">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-20">
+            {stats.map((stat, index) => (
+              <div key={index} className="w-full">
+                <div className="relative flex items-end justify-center">
+                  {/* Number (Left Side) */}
+                  <span className="text-4xl sm:text-[80px] text-[#0B1B2B] font-light leading-none">
+                    {stat.number}
                   </span>
-                  <div className="flex flex-col">
-                    <p className="text-[13px] text-gray-500">Years Of</p>
-                    <p className="text-[13px] text-gray-500">Experience</p>
-                  </div>
-                </div>
-              </div>
-              <div className="w-px h-12 bg-gray-200 ml-16"></div>
-            </div>
 
-            {/* Skilled Professional */}
-            <div className="flex items-center">
-              <div className="flex flex-col items-center w-32">
-                <div className="flex items-center gap-1">
-                  <span className="text-[40px] font-bold text-[#0B1B2B] leading-none">
-                    8K
-                  </span>
-                  <div className="">
-                    <p className="text-[13px] text-gray-500">Skilled</p>
-                    <p className="text-[13px] text-gray-500">Professional</p>
-                  </div>
-                </div>
-              </div>
-              <div className="w-px h-12 bg-gray-200 ml-16"></div>
-            </div>
+                  {/* Right Side: Icon + Text */}
+                  <div className="flex flex-col items-center ml-4 relative">
+                    {/* Icon Above Text */}
+                    <div className="absolute -top-8 left-14">{stat.icon}</div>
 
-            {/* Visited Conference */}
-            <div className="flex items-center">
-              <div className="flex flex-col items-center w-32">
-                <div className="flex items-center gap-1">
-                  <span className="text-[40px] font-bold text-[#FF9B24] leading-none">
-                    32
-                  </span>
-                  <div className="">
-                    <p className="text-[13px] text-gray-500">Visited</p>
-                    <p className="text-[13px] text-gray-500">Conference</p>
+                    {/* Text (Right Bottom of Number) */}
+                    <div className="text-gray-500 text-xs sm:text-sm">
+                      {stat.text}
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="w-px h-12 bg-gray-200 ml-16"></div>
-            </div>
 
-            {/* Software Available */}
-            <div className="flex items-center">
-              <div className="flex flex-col items-center w-32">
-                <div className="flex items-center gap-1">
-                  <span className="text-[40px] font-bold text-[#0B1B2B] leading-none">
-                    1K
-                  </span>
-                  <div className="">
-                    <p className="text-[13px] text-gray-500">Software</p>
-                    <p className="text-[13px] text-gray-500">Available</p>
-                  </div>
+                  {/* Vertical Divider (Only visible on larger screens) */}
+                  {index < stats.length - 1 && (
+                    <div className="hidden sm:block w-[1px] h-16 bg-gray-200 absolute right-[-25px] sm:right-[-30px] top-1/2 -translate-y-1/2"></div>
+                  )}
                 </div>
+
+                {/* Horizontal Divider (Only visible on mobile) */}
+                {index < stats.length - 1 && (
+                  <div className="sm:hidden w-full h-[1px] bg-gray-200 my-7"></div>
+                )}
               </div>
-            </div>
+            ))}
           </div>
+        </div>
+
         </div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="bg-[#0B1B2B] py-20 mb-5 overflow-x-hidden">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="text-white space-y-8">
-            <div>
-              <p className="text-xs uppercase tracking-wide text-gray-400 mb-2">
-                IT Services & Software
-              </p>
-              <h2 className="text-3xl font-bold mb-6">Why You Choose Us?</h2>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Classical Latin Literature From 45 BC, Making It Over 2000 Years
-                Old. Richard McClintock, A Latin Professor At Hampden-Sydney
-                College In Virginia. There&apos;s Many Variations.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-  <div>
-    
-    <div className="flex items-center justify-start sm:justify-end">
-    <h3 className="text-lg font-semibold ">Customized</h3>
-      <div className="h-[1px] w-8 bg-white ml-auto"></div>
-    </div>
-  </div>
-  <div>
-    
-    <div className="flex items-center justify-start sm:justify-end">
-    <h3 className="text-lg font-semibold">High Quality</h3>
-      <div className="h-[1px] w-8 bg-white ml-auto"></div>
-    </div>
-  </div>
-  <div>
-   
-    <div className="flex items-center justify-start sm:justify-end">
-    <h3 className="text-lg font-semibold ">Experience</h3>
-      <div className="h-[1px] w-8 bg-white ml-auto"></div>
-    </div>
-  </div>
-  <div>
-   
-    <div className="flex items-center justify-start sm:justify-end">
-       <h3 className="text-lg font-semibold ">Support</h3>
-      <div className="h-[1px] w-8 bg-white ml-auto"></div>
-    </div>
-  </div>
-</div>
-
-
-
-            <button className="bg-[#0561FC] text-white px-7 py-3 rounded-3xl hover:bg-blue-700 transition-colors text-[12px] font-medium">
-              Explore More
-            </button>
-          </div>
-
-          {/* Right Image */}
-          <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden">
-              {/* Main Image */}
-              <Image
-                src="/images/about3.jpeg"
-                alt="Why Choose Us Illustration"
-                width={500}
-                height={400}
-                className="w-[500px] h-[400px] rounded-2xl object-cover"
-              />
-
-              {/* Blue Badge */}
-              <div className="relative pb-12">
-                {" "}
-                {/* Ensures space for the absolute element */}
-                <div className="absolute bottom-0 right-6">
-                  <div className="bg-[#0561FC] text-white px-8 py-6 rounded-2xl">
-                    <div className="flex flex-col items-center">
-                      <span className="text-base font-medium">IT Services</span>
-                      <span className="text-base font-medium">&</span>
-                      <span className="text-base font-medium">Software</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-          {/* Partner Logos Section */}
-          <div className="mt-16 bg-[#0B1B2B] ">
-  <div className="container mx-auto px-4">
-    <div className="flex flex-col sm:flex-row items-center gap-12">
-      {/* Title */}
-      <div className="text-white whitespace-nowrap">
-        <p className="text-lg font-medium">We&apos;re Proud To</p>
-        <p className="text-lg font-medium">Collaborate With:</p>
-      </div>
-
-      {/* Partner Logos */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-12 sm:gap-12 flex-1">
-        <Image
-          src="/images/about6.png"
-          alt="Global Technology"
-          width={140}
-          height={60}
-          className="w-auto h-12"
-        />
-        <Image
-          src="/images/about7.png"
-          alt="Concept"
-          width={120}
-          height={40}
-          className="w-auto h-12"
-        />
-        <div className="bg-gray-200 p-4 rounded-lg">
-          <Image
-            src="/images/about11.png"
-            alt="Connect"
-            width={120}
-            height={40}
-            className="w-auto h-12"
-          />
-        </div>
-
-        <Image
-          src="/images/about9.png"
-          alt="Innovation"
-          width={120}
-          height={40}
-          className="w-auto h-12"
-        />
-
-        <Image
-          src="/images/about8.png"
-          alt="Global"
-          width={120}
-          height={40}
-          className="w-auto h-12"
-        />
-
-        <Image
-          src="/images/about10.png"
-          alt="Hex"
-          width={120}
-          height={40}
-          className="w-auto h-12"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-
-
-        </div>
-      </section>
+      <WhyChooseUsSection />
 
       {/* Testimonials Section */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
             {/* Left Content */}
             <div>
@@ -607,7 +484,7 @@ export default function AboutPage() {
 
       {/* Team Members Section */}
       <section className="bg-[#0B1B2B] py-20 mb-6">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           <div className="text-center mb-16">
             <p className="text-xs uppercase tracking-wide text-gray-400 mb-3">
               Team Members
@@ -740,9 +617,11 @@ export default function AboutPage() {
 
             {/* View More Button */}
             <div className="text-center mt-8">
+              <Link href="/projects">
               <button className="bg-[#4461F2] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-blue-600 transition-colors">
                 View More
               </button>
+              </Link>
             </div>
           </div>
         </div>

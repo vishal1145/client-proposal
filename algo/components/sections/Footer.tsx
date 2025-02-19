@@ -10,8 +10,8 @@ interface FooterProps {
 
 export default function Footer({ showSubscribe = true }: FooterProps) {
   return (
-    <footer className="bg-[#0B1B2B] text-white py-20 overflow-x-hidden">
-      <div className="container mx-auto px-4">
+    <footer className="bg-[#0B1B2B] text-white py-10 overflow-x-hidden">
+      <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
         {/* Top Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
           {/* Left Side - Logo Section (25%) */}
@@ -20,8 +20,8 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
               <Image
                 src="/images/logo(1).png"
                 alt="Logo"
-                width={150}
-                height={50}
+                width={100}
+                height={40}
                 className="mb-4"
               />
             </Link>
@@ -67,7 +67,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                 </svg>
               </a>
             </div>
-            <div className="absolute -top-28 right-0 h-[840px] w-[1px] bg-gray-700"></div>
+            <div className="absolute -top-28 right-0 h-[865px] w-[1px] bg-gray-700"></div>
           </div>
 
           {/* Right Side - Content Section (75%) */}
@@ -280,6 +280,15 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                       Terms & Conditions
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      href="/cookie-policy"
+                      className="text-gray-400 text-[14px] hover:text-white"
+                    >
+                      
+Cookies Policy
+                    </Link>
+                  </li>
                 </ul>
               </div>
               {/* Information */}
@@ -380,7 +389,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
         {/* Copyright */}
         <div className="mt-16 pt-8 border-t border-gray-700 flex justify-between items-center">
           <p className="text-gray-600 text-[14px]">
-            ©2024 Algofolks Private Limited
+          ©{new Date().getFullYear()} Algofolks Private Limited
           </p>
           <div className="space-x-6">
             <Link

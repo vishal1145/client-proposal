@@ -61,8 +61,16 @@ export function ContactSection() {
     <div>
       <h4 className="text-base font-medium text-white mb-2">Address</h4>
       <p className="text-sm text-white leading-relaxed">
-       C-104 Sector 65 Noida
-      </p>
+  <a
+    href="https://www.google.com/maps/search/?api=1&query=C-104+Sector+65+Noida"
+    target="_blank"
+    rel="noopener noreferrer"
+    className=" hover:text-gray-300 transition-all"
+  >
+    C-104 Sector 65 Noida
+  </a>
+</p>
+
     </div>
   </div>
 
@@ -86,8 +94,11 @@ export function ContactSection() {
     <div>
       <h4 className="text-base font-medium text-[#f4f5f7] mb-2">Phone Number</h4>
       <p className="text-sm text-white leading-relaxed">
-      +91 8743045170
-      </p>
+  <a href="tel:+918743045170" className=" hover:text-gray-300 transition-all">
+    +91 8743045170
+  </a>
+</p>
+
     </div>
   </div>
 
@@ -116,8 +127,11 @@ export function ContactSection() {
     <div>
       <h4 className="text-base font-medium text-white mb-2">Email Id</h4>
       <p className="text-sm text-white leading-relaxed">
-       hii@algofolks.com
-      </p>
+  <a href="mailto:hi@algofolks.com" className=" hover:text-gray-300 transition-all">
+    hi@algofolks.com
+  </a>
+</p>
+
     </div>
   </div>
 
@@ -148,9 +162,7 @@ export function ContactSection() {
     <div>
       <h4 className="text-base font-medium text-white mb-2">Opening Hours</h4>
       <p className="text-sm text-white leading-relaxed">
-        Mon - Sat : M/g (09.00am To
-        <br />
-        09.00pm, Sun - Holiday
+      Mon - Sat: 09:00 AM to 06:00 PM
       </p>
     </div>
   </div>

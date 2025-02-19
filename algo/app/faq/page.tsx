@@ -84,10 +84,10 @@ const FaqSection = () => {
         {/* FAQ Section */}
         <div className="px-4 sm:px-8 md:px-20 lg:px-44 mt-12 sm:mt-24 pb-20">
           <div className="text-center mb-8 sm:mb-12">
-            <span className="inline-block text-black px-4 py-1 border border-1 rounded-full text-sm">
+            <span className="inline-block text-black px-4 py-1 border border-1 rounded-full text-xs">
               Latest Updates
             </span>
-            <p className="font-['Public_Sans'] mt-2 font-semibold text-[26px] sm:text-[40px] leading-[36px] sm:leading-[56px]">
+            <p className="font-['Public_Sans'] mt-2 font-semibold text-[30px]">
               Frequently Asked Questions
             </p>
           </div>
@@ -100,7 +100,7 @@ const FaqSection = () => {
                   className="w-full flex justify-between items-center px-5 sm:px-8 py-4 sm:py-6 text-left"
                   onClick={() => setActiveIndex(activeIndex === index ? null : index)}
                 >
-                  <p className="font-['Public_Sans'] text-[18px] sm:text-[24px] font-medium">
+                  <p className="font-['Public_Sans'] text-[20px]  font-medium">
                     {faq.question}
                   </p>
                   <span className={`transition-transform duration-200 text-gray-400 ${activeIndex === index ? 'rotate-180' : ''}`}>
@@ -110,7 +110,7 @@ const FaqSection = () => {
 
                 {activeIndex === index && (
                   <div className="px-5 sm:px-8 pb-4">
-                    <p className="font-['Public_Sans'] text-[14px] sm:text-[16px] leading-[26px]">
+                    <p className="font-light text-[14px] leading-[26px]">
                       {faq.answer}
                     </p>
                   </div>

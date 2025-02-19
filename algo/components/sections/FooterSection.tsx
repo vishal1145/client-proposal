@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function FooterSection() {
   return (
-    <footer className="bg-white text-white py-20">
+    <footer className="bg-white text-white py-10">
       <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-6">
           {/* Logo and Description */}
@@ -157,6 +157,15 @@ export function FooterSection() {
                   Terms & Conditions
                 </Link>
               </li>
+              <li>
+                    <Link
+                      href="/cookie-policy"
+                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                    >
+                      
+Cookies Policy
+                    </Link>
+                  </li>
             </ul>
           </div>
 
@@ -320,7 +329,7 @@ export function FooterSection() {
         {/* Copyright */}
         <div className="mt-12 pt-6 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[14px] text-gray-600">
-            ©2024 Algofolks Private Limited
+          ©{new Date().getFullYear()} Algofolks Private Limited
           </p>
           <div className="space-x-6">
             <Link

@@ -1,7 +1,47 @@
+'use client'
 import Image from "next/image";
 import Footer from "@/components/sections/Footer";
+import { useState,ChangeEvent,FormEvent } from "react";
+
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState({ type: "", message: "" });
+
+  // Handle Input Change
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle Form Submit
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus({ type: "loading", message: "Sending..." });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        setStatus({ type: "success", message: "Message sent successfully!" });
+        setFormData({ fullName: "", email: "", message: "" });
+      } else {
+        setStatus({ type: "error", message: result.message });
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus({ type: "error", message: "Something went wrong. Try again." });
+    }
+  };
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
       {/* Hero Section */}
@@ -96,7 +136,7 @@ export default function ContactPage() {
 
       {/* Contact Options */}
       <section className="pb-16 pt-0 bg-white ">
-  <div className="container mx-auto px-4">
+  <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
       {/* Chat For Sales */}
       <div className="bg-white p-6 rounded-xl text-left shadow-2xl transition-all group hover:bg-[#0561FC] hover:text-white">
@@ -113,11 +153,14 @@ export default function ContactPage() {
           Chat For Sales
         </h3>
         <p className="text-gray-500 text-sm mb-4 group-hover:text-white transition-all">
-          Contrary To Popular Belief, Lorem
+        Get expert guidance on our IT solutions and services.
         </p>
-        <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
-          Sales@Example.Com →
-        </button>
+        <a
+    href="mailto:hi@algofolks.com"
+    className="inline-block text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all"
+  >
+    hi@algofolks.com →
+  </a>
       </div>
 
       {/* Chat For Support */}
@@ -135,11 +178,14 @@ export default function ContactPage() {
           Chat For Support
         </h3>
         <p className="text-gray-500 text-sm mb-4 group-hover:text-white transition-all">
-          Contrary To Popular Belief, Lorem
+        Need help? Our support team is ready to assist you.
         </p>
-        <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
-          Get In Touch →
-        </button>
+        <a href="https://wa.me/918743045170" target="_blank" rel="noopener noreferrer">
+  <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
+    Get In Touch →
+  </button>
+</a>
+
       </div>
 
       {/* Visit Our Site */}
@@ -157,11 +203,14 @@ export default function ContactPage() {
           Visit Our Site
         </h3>
         <p className="text-gray-500 text-sm mb-4 group-hover:text-white transition-all">
-          Contrary To Popular Belief, Lorem
+        Explore our latest IT solutions and innovations.
         </p>
-        <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
-          www.itservices.com →
-        </button>
+        <a href="https://algofolks.com" target="_blank" rel="noopener noreferrer">
+  <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
+    www.Algofolks.com →
+  </button>
+</a>
+
       </div>
 
       {/* Contact Us */}
@@ -179,11 +228,14 @@ export default function ContactPage() {
           Contact Us
         </h3>
         <p className="text-gray-500 text-sm mb-4 group-hover:text-white transition-all">
-          Contrary To Popular Belief, Lorem
+        Reach out to us for business inquiries or collaborations.
         </p>
-        <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
-          +81.000.2323.2 →
-        </button>
+        <a href="tel:+918743045170">
+  <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
+    +91 8743045170 →
+  </button>
+</a>
+
       </div>
     </div>
   </div>
@@ -192,7 +244,7 @@ export default function ContactPage() {
 
       {/* Contact Form Section */}
       <section className="py-16 bg-[#E0EFFF]">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-40">
             {/* Left Side - Contact Info */}
             <div>
@@ -230,8 +282,16 @@ export default function ContactPage() {
                       Address
                     </h4>
                     <p className="text-sm text-gray-500 leading-relaxed">
-                    C-104 Sector 65 Noida
-                    </p>
+  <a
+    href="https://www.google.com/maps/search/?api=1&query=C-104+Sector+65+Noida"
+    target="_blank"
+    rel="noopener noreferrer"
+    className=" hover:text-gray-600 transition-all"
+  >
+    C-104 Sector 65 Noida
+  </a>
+</p>
+
                   </div>
                 </div>
 
@@ -251,8 +311,11 @@ export default function ContactPage() {
                       Phone Number
                     </h4>
                     <p className="text-sm text-gray-500 leading-relaxed">
-                    +91 8743045170
-                    </p>
+  <a href="tel:+918743045170" className=" hover:text-gray-600 transition-all">
+    +91 8743045170
+  </a>
+</p>
+
                   </div>
                 </div>
 
@@ -272,8 +335,11 @@ export default function ContactPage() {
                       Email Id
                     </h4>
                     <p className="text-sm text-gray-500 leading-relaxed">
-                     hii@algofolks.com
-                    </p>
+  <a href="mailto:hi@algofolks.com" className=" hover:text-gray-600 transition-all">
+    hi@algofolks.com
+  </a>
+</p>
+
                   </div>
                 </div>
 
@@ -293,9 +359,7 @@ export default function ContactPage() {
                       Opening Hours
                     </h4>
                     <p className="text-sm text-gray-500 leading-relaxed">
-                      Mon - Sat : M/g (09.00am To
-                      <br />
-                      09.00pm, Sun - Holiday
+                    Mon - Sat: 09:00 AM to 06:00 PM
                     </p>
                   </div>
                 </div>
@@ -315,12 +379,16 @@ export default function ContactPage() {
                 Normal
               </p>
 
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 {/* Full Name */}
                 <div className="relative">
                   <input
-                    type="text"
-                    placeholder="Full Name"
+                   type="text"
+                   name="fullName"
+                   placeholder="Full Name"
+                   value={formData.fullName}
+                   onChange={handleChange}
+                   required
                     className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60"
                   />
                 </div>
@@ -328,8 +396,12 @@ export default function ContactPage() {
                 {/* Email Id */}
                 <div className="relative">
                   <input
-                    type="email"
-                    placeholder="Email Id"
+                     type="email"
+                     name="email"
+                     placeholder="Email"
+                     value={formData.email}
+                     onChange={handleChange}
+                     required
                     className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60"
                   />
                 </div>
@@ -339,8 +411,13 @@ export default function ContactPage() {
                 {/* Message */}
                 <div className="relative">
                   <textarea
-                    placeholder="Message"
-                    rows={4}
+                     name="message"
+                     placeholder="Message"
+                     rows={4}
+                     value={formData.message}
+                     onChange={handleChange}
+                     required
+                    
                     className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60 resize-none"
                   ></textarea>
                 </div>
@@ -349,6 +426,15 @@ export default function ContactPage() {
                 <button className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors">
                   Submit Now <span className="ml-1">→</span>
                 </button>
+                {status.message && (
+                  <p
+                    className={`text-sm mt-4 ${
+                      status.type === "success" ? "text-green-300" : "text-red-300"
+                    }`}
+                  >
+                    {status.message}
+                  </p>
+                )}
               </form>
             </div>
           </div>

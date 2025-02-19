@@ -120,8 +120,15 @@ const TeamMemberSection = () => {
 
       {/* Team Members Grid Section */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center text-[#0B1B2B] mb-16">Our Team Members</h2>
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
+        <div className="flex justify-center mb-1">
+  <p className="inline-block text-xs text-gray-500 border border-gray-300 px-2 py-1 rounded-2xl">
+    Team Members
+  </p>
+</div>
+
+
+          <h2 className="text-3xl font-medium text-center text-[#0B1B2B] mb-16">Our Team Members</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
             {teamMembers.map((member) => (

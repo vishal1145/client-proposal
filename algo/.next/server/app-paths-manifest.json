@@ -1,10 +1,11 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/api/contact/route": "app/api/contact/route.js",
+  "/api/subscribe/route": "app/api/subscribe/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/blog/[slug]/page": "app/blog/[slug]/page.js",
-  "/blog/page": "app/blog/page.js",
   "/cancellation-policy/page": "app/cancellation-policy/page.js",
+  "/blog/page": "app/blog/page.js",
   "/carrer/page": "app/carrer/page.js",
   "/contact/page": "app/contact/page.js",
   "/cookie-policy/page": "app/cookie-policy/page.js",

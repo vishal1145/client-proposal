@@ -1,7 +1,51 @@
 "use client";
 import Image from "next/image";
-
+import { useState, ChangeEvent,FormEvent,useEffect} from "react";
 export function ContactSection() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<{ type: string; message: string } | null>(null);
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => {
+        setStatus(null); // Remove message after 5 seconds
+      }, 3000);
+
+      return () => clearTimeout(timer); // Cleanup on re-render
+    }
+  }, [status]);
+  // Handle Input Change
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle Form Submit
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus({ type: "loading", message: "Sending..." });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        setStatus({ type: "success", message: "Message sent successfully!" });
+        setFormData({ fullName: "", email: "", message: "" });
+      } else {
+        setStatus({ type: "error", message: result.message });
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus({ type: "error", message: "Something went wrong. Try again." });
+    }
+  };
   return (
     <section className="py-16 bg-[#0B1628] relative overflow-x-hidden" >
       {/* Background Image */}
@@ -183,12 +227,16 @@ export function ContactSection() {
               The Point Of Using Lorem Ipsum Is That It Has More-Or-Less Normal
             </p>
 
-            <form className="space-y-6">
+            <form className="space-y-6"onSubmit={handleSubmit}>
               {/* Full Name */}
               <div className="relative">
                 <input
-                  type="text"
-                  placeholder="Full Name"
+                    type="text"
+                    name="fullName"
+                    placeholder="Full Name"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    required
                   className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60"
                 />
               </div>
@@ -197,7 +245,11 @@ export function ContactSection() {
               <div className="relative">
                 <input
                   type="email"
-                  placeholder="Email Id"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60"
                 />
               </div>
@@ -208,8 +260,11 @@ export function ContactSection() {
               {/* Message */}
               <div className="relative">
                 <textarea
-                  placeholder="Message"
-                  rows={4}
+                   name="message"
+                   placeholder="Message"
+                   rows={4}
+                   value={formData.message}
+                   onChange={handleChange}
                   className="w-full bg-transparent text-white border-b border-white/20 pb-3 focus:outline-none focus:border-white text-sm placeholder:text-white/60 resize-none"
                 ></textarea>
               </div>
@@ -218,6 +273,15 @@ export function ContactSection() {
               <button className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors">
                 Submit Now <span className="ml-1">→</span>
               </button>
+              {status && status.message && (
+        <p
+          className={`text-sm mt-4 ${
+            status.type === "success" ? "text-green-300" : "text-red-300"
+          }`}
+        >
+          {status.message}
+        </p>
+      )}
             </form>
           </div>
         </div>

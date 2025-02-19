@@ -54,7 +54,7 @@ export default function CookiePolicy() {
         </div>
       </section>
 
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20 relative z-10 py-8">
       <h1 className="text-[24px] font-bold mb-6">Cookie Policy</h1>
       
       <div className="space-y-6">

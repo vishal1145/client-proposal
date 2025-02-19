@@ -1,8 +1,37 @@
+"use client"
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
+import { useState } from "react";
 export function FooterSection() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState({ type: "", message: "" });
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      setStatus({ type: "error", message: "Please enter an email address" });
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+      setStatus({ type: result.success ? "success" : "error", message: result.message });
+
+      if (result.success) setEmail(""); // Clear input on success
+
+      // Hide message after 5 seconds
+      setTimeout(() => setStatus({ type: "", message: "" }), 5000);
+    } catch (error) {
+      console.log(error)
+      setStatus({ type: "error", message: "Something went wrong. Try again." });
+    }
+  };
   return (
     <footer className="bg-white text-white py-10">
       <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
@@ -35,12 +64,14 @@ export function FooterSection() {
             </div>
             <div className="relative max-w-md">
   <input
-    type="email"
+      type="email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
     placeholder="Enter your email"
-    className="max-w-[300px] text-[14px] bg-transparent text-gray-600 rounded-full py-2 px-6 pr-20 border border-gray-700/30 focus:outline-none focus:border-[#4461F2] placeholder:text-gray-400"
+    className="max-w-[300px] text-[14px] bg-transparent text-gray-600 rounded-full py-2 px-6 pr-20 border border-gray-700/30 focus:outline-none focus:border-[#4461F2] placeholder:text-gray-400" 
   />
-  <Button className="absolute h-[2.6rem] text-[12px] -right-20 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px-4 py-2 flex items-center gap-2 transition-colors">
-    Submit Now
+  <Button className="absolute h-[2.6rem] text-[12px] -right-20 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px-4 py-2 flex items-center gap-2 transition-colors" onClick={handleSubscribe}>
+  Subscrive Now
     <svg
       width="16"
       height="16"
@@ -58,6 +89,11 @@ export function FooterSection() {
       />
     </svg>
   </Button>
+  {status.message && (
+        <p className={`text-sm mt-4 ${status.type === "success" ? "text-green-300" : "text-red-300"}`}>
+          {status.message}
+        </p>
+      )}
 </div>
 
           </div>

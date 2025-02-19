@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import Footer from "@/components/sections/Footer";
-import { useState,ChangeEvent,FormEvent } from "react";
+import { useState,ChangeEvent,FormEvent,useEffect } from "react";
 
 
 export default function ContactPage() {
@@ -11,14 +11,23 @@ export default function ContactPage() {
     message: "",
   });
 
-  const [status, setStatus] = useState({ type: "", message: "" });
+  const [status, setStatus] = useState<{ type: string; message: string } | null>(null);
 
   // Handle Input Change
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => {
+        setStatus(null); // Remove message after 5 seconds
+      }, 3000);
 
-  // Handle Form Submit
+      return () => clearTimeout(timer); // Cleanup on re-render
+    }
+  }, [status]);
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus({ type: "loading", message: "Sending..." });
@@ -426,15 +435,15 @@ export default function ContactPage() {
                 <button className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors">
                   Submit Now <span className="ml-1">→</span>
                 </button>
-                {status.message && (
-                  <p
-                    className={`text-sm mt-4 ${
-                      status.type === "success" ? "text-green-300" : "text-red-300"
-                    }`}
-                  >
-                    {status.message}
-                  </p>
-                )}
+                {status && status.message && (
+        <p
+          className={`text-sm mt-4 ${
+            status.type === "success" ? "text-green-300" : "text-red-300"
+          }`}
+        >
+          {status.message}
+        </p>
+      )}
               </form>
             </div>
           </div>

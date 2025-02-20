@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from "next/image";
 import Footer from '@/components/sections/Footer';
+import Link from 'next/link';
 
 const PricingSection = () => {
   // Example team member data - you can replace this with your actual data or API call
@@ -118,10 +119,11 @@ const PricingSection = () => {
   </div>
 
   <p className="text-xs text-gray-500 mb-4">*5000kms Or 3 Month Recommended</p>
-  
+  <Link href="contact">
   <button className="w-[160px] bg-[rgba(5,97,252,1)] text-white absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 px-5 py-2 rounded-full flex items-center justify-center text-xs">
     Pricing Plan <span className="ml-1">↗</span>
   </button>
+  </Link>
 </div>
 
 
@@ -161,10 +163,11 @@ const PricingSection = () => {
   </div>
 
   <p className="text-xs opacity-75 mb-4">*5000kms Or 3 Month Recommended</p>
-
+  <Link href="contact">
   <button className="w-[160px] bg-white text-black absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 px-5 py-2 rounded-full flex items-center justify-center text-xs">
     Pricing Plan <span className="ml-1">↗</span>
   </button>
+  </Link>
 </div>
 
             {/* Basic Comprehensive Plan */}
@@ -203,10 +206,11 @@ const PricingSection = () => {
   </div>
 
   <p className="text-xs text-gray-500 mb-4">*5000kms Or 3 Month Recommended</p>
-
+  <Link href="contact">
   <button className="w-[160px] bg-[rgba(5,97,252,1)] text-white absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 px-5 py-2 rounded-full flex items-center justify-center text-xs">
     Pricing Plan <span className="ml-1">↗</span>
   </button>
+  </Link>
 </div>
 </div>
 </div>

@@ -320,7 +320,7 @@ export function GetQuoteSection({ title }: GetQuoteSectionProps) {
                       </h2>
                     </div>
                     <a
-                      href="#"
+                      href="/services"
                       className="text-[#0561FC] text-sm font-medium flex items-center gap-2"
                     >
                       VIEW ALL

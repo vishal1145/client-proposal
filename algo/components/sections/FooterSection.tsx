@@ -53,13 +53,15 @@ export function FooterSection() {
             </p>
             <div className="mt-4">
               <a
-                href="mailto:hr@algofolks.com"
+                href="mailto:hi@algofolks.com"
                 className="text-[#0B1B2B] font-semibold text-[14px]"
               >
-                hr@algofolks.com
+                hi@algofolks.com
               </a>
               <p className="text-[14px] text-gray-600 mt-2">
-                Algofolks Private Limited, C-104 Sector 65 Noida
+              Algofolks Private Limited, 
+              <br/>
+              C-104 Sector 65 Noida
               </p>
             </div>
             <div className="relative max-w-md">
@@ -104,14 +106,16 @@ export function FooterSection() {
               Branch Address
             </h3>
             <p className="text-[14px] text-gray-600 mb-3">
-              Algofolks Private Limited, C-104 Sector 65 Noida
+              Algofolks Private Limited, 
+              <br/>
+              C-104 Sector 65 Noida
             </p>
             <div className="space-y-1.5">
               <a
-                href="mailto:hr@algofolks.com"
+                href="mailto:hi@algofolks.com"
                 className="text-[#0B1B2B] font-semibold text-[16px] hover:text-[#0066FF] transition-colors"
               >
-                hr@algofolks.com
+                hi@algofolks.com
               </a>
               <p className="text-[14px] text-gray-600">Ph: +91 8743045170</p>
             </div>

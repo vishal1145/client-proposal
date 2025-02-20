@@ -44,15 +44,16 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
           {/* Left Side - Logo Section (25%) */}
           <div className="relative lg:col-span-4 space-y-6 ">
-            <Link href="/">
+          <Link href="/">
               <Image
                 src="/images/logo(1).png"
                 alt="Logo"
-                width={100}
-                height={40}
-                className="mb-4"
+                width={80}
+                height={35}
+                className="mb-6"
               />
             </Link>
+           
             <p className="text-gray-400 text-[14px] pb-8 border-b border-b-gray-700">
               Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting
               Industry. Lorem Ipsum Has Been The Industry&apos;s Standard Dummy

@@ -1,8 +1,25 @@
+"use client"
 import Image from "next/image";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
-
+import { useState,useEffect } from "react";
 export default function BlogPage() {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await fetch("/api/blogs"); // Make sure your API route is correct
+        if (!res.ok) throw new Error("Failed to fetch blogs");
+        const data = await res.json();
+        setBlogs(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}

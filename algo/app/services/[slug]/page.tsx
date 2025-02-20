@@ -110,6 +110,22 @@ const serviceDetails: Record<string, ServiceDetail> = {
     image:
       "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
   },
+  "Graphic-Design": {
+    title: "Graphic Design",
+    subtitle: "Innovative Product Solutions",
+    description:
+      "End-to-end product development services from concept to launch, helping you bring your ideas to life.",
+    image:
+      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
+  },
+  "Web-development": {
+    title: "Web development",
+    subtitle: "Innovative Product Solutions",
+    description:
+      "End-to-end product development services from concept to launch, helping you bring your ideas to life.",
+    image:
+      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
+  },
 };
 
 export default function ServicePage() {

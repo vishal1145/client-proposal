@@ -124,6 +124,7 @@ export function ServicesSection() {
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-6">
           {/* Graphic Design Card */}
           <div className="col-span-1 sm:col-span-6 group">
+            <Link href="services/Graphic-Design">
             <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
               <Image
                 src="/images/homes1.png"
@@ -132,6 +133,7 @@ export function ServicesSection() {
                 className="object-cover"
               />
             </div>
+            </Link>
             <div className="flex flex-col gap-4">
               <h3 className="text-xl sm:text-2xl font-bold text-[#0B1B2B]">
                 Graphic Designing
@@ -150,6 +152,7 @@ export function ServicesSection() {
 
           {/* Web Development Card */}
           <div className="col-span-1 sm:col-span-3 group">
+          <Link href="services/Web-development">
             <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
               <Image
                 src="/images/homes2.png"
@@ -158,6 +161,7 @@ export function ServicesSection() {
                 className="object-cover"
               />
             </div>
+            </Link>
             <h3 className="text-lg sm:text-xl font-bold text-[#0B1B2B]">
               Web development
             </h3>
@@ -165,6 +169,7 @@ export function ServicesSection() {
 
           {/* App Development Card */}
           <div className="col-span-1 sm:col-span-3 group">
+          <Link href="services/software-development">
             <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
               <Image
                 src="/images/homes3.png"
@@ -173,6 +178,7 @@ export function ServicesSection() {
                 className="object-cover"
               />
             </div>
+            </Link>
             <h3 className="text-lg sm:text-xl font-bold text-[#0B1B2B]">
               Software development
             </h3>

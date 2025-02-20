@@ -124,7 +124,7 @@ export function Header() {
               >
                 Services
               </Link>
-              <Link href="/pages" className="text-gray-600 hover:text-blue-600 transition-colors">Pages</Link>
+              {/* <Link href="/pages" className="text-gray-600 hover:text-blue-600 transition-colors">Pages</Link> */}
               <Link href="/projects" className="text-gray-600 hover:text-blue-600 transition-colors">Projects</Link>
               <Link href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">Blogs</Link>
               <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact Us</Link>

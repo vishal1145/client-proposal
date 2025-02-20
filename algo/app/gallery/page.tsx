@@ -115,7 +115,7 @@ const GallerySection: React.FC = () => {
               ))}
           </div>
 
-          <div className="flex justify-center items-center mt-8 gap-2">
+          {/* <div className="flex justify-center items-center mt-8 gap-2">
             {Array.from({ length: 5 }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
@@ -137,7 +137,7 @@ const GallerySection: React.FC = () => {
                 →
               </button>
             )}
-          </div>
+          </div> */}
         </div>
       </section>
       <Footer />

@@ -215,13 +215,13 @@ export function BlogDetail({ title }: BlogDetailProps) {
           </div>
         </div>
 
-        {/* Comments Section */}
-        <div className="mt-12">
+     
+        {/* <div className="mt-12">
           <h3 className="text-2xl font-bold text-[#0B1B2B] mb-10">
             Comments
           </h3>
 
-          {/* Comment 1 */}
+          
           <div className="flex gap-5 mb-12">
             <Image
               src="/images/blogD4.png"
@@ -247,7 +247,7 @@ export function BlogDetail({ title }: BlogDetailProps) {
             </div>
           </div>
 
-          {/* Comment 2 - Nested */}
+          
           <div className="flex gap-5 mb-12 ml-36">
             <Image
               src="/images/blogD5.png"
@@ -273,7 +273,7 @@ export function BlogDetail({ title }: BlogDetailProps) {
             </div>
           </div>
 
-          {/* Comment 3 */}
+         
           <div className="flex gap-5">
             <Image
               src="/images/blogD6.png"
@@ -298,10 +298,10 @@ export function BlogDetail({ title }: BlogDetailProps) {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Leave A Reply Section */}
-        <div className="mt-16 max-w-3xl">
+        {/* <div className="mt-16 max-w-3xl">
           <h3 className="text-2xl font-bold text-[#0B1B2B] mb-6">
             Leave A Reply
           </h3>
@@ -312,7 +312,7 @@ export function BlogDetail({ title }: BlogDetailProps) {
           </div>
 
           <form className="space-y-8">
-            {/* Name and Email fields in a row */}
+         
             <div className="flex gap-12 flex-col sm:flex-row">
               <div className="flex-1">
                 <input
@@ -330,7 +330,7 @@ export function BlogDetail({ title }: BlogDetailProps) {
               </div>
             </div>
 
-            {/* Message textarea */}
+           
             <div>
               <textarea
                 rows={6}
@@ -378,7 +378,7 @@ export function BlogDetail({ title }: BlogDetailProps) {
               </button>
             </div>
           </form>
-        </div>
+        </div> */}
       </div>
     </div>
   </div>

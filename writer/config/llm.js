@@ -46,17 +46,17 @@ export async function extractLinksFromHomePage(input_prompt) {
 }
 
 export async function getNatureResponse(html) {
-    return provider.getNatureResponse(html);
+    return await provider.getNatureResponse(html);
 }
 
 export async function getProposalSections(links) {
-    return provider.getProposalSections(links);
+    return await provider.getProposalSections(links);
 }
 
 export async function getClientProposal(sections) {
-    return provider.getClientProposal(sections);
+    return await provider.getClientProposal(sections);
 }
 
 export async function generateBusinessProposal(links, services) {
-    return provider.generateBusinessProposal(links, (services || []));
+    return await provider.generateBusinessProposal(links, (services || []));
 }

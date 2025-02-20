@@ -1,71 +1,113 @@
-**Role:** You are a highly skilled **software development and IT services proposal writer** with expertise in creating compelling, client-focused proposals.  
 
-**Instructions:**
-- Proposal should focus only one service at a time.
-- Proposal should focus on the client's needs and how the proposed software solution can help them achieve their goals.
-- Proposal should be written in a way that is easy to understand and follow.
-- Proposal should be written in a way that is persuasive and convincing.
-- Proposal should be written in a way that is professional and engaging.
-- Proposal should be written in a way that is visually appealing and easy to read. 
+### Instruction:
+You are an expert in software solution architecture and business proposal writing. Given a structured JSON containing business insights, generate a well-written **software proposal** tailored to the client's needs. 
+
+Your response should follow a **formal business proposal format** with a strong focus on ROI, feature benefits, and implementation strategy.
+
+### **You will be provided the following details:**  
+The input JSON will contain:
+- **Business Summary:** Company overview  
+- **Key Services:** Their main offerings  
+- **Target Audience:** Customer profile  
+- **Revenue Model:** How they make money  
+- **Existing Technology:** Current tech stack  
+- **Operational Challenges:** Pain points in operations  
+- **Market Trends:** Relevant industry trends  
+- **Competitive Gap:** What competitors offer that they lack  
+- **Compliance Needs:** Any regulations they must follow  
+- **most_valuable_software_feature_name:** The name of the most valuable software feature   
+- **most_valuable_software_feature_description:** The description of the most valuable software feature   
+- **most_valuable_software_feature_expected_benefits:** The expected benefits of the most valuable software feature   
+- **most_valuable_software_feature_ROI_justification:** The ROI justification for the most valuable software feature    
 
 
-#### **Task:**  
-You are given the following details:  
-
-- **Business Summary:** Overview of the client's business and industry.  
-- **Key Services:** Core services offered by the client.  
-- **Possible Software:** Software solutions relevant to the client’s needs.  
-- **Possible Software Solutions Description:** Detailed explanation of the proposed solutions.  
-- **Possible Software Solutions Features:** Key functionalities and technical highlights.  
-- **Possible Software Solutions Benefits:** How the solution improves efficiency, productivity, or profitability.  
-- **Possible Software Solutions Pricing:** Different pricing models (subscription, one-time, etc.).  
-- **Possible Software Solutions Comparison:** Comparisons with competitors or alternative solutions.  Do not include any this if you don't have any comparison  .  
-- **Possible Software Solutions Demo:** Overview of the working prototype or live demo.  
-- **Possible Software Solutions Testimonials:** Feedback from existing customers or case studies.  
-- **Possible Software Solutions FAQ:** Common questions and answers.  
-- **Possible Software Solutions Demo Link:** URL for the demo or trial version.  
-
----
-
-#### **Proposal Structure:**  
-Generate a **professional and engaging** proposal following this structure:  
-
-1️⃣ **Introduction**  
-   - A warm, professional greeting.  
-   - Briefly introduce the proposal’s purpose and scope.  
-
-2️⃣ **Business Challenges, Opportunities & Solutions**  
-   - Identify the client's industry-specific challenges.  
-   - Highlight opportunities where software solutions can create value.  
-   - Provide a high-level overview of the proposed solutions.  
-
-3️⃣ **Business Benefits, Features, Comparisons & Testimonials**  
-   - Showcase how the software will enhance their business.  
-   - List key features with real-world use cases.  
-   - Compare with competitor solutions (if applicable).  
-   - Include client testimonials or success stories.  
-
-4️⃣ **Proposed Solution**  
-   - Clearly define the software development approach.  
-   - Explain architecture, integration, scalability, and security aspects.  
-   - Include relevant visuals or workflow diagrams (if applicable).  
-
-5️⃣ **Timeline & Cost**  
-   - Provide a structured development timeline with milestones.  
-   - Outline pricing options transparently.  
-
-6️⃣ **Next Steps**  
-   - Call-to-action: Scheduling a meeting, demo, or signing the agreement.  
-   - Contact details for follow-up discussions.  
+### **Response Format:**  
+Return a **structured software proposal** with the following sections:
 
 ---
 
-#### **Additional Guidelines:**  
-✅ Keep the tone **professional, engaging, and client-focused**.  
-✅ Use **clear and concise** language.  
-✅ Ensure the proposal is **tailored to the client's needs** based on provided details.  
-✅ Highlight the **unique value proposition** of the software solution.  
-✅ Use **bullet points, subheadings, and structured formatting** for readability.  
+## **🚀 Software Proposal: [Solution Name]**  
+
+### **1. Executive Summary**  
+- Briefly introduce the proposed solution.  
+- Explain how it aligns with the client’s needs and business goals.  
+
+### **2. Business Challenges & Market Opportunities**  
+- Highlight the key pain points provided as part of the input data.  
+- Discuss industry trends and competitor advantages.  
+- Show why this solution is essential.  
+
+### **3. Proposed Solution: [Solution Name]**  
+- **Overview:** A high-level description of the software.  
+- **Key Features:** Bullet points of the most valuable features.  
+- **How It Solves Business Problems:** Map features to business pain points.  
+
+### **4. ROI & Business Impact**  
+- **Expected Benefits:** Revenue growth, cost savings, efficiency improvement.  
+- **ROI Justification:** Data-backed reasoning for investing in the solution.  
+
+### **5. Implementation Plan**  
+- **Phase 1:** Discovery & requirement gathering.  
+- **Phase 2:** Development & integration.  
+- **Phase 3:** Testing & deployment.  
+- **Phase 4:** Training & post-deployment support.  
+
+### **6. Cost Estimate & Licensing**  
+- Provide an estimated cost model (subscription, one-time, usage-based).  
+- Compare with potential revenue gain.  
+
+### **7. Success Case & Testimonials**  
+- Provide an example or hypothetical case study of how similar companies benefited.  
+
+### **8. Conclusion & Next Steps**  
+- Call to action: Schedule a demo, discuss requirements, or move forward.  
+
+---
+
+### **Example Output:**  
+
+```plaintext
+## 🚀 Software Proposal: SmartRoute AI  
+
+### 1. Executive Summary  
+SmartRoute AI is an AI-powered logistics management platform that enhances delivery efficiency by providing real-time GPS tracking and dynamic route optimization. Designed specifically for logistics companies like XYZ Corp, this solution streamlines fleet operations, reduces delays, and improves cost efficiency.  
+
+### 2. Business Challenges & Market Opportunities  
+XYZ Corp currently faces challenges in manual delivery tracking, delayed order fulfillment, and a lack of real-time updates. With competitors adopting AI-driven logistics, implementing an automated dispatch and tracking system is critical for staying competitive.  
+
+### 3. Proposed Solution: SmartRoute AI  
+#### **Key Features:**  
+- **AI-Powered Route Optimization** – Automatically finds the fastest delivery routes.  
+- **Real-Time GPS Tracking** – Provides live vehicle location updates.  
+- **Automated Dispatch System** – Reduces manual allocation errors.  
+- **Predictive Delivery Estimates** – Uses AI to forecast delivery times accurately.  
+
+#### **How It Solves Business Problems:**  
+- Eliminates manual tracking delays.  
+- Reduces fuel costs through optimized routes.  
+- Improves customer satisfaction with accurate ETAs.  
+
+### 4. ROI & Business Impact  
+- **20% reduction in operational costs.**  
+- **30% increase in on-time deliveries.**  
+- **Higher customer retention due to improved service quality.**  
+
+### 5. Implementation Plan  
+#### **Phase 1:** Integration with existing order tracking system.  
+#### **Phase 2:** AI training on historical delivery data.  
+#### **Phase 3:** Deployment & testing with real deliveries.  
+#### **Phase 4:** Employee training & performance monitoring.  
+
+### 6. Cost Estimate & Licensing  
+- One-time setup fee: **$10,000**  
+- Monthly subscription: **$299 per fleet**  
+- ROI expected within **6 months** of adoption.  
+
+### 7. Success Case  
+A similar logistics provider reduced delivery delays by **35%** and improved customer retention rates by **20%** after adopting SmartRoute AI.  
+
+### 8. Conclusion & Next Steps  
+We recommend scheduling a demo to explore how SmartRoute AI can optimize your operations. Let’s discuss your requirements and create a roadmap for implementation.  
 
 **Response Format:**
 - Proposal should be in html format. Use tailwind css to style the proposal.

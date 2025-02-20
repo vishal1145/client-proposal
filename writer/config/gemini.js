@@ -88,8 +88,7 @@ export async function getNatureResponse(link) {
 }
 
 
-export async function generateBusinessProposal(links, services) {
-    var service = services[0]
+export async function generateBusinessProposal(service) {
     const systemPrompt = fs.readFileSync('./config/prompts/business-proposal.txt', 'utf8');
 
     var model = genAi.getGenerativeModel({ 
@@ -104,17 +103,18 @@ export async function generateBusinessProposal(links, services) {
 
     const userPrompt = `
         Business Summary: ${service.business_summary}
-        Key Services: ${service.key_services}
-        Possible Software: ${service.possible_software}
-        Possible Software Solutions Description: ${service.possible_software_solutions_description}
-        Possible Software Solutions Features: ${service.possible_software_solutions_features}
-        Possible Software Solutions Benefits: ${service.possible_software_solutions_benefits}
-        Possible Software Solutions Pricing: ${service.possible_software_solutions_pricing}
-        Possible Software Solutions Comparison: ${service.possible_software_solutions_comparison}   
-        Possible Software Solutions Demo: ${service.possible_software_solutions_demo}
-        Possible Software Solutions Testimonials: ${service.possible_software_solutions_testimonials}
-        Possible Software Solutions FAQ: ${service.possible_software_solutions_faq}
-        Possible Software Solutions Demo Link: ${service.possible_software_solutions_demo_link}
+        Key Services: ${service.key_services.join(', ')}
+        Target Audience: ${service.target_audience}
+        Revenue Model: ${service.revenue_model}
+        Existing Technology: ${service.existing_technology}
+        Operational Challenges: ${service.operational_challenges}
+        Market Trends: ${service.market_trends}
+        Competitive Gap: ${service.competitive_gap}
+        Compliance Needs: ${service.compliance_needs}   
+        Most Valuable Software Feature Name: ${service.most_valuable_software_feature.feature_name}
+        Most Valuable Software Feature Description: ${service.most_valuable_software_feature.feature_description}
+        Most Valuable Software Feature Expected Benefits: ${service.most_valuable_software_feature.expected_benefits}
+        Most Valuable Software Feature ROI Justification: ${service.most_valuable_software_feature.ROI_justification}   
     `;
     const result = await chatSession.sendMessage(userPrompt);
     console.log('result', result);
@@ -128,12 +128,15 @@ export async function generateBusinessProposal(links, services) {
 
     // //console.log('text', text);
     // const proposal = JSON.parse(contentStr);
-    console.log('contentStr', contentStr);
+    //console.log('contentStr', contentStr);
 
-    fs.writeFileSync('./config/prompts/business-proposal.html', contentStr);
+    //var html = fs.readFileSync('./config/prompts/business-proposal.html', 'utf8');
+    //html = html.replace('$$$proposaltext$$$', contentStr);  
+    var html = contentStr;
+    fs.writeFileSync('./config/prompts/business-proposal.html', html);
 
-    return contentStr;
-}
+    return html;
+}   
 
 
 

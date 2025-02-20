@@ -8,16 +8,16 @@ const router = express.Router();
 // Create a new proposal
 router.post('/generate-proposal', async (req, res) => {
     try {
-        const { links, services } = req.body;
+        const { service } = req.body;
 
-        if(!services) {
+        if(!service) {
             return res.status(400).json({
                 success: false,
-                message: "Links are required"
+                message: "Service is required"
             });
         }
 
-        const proposal = await generateBusinessProposal(links, (services || []));
+        const proposal = await generateBusinessProposal(service);
 
         res.status(200).json({
             success: true,

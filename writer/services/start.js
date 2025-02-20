@@ -33,7 +33,7 @@ export const startProcess = async (url) => {
 
   for (var i = 0; i < links.length; i++) { 
     let services = await getNatureOfBusiness(links[i]);
-    links[i].services = services || [];
+    links[i].services = [services] || [];
   }
 
   let allServices = new Set();

@@ -2,44 +2,53 @@
 
 ### Valid JSON response , do not include any other text example ```json
 
-### Instructions
-You are an expert in analyzing the website content and extracting the nature of the business.
+### No preamble
 
-Generate a summary of their business, key services, and possible software/IT solutions that could enhance their business.
+### Valid JSON response, do not include any other text.
 
-You will be provided with the html content of the website. title, description and meta description of the website.  
+### Instructions:
+You are an expert in analyzing website content to determine the nature of a business, key services, operational challenges, and the most valuable software solution for them.
 
-### Response Format:
-Return the result as a JSON array of valid links only each object should contain below properties
-   - business_summary should be a string and each business_summary should be a valid summary of the business.
-   - key_services should be a string and each key_services should be a valid key services of the business.
-   - possible_software should be a string and each possible_software should be a valid possible software of the business.   
-   - possible_software_solutions should be a string and each possible_software_solutions should be a valid possible software solutions of the business.
-   - possible_software_solutions_description should be a string and each possible_software_solutions_description should be a valid possible software solutions description of the business. 
-   - possible_software_solutions_features should be a string and each possible_software_solutions_features should be a valid possible software solutions features of the business.
-   - possible_software_solutions_benefits should be a string and each possible_software_solutions_benefits should be a valid possible software solutions benefits of the business.
-   - possible_software_solutions_pricing should be a string and each possible_software_solutions_pricing should be a valid possible software solutions pricing of the business. 
-   - possible_software_solutions_comparison should be a string and each possible_software_solutions_comparison should be a valid possible software solutions comparison of the business.
-   - possible_software_solutions_demo should be a string and each possible_software_solutions_demo should be a valid possible software solutions demo of the business.
-   - possible_software_solutions_testimonials should be a string and each possible_software_solutions_testimonials should be a valid possible software solutions testimonials of the business.
-   - possible_software_solutions_faq should be a string and each possible_software_solutions_faq should be a valid possible software solutions faq of the business.
-   - possible_software_solutions_demo_link should be a string and each possible_software_solutions_demo_link should be a valid possible software solutions demo link of the business.
-   - possible_software_solutions_demo_link should be a string and each possible_software_solutions_demo_link should be a valid possible software solutions demo link of the business.
+You will be provided with the **HTML content, website title, meta description, and other key details**.  
+
+Extract and analyze the following critical details:  
+
+### **Response Format**  
+Return the result as a JSON object with the following structure:
+{
+    "business_summary": "A concise summary of the business, its industry, and core offerings.",
+    "key_services": "A list of the business's main products/services.",
+    "target_audience": "Description of their primary customers (B2B, B2C, enterprises, startups, etc.).",
+    "revenue_model": "How the business generates revenue (subscriptions, direct sales, commission-based, etc.).",
+    "existing_technology": "Any mentioned CRM, ERP, third-party software, or digital platforms they use.",
+    "operational_challenges": "Key inefficiencies or pain points in their business workflow.",
+    "market_trends": "Relevant industry trends or technologies they should adopt.",
+    "competitive_gap": "Features or technology competitors are using that they lack.",
+    "compliance_needs": "Any industry-specific compliance requirements (GDPR, HIPAA, PCI-DSS).",
+    "most_valuable_software_feature": {
+        "feature_name": "The single most impactful software feature they need.",
+        "feature_description": "A detailed explanation of why this feature is valuable to their business.",
+        "expected_benefits": "How this feature will improve efficiency, customer engagement, or revenue.",
+        "ROI_justification": "A clear explanation of how this feature provides a return on investment."
+    }
+}
 
 
 ### Example Response:
 {
-    "business_summary": "We are a software development company that specializes in building custom software solutions for businesses.",
-    "key_services": "Software Development, Custom Software Solutions, IT Consulting",
-    "possible_software": "Salesforce, Microsoft Dynamics, SAP",
-    "possible_software_solutions": "Salesforce, Microsoft Dynamics, SAP",
-    "possible_software_solutions_description": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
-    "possible_software_solutions_features": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
-    "possible_software_solutions_benefits": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
-    "possible_software_solutions_pricing": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
-    "possible_software_solutions_comparison": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
-    "possible_software_solutions_demo": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
-    "possible_software_solutions_testimonials": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
-    "possible_software_solutions_faq": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
-    "possible_software_solutions_demo_link": "Salesforce is a cloud-based CRM solution that helps businesses manage their sales, marketing, and customer relationships.",
-}   
+    "business_summary": "XYZ Corp is a logistics company specializing in same-day deliveries and warehouse management.",
+    "key_services": "Fleet management, last-mile delivery, warehouse storage solutions.",
+    "target_audience": "E-commerce businesses, retail chains, logistics partners.",
+    "revenue_model": "Subscription-based fleet management software, pay-per-use delivery services.",
+    "existing_technology": "Uses a basic order tracking system but lacks real-time GPS tracking.",
+    "operational_challenges": "Manual tracking of deliveries, delayed order fulfillment, lack of real-time updates.",
+    "market_trends": "Competitors are adopting AI-based route optimization and real-time tracking.",
+    "competitive_gap": "No automated dispatch system; competitors offer predictive analytics for delivery estimates.",
+    "compliance_needs": "Must comply with logistics safety regulations and data security policies.",
+    "most_valuable_software_feature": {
+        "feature_name": "AI-Powered Route Optimization",
+        "feature_description": "Automatically calculates the fastest delivery routes based on real-time traffic and delivery constraints.",
+        "expected_benefits": "Reduces fuel costs, speeds up deliveries, improves customer satisfaction.",
+        "ROI_justification": "Businesses using this feature report a 20% reduction in operational costs and a 30% increase in on-time deliveries."
+    }
+}

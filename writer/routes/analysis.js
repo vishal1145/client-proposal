@@ -5,6 +5,30 @@ import { getProposalSections, getClientProposal } from '../config/llm.js';
 
 const router = express.Router();
 
+router.post('/test', async (req, res) => {
+    try {
+        let { url } = req.body;
+
+        if (!url) {
+            return res.status(400).json({ 
+                success: false, 
+                error: "URL is required in request body" 
+            });
+        }
+
+        let analysis = await startProcess(url);
+        res.status(200).json(
+            analysis
+        );
+    } catch (error) {
+        console.error('Error in test endpoint:', error);
+        res.status(500).json({
+            success: false,
+            error: "Failed to process test endpoint"    
+        });
+    }
+});
+
 router.post('/', async (req, res) => {
     try {
         let { url } = req.body;

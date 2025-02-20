@@ -11,56 +11,56 @@ const TeamMemberSection = () => {
       id: 1,
       name: 'Dr. Nagarajan',
       role: 'Project Lead',
-      image: '/images/teammember2.png',
+      image: '/images/team.jpeg',
       hasSocial: true
     },
     {
       id: 2,
       name: 'Dr. Vaishali',
       role: 'Project Lead',
-      image: '/images/teammember2.png',
+      image: '/images/team2.jpeg',
       hasSocial: true
     },
     {
       id: 3,
       name: 'Dr. Smith',
       role: 'Senior Researcher',
-      image: '/images/teammember2.png',
+      image: '/images/team3.jpeg',
       hasSocial: true
     },
     {
       id: 4,
       name: 'Dr. Johnson',
       role: 'Data Scientist',
-      image: '/images/teammember2.png',
+      image: '/images/team4.jpeg',
       hasSocial: true
     },
     {
       id: 5,
       name: 'Dr. Williams',
       role: 'AI Specialist',
-      image: '/images/teammember2.png',
+      image: '/images/team2.jpeg',
       hasSocial: true
     },
     {
       id: 6,
       name: 'Dr. Brown',
       role: 'Research Analyst',
-      image: '/images/teammember2.png',
+      image: '/images/team.jpeg',
       hasSocial: true
     },
     {
       id: 7,
       name: 'Dr. Davis',
       role: 'ML Engineer',
-      image: '/images/teammember2.png',
+      image: '/images/team4.jpeg',
       hasSocial: true
     },
     {
       id: 8,
       name: 'Dr. Miller',
       role: 'Technical Lead',
-      image: '/images/teammember2.png',
+      image: '/images/team3.jpeg',
       hasSocial: true
     }
   ];

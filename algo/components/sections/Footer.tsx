@@ -3,12 +3,40 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useState } from "react";
 interface FooterProps {
   showSubscribe?: boolean;
 }
 
 export default function Footer({ showSubscribe = true }: FooterProps) {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState({ type: "", message: "" });
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      setStatus({ type: "error", message: "Please enter an email address" });
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+      setStatus({ type: result.success ? "success" : "error", message: result.message });
+
+      if (result.success) setEmail(""); // Clear input on success
+
+      // Hide message after 5 seconds
+      setTimeout(() => setStatus({ type: "", message: "" }), 5000);
+    } catch (error) {
+      console.log(error)
+      setStatus({ type: "error", message: "Something went wrong. Try again." });
+    }
+  };
   return (
     <footer className="bg-[#0B1B2B] text-white py-10 overflow-x-hidden">
       <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
@@ -81,11 +109,13 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                 </h2>
                 <div className="relative max-w-md">
                   <input
-                    type="email"
-                    placeholder="Enter your email"
+                   type="email"
+                   value={email}
+                   onChange={(e) => setEmail(e.target.value)}
+                 placeholder="Enter your email"
                     className="w-full text-[14px] bg-transparent text-white rounded-full py-2 px-6 pr-44 border border-gray-700/30 focus:outline-none focus:border-[#4461F2] placeholder:text-gray-400"
                   />
-                  <Button className="absolute h-[2.6rem] text-[14px] right-0 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px-8 py-2.6 flex items-center gap-2 transition-colors">
+                  <Button className="absolute h-[2.6rem] text-[12px] right-0 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px-4 py-2.6 flex items-center gap-2 transition-colors" onClick={handleSubscribe}>
                   Subscrive Now
                     <svg
                       width="16"
@@ -104,6 +134,11 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                       />
                     </svg>
                   </Button>
+                  {status.message && (
+        <p className={`text-sm mt-4 ${status.type === "success" ? "text-green-300" : "text-red-300"}`}>
+          {status.message}
+        </p>
+      )}
                 </div>
               </div>
             )}

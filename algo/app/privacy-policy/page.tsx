@@ -54,7 +54,7 @@ export default function PrivacyPolicyPage() {
         </div>
       </section>
 
-      <div className="container   py-16 px-4">
+      <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20 relative z-10 py-8">
         <div className=" ">
           <h1 className="text-[24px] font-bold mb-6 text-gray-900">Privacy Policy</h1>
           

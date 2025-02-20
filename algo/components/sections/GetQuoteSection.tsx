@@ -59,7 +59,7 @@ export function GetQuoteSection({ title }: GetQuoteSectionProps) {
 
       {/* Main Content Section */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           <div className="max-w-9xl mx-auto">
             <h2 className="text-3xl font-bold text-[#0B1B2B] ">
               Monitoring And Maintaining Your Firm&apos; Network For Uptime And
@@ -84,7 +84,7 @@ export function GetQuoteSection({ title }: GetQuoteSectionProps) {
               </div>
 
               {/* Card Content */}
-              <div className="p-8">
+              <div className="py-8">
                 <h4 className="text-lg font-semibold text-[#0B1B2B] mb-4">
                   Commercial IT Requirements
                 </h4>
@@ -134,7 +134,7 @@ export function GetQuoteSection({ title }: GetQuoteSectionProps) {
             <hr></hr>
             {/* Main Content Section */}
             <section className="py-16">
-              <div className="container mx-auto px-4">
+              <div className="">
                 <div className="max-w-6xl mx-auto">
                   {/* Two Column Layout */}
                   <div className="grid grid-cols-1 sm:grid-cols-3  gap-8">
@@ -307,7 +307,7 @@ export function GetQuoteSection({ title }: GetQuoteSectionProps) {
 
             {/* Recently Viewed Services Section */}
             <section className="py-16">
-              <div className="container mx-auto px-4">
+              <div className="">
                 <div className="max-w-6xl mx-auto">
                   {/* Header */}
                   <div className="flex items-center justify-between mb-8">

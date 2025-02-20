@@ -1,19 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export function WhyChooseUsSection() {
-  // const features = [
-  //   { title: "Customized" },
-  //   { title: "High Quality" },
-  //   { title: "Experience" },
-  //   { title: "Support" },
-  // ];
-
   return (
-    <section className="bg-[#0B1B2B] py-20 mb-5">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section className="bg-[#0B1B2B] py-20 mb-5 overflow-x-visible">
+      <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
           {/* Left Content */}
           <div className="text-white space-y-8">
             <div>
@@ -28,41 +22,43 @@ export function WhyChooseUsSection() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-lg font-semibold mb-2">Customized</h3>
-                <div className="flex items-center">
-                  <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
+                <div className="flex items-center justify-start sm:justify-end">
+                  <h3 className="text-lg font-semibold">Customized</h3>
+                  <div className="h-[1px] w-8 bg-white ml-auto"></div>
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-2">High Quality</h3>
-                <div className="flex items-center">
-                  <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
+                <div className="flex items-center justify-start sm:justify-end">
+                  <h3 className="text-lg font-semibold">High Quality</h3>
+                  <div className="h-[1px] w-8 bg-white ml-auto"></div>
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-2">Experience</h3>
-                <div className="flex items-center">
-                  <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
+                <div className="flex items-center justify-start sm:justify-end">
+                  <h3 className="text-lg font-semibold">Experience</h3>
+                  <div className="h-[1px] w-8 bg-white ml-auto"></div>
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-2">Support</h3>
-                <div className="flex items-center">
-                  <div className="h-[1px] w-8 bg-blue-500 mr-2"></div>
+                <div className="flex items-center justify-start sm:justify-end">
+                  <h3 className="text-lg font-semibold">Support</h3>
+                  <div className="h-[1px] w-8 bg-white ml-auto"></div>
                 </div>
               </div>
             </div>
 
-            <button className="bg-[#0561FC] text-white px-7 py-3 rounded-3xl hover:bg-blue-700 transition-colors text-[12px] font-medium">
-              Explore More
-            </button>
+            <Link href="/about">
+              <button className="bg-[#0561FC] text-white px-7 py-3 mt-6 rounded-3xl hover:bg-blue-700 transition-colors text-[12px] font-medium">
+                Explore More
+              </button>
+            </Link>
           </div>
 
           {/* Right Image */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden">
+            <div className="relative rounded-2xl overflow-visible">
               {/* Main Image */}
               <Image
                 src="/images/about3.jpeg"
@@ -74,9 +70,8 @@ export function WhyChooseUsSection() {
 
               {/* Blue Badge */}
               <div className="relative pb-12">
-                {" "}
                 {/* Ensures space for the absolute element */}
-                <div className="absolute bottom-0 right-6">
+                <div className="absolute bottom-0 right-0 transform translate-x-8">
                   <div className="bg-[#0561FC] text-white px-8 py-6 rounded-2xl">
                     <div className="flex flex-col items-center">
                       <span className="text-base font-medium">IT Services</span>
@@ -88,12 +83,13 @@ export function WhyChooseUsSection() {
               </div>
             </div>
           </div>
+
         </div>
 
         {/* Partner Logos Section */}
-        <div className="mt-16 bg-[#0B1B2B] ">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center gap-12">
+        <div className="mt-16 bg-[#0B1B2B]">
+          <div className="">
+            <div className="flex flex-col sm:flex-row items-center gap-12">
               {/* Title */}
               <div className="text-white whitespace-nowrap">
                 <p className="text-lg font-medium">We&apos;re Proud To</p>
@@ -101,7 +97,7 @@ export function WhyChooseUsSection() {
               </div>
 
               {/* Partner Logos */}
-              <div className="flex items-center justify-between gap-12 flex-1">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-12 sm:gap-12 flex-1">
                 <Image
                   src="/images/about6.png"
                   alt="Global Technology"
@@ -116,7 +112,7 @@ export function WhyChooseUsSection() {
                   height={40}
                   className="w-auto h-12"
                 />
-                <div className="bg-gray-200 p-4 rounded-lg">
+                <div className="bg-gray-200 p-2 rounded-lg">
                   <Image
                     src="/images/about11.png"
                     alt="Connect"
@@ -137,7 +133,7 @@ export function WhyChooseUsSection() {
                 <Image
                   src="/images/about8.png"
                   alt="Global"
-                  width={120}
+                  width={80}
                   height={40}
                   className="w-auto h-12"
                 />

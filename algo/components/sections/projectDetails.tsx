@@ -98,7 +98,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       {/* Project Content */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           {/* Main Full Width Image */}
           <div className="rounded-3xl overflow-hidden bg-[#FBF2EA] mb-16">
             <div className="relative h-[400px] w-full">
@@ -183,7 +183,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       {/* Blue Background Section */}
       <section className="bg-[#0561FC] py-16 mt-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-48">
             {/* Left Column - Text and Image */}
             <div className="text-white">

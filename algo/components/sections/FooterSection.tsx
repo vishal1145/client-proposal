@@ -70,11 +70,11 @@ export function FooterSection() {
     placeholder="Enter your email"
     className="max-w-[300px] text-[14px] bg-transparent text-gray-600 rounded-full py-2 px-6 pr-20 border border-gray-700/30 focus:outline-none focus:border-[#4461F2] placeholder:text-gray-400" 
   />
-  <Button className="absolute h-[2.6rem] text-[12px] -right-20 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px-4 py-2 flex items-center gap-2 transition-colors" onClick={handleSubscribe}>
+  <Button className="absolute h-[2.6rem] text-[12px] -right-20 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px- py-2 flex items-center gap-2 transition-colors" onClick={handleSubscribe}>
   Subscrive Now
     <svg
-      width="16"
-      height="16"
+      width="12"
+      height="12"
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ export function FooterSection() {
       <path
         d="M1 8H15M15 8L8 1M15 8L8 15"
         stroke="currentColor"
-        strokeWidth="1.5"
+        strokeWidth="1"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

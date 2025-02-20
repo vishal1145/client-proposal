@@ -62,7 +62,7 @@ export function ProjectsSection() {
 
   return (
     <section className="py-5 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
         <div className="flex justify-between items-center mb-10">
           <div>
             <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 rounded-full text-xs">
@@ -118,7 +118,7 @@ export function ProjectsSection() {
             {topProjects.map((project, index) => (
               <div
                 key={`${project.id}-${index}`}
-                className="min-w-[calc(50%-72px)]"
+                className="min-w-[calc(100%-32px)] sm:min-w-[calc(50%-72px)]"
               >
                 <Link
                   href={project.link}
@@ -126,7 +126,7 @@ export function ProjectsSection() {
                 >
                   <div>
                     <div className="rounded-3xl overflow-hidden">
-                      <div className="relative h-[500px]">
+                    <div className="relative h-[300px] sm:h-[500px]">
                         <Image
                           src={project.image}
                           alt={project.title}

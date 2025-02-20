@@ -69,7 +69,7 @@ export default function ProjectsPage() {
       </div>
       {/* Projects Section */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           {/* Section Header */}
           <div className="mb-12">
             <p className="text-sm text-[#64748B] mb-3">Latest Updates</p>

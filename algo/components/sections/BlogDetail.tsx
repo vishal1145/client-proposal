@@ -62,7 +62,7 @@ export function BlogDetail({ title }: BlogDetailProps) {
 
       {/* Main Content Section */}
       <section className="py-16 overflow-x-hidden" >
-  <div className="container mx-auto px-4">
+  <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
     <div className="max-w-8xl mx-auto">
       {/* Main Blog Image */}
       <div className="mb-3">

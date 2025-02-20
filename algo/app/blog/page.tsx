@@ -70,7 +70,7 @@ export default function BlogPage() {
 
       {/* Blog Section */}
       <section className="py-16 bg-[#F8F9FF]">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           {/* Header */}
           <div className="text-center mb-12">
             <p className="text-xs uppercase tracking-wide text-gray-500 mb-2">
@@ -136,7 +136,7 @@ export default function BlogPage() {
                     industry&apos;s standard dummy.
                   </p>
                   <Link
-                    href={`/blog/Cybersecurity-Tips-For-Law-Firms&Its-Legal-Aids`}
+                    href={`/blog/Cybersecurity-Tips-For-Law-Firms-Its-Legal-Aids`}
                     className="text-[#4461F2] text-sm font-medium hover:underline"
                   >
                     Read More →
@@ -232,7 +232,7 @@ export default function BlogPage() {
                     industry&apos;s standard dummy.
                   </p>
                   <Link
-                    href={`/blog/Cybersecurity-Tips-For-Law-Firms&Its-Legal-Aids`}
+                    href={`/blog/Cybersecurity-Tips-For-Law-Firms-Its-Legal-Aids`}
                     className="text-[#4461F2] text-sm font-medium hover:underline"
                   >
                     Read More →

@@ -103,11 +103,12 @@ export function TestimonialsSection() {
             ref={scrollContainerRef}
             className="overflow-hidden"
           >
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 transition-transform duration-300">
+            <div className="flex  gap-6 sm:gap-12 transition-transform duration-300">
               {testimonials.map((testimonial, index) => (
                 <div 
                   key={`${testimonial.id}-${index}`}
-                  className="flex-1 min-w-[calc(33.333%-32px)]"
+                  className="flex-1 min-w-full md:min-w-[calc(33.333%-32px)]"
+
                 >
                   <div className={`${
                     testimonial.variant === 'blue' 

@@ -192,9 +192,9 @@ export default function Page() {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get("/api/services"); // Call API using Axios
-        debugger
-        setServices(response.data.data); // Store data in state
+        const response = await axios.get("/api/services"); 
+
+        setServices(response.data.data); 
       } catch (error) {
         console.error("Error fetching services:", error);
       }

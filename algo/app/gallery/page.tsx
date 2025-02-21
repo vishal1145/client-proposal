@@ -24,13 +24,13 @@ const galleryItems: GalleryItem[] = Array.from({ length: 80 }, (_, index) => ({
 }));
 
 const GallerySection: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
   const itemsPerPage = 16;
-  const totalPages = 5;
+  // const totalPages = 5;
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
+  // const handlePageChange = (page: number) => {
+  //   setCurrentPage(page);
+  // };
 
   return (
     <>

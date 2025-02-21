@@ -49,7 +49,7 @@ export function WhyChooseUsSection() {
               </div>
             </div>
 
-            <Link href="/about">
+            <Link href="/services">
               <button className="bg-[#0561FC] text-white px-7 py-3 mt-6 rounded-3xl hover:bg-blue-700 transition-colors text-[12px] font-medium">
                 Explore More
               </button>

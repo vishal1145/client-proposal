@@ -6,13 +6,13 @@ import { useState } from "react";
 export function FooterSection() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState({ type: "", message: "" });
-
+  const [loading, setLoading] = useState(false); 
   const handleSubscribe = async () => {
     if (!email) {
       setStatus({ type: "error", message: "Please enter an email address" });
       return;
     }
-
+    setLoading(true);
     try {
       const response = await fetch("/api/subscribe", {
         method: "POST",
@@ -31,9 +31,12 @@ export function FooterSection() {
       console.log(error)
       setStatus({ type: "error", message: "Something went wrong. Try again." });
     }
+    finally {
+      setLoading(false); // Stop loading
+    }
   };
   return (
-    <footer className="bg-white text-white py-10">
+    <footer className="bg-white text-white py-8">
       <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-6">
           {/* Logo and Description */}
@@ -72,25 +75,54 @@ export function FooterSection() {
     placeholder="Enter your email"
     className="max-w-[300px] text-[14px] bg-transparent text-gray-600 rounded-full py-2 px-6 pr-20 border border-gray-700/30 focus:outline-none focus:border-[#4461F2] placeholder:text-gray-400" 
   />
-  <Button className="absolute h-[2.6rem] text-[12px] -right-20 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px- py-2 flex items-center gap-2 transition-colors" onClick={handleSubscribe}>
-  Subscrive Now
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="ml-1"
-    >
-      <path
-        d="M1 8H15M15 8L8 1M15 8L8 15"
-        stroke="currentColor"
-        strokeWidth="1"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </Button>
+  <Button
+            className="absolute h-[2.6rem] text-[12px] -right-20 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px-4 py-2 flex items-center gap-2 transition-colors"
+            onClick={handleSubscribe}
+            disabled={loading} // Disable button while loading
+          >
+            {loading ? ( // Show spinner if loading
+              <svg
+                className="animate-spin h-5 w-5 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                ></path>
+              </svg>
+            ) : (
+              <>
+                Subscribe Now
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="ml-1"
+                >
+                  <path
+                    d="M1 8H15M15 8L8 1M15 8L8 15"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </>
+            )}
+          </Button>
   {status.message && (
         <p className={`text-sm mt-4 ${status.type === "success" ? "text-green-300" : "text-red-300"}`}>
           {status.message}
@@ -210,7 +242,7 @@ Cookies Policy
           </div>
 
           {/* Information */}
-          <div>
+          <div className="hidden">
             <h3 className="text-[16px] font-bold text-[#0B1B2B] mb-4">
               Services
             </h3>
@@ -315,7 +347,7 @@ Cookies Policy
           </div>
 
           {/* News Feeds */}
-          <div>
+          <div className="hidden">
             <h3 className="text-[16px] font-bold text-[#0B1B2B] mb-4">
               News Feeds
             </h3>

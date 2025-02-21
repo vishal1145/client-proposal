@@ -3,23 +3,41 @@ import Image from "next/image";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { useState,useEffect } from "react";
+import axios from "axios";
+interface Blog {
+  id: string;
+  title: string;
+  imageUrl: string;
+  category: string;
+  content: string;
+  link: string;
+}
 export default function BlogPage() {
   const [blogs, setBlogs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogsPerPage = 6;
 
+
+  
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await fetch("/api/blogs"); // Make sure your API route is correct
-        if (!res.ok) throw new Error("Failed to fetch blogs");
-        const data = await res.json();
-        setBlogs(data);
+        const res = await axios.get("/api/blog-detail"); 
+        debugger
+        setBlogs(res.data);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching blogs:", error);
       }
     };
 
     fetchBlogs();
   }, []);
+
+    // Pagination Logic
+    const totalPages = Math.ceil(blogs.length / blogsPerPage);
+    const startIndex = (currentPage - 1) * blogsPerPage;
+    const currentBlogs = blogs.slice(startIndex, startIndex + blogsPerPage);
+  
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -96,207 +114,51 @@ export default function BlogPage() {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-col1 sm:grid-cols-3 gap-6">
-              {/* Blog Post 1 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]">
-                <div className="relative h-48">
-                  <Image
-                    src="/images/man.jpg"
-                    alt="Blog Post"
-                    width={400}
-                    height={250}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="bg-[#F5F6FE] text-[#4461F2] text-xs px-3 py-1 rounded-full inline-block mb-3">
-                    App Development
-                  </div>
-                  <h3 className="text-[#0B1B2B] font-semibold text-base mb-2">
-                    The Future Of IT In The Legal Field Trends To Watch
-                  </h3>
-                  <p className="text-gray-500 text-sm mb-3 line-clamp-2">
-                    Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the
-                    industry&apos;s standard dummy.
-                  </p>
-                  <Link
-                    href={`/blog/the-future-of-it-in-the-legal-field-trends-to-watch`}
-                    className="text-[#4461F2] text-sm font-medium hover:underline"
-                  >
-                    Read More →
-                  </Link>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+  {currentBlogs.map((blog:Blog) => (
+    <div
+      key={blog.id}
+      className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]"
+    >
+      <div className="relative h-48">
+        <Image
+          src={blog.imageUrl}
+          alt={blog.title}
+          width={400}
+          height={250}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="p-5">
+        <div className="bg-[#F5F6FE] text-[#4461F2] text-xs px-3 py-1 rounded-full inline-block mb-3">
+          {blog.category}
+        </div>
+        <h3 className="text-[#0B1B2B] font-semibold text-base mb-2">
+          {blog.title}
+        </h3>
+        <p className="text-gray-500 text-sm mb-3 line-clamp-2">
+          {blog.content}
+        </p>
+        <Link
+          href={blog.link}
+          className="text-[#4461F2] text-sm font-medium hover:underline"
+        >
+          Read More →
+        </Link>
+      </div>
+    </div>
+  ))}
+</div>
 
-              {/* Blog Post 2 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]" >
-                <div className="relative h-48">
-                  <Image
-                    src="/images/man.jpg"
-                    alt="Blog Post"
-                    width={400}
-                    height={250}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="bg-[#F5F6FE] text-[#4461F2] text-xs px-3 py-1 rounded-full inline-block mb-3">
-                    Cybersecurity
-                  </div>
-                  <h3 className="text-[#0B1B2B] font-semibold text-base mb-2">
-                    Cybersecurity Tips For Law Firms & Its Legal Aids
-                  </h3>
-                  <p className="text-gray-500 text-sm mb-3 line-clamp-2">
-                    Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the
-                    industry&apos;s standard dummy.
-                  </p>
-                  <Link
-                    href={`/blog/Cybersecurity-Tips-For-Law-Firms-Its-Legal-Aids`}
-                    className="text-[#4461F2] text-sm font-medium hover:underline"
-                  >
-                    Read More →
-                  </Link>
-                </div>
-              </div>
 
-              {/* Blog Post 3 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]">
-                <div className="relative h-48">
-                  <Image
-                    src="/images/man.jpg"
-                    alt="Blog Post"
-                    width={400}
-                    height={250}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="bg-[#F5F6FE] text-[#4461F2] text-xs px-3 py-1 rounded-full inline-block mb-3">
-                    IT Compliance
-                  </div>
-                  <h3 className="text-[#0B1B2B] font-semibold text-base mb-2">
-                    IT Compliance And Data Protection For Law Firms
-                  </h3>
-                  <p className="text-gray-500 text-sm mb-3 line-clamp-2">
-                    Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the
-                    industry&apos;s standard dummy.
-                  </p>
-                  <Link
-                                 href={`/blog/IT-Compliance-And-Data-Protection-For-Law-Firms`}
-                    className="text-[#4461F2] text-sm font-medium hover:underline"
-                  >
-                    Read More →
-                  </Link>
-                </div>
-              </div>
-
-              {/* Blog Post 4 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]">
-                <div className="relative h-48">
-                  <Image
-                    src="/images/man.jpg"
-                    alt="Blog Post"
-                    width={400}
-                    height={250}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="bg-[#F5F6FE] text-[#4461F2] text-xs px-3 py-1 rounded-full inline-block mb-3">
-                    App Development
-                  </div>
-                  <h3 className="text-[#0B1B2B] font-semibold text-base mb-2">
-                    The Future Of IT In The Legal Field Trends To Watch
-                  </h3>
-                  <p className="text-gray-500 text-sm mb-3 line-clamp-2">
-                    Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the
-                    industry&apos;s standard dummy.
-                  </p>
-                  <Link
-                    href={`/blog/the-future-of-it-in-the-legal-field-trends-to-watch`}
-                    className="text-[#4461F2] text-sm font-medium hover:underline"
-                  >
-                    Read More →
-                  </Link>
-                </div>
-              </div>
-
-              {/* Blog Post 5 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]">
-                <div className="relative h-48">
-                  <Image
-                    src="/images/man.jpg"
-                    alt="Blog Post"
-                    width={400}
-                    height={250}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="bg-[#F5F6FE] text-[#4461F2] text-xs px-3 py-1 rounded-full inline-block mb-3">
-                    Cybersecurity
-                  </div>
-                  <h3 className="text-[#0B1B2B] font-semibold text-base mb-2">
-                    Cybersecurity Tips For Law Firms & Its Legal Aids
-                  </h3>
-                  <p className="text-gray-500 text-sm mb-3 line-clamp-2">
-                    Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the
-                    industry&apos;s standard dummy.
-                  </p>
-                  <Link
-                    href={`/blog/Cybersecurity-Tips-For-Law-Firms-Its-Legal-Aids`}
-                    className="text-[#4461F2] text-sm font-medium hover:underline"
-                  >
-                    Read More →
-                  </Link>
-                </div>
-              </div>
-
-              {/* Blog Post 6 */}
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]">
-                <div className="relative h-48">
-                  <Image
-                    src="/images/man.jpg"
-                    alt="Blog Post"
-                    width={400}
-                    height={250}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="bg-[#F5F6FE] text-[#4461F2] text-xs px-3 py-1 rounded-full inline-block mb-3">
-                    IT Compliance
-                  </div>
-                  <h3 className="text-[#0B1B2B] font-semibold text-base mb-2">
-                    IT Compliance And Data Protection For Law Firms
-                  </h3>
-                  <p className="text-gray-500 text-sm mb-3 line-clamp-2">
-                    Lorem ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem ipsum has been the
-                    industry&apos;s standard dummy.
-                  </p>
-                  <Link
-                    href={`/blog/IT-Compliance-And-Data-Protection-For-Law-Firms`}
-                    className="text-[#4461F2] text-sm font-medium hover:underline"
-                  >
-                    Read More →
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Pagination */}
-            <div className="flex justify-center gap-2 mt-12">
-              {[...Array(6)].map((_, i) => (
+        {/* Pagination */}
+        <div className="flex justify-center gap-2 mt-12">
+              {[...Array(totalPages)].map((_, i) => (
                 <button
                   key={i}
-                  className={`w-2 h-2 rounded-full ${
-                    i === 0 ? "bg-[#4461F2]" : "bg-gray-300"
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`w-3 h-3 rounded-full ${
+                    currentPage === i + 1 ? "bg-[#4461F2]" : "bg-gray-300"
                   }`}
                 />
               ))}

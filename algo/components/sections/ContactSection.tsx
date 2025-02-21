@@ -206,7 +206,9 @@ export function ContactSection() {
     <div>
       <h4 className="text-base font-medium text-white mb-2">Opening Hours</h4>
       <p className="text-sm text-white leading-relaxed">
-      Mon - Sat: 09:00 AM to 06:00 PM
+      Mon - Sat
+      <br/>
+       9 AM to 6 PM
       </p>
     </div>
   </div>
@@ -270,9 +272,42 @@ export function ContactSection() {
               </div>
 
               {/* Submit Button */}
-              <button className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors">
-                Submit Now <span className="ml-1">→</span>
-              </button>
+              <button
+  type="submit"
+  disabled={status?.type === "loading"}
+  className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+>
+  {status?.type === "loading" ? (
+    <span className="flex items-center gap-2">
+      <svg
+        className="animate-spin h-6 w-6 text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        ></circle>
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v2a6 6 0 00-6 6H4z"
+        ></path>
+      </svg>
+      Sending...
+    </span>
+  ) : (
+    <>
+      Submit Now <span className="ml-1">→</span>
+    </>
+  )}
+</button>
+
               {status && status.message && (
         <p
           className={`text-sm mt-4 ${

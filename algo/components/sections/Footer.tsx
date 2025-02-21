@@ -147,7 +147,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
             {/* Footer Links Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Quick Links */}
-              <div>
+              <div className="hidden">
                 <h3 className="text-[18px] font-semibold mb-6">Services</h3>
                 <ul className="space-y-4">
                   <li>
@@ -328,7 +328,7 @@ Cookies Policy
                 </ul>
               </div>
               {/* Information */}
-              <div>
+              <div className="hidden">
                 <h3 className="text-[18px] font-semibold mb-6">Information</h3>
                 <ul className="space-y-4">
                   <li>
@@ -381,7 +381,7 @@ Cookies Policy
                   </li>
                 </ul>
               </div>
-              <div>
+              <div className="hidden">
                 <h3 className="text-[18px] font-semibold mb-6">Expert</h3>
                 <ul className="space-y-4">
                   <li>

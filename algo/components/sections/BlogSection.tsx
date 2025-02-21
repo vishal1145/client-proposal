@@ -112,7 +112,7 @@ export function BlogSection() {
                 </p>
                 <Button 
                   variant="default"
-                  className="bg-[#0B1B2B] hover:bg-blue-900 text-white rounded-full px-6 py-2 flex items-center gap-2"
+                  className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-fit px-6 py-2 flex items-center gap-2"
                 >
                   Know More
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

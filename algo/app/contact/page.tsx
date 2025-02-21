@@ -116,7 +116,7 @@ export default function ContactPage() {
       className="opacity-90"
     />
   </div>
-  <div className="absolute top-[32%] left-[45%]">
+  {/* <div className="absolute top-[32%] left-[45%]">
     <div className="relative">
       <div className="w-2 h-2 bg-gray-500 rounded-full relative z-10"></div>
     </div>
@@ -125,16 +125,16 @@ export default function ContactPage() {
     <div className="relative">
       <div className="w-2 h-2 bg-gray-500 rounded-full relative z-10"></div>
     </div>
-  </div>
+  </div> */}
   {/* Singapore Office */}
   <div className="absolute top-[52%] left-[75%]">
     <div className="relative">
       <div className="w-1 h-1 bg-[#0561FC] rounded-full animate-ping absolute opacity-75"></div>
       <div className="w-2 h-2 bg-[#0561FC] rounded-full relative z-10"></div>
       <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-[#0561FC] text-white px-4 py-2 rounded-lg text-xs whitespace-nowrap shadow-lg">
-        <p>IT Services & Software Solutions</p>
-        <p>45, Singapore</p>
-        <p>Ph: +65 123 456 789</p>
+        <p>Algofolks Private Limited</p>
+        <p>C-104 Sector 65 Noida</p>
+        <p>Ph: +91 8743045170</p>
       </div>
     </div>
   </div>
@@ -216,7 +216,7 @@ export default function ContactPage() {
         </p>
         <a href="https://algofolks.com" target="_blank" rel="noopener noreferrer">
   <button className="text-white text-sm font-medium bg-[#0561FC] px-5 py-2 rounded-full group-hover:bg-white group-hover:text-gray-800 transition-all">
-    www.Algofolks.com →
+    www.algofolks.com →
   </button>
 </a>
 
@@ -368,7 +368,9 @@ export default function ContactPage() {
                       Opening Hours
                     </h4>
                     <p className="text-sm text-gray-500 leading-relaxed">
-                    Mon - Sat: 09:00 AM to 06:00 PM
+                    Mon - Sat
+                    <br/>
+                    9 AM to 6 PM
                     </p>
                   </div>
                 </div>
@@ -432,9 +434,41 @@ export default function ContactPage() {
                 </div>
 
                 {/* Submit Button */}
-                <button className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors">
-                  Submit Now <span className="ml-1">→</span>
-                </button>
+                <button
+  type="submit"
+  disabled={status?.type === "loading"}
+  className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+>
+  {status?.type === "loading" ? (
+    <span className="flex items-center gap-2">
+      <svg
+        className="animate-spin h-6 w-6 text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        ></circle>
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v2a6 6 0 00-6 6H4z"
+        ></path>
+      </svg>
+      Sending...
+    </span>
+  ) : (
+    <>
+      Submit Now <span className="ml-1">→</span>
+    </>
+  )}
+</button>
                 {status && status.message && (
         <p
           className={`text-sm mt-4 ${

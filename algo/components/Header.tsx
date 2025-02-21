@@ -4,11 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { useActiveLink } from "@/hooks/useActiveLink";
+// import { useActiveLink } from "@/hooks/useActiveLink";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const isActive = useActiveLink();
+  // const isActive = useActiveLink();
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -116,7 +116,7 @@ export function Header() {
             {/* Navigation Links */}
             <nav className="hidden lg:flex items-center gap-8">
              
-              <Link 
+              {/* <Link 
                 href="/services" 
                 className={`font-medium ${
                   isActive('/services') ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'
@@ -124,9 +124,9 @@ export function Header() {
               >
                 Services
               </Link>
-              {/* <Link href="/pages" className="text-gray-600 hover:text-blue-600 transition-colors">Pages</Link> */}
-              <Link href="/projects" className="text-gray-600 hover:text-blue-600 transition-colors">Projects</Link>
-              <Link href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">Blogs</Link>
+              <Link href="/pages" className="text-gray-600 hover:text-blue-600 transition-colors">Pages</Link>
+              <Link href="/projects" className="text-gray-600 hover:text-blue-600 transition-colors ">Projects</Link>
+              <Link href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">Blogs</Link> */}
               <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact Us</Link>
             </nav>
 

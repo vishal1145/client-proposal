@@ -82,8 +82,7 @@ export function HeroSection() {
 
             {/* Description */}
             <p className="text-[15px] text-gray-600 max-w-[650px] mx-auto mb-8 leading-[1.6]">
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form,
+            Empowering businesses with cutting-edge software solutions and digital transformation
             </p>
 
             <Link

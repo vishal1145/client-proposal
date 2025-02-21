@@ -51,8 +51,7 @@ export function FooterSection() {
               />
             </Link>
             <p className="text-[14px] text-gray-600 leading-relaxed">
-              Search amanzign individuals around the globe, find a mentor,
-              expand your network,
+            Empowering businesses with cutting-edge software solutions and digital transformation
             </p>
             <div className="mt-4">
               <a

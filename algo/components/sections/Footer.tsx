@@ -55,8 +55,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
             </Link>
            
             <p className="text-gray-400 text-[14px] pb-8 border-b border-b-gray-700">
-              Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting
-              Industry. Lorem Ipsum Has Been The Industry&apos;s Standard Dummy
+            Empowering businesses with cutting-edge software solutions and digital transformation
             </p>
             <div className="flex gap-4">
               <a

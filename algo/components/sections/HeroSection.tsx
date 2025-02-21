@@ -82,7 +82,7 @@ export function HeroSection() {
 
             {/* Description */}
             <p className="text-[15px] text-gray-600 max-w-[650px] mx-auto mb-8 leading-[1.6]">
-            Empowering businesses with cutting-edge software solutions and digital transformation
+            Empowering businesses with cutting-edge technology solutions. and Delivering innovative and scalable digital solutions to the businesses
             </p>
 
             <Link

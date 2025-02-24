@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -6,7 +6,7 @@ import { useState } from "react";
 export function FooterSection() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState({ type: "", message: "" });
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
   const handleSubscribe = async () => {
     if (!email) {
       setStatus({ type: "error", message: "Please enter an email address" });
@@ -21,17 +21,19 @@ export function FooterSection() {
       });
 
       const result = await response.json();
-      setStatus({ type: result.success ? "success" : "error", message: result.message });
+      setStatus({
+        type: result.success ? "success" : "error",
+        message: result.message,
+      });
 
       if (result.success) setEmail(""); // Clear input on success
 
       // Hide message after 5 seconds
       setTimeout(() => setStatus({ type: "", message: "" }), 5000);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setStatus({ type: "error", message: "Something went wrong. Try again." });
-    }
-    finally {
+    } finally {
       setLoading(false); // Stop loading
     }
   };
@@ -51,7 +53,8 @@ export function FooterSection() {
               />
             </Link>
             <p className="text-[14px] text-gray-600 leading-relaxed">
-            Empowering businesses with cutting-edge software solutions and digital transformation
+              Empowering businesses with cutting-edge software solutions and
+              digital transformation
             </p>
             <div className="mt-4">
               <a
@@ -61,74 +64,79 @@ export function FooterSection() {
                 hi@algofolks.com
               </a>
               <p className="text-[14px] text-gray-600 mt-2">
-              Algofolks Private Limited, 
-              <br/>
-              C-104 Sector 65 Noida
+                Algofolks Private Limited,
+                <br />
+                C-104 Sector 65 Noida
               </p>
             </div>
             <div className="relative max-w-md">
-  <input
-      type="email"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-    placeholder="Enter your email"
-    className="max-w-[300px] text-[14px] bg-transparent text-gray-600 rounded-full py-2 px-6 pr-20 border border-gray-700/30 focus:outline-none focus:border-[#4461F2] placeholder:text-gray-400" 
-  />
-  <Button
-            className="absolute h-[2.6rem] text-[12px] -right-20 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px-4 py-2 flex items-center gap-2 transition-colors"
-            onClick={handleSubscribe}
-            disabled={loading} // Disable button while loading
-          >
-            {loading ? ( // Show spinner if loading
-              <svg
-                className="animate-spin h-5 w-5 text-white"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="max-w-[300px] text-[14px] bg-transparent text-gray-600 rounded-full py-2 px-6 pr-20 border border-gray-700/30 focus:outline-none focus:border-[#4461F2] placeholder:text-gray-400"
+              />
+              <Button
+                className="absolute h-[2.6rem] text-[12px] -right-20 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px-4 py-2 flex items-center gap-2 transition-colors"
+                onClick={handleSubscribe}
+                disabled={loading} // Disable button while loading
               >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                ></path>
-              </svg>
-            ) : (
-              <>
-                Subscribe Now
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="ml-1"
+                {loading ? ( // Show spinner if loading
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                  </svg>
+                ) : (
+                  <>
+                    Subscribe Now
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="ml-1"
+                    >
+                      <path
+                        d="M1 8H15M15 8L8 1M15 8L8 15"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </>
+                )}
+              </Button>
+              {status.message && (
+                <p
+                  className={`text-sm mt-4 ${
+                    status.type === "success"
+                      ? "text-green-300"
+                      : "text-red-300"
+                  }`}
                 >
-                  <path
-                    d="M1 8H15M15 8L8 1M15 8L8 15"
-                    stroke="currentColor"
-                    strokeWidth="1"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </>
-            )}
-          </Button>
-  {status.message && (
-        <p className={`text-sm mt-4 ${status.type === "success" ? "text-green-300" : "text-red-300"}`}>
-          {status.message}
-        </p>
-      )}
-</div>
-
+                  {status.message}
+                </p>
+              )}
+            </div>
           </div>
 
           {/* Branch Address */}
@@ -137,8 +145,8 @@ export function FooterSection() {
               Branch Address
             </h3>
             <p className="text-[14px] text-gray-600 mb-3">
-              Algofolks Private Limited, 
-              <br/>
+              Algofolks Private Limited,
+              <br />
               C-104 Sector 65 Noida
             </p>
             <div className="space-y-1.5">
@@ -229,14 +237,13 @@ export function FooterSection() {
                 </Link>
               </li>
               <li>
-                    <Link
-                      href="/cookie-policy"
-                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                    >
-                      
-Cookies Policy
-                    </Link>
-                  </li>
+                <Link
+                  href="/cookie-policy"
+                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                >
+                  Cookies Policy
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -345,6 +352,36 @@ Cookies Policy
             </ul>
           </div>
 
+          <div className="">
+            <h3 className="text-[16px] font-bold text-[#0B1B2B] mb-4">Expert</h3>
+            <ul className="space-y-4">
+              <li>
+                <Link
+                  href="/developers"
+                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                >
+                  Developers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/designers"
+                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                >
+                  Designers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/skills-directory"
+                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                >
+                  Skills Directory
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* News Feeds */}
           <div className="hidden">
             <h3 className="text-[16px] font-bold text-[#0B1B2B] mb-4">
@@ -400,7 +437,7 @@ Cookies Policy
         {/* Copyright */}
         <div className="mt-12 pt-6 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[14px] text-gray-600">
-          ©{new Date().getFullYear()} Algofolks Private Limited
+            ©{new Date().getFullYear()} Algofolks Private Limited
           </p>
           <div className="space-x-6">
             <Link

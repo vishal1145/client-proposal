@@ -90,6 +90,7 @@ export default function NotFoundPage() {
 
               {/* Support Options */}
               <div className="flex flex-wrap justify-center gap-8 mb-12">
+              <Link href="/services" className="no-underline">
                 <div className="flex items-center gap-2">
                   <Image
                     src="/images/404(1).png"
@@ -97,8 +98,10 @@ export default function NotFoundPage() {
                     width={24}
                     height={24}
                   />
-                  <span className="text-gray-600">Questions & Answers</span>
+                  <span className="text-gray-600">Explore Services</span>
                 </div>
+                </Link>
+                <Link href="/blogs" className="no-underline">
                 <div className="flex items-center gap-2">
                   <Image
                     src="/images/404(2).png"
@@ -106,17 +109,22 @@ export default function NotFoundPage() {
                     width={24}
                     height={24}
                   />
-                  <span className="text-gray-600">Community Forum</span>
+                  <span className="text-gray-600">Explore Blogs & News</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/images/404(3).png"
-                    alt="Support"
-                    width={24}
-                    height={24}
-                  />
-                  <span className="text-gray-600">Send Support Request</span>
-                </div>
+                </Link>
+               
+<Link href="/projects" className="no-underline">
+  <div className="flex items-center gap-2 cursor-pointer">
+    <Image
+      src="/images/404(3).png"
+      alt="Support"
+      width={24}
+      height={24}
+    />
+    <span className="text-gray-600">Explore Projects</span>
+  </div>
+</Link>
+                
               </div>
 
               {/* Back Home Button */}

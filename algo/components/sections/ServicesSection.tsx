@@ -155,7 +155,7 @@ export function ServicesSection() {
           <Link href="services/Web-development">
             <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
               <Image
-                src="/images/homes2.png"
+                src="/images/home2.png"
                 alt="Web Development"
                 fill
                 className="object-cover"

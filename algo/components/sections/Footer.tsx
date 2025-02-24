@@ -380,17 +380,10 @@ Cookies Policy
                   </li>
                 </ul>
               </div>
-              <div className="hidden">
+              <div className="">
                 <h3 className="text-[18px] font-semibold mb-6">Expert</h3>
                 <ul className="space-y-4">
-                  <li>
-                    <Link
-                      href="/experts"
-                      className="text-gray-400 text-[14px] hover:text-white transition-colors"
-                    >
-                      Experts
-                    </Link>
-                  </li>
+                 
                   <li>
                     <Link
                       href="/developers"

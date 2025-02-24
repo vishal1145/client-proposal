@@ -107,7 +107,7 @@ export function HeroSection() {
             </Link>
           </div>
           {/* Image Grid - Desktop */}
-          <div className="hidden lg:block relative mt-8">
+          <div className="hidden lg:block relative mt-8 ">
             {" "}
             {/* Reduced margin */}
             <div className="flex gap-4 items-end">

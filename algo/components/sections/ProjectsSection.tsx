@@ -12,7 +12,7 @@ export function ProjectsSection() {
       id: 1,
       title: "Mobile Application",
       category: "App Developments",
-      image: "/images/project11.png",
+      image: "/images/projects11.png",
       link: "/projects/mobile-application",
     },
     {
@@ -114,7 +114,7 @@ export function ProjectsSection() {
 
         {/* Top Row with Carousel */}
         <div ref={scrollContainerRef} className="overflow-hidden">
-          <div className="flex gap-36 transition-transform duration-300">
+          <div className="flex gap-24 transition-transform duration-300">
             {topProjects.map((project, index) => (
               <div
                 key={`${project.id}-${index}`}
@@ -122,11 +122,11 @@ export function ProjectsSection() {
               >
                 <Link
                   href={project.link}
-                  className="block group transition-transform duration-300 hover:-translate-y-2"
+                  className="block"
                 >
                   <div>
                     <div className="rounded-3xl overflow-hidden">
-                    <div className="relative h-[300px] sm:h-[500px]">
+                    <div className="relative h-[300px] sm:h-[500px]  group transition-transform duration-300 hover:-translate-y-2">
                         <Image
                           src={project.image}
                           alt={project.title}
@@ -149,7 +149,7 @@ export function ProjectsSection() {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-1  sm:grid-cols-2 gap-24 mt-8 mb-7">
+        <div className="grid grid-cols-1  sm:grid-cols-2 gap-24 mt-10 mb-7">
             {/* Left Side - Poster Magazine */}
             <Link
               href={`/projects/poster-magazine-2`}
@@ -161,7 +161,7 @@ export function ProjectsSection() {
                     src="/images/project7.jpeg"
                     alt="Poster Magazine"
                     fill
-                    className="object-contain p-6"
+                    className="object-contain "
                   />
                 </div>
               </div>
@@ -184,7 +184,7 @@ export function ProjectsSection() {
                     src="/images/project8.png"
                     alt="Cray Bag Designs"
                     fill
-                    className="object-contain p-6"
+                    className="object-contain "
                   />
                 </div>
               </div>

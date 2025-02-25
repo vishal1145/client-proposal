@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 interface Blog {
   id: string;
@@ -17,13 +17,11 @@ export default function BlogPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 6;
 
-
-  
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("/api/blog-detail"); 
-        debugger
+        const res = await axios.get("/api/blog-detail");
+        debugger;
         setBlogs(res.data);
       } catch (error) {
         console.error("Error fetching blogs:", error);
@@ -33,11 +31,11 @@ export default function BlogPage() {
     fetchBlogs();
   }, []);
 
-    // Pagination Logic
-    const totalPages = Math.ceil(blogs.length / blogsPerPage);
-    const startIndex = (currentPage - 1) * blogsPerPage;
-    const currentBlogs = blogs.slice(startIndex, startIndex + blogsPerPage);
-  
+  // Pagination Logic
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
+  const startIndex = (currentPage - 1) * blogsPerPage;
+  const currentBlogs = blogs.slice(startIndex, startIndex + blogsPerPage);
+
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -114,45 +112,44 @@ export default function BlogPage() {
           </div>
 
           <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-  {currentBlogs.map((blog:Blog) => (
-    <div
-      key={blog.id}
-      className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]"
-    >
-      <div className="relative h-48">
-        <Image
-          src={blog.imageUrl}
-          alt={blog.title}
-          width={400}
-          height={250}
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="p-5">
-        <div className="bg-[#F5F6FE] text-[#4461F2] text-xs px-3 py-1 rounded-full inline-block mb-3">
-          {blog.category}
-        </div>
-        <h3 className="text-[#0B1B2B] font-semibold text-base mb-2">
-          {blog.title}
-        </h3>
-        <p className="text-gray-500 text-sm mb-3 line-clamp-2">
-          {blog.content}
-        </p>
-        <Link
-          href={blog.link}
-          className="text-[#4461F2] text-sm font-medium hover:underline"
-        >
-          Read More →
-        </Link>
-      </div>
-    </div>
-  ))}
-</div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {currentBlogs.map((blog: Blog) => (
+                <div
+                  key={blog.id}
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={blog.imageUrl}
+                      alt={blog.title}
+                      width={400}
+                      height={250}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <div className="bg-[#F5F6FE] text-[#4461F2] text-xs px-3 py-1 rounded-full inline-block mb-3">
+                      {blog.category}
+                    </div>
+                    <h3 className="text-[#0B1B2B] font-semibold text-base mb-2">
+                      {blog.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm mb-3 line-clamp-2">
+                      {blog.content}
+                    </p>
+                    <Link
+                      href={blog.link}
+                      className="text-[#4461F2] text-sm font-medium hover:underline"
+                    >
+                      Read More →
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
 
-
-        {/* Pagination */}
-        <div className="flex justify-center gap-2 mt-12">
+            {/* Pagination */}
+            <div className="flex justify-center gap-2 mt-12">
               {[...Array(totalPages)].map((_, i) => (
                 <button
                   key={i}

@@ -6,7 +6,7 @@ export function PlatformsSection() {
     <section className="bg-[#0B1B2B] relative">
       <div className="flex flex-col sm:flex-row">
         {/* Left Content */}
-        <div className="w-full md:w-1/2 py-16 pl-24 pr-10 bg-[#0A1628]">
+        <div className="w-full md:w-1/2 py-16 pl-28 pr-10 bg-[#0A1628] ">
           <div className="max-w-sm">
             <p className="text-gray-400 text-sm mb-1 border border-gray-800 p-1 rounded-2xl inline-block">
               What We Are Expert In

@@ -95,7 +95,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                 </svg>
               </a>
             </div>
-            <div className="absolute -top-28 right-0 h-[865px] w-[1px] bg-gray-700"></div>
+            <div className="absolute -top-28 right-0 h-[698px] w-[1px] bg-gray-700"></div>
           </div>
 
           {/* Right Side - Content Section (75%) */}
@@ -402,7 +402,7 @@ Cookies Policy
                   </li>
                   <li>
                     <Link
-                      href="/skills-directory"
+                      href="/skill-directory"
                       className="text-gray-400 text-[14px] hover:text-white transition-colors"
                     >
                       Skills Directory

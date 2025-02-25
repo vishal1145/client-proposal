@@ -97,7 +97,7 @@ export function WhyChooseUsSection() {
               </div>
 
               {/* Partner Logos */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-12 sm:gap-12 flex-1">
+              <div className="flex flex-wrap flex-col sm:flex-row items-center justify-between gap-12 sm:gap-12 flex-1">
                 <Image
                   src="/images/about6.png"
                   alt="Global Technology"

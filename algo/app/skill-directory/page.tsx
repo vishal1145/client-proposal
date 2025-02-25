@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Footer from "@/components/sections/Footer";
 import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 const Page = () => {
   // State to track active section
   const [activeSection, setActiveSection] = useState("environments");
@@ -37,7 +39,52 @@ const Page = () => {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Hero Section - Keep existing hero code */}
+       <section className="relative bg-[#F6F0E4] py-20 overflow-x-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
+          <Image
+            src="/images/hand.png"
+            alt="Hand with Rocket"
+            width={300}
+            height={400}
+            className="w-auto h-[230px]"
+          />
+        </div>
+
+        <div className="absolute right-20 top-1/2 -translate-y-1/2 z-10">
+          <Image
+            src="/images/message.png"
+            alt="Chat Bubble"
+            width={80}
+            height={80}
+            className="w-auto h-auto"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-20">
+          <div className="text-center max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <h1 className="text-3xl font-bold text-[#0B1B2B]">Skills</h1>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-gray-600">
+              <span>Home</span>
+              <span>-</span>
+              <span>Skills</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute top-0 left-1/4 z-10">
+          <Image
+            src="/images/decorative.png"
+            alt="Decorative Element"
+            width={100}
+            height={100}
+            className="w-auto h-auto opacity-30"
+          />
+        </div>
+      </section>
       
       {/* Navigation Buttons */}
       <div className="text-center my-12">
@@ -809,7 +856,39 @@ const Page = () => {
           )}
         </div>
       </section>
+  {/* Bottom Content */}
+  <div className="my-16 text-center">
+            <h3 className="text-2xl font-semibold text-[#0B1B2B] mb-4">
+              Ready to Start Your Project?
+            </h3>
+            <p className="text-gray-600 text-[14px] mb-8 max-w-2xl mx-auto">
+              Let&apos;s collaborate to build innovative solutions using the latest
+              technologies and best coding practices. Our team is ready to help
+              you achieve your goals.
+            </p>
 
+            <Link href="/contact" >
+              <Button
+                variant="default"
+                className="bg-[#0066FF] hover:bg-blue-700 text-white rounded-full px-8 py-3 flex items-center gap-2 mx-auto"
+              >
+                Contact Us
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Button>
+            </Link>
+          </div>
       <Footer />
     </main>
   );

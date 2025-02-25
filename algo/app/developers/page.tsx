@@ -113,7 +113,7 @@ const page = () => {
                     alt="Technology Icon"
                     width={14}
                     height={14}
-                    className="w-4 h-4"
+                    className="w-12 h-12"
                   />
                 </div>
               </div>
@@ -135,7 +135,7 @@ const page = () => {
                     alt="Expertise Icon"
                     width={20}
                     height={20}
-                    className="w-5 h-5"
+                    className="w-12 h-12"
                   />
                 </div>
               </div>
@@ -156,7 +156,7 @@ const page = () => {
                     alt="Scalable Icon"
                     width={20}
                     height={20}
-                    className="w-5 h-5"
+                    className="w-12 h-12"
                   />
                 </div>
               </div>
@@ -184,7 +184,7 @@ const page = () => {
             {/* Card 1 - AI */}
             <div className="relative group overflow-hidden ">
               <Image
-                src="/images/mblog3.webp"
+                src="/images/AI.png"
                 alt="Artificial Intelligence"
                 width={400}
                 height={300}
@@ -201,7 +201,7 @@ const page = () => {
             {/* Card 2 - Cloud */}
             <div className="relative group overflow-hidden ">
               <Image
-                src="/images/mblog2.webp"
+                src="/images/cloud.jpeg"
                 alt="Cloud"
                 width={400}
                 height={300}
@@ -216,7 +216,7 @@ const page = () => {
             {/* Card 3 - Cognitive Business */}
             <div className="relative group overflow-hidden ">
               <Image
-                src="/images/Mblog1.webp"
+                src="/images/bussiness-operation.png"
                 alt="Cognitive Business Operations"
                 width={400}
                 height={300}
@@ -235,7 +235,7 @@ const page = () => {
             {/* Card 4 - Consulting */}
             <div className="relative group overflow-hidden ">
               <Image
-                src="/images/mblog4.webp"
+                src="/images/consulting.jpeg"
                 alt="Consulting"
                 width={400}
                 height={300}
@@ -250,7 +250,7 @@ const page = () => {
             {/* Card 5 - Cybersecurity */}
             <div className="relative group overflow-hidden ">
               <Image
-                src="/images/mblog5.webp"
+                src="/images/cyber-security.jpeg"
                 alt="Cybersecurity"
                 width={400}
                 height={300}
@@ -265,7 +265,7 @@ const page = () => {
             {/* Card 6 - Data & Analytics */}
             <div className="relative group overflow-hidden ">
               <Image
-                src="/images/mblog2.webp"
+                src="/images/data-analytic.png"
                 alt="Data & Analytics"
                 width={400}
                 height={300}
@@ -280,7 +280,7 @@ const page = () => {
             {/* Card 7 - Enterprise Solutions */}
             <div className="relative group overflow-hidden ">
               <Image
-                src="/images/mblog3.webp"
+                src="/images/enterprice-solution.jpeg"
                 alt="Enterprise Solutions"
                 width={400}
                 height={300}
@@ -297,7 +297,7 @@ const page = () => {
             {/* Card 8 - IoT Digital Engineering */}
             <div className="relative group overflow-hidden ">
               <Image
-                src="/images/mblog3.webp"
+                src="/images/iot.jpeg"
                 alt="IoT Digital Engineering"
                 width={400}
                 height={300}
@@ -336,7 +336,7 @@ const page = () => {
                     alt="Technology Icon"
                     width={24}
                     height={24}
-                    className="w-5 h-5"
+                    className="w-12 h-12"
                   />
                 </div>
               </div>
@@ -357,7 +357,7 @@ const page = () => {
                     alt="Expertise Icon"
                     width={24}
                     height={24}
-                    className="w-5 h-5"
+                    className="w-12 h-12"
                   />
                 </div>
               </div>
@@ -379,7 +379,7 @@ const page = () => {
                     alt="Scalable Icon"
                     width={24}
                     height={24}
-                    className="w-5 h-5"
+                    className="w-12 h-12"
                   />
                 </div>
               </div>
@@ -449,7 +449,7 @@ const page = () => {
                       alt="Python"
                       width={50}
                       height={50}
-                      className="w-20 h-20"
+                      className="w-15 h-15"
                     />
                   </div>
                 </div>
@@ -471,7 +471,7 @@ const page = () => {
                       alt="Open Liberty"
                       width={50}
                       height={50}
-                      className="w-20 h-20"
+                     className="w-15 h-15"
                     />
                   </div>
                 </div>
@@ -497,7 +497,7 @@ const page = () => {
                     alt="Java"
                     width={50}
                     height={50}
-                    className="w-20 h-20"
+                    className="w-15 h-15"
                   />
                 </div>
               </div>
@@ -519,7 +519,7 @@ const page = () => {
                     alt="Node.js"
                     width={50}
                     height={50}
-                    className="w-20 h-20"
+                   className="w-15 h-15"
                   />
                 </div>
               </div>
@@ -541,7 +541,7 @@ const page = () => {
                     alt="PyTorch"
                     width={50}
                     height={50}
-                    className="w-20 h-20"
+                   className="w-15 h-15"
                   />
                 </div>
               </div>

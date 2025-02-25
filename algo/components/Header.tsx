@@ -129,6 +129,28 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
               <Link href="/projects" className="text-gray-600 hover:text-blue-600 transition-colors ">Projects</Link>
               <Link href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">Blogs</Link> */}
               <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact Us</Link>
+            
+                    <Link
+                      href="/developers"
+                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                    >
+                      Developers
+                    </Link>
+                 
+                    <Link
+                      href="/designers"
+                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                    >
+                      Designers
+                    </Link>
+                
+                    <Link
+                      href="/skill-directory"
+                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                    >
+                      Skills Directory
+                    </Link>
+                
             </nav>
 
             {/* Right Section */}

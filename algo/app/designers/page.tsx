@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Footer from "@/components/sections/Footer";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -117,7 +119,7 @@ const page = () => {
               <div key={index} className="bg-white p-4 rounded-xl shadow-md transition-all duration-300 hover:bg-[#0066FF] group">
                 <div className="mb-4">
                   <div className=" p-3 rounded-lg inline-block group-hover:bg-white">
-                    <Image src={item.icon} alt={item.title} width={20} height={20} className="w-5 h-5" />
+                    <Image src={item.icon} alt={item.title} width={20} height={20} className="w-12 h-12" />
                   </div>
                 </div>
                 <h3 className="text-[#0B1B2B] text-[16px] font-semibold mb-2 group-hover:text-white">
@@ -139,7 +141,7 @@ const page = () => {
             <p className="text-[#64748B] uppercase text-xs border border-gray-300 inline-block p-2 rounded-3xl mb-4 ">Services</p>
             <h2 className="text-[30px] font-bold text-[#0B1B2B] mb-12 text-center ">Our Design Services</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 ">
+          <div className="grid grid-cols-1 md:grid-cols-4 ">
   {/* UI/UX Design Card */}
   <div className="relative overflow-hidden h-[250px] group">
     <Image
@@ -253,7 +255,7 @@ const page = () => {
             <div className="bg-white p-4 rounded-xl shadow-md transition-all duration-300 hover:bg-[#0066FF] group">
               <div className="mb-4">
                 <div className="p-3 rounded-lg inline-block group-hover:bg-white">
-                  <Image src="/images/professional.svg" alt="User Icon" width={24} height={24} className="w-5 h-5" />
+                  <Image src="/images/professional.svg" alt="User Icon" width={24} height={24} className="w-12 h-12" />
                 </div>
               </div>
               <h3 className="text-[#0B1B2B] text-[16px] font-semibold mb-2 group-hover:text-white">
@@ -268,7 +270,7 @@ const page = () => {
             <div className="bg-white p-4 rounded-xl shadow-md transition-all duration-300 hover:bg-[#0066FF] group">
               <div className="mb-4">
                 <div className=" p-3 rounded-lg inline-block group-hover:bg-white">
-                  <Image src="/images/teammates.svg" alt="Creative Icon" width={24} height={24} className="w-5 h-5" />
+                  <Image src="/images/teammates.svg" alt="Creative Icon" width={24} height={24} className="w-12 h-12" />
                 </div>
               </div>
               <h3 className="text-[#0B1B2B] text-[16px] font-semibold mb-2 group-hover:text-white">
@@ -283,7 +285,7 @@ const page = () => {
             <div className="bg-white p-4 rounded-xl shadow-md transition-all duration-300 hover:bg-[#0066FF] group">
               <div className="mb-4">
                 <div className=" p-3 rounded-lg inline-block group-hover:bg-white">
-                  <Image src="/images/self_managed.svg" alt="Expertise Icon" width={24} height={24} className="w-5 h-5" />
+                  <Image src="/images/self_managed.svg" alt="Expertise Icon" width={24} height={24} className="w-12 h-12" />
                 </div>
               </div>
               <h3 className="text-[#0B1B2B] text-[16px] font-semibold mb-2 group-hover:text-white">
@@ -300,7 +302,7 @@ const page = () => {
             <div className="bg-white p-4 rounded-xl shadow-md transition-all duration-300 hover:bg-[#0066FF] group">
               <div className="mb-4">
                 <div className="p-3 rounded-lg inline-block group-hover:bg-white">
-                  <Image src="/images/finical_control.svg" alt="Tools Icon" width={24} height={24} className="w-5 h-5" />
+                  <Image src="/images/finical_control.svg" alt="Tools Icon" width={24} height={24} className="w-12 h-12" />
                 </div>
               </div>
               <h3 className="text-[#0B1B2B] text-[16px] font-semibold mb-2 group-hover:text-white">
@@ -379,7 +381,39 @@ const page = () => {
   </div>
 </section>
 </div> */}
+  {/* Bottom Content */}
+  <div className="my-16 text-center">
+            <h3 className="text-2xl font-semibold text-[#0B1B2B] mb-4">
+              Ready to Start Your Project?
+            </h3>
+            <p className="text-gray-600 text-[14px] mb-8 max-w-2xl mx-auto">
+              Let&apos;s collaborate to build innovative solutions using the latest
+              technologies and best coding practices. Our team is ready to help
+              you achieve your goals.
+            </p>
 
+            <Link href="/contact" >
+              <Button
+                variant="default"
+                className="bg-[#0066FF] hover:bg-blue-700 text-white rounded-full px-8 py-3 flex items-center gap-2 mx-auto"
+              >
+                Contact Us
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Button>
+            </Link>
+          </div>
       <Footer />
     </div>
   );

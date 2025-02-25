@@ -6,7 +6,7 @@
         <!-- Main Content -->
         <div class="container mx-auto max-w-[1400px] relative z-10 px-4">
             <!-- Floating Images with Glow Effects -->
-            <div class="absolute top-0 left-0 w-full h-full"> 
+            <div class="absolute top-0 left-0 w-full h-full">
                 <!-- Top Small Image -->
                 <div class="absolute -top-[100px] left-[250px] rotate-[-30deg]  hidden sm:block">
                     <div class="absolute inset-0 w-[50px] h-[80px] bg-white/10 blur-[50px] rounded-[10px]"></div>
@@ -51,8 +51,8 @@
                     </p>
                 </div>
 
-                <a href="/#projects" @click.prevent="scrollToSection('projects')"
-                    class="mt-12 bg-[#CDFF6B] hover:bg-[#CDFF6B]/90 text-[#080B16] px-4 py-4 rounded-full text-base font-medium transition-colors inline-block">
+                <a @click.prevent="goToProjects"
+                    class="mt-12 bg-[#CDFF6B] hover:bg-[#CDFF6B]/90 text-[#080B16] px-4 py-4 rounded-full text-base font-medium transition-colors inline-block cursor-pointer">
                     SHOW MY PROJECTS
                 </a>
             </div>
@@ -62,7 +62,13 @@
 
 <script>
 export default {
-    name: 'About-component'
+    name: 'About-component',
+    methods: {
+        goToProjects() {
+            // Navigate to recent projects page
+            this.$router.push('/recent-projects');
+        }
+    }
 }
 </script>
 

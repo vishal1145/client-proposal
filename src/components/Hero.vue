@@ -197,17 +197,15 @@
                 </div>
 
                 <!-- Projects Button -->
-                <div
-                    class=" hidden sm:block absolute bottom-10 sm:bottom-0 left-1/2 -translate-x-1/2 transform w-full  sm:w-auto">
-                    <a href="/#projects" @click.prevent="scrollToSection('projects')"
-                        class="w-full sm:w-auto bg-[#CDFF6B] text-[#0B0F16] px-8 py-3 rounded-full text-base sm:text-lg font-medium hover:bg-white transition-colors border border-[#0B0F16] inline-block text-center">
+                <div class="hidden sm:block absolute bottom-10 left-1/2 -translate-x-1/2 transform w-full sm:w-auto">
+                    <a @click.prevent="goToProjects"
+                        class="w-full sm:w-auto bg-[#CDFF6B] text-[#0B0F16] px-8 py-3 rounded-full text-base sm:text-lg font-medium hover:bg-white transition-colors border border-[#0B0F16] inline-block text-center cursor-pointer">
                         MY PROJECTS
                     </a>
                 </div>
-                <div
-                    class=" block sm:hidden pt-4">
-                    <a href="/#projects" @click.prevent="scrollToSection('projects')"
-                        class="w-full sm:w-auto bg-[#CDFF6B] text-[#0B0F16] px-8 py-3 rounded-full text-base sm:text-lg font-medium hover:bg-white transition-colors border border-[#0B0F16] inline-block text-center">
+                <div class="block sm:hidden pt-4">
+                    <a @click.prevent="goToProjects"
+                        class="w-full sm:w-auto bg-[#CDFF6B] text-[#0B0F16] px-8 py-3 rounded-full text-base sm:text-lg font-medium hover:bg-white transition-colors border border-[#0B0F16] inline-block text-center cursor-pointer">
                         MY PROJECTS
                     </a>
                 </div>
@@ -240,6 +238,9 @@ export default {
                 this.currentTitleIndex = (this.currentTitleIndex + 1) % this.titles.length;
                 this.currentTitle = this.titles[this.currentTitleIndex];
             }, 3000); // Change every 3 seconds
+        },
+        goToProjects() {
+            this.$router.push('/recent-projects');
         }
     }
 }

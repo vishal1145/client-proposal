@@ -1,5 +1,6 @@
 <template>
-  <div class="bg-[#0B0F16] min-h-screen">
+  <router-view v-if="$route.name === 'RecentProjects'" />
+  <div v-else class="bg-[#0B0F16] min-h-screen">
     <Navbar />
     <Hero />
     <About />

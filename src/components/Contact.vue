@@ -15,19 +15,19 @@
                 <form @submit.prevent="handleSubmit" class="space-y-4 sm:space-y-6">
                     <!-- Name Input -->
                     <div>
-                        <input type="text" placeholder="YOUR NAME"
+                        <input v-model="formData.name" type="text" placeholder="YOUR NAME"
                             class="w-full bg-[#F5F5F5] rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-[#080B16] placeholder-[#080B16]/60 focus:outline-none text-sm sm:text-base" />
                     </div>
 
                     <!-- Email Input -->
                     <div>
-                        <input type="email" placeholder="EMAIL ADDRESS"
+                        <input v-model="formData.email" type="email" placeholder="EMAIL ADDRESS"
                             class="w-full bg-[#F5F5F5] rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-[#080B16] placeholder-[#080B16]/60 focus:outline-none text-sm sm:text-base" />
                     </div>
 
                     <!-- Message Input -->
                     <div>
-                        <textarea placeholder="CHAT HERE" rows="4"
+                        <textarea v-model="formData.message" placeholder="CHAT HERE" rows="4"
                             class="w-full bg-[#F5F5F5] rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-[#080B16] placeholder-[#080B16]/60 focus:outline-none resize-none text-sm sm:text-base"></textarea>
                     </div>
 
@@ -37,7 +37,6 @@
                         SUBMIT HERE
                     </button>
                 </form>
-
                 <!-- Divider -->
                 <div class="flex items-center my-8 sm:my-12">
                     <div class="flex-1 border-t-2 border-[#080B16]/10"></div>
@@ -56,7 +55,7 @@
                         <div class="text-left">
                             <h3 class="text-[#080B16] font-semibold mb-1 text-sm sm:text-base">Email</h3>
                             <a href="mailto:vkgupta.dev@gmail.com"
-                                class="text-gray-600 hover:text-[#CDFF6B] transition-colors text-sm sm:text-base break-all">
+                                class="text-gray-600 hover:text-[#CDFF6B] transition-colors text-xs sm:text-base break-all">
                                 vkgupta.dev@gmail.com
                             </a>
                         </div>
@@ -71,7 +70,7 @@
                         <div class="text-left">
                             <h3 class="text-[#080B16] font-semibold mb-1 text-sm sm:text-base">Phone</h3>
                             <a href="tel:+918743045170"
-                                class="text-gray-600 hover:text-[#CDFF6B] transition-colors text-sm sm:text-base">
+                                class="text-gray-600 hover:text-[#CDFF6B] transition-colors text-xs sm:text-base">
                                 +91-8743045170
                             </a>
                         </div>
@@ -85,9 +84,9 @@
                         </div>
                         <div class="text-left">
                             <h3 class="text-[#080B16] font-semibold mb-1 text-sm sm:text-base">Address</h3>
-                            <p class="text-gray-600 text-sm sm:text-base">
-                                C 104, Sector 65<br />
-                                Noida, 201301<br />
+                            <p class="text-gray-600 text-xs sm:text-base">
+                                C 104, Sector 65
+                                Noida,<br /> 201301
                                 India
                             </p>
                         </div>
@@ -99,16 +98,70 @@
 </template>
 
 <script>
+import emailjs from "emailjs-com";
+import "toastr/build/toastr.min.css"; // Import Toastr CSS
+import toastr from "toastr"; // Import Toastr
+
 export default {
-    name: 'Contact-component',
+    name: "ContactComponent",
+    data() {
+        return {
+            formData: {
+                name: "",
+                email: "",
+                message: ""
+            }
+        };
+    },
+    mounted() {
+        // Initialize EmailJS
+        emailjs.init("tGeqklq2HUxl4SpFQ");
+    },
     methods: {
-        handleSubmit(e) {
-            e.preventDefault();
-            // Handle form submission logic here
-            console.log('Form submitted');
+        async handleSubmit() {
+            // Validate form inputs
+            if (!this.formData.name) {
+                toastr.error("Name must be filled out");
+                return;
+            }
+            if (!this.formData.email) {
+                toastr.error("Email must be filled out");
+                return;
+            }
+            if (!this.validateEmail(this.formData.email)) {
+                toastr.error("Please enter a valid email address.");
+                return;
+            }
+            if (!this.formData.message) {
+                toastr.error("Message must be filled out");
+                return;
+            }
+
+            // EmailJS params
+            const params = {
+                to_name: "Vishal",
+                from_name: this.formData.name,
+                message: this.formData.message,
+                reply_to: this.formData.email
+            };
+
+            try {
+                await emailjs.send("service_lpkz98n", "template_ebhuhnn", params);
+                toastr.success("Message sent successfully!");
+
+                // Clear form after successful submission
+                this.formData = { name: "", email: "", message: "" };
+            } catch (error) {
+                toastr.error("Failed to send message. Please try again later.");
+                console.error("EmailJS Error:", error);
+            }
+        },
+        validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
         }
     }
-}
+};
 </script>
 
 <style scoped>

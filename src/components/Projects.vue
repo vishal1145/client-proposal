@@ -13,8 +13,8 @@
                         THE WORKS CLOSEST TO MY HEART
                     </h2>
                     <div class="relative lg:left-[70px] lg:top-20">
-                        <a href="/#projects" @click.prevent="scrollToSection('projects')"
-                            class="bg-[#CDFF6B] hover:bg-[#CDFF6B]/90 text-[#080B16] w-full lg:w-[380px] py-3 sm:py-4 rounded-full text-sm sm:text-base font-semibold transition-colors relative z-20 inline-block text-center">
+                        <a @click.prevent="goToProjects"
+                            class="bg-[#CDFF6B] hover:bg-[#CDFF6B]/90 text-[#080B16] w-full lg:w-[380px] py-3 sm:py-4 rounded-full text-sm sm:text-base font-semibold transition-colors relative z-20 inline-block text-center cursor-pointer">
                             SHOW MY PROJECTS
                         </a>
                     </div>
@@ -41,7 +41,7 @@
                         class="group relative w-full sm:w-[130px] lg:w-[150px] h-[400px] sm:h-[450px] lg:h-[500px] rounded-[32px] overflow-hidden cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800" alt="Product Project"
                             class="w-full h-full object-cover object-center" />
-                        
+
                     </div>
 
                     <!-- Architecture Project -->
@@ -49,7 +49,7 @@
                         class="group relative w-full sm:w-[130px] lg:w-[150px] h-[400px] sm:h-[450px] lg:h-[500px] rounded-[32px] overflow-hidden cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1613390792897-aa0c06a52332?w=800"
                             alt="Architecture Project" class="w-full h-full object-cover object-center" />
-                        
+
                     </div>
                 </div>
             </div>
@@ -59,7 +59,13 @@
 
 <script>
 export default {
-    name: 'Projects-component'
+    name: 'Projects-component',
+    methods: {
+        goToProjects() {
+            // Navigate to recent projects page
+            this.$router.push('/recent-projects');
+        }
+    }
 }
 </script>
 

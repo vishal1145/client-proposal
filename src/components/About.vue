@@ -1,5 +1,5 @@
 <template>
-    <section id="about" class=" bg-[#080B16] relative overflow-hidden py-20">
+    <section id="about" class=" bg-[#080B16] relative overflow-hidden pt-20">
         <!-- Background Effects -->
         <div class="absolute inset-0 bg-gradient-radial from-[#1F2B64]/20 via-[#080B16] to-[#080B16]"></div>
 
@@ -31,9 +31,9 @@
 
             <!-- Content -->
             <div class="text-center relative z-20 mt-[100px] ">
-                <h2 class="text-[#CDFF6B] text-6xl font-bold mb-8">WHO AM I?</h2>
+                <h2 class="text-[#CDFF6B] text-4xl sm:text-5xl lg:text-6xl font-bold mb-8">WHO AM I?</h2>
 
-                <div class="md:max-w-[600px] mx-auto space-y-6 text-white/90">
+                <div class="md:max-w-[600px] mx-auto space-y-6 text-white/80">
                     <p class="text-lg">
                         I Am a full-stack website developer specialized in ReactJS. Plus, I
                         also know some WordPress front-end development with

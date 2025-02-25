@@ -5,7 +5,7 @@
             <!-- Logo Section -->
             <div class="flex items-center">
                 <a @click.prevent="goToHome" class="cursor-pointer">
-                    <img :src="logo" alt="Reactive Logo" class="w-12 h-12 md:w-20 md:h-20 object-contain" />
+                    <img :src="logo" alt="Reactive Logo" class="w-12 h-12 object-contain" />
                 </a>
             </div>
 
@@ -29,7 +29,7 @@
                     <span class="mr-8">CONTACT</span>
                     <div
                         class="absolute right-0.5 w-8 h-8 bg-[#CDFF6B] rounded-full flex items-center justify-center group-hover:bg-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#0B0F16] rotate-[90deg]"
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#0B0F16] rotate-[135deg]"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

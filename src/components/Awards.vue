@@ -4,14 +4,15 @@
         <div class="absolute inset-0 bg-gradient-radial from-[#1F2B64]/20 via-[#080B16] to-[#080B16]"></div>
 
         <!-- Main Content -->
-        <div class="container mx-auto max-w-[1400px] relative z-10">
+        <div class="container mx-auto max-w-[1400px] relative z-10 pt-20">
             <!-- Content Container with Same Margins as Additional Skills -->
             <div class="mx-4 sm:mx-6 lg:mx-[180px]">
-                <div class="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-0">
+                <div
+                    class="flex flex-col lg:flex-row justify-between lg:items-start items-start md:items-center gap-12 lg:gap-0">
                     <!-- Heading Section -->
-                    <div class="max-w-[500px] w-full">
+                    <div class="lg:max-w-[500px] w-full">
                         <h2
-                            class="text-white text-4xl sm:text-5xl lg:text-6xl text-center lg:text-start font-bold leading-[1.1] mb-6">
+                            class="text-white text-4xl sm:text-5xl lg:text-6xl text-center md:text-center lg:text-start font-bold leading-[1.1] mb-6">
                             AWARDS & <br />ACHIEVEMENTS
                         </h2>
                         <p class="text-white/80 text-base sm:text-lg text-center lg:text-start">
@@ -22,7 +23,7 @@
 
                     <!-- Awards Grid -->
                     <div class="w-full lg:w-auto lg:ml-20">
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 lg:gap-x-3 relative">
+                        <div class="grid grid-cols-3 sm:grid-cols-3 gap-4 lg:gap-x-3 relative">
                             <!-- First Column -->
                             <div class="flex items-center justify-center lg:justify-start">
                                 <div

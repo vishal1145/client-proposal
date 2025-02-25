@@ -4,7 +4,7 @@
         <div class="absolute inset-0 bg-gradient-radial from-[#1F2B64]/20 via-[#080B16] to-[#080B16]"></div>
 
         <!-- Main Content -->
-        <div class="container mx-auto max-w-[1400px] relative z-10">
+        <div class="container mx-auto max-w-[1400px] relative z-10 pt-20">
             <!-- Content Container with Same Margins as Additional Skills -->
             <div class="mx-4 sm:mx-6 lg:mx-[180px]">
                 <div class="text-center mb-12 sm:mb-16 lg:mb-24">
@@ -13,16 +13,17 @@
 
                 <div class="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-6">
                     <!-- Skills Grid -->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+                    <div
+                        class="grid grid-cols-2  sm:grid-cols-3   md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
                         <!-- HTML -->
                         <div
-                            class="bg-[#151B26]  rounded-2xl flex items-center justify-center hover:bg-[#151B26]/80 transition-colors cursor-pointer">
+                            class="bg-[#151B26] w-[160px]  h-[200px]  rounded-2xl flex items-center justify-center hover:bg-[#151B26]/80 transition-colors cursor-pointer">
                             <img src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="HTML5" class="w-16 h-16" />
                         </div>
 
                         <!-- CSS -->
                         <div
-                            class="bg-[#151B26] w-[160px] h-[200px] rounded-2xl flex items-center justify-center hover:bg-[#151B26]/80 transition-colors cursor-pointer">
+                            class="bg-[#151B26] w-[160px]  h-[200px] rounded-2xl flex items-center justify-center hover:bg-[#151B26]/80 transition-colors cursor-pointer">
                             <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS3" class="w-16 h-16" />
                         </div>
 
@@ -71,7 +72,7 @@
 
                     <!-- Experience Card -->
                     <div
-                        class="bg-[#151B26] w-full md:w-[300px]  h-[417px] rounded-2xl flex flex-col items-center justify-center">
+                        class="bg-[#151B26] w-full lg:w-[300px]  h-[425px] rounded-2xl flex flex-col items-center justify-center">
                         <div class="text-center">
                             <h3 class="text-white text-8xl font-bold mb-6">4</h3>
                             <div class="text-white text-5xl text-normal space-y-1">

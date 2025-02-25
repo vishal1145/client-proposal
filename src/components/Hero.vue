@@ -38,7 +38,7 @@
             <!-- Stats Cards Section -->
             <div class="relative w-full">
                 <!-- Client Review Card -->
-                <div class="hidden lg:block absolute -left-28 top-[15%] z-10">
+                <div class="hidden lg:block absolute -left-28 xl:-left-[108px] 2xl:-left-[380px] top-[15%] z-10">
                     <div
                         class="bg-[#1E2735]/90 p-6 sm:p-8 rounded-3xl w-[300px] sm:w-[340px] transform -rotate-[6deg] backdrop-blur-sm shadow-xl">
                         <div class="flex flex-col">
@@ -73,7 +73,7 @@
                 </div>
 
                 <!-- Expertise Card -->
-                <div class="hidden lg:block absolute -right-28 top-[15%] z-10">
+                <div class="hidden lg:block absolute -right-28 xl:-right-[110px] 2xl:-right-[380px] top-[15%] z-10">
                     <div
                         class="bg-[#1E2735]/90 p-6 sm:p-8 rounded-3xl w-[300px] sm:w-[340px] transform rotate-[6deg] backdrop-blur-sm shadow-xl">
                         <div class="flex flex-col">

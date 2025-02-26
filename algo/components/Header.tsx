@@ -232,7 +232,7 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     </div>
 
     {/* Mobile Menu Links */}
-    <nav className="space-y-4">
+    <nav className="space-y-4 flex flex-col">
       <Link 
         href="/contact" 
         className="block text-gray-600 hover:text-blue-600 transition-colors"
@@ -240,6 +240,27 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
       >
         Contact Us
       </Link>
+      <Link
+                      href="/developers"
+                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                    >
+                      Developers
+                    </Link>
+                 
+                    <Link
+                      href="/designers"
+                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                    >
+                      Designers
+                    </Link>
+                
+                    <Link
+                      href="/skill-directory"
+                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                    >
+                      Skills Directory
+                    </Link>
+                
     </nav>
 
     {/* Mobile Contact Info */}

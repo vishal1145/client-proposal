@@ -11,7 +11,7 @@ interface FooterProps {
 export default function Footer({ showSubscribe = true }: FooterProps) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState({ type: "", message: "" });
-
+  const [loading, setLoading] = useState(false);
   const handleSubscribe = async () => {
     if (!email) {
       setStatus({ type: "error", message: "Please enter an email address" });
@@ -35,6 +35,9 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
     } catch (error) {
       console.log(error)
       setStatus({ type: "error", message: "Something went wrong. Try again." });
+    }
+    finally {
+      setLoading(false); // Stop loading
     }
   };
   return (
@@ -107,39 +110,94 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                   <br />
                   Let&apos;s Find The Solutions
                 </h2>
-                <div className="relative max-w-md">
-                  <input
-                   type="email"
-                   value={email}
-                   onChange={(e) => setEmail(e.target.value)}
-                 placeholder="Enter your email"
-                    className="w-full text-[14px] bg-transparent text-white rounded-full py-2 px-6 pr-44 border border-gray-700/30 focus:outline-none focus:border-[#4461F2] placeholder:text-gray-400"
-                  />
-                  <Button className="absolute h-[2.6rem] text-[12px] right-0 top-0 bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white rounded-full px-4 py-2.6 flex items-center gap-2 transition-colors" onClick={handleSubscribe}>
-                  Subscrive Now
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="ml-1"
-                    >
-                      <path
-                        d="M1 8H15M15 8L8 1M15 8L8 15"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </Button>
-                  {status.message && (
-        <p className={`text-sm mt-4 ${status.type === "success" ? "text-green-300" : "text-red-300"}`}>
-          {status.message}
-        </p>
-      )}
-                </div>
+            
+                  <div className="relative w-full sm:w-[400px]">
+  <input
+    type="email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    placeholder="Enter your email"
+    className="w-full text-[14px] bg-transparent text-white
+      rounded-full h-[40px] pl-6 pr-[140px]
+      border border-gray-700/30 
+      focus:outline-none focus:border-[#4461F2] 
+      placeholder:text-gray-400"
+  />
+  <Button
+    className={`
+      absolute 
+      right-0 
+      top-0
+      h-[40px]
+      text-[12px] 
+      bg-[#0D6EFD] 
+      hover:bg-[#0B5ED7] 
+      text-white 
+      rounded-full 
+      px-4
+      flex 
+      items-center 
+      justify-center 
+      gap-2
+      transition-colors
+      disabled:opacity-50
+      disabled:cursor-not-allowed
+    `}
+    onClick={handleSubscribe}
+    disabled={loading}
+  >
+    {loading ? (
+      <svg
+        className="animate-spin h-5 w-5 text-white"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        />
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+        />
+      </svg>
+    ) : (
+      <>
+        Subscribe Now
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 8H15M15 8L8 1M15 8L8 15"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </>
+    )}
+  </Button>
+  {status.message && (
+    <p
+      className={`text-sm mt-2 ${
+        status.type === "success" ? "text-green-300" : "text-red-300"
+      }`}
+    >
+      {status.message}
+    </p>
+  )}
+</div>
               </div>
             )}
 

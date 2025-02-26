@@ -144,7 +144,7 @@ export default function AboutPage() {
       {/* Main Content Section */}
       <section className="py-16">
         <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Column - Images */}
             <div className="relative w-full max-w-md mx-auto sm:max-w-none">
               <div className="relative">
@@ -154,7 +154,7 @@ export default function AboutPage() {
                     alt="Person working on laptop"
                     width={380}
                     height={280}
-                    className="w-full max-w-[580px] h-auto rounded-2xl object-cover"
+                    className="w-full  h-auto rounded-2xl object-cover"
                   />
                 </div>
 
@@ -283,7 +283,7 @@ export default function AboutPage() {
           </h2>
 
           <div className="max-w-5xl mx-auto mb-12 sm:mb-20">
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-20">
+          <div className="flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-20">
             {stats.map((stat, index) => (
               <div key={index} className="w-full">
                 <div className="relative flex items-end justify-center">
@@ -305,13 +305,13 @@ export default function AboutPage() {
 
                   {/* Vertical Divider (Only visible on larger screens) */}
                   {index < stats.length - 1 && (
-                    <div className="hidden sm:block w-[1px] h-16 bg-gray-200 absolute right-[-25px] sm:right-[-30px] top-1/2 -translate-y-1/2"></div>
+                    <div className="hidden lg:block w-[1px] h-16 bg-gray-200 absolute right-[-25px] sm:right-[-30px] top-1/2 -translate-y-1/2"></div>
                   )}
                 </div>
 
                 {/* Horizontal Divider (Only visible on mobile) */}
                 {index < stats.length - 1 && (
-                  <div className="sm:hidden w-full h-[1px] bg-gray-200 my-7"></div>
+                  <div className="lg:hidden w-full h-[1px] bg-gray-200 my-7"></div>
                 )}
               </div>
             ))}
@@ -492,7 +492,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-white">Our Team Members</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Team Member 1 */}
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-[200px] h-[200px] mx-auto mb-6">

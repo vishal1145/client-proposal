@@ -125,7 +125,7 @@ export function ContactSection() {
       </div>
 
       <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20 relative z-10 flex-col">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-40">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 sm:gap-20 lg:gap-40">
           {/* Left Side - Contact Info */}
           <div>
             <p className="text-sm text-gray-500 border border-gray-400 font-medium mb-4 inline-block px-3 py-1 rounded-full">

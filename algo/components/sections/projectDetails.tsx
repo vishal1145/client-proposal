@@ -182,9 +182,9 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       </section>
 
       {/* Blue Background Section */}
-      <section className="bg-[#0561FC] py-16 mt-16">
+      <section className="bg-[#0561FC] py-16 mt-0 lg:mt-16">
         <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-48">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-48">
             {/* Left Column - Text and Image */}
             <div className="text-white">
               <h2 className="text-2xl font-bold mb-4">
@@ -264,7 +264,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           </div>
           <hr />
           {/* Navigation Links */}
-          <div className="flex justify-between items-center max-w-4xl mx-auto pt-16">
+          <div className="flex justify-between items-center max-w-4xl mx-auto pt-16 gap-20">
             <Link href="#" className="flex items-center gap-3 group">
               <div className="relative w-[60px] h-[60px]">
                 <Image

@@ -7,7 +7,7 @@ export function WhyChooseUsSection() {
   return (
     <section className="bg-[#0B1B2B] py-20 mb-5 overflow-x-visible">
       <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           {/* Left Content */}
           <div className="text-white space-y-8">
             <div>
@@ -50,7 +50,7 @@ export function WhyChooseUsSection() {
             </div>
 
             <Link href="/services">
-              <button className="bg-[#0561FC] text-white px-7 py-3 mt-6 rounded-3xl hover:bg-blue-700 transition-colors text-[12px] font-medium">
+              <button className="bg-[#0561FC] text-white px-7 py-3 mt-9 rounded-3xl hover:bg-blue-700 transition-colors text-[12px] font-medium">
                 Explore More
               </button>
             </Link>
@@ -65,13 +65,13 @@ export function WhyChooseUsSection() {
                 alt="Why Choose Us Illustration"
                 width={500}
                 height={400}
-                className="w-[500px] h-[400px] rounded-2xl object-cover"
+                className="w-full lg:w-[500px] h-[400px] rounded-2xl object-cover"
               />
 
               {/* Blue Badge */}
               <div className="relative pb-12">
                 {/* Ensures space for the absolute element */}
-                <div className="absolute bottom-0 right-0 transform translate-x-8">
+                <div className="absolute bottom-0 right-0 transform translate-x-18 lg:translate-x-8">
                   <div className="bg-[#0561FC] text-white px-8 py-6 rounded-2xl">
                     <div className="flex flex-col items-center">
                       <span className="text-base font-medium">IT Services</span>

@@ -85,7 +85,7 @@ export function ServicesSection() {
         </div>
 
         <div className="max-w-5xl mx-auto mb-12 sm:mb-20">
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-20">
+          <div className="flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-20">
             {stats.map((stat, index) => (
               <div key={index} className="w-full">
                 <div className="relative flex items-end justify-center">
@@ -107,13 +107,13 @@ export function ServicesSection() {
 
                   {/* Vertical Divider (Only visible on larger screens) */}
                   {index < stats.length - 1 && (
-                    <div className="hidden sm:block w-[1px] h-16 bg-gray-200 absolute right-[-25px] sm:right-[-30px] top-1/2 -translate-y-1/2"></div>
+                    <div className="hidden lg:block w-[1px] h-16 bg-gray-200 absolute right-[-25px] sm:right-[-30px] top-1/2 -translate-y-1/2"></div>
                   )}
                 </div>
 
                 {/* Horizontal Divider (Only visible on mobile) */}
                 {index < stats.length - 1 && (
-                  <div className="sm:hidden w-full h-[1px] bg-gray-200 my-7"></div>
+                  <div className="lg:hidden w-full h-[1px] bg-gray-200 my-7"></div>
                 )}
               </div>
             ))}

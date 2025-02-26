@@ -22,8 +22,8 @@ const serviceDetails: Record<string, ServiceDetail> = {
     image:
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070",
   },
-  "managed-it-services": {
-    title: "Managed IT Services",
+  "managed-Team": {
+    title: "Managed-Team",
     subtitle: "Streamlining Your IT Operations",
     description:
       "Our managed IT services provide comprehensive support for your technology infrastructure, ensuring optimal performance and reliability.",
@@ -78,15 +78,8 @@ const serviceDetails: Record<string, ServiceDetail> = {
     image:
       "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
   },
-  "managed-teams": {
-    title: "Managed Teams",
-    subtitle: "Dedicated Development Teams",
-    description:
-      "Build and scale your development capabilities with our managed team solutions, providing the right expertise when you need it.",
-    image:
-      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
-  },
-  "technology-consulting": {
+
+  "Technology-Consulting": {
     title: "Technology Consulting",
     subtitle: "Expert Technology Guidance",
     description:

@@ -207,14 +207,14 @@ export default function Page() {
       {/* Hero Section */}
       <div className="relative bg-[#F6F0E4] py-20 overflow-hidden">
         {/* Background Decorative Elements */}
-        <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
           <div className="relative">
             <Image
               src="/images/hand.png"
               alt="Hand with Rocket"
               width={300}
               height={200}
-              className="w-auto h-auto"
+              className="w-auto h-[238px]"
             />
           </div>
         </div>
@@ -266,10 +266,10 @@ export default function Page() {
       <section className="py-20 bg-white">
         <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           {/* Featured Services Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-6 md:mb-6 lg:mb-20">
             {/* Left Content */}
             <div className="space-y-6">
-              <span className="inline-block text-xs text-gray-600 border border-gray-300 p-1 rounded-2xl">
+              <span className="inline-block text-xs text-gray-600 border border-gray-300 p-2 rounded-2xl">
                 Best Lead Compliments
               </span>
               <h2 className="text-3xl font-medium text-[#0B1B2B] -mb-1">

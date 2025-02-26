@@ -114,13 +114,13 @@ export default function ContactPage() {
       {/* Hero Section */}
       <div className="relative bg-[#F6F0E4] py-20 ">
         {/* Background Decorative Elements */}
-        <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
           <Image
             src="/images/hand.png"
             alt="Hand with Rocket"
             width={300}
             height={200}
-            className="w-auto h-auto"
+            className="w-auto h-[239px]"
           />
         </div>
 
@@ -194,7 +194,7 @@ export default function ContactPage() {
       {/* Contact Options */}
       <section className="pb-16 pt-0 bg-white ">
   <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {/* Chat For Sales */}
       <div className="bg-white p-6 rounded-xl text-left shadow-2xl transition-all group hover:bg-[#0561FC] hover:text-white">
         <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3">
@@ -302,7 +302,7 @@ export default function ContactPage() {
       {/* Contact Form Section */}
       <section className="py-16 bg-[#E0EFFF]">
         <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-40">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 md:gap-20 lg:gap-40">
             {/* Left Side - Contact Info */}
             <div>
               <p className="text-sm text-gray-500 border border-gray-400 font-medium mb-4 inline-block px-3 py-1 rounded-full">
@@ -424,8 +424,8 @@ export default function ContactPage() {
                 </div>
 
                 {/* Divider Lines */}
-                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 hidden md:block"></div>
-<div className="absolute left-0 right-0 top-[45%] h-px bg-gray-300 hidden md:block"></div>
+                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 hidden sm:block"></div>
+<div className="absolute left-0 right-0 top-[45%] h-px bg-gray-300 hidden sm:block"></div>
 
               </div>
             </div>

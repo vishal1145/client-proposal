@@ -267,7 +267,7 @@ export function FooterSection() {
           </div>
 
           {/* Information */}
-          <div className="hidden">
+          <div className="">
             <h3 className="text-[16px] font-bold text-[#0B1B2B] mb-4">
               Services
             </h3>

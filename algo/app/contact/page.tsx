@@ -120,7 +120,7 @@ export default function ContactPage() {
             alt="Hand with Rocket"
             width={300}
             height={200}
-            className="w-auto h-[239px]"
+            className="w-auto h-[235px]"
           />
         </div>
 

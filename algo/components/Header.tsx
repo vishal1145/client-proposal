@@ -117,15 +117,13 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
             {/* Navigation Links */}
             <nav className="hidden lg:flex items-center gap-8">
              
-              {/* <Link 
+              <Link 
                 href="/services" 
-                className={`font-medium ${
-                  isActive('/services') ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'
-                } transition-colors`}
+                className="text-gray-600 hover:text-blue-600 transition-colors"
               >
                 Services
               </Link>
-              <Link href="/pages" className="text-gray-600 hover:text-blue-600 transition-colors">Pages</Link>
+              {/* <Link href="/pages" className="text-gray-600 hover:text-blue-600 transition-colors">Pages</Link>
               <Link href="/projects" className="text-gray-600 hover:text-blue-600 transition-colors ">Projects</Link>
               <Link href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">Blogs</Link> */}
               <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact Us</Link>
@@ -144,12 +142,12 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
                       Designers
                     </Link>
                 
-                    <Link
+                    {/* <Link
                       href="/skill-directory"
                       className="text-gray-600 hover:text-blue-600 transition-colors"
                     >
                       Skills Directory
-                    </Link>
+                    </Link> */}
                 
             </nav>
 
@@ -233,6 +231,12 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     {/* Mobile Menu Links */}
     <nav className="space-y-4 flex flex-col">
+    <Link 
+                href="/services" 
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                Services
+              </Link>
       <Link 
         href="/contact" 
         className="block text-gray-600 hover:text-blue-600 transition-colors"
@@ -254,12 +258,13 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
                       Designers
                     </Link>
                 
-                    <Link
+                    {/* <Link
                       href="/skill-directory"
                       className="text-gray-600 hover:text-blue-600 transition-colors"
                     >
                       Skills Directory
-                    </Link>
+                    </Link> */}
+                    
                 
     </nav>
 

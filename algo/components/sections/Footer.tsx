@@ -98,7 +98,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                 </svg>
               </a>
             </div>
-            <div className="absolute -top-28 right-0 h-[698px] w-[1px] bg-gray-700"></div>
+            <div className="absolute -top-28 right-0 h-[865px] w-[1px] bg-gray-700"></div>
           </div>
 
           {/* Right Side - Content Section (75%) */}
@@ -204,7 +204,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
             {/* Footer Links Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Quick Links */}
-              <div className="hidden">
+              <div className="">
                 <h3 className="text-[18px] font-semibold mb-6">Services</h3>
                 <ul className="space-y-4">
                   <li>

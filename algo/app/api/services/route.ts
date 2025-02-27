@@ -36,12 +36,12 @@ export async function GET(request: Request) {
     {
       _id: "67b71d8bbda5a81522122ef9",
       title: "Managed Team",
-      description: "Contrary To Popular Belief, Lorem Ipsum",
+      description: "Empower your projects with Algofolks' dedicated expert teams for seamless, high-quality development.",
       slug: "managed-Team",
       featured: false,
       icon: "<svg xmlns='http://www.w3.org/2000/svg' class='w-10 h-10 text-[#0561FC] group-hover:text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184'/></svg>",
       __v: 0,
-      detailContent:`<section className="py-16">
+      detailContent: `<section className="py-16">
         <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           <div className="max-w-9xl mx-auto">
             <h2 className="text-3xl font-bold text-[#0B1B2B] ">
@@ -118,23 +118,22 @@ export async function GET(request: Request) {
                     <div className="col-span-2">
                     
                       <div className="grid grid-cols-3 gap-6 mb-12">
-                        {[...Array(9)].map((_, i) => (
-                          <div key={i} className="flex items-start gap-2">
-                            <span className="text-[#0561FC] text-lg font-bold mt-1">
-                              <Image
-                                src="/images/sd1.png"
-                                alt="Service Illustration"
-                                width={100}
-                                height={100}
-                                className="w-9 h-9 "
-
-                              />
-                            </span>
-                            <p className="text-gray-600 text-[13px] leading-relaxed">
-                              Lorem Ipsum Is Not
-                            </p>
-                          </div>
-                        ))}
+                         ${[...Array(9)].map(() => `
+      <div class="flex items-start gap-2">
+        <span class="text-[#0561FC] text-lg font-bold mt-1">
+          <img
+            src="/images/sd1.png"
+            alt="Service Illustration"
+            width="100"
+            height="100"
+            class="w-9 h-9"
+          />
+        </span>
+        <p class="text-gray-600 text-[13px] leading-relaxed">
+          Lorem Ipsum Is Not
+        </p>
+      </div>
+    `).join('')}
                       </div>
 
                      
@@ -142,16 +141,21 @@ export async function GET(request: Request) {
                         <h3 className="text-[28px] font-bold text-[#0B1B2B] mb-6">
                           Proin Non Eros Elementumtibulum Vehicula
                         </h3>
-                        <p className="text-gray-600 text-[13px] leading-[1.8] mb-10">
-                          Vestibulum In Ipsum Velit. Aliquam Libero Sem Asfds
-                          Asf. Rutrum Eu Scelerisque Ut, Vehicula A Erat.
-                          Phasellus Ac Sem Sed Erat Pos Se Quam Dignissim.
-                          Mauris Feugiat, Nisi Nec Dapibusass A Gas Dictum,
-                          Ligula Nulla Gravida Ante, Non Aliquet Odio Elit Ac
-                          Orci. Curabitnc. Nunc Eu Rhoncus Justo,
+                        <p className="text-gray-600 text-[13px] leading-[1.8] mb-3">
+                          Our team crafts tailored digital product strategies that align with your company's vision, driving sustainable growth and ensuring long-term business success.
                         </p>
-
+ <p className="text-gray-600 text-[13px] leading-[1.8] mb-3">
+                        We bring your brand to life by creating a compelling visual identity, from logos to bespoke typography, ensuring your business stands out with a cohesive, professional look
+                        </p>
+                        <p className="text-gray-600 text-[13px] leading-[1.8] mb-3">
+We transform your brand identity into a practical and intuitive digital interface, delivering user-friendly designs that help clients navigate and succeed in the digital landscape.                        </p>
                      
+ <p className="text-gray-600 text-[13px] leading-[1.8] mb-3">
+Our experts design systems that grow with your business. We implement scalable infrastructure that adapts to demand, ensuring smooth operations without compromising performance or security. </p>
+<p className="text-gray-600 text-[13px] leading-[1.8] mb-3">
+We accelerate your business’s digital journey by modernizing legacy systems, improving workflows, and enabling innovative solutions to create more value and efficiency in your operations.</p>
+<p className="text-gray-600 text-[13px] leading-[1.8] mb-10">
+We ensure seamless integration of various technologies across your platform, enabling smooth communication between systems, reducing downtime, and enhancing overall operational efficiency.</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
                         
                           <div className=" p-6 rounded-xl">
@@ -165,52 +169,31 @@ export async function GET(request: Request) {
                             />
                           </div>
 
-                          <div className="mb-12">
-                            <div className="mt-6 space-y-6">
-                              ${[
-                                {
-                                  title: "Strategy",
-                                  description: "Our team crafts tailored digital product strategies that align with your company's vision, driving sustainable growth and ensuring long-term business success."
-                                },
-                                {
-                                  title: "Visual identity",
-                                  description: "We bring your brand to life by creating a compelling visual identity, from logos to bespoke typography, ensuring your business stands out with a cohesive, professional look."
-                                },
-                                {
-                                  title: "User interface",
-                                  description: "We transform your brand identity into a practical and intuitive digital interface, delivering user-friendly designs that help clients navigate and succeed in the digital landscape."
-                                },
-                                {
-                                  title: "Scalable Solutions",
-                                  description: "Our experts design systems that grow with your business. We implement scalable infrastructure that adapts to demand, ensuring smooth operations without compromising performance or security."
-                                },
-                                {
-                                  title: "Digital Transformation",
-                                  description: "We accelerate your business's digital journey by modernizing legacy systems, improving workflows, and enabling innovative solutions to create more value and efficiency in your operations."
-                                },
-                                {
-                                  title: "Seamless Integration",
-                                  description: "We ensure seamless integration of various technologies across your platform, enabling smooth communication between systems, reducing downtime, and enhancing overall operational efficiency."
-                                }
-                            ].map((item, i) => `
-                            <div class="flex items-start gap-3">
-                              <img 
-                                src="/images/sd1.png"
-                                alt="bullet point"
-                                width="24"
-                                height="24"
-                                class="mt-1"
-                              />
-                              <div>
-                                <h3 class="text-[#0B1B2B] text-lg font-semibold mb-2">
-                                  ${item.title}
-                                </h3>
-                                <p class="text-gray-600 text-[13px] leading-relaxed">
-                                  ${item.description}
-                                </p>
-                              </div>
-                            </div>
-                          `).join('')}
+                          <div className="mb-8">
+                            <div className="mt-6 space-y-3">
+                               ${[
+          "Strategy",
+          "Visual identity",
+          "User interface",
+          "Scalable Solutions",
+          "Digital Transformation",
+          "Seamless Integration"
+        ].map(title => `
+            <div class="flex items-start ">
+              <img 
+                src="/images/sd1.png"
+                alt="bullet point"
+                width="24"
+                height="24"
+                class=""
+              />
+              <div>
+                <p class="text-gray-600 text-[13px] ">
+                  ${title}
+                </p>
+              </div>
+            </div>
+          `).join('')}
                         </div>
                           </div>
                         </div>
@@ -235,27 +218,27 @@ export async function GET(request: Request) {
                             </h4>
                             <div className="space-y-3">
                               ${[
-                                {
-                                  title: "Define Your Project Goals",
-                                  description: "Clarify your project objectives and requirements. By understanding your needs, we ensure a tailored team selection that aligns perfectly with your vision and business objectives."
-                                },
-                                {
-                                  title: "Select Specialized Talent",
-                                  description: "Choose from a curated pool of highly skilled professionals. We connect you with experts in web development, app development, DevOps, and more, all selected to meet your specific project demands."
-                                },
-                                {
-                                  title: "Flexible Engagement Models",
-                                  description: "Enjoy flexibility with our customized hiring options. We offer project-based, hourly, or long-term engagement models, allowing you to choose what works best for your business and budget."
-                                },
-                                {
-                                  title: "Seamless Onboarding",
-                                  description: "Experience a streamlined onboarding process. Our team ensures smooth integration into your project with immediate productivity and minimal setup time, so your project progresses quickly."
-                                },
-                                {
-                                  title: "Ongoing Support & Management",
-                                  description: "We provide continuous support and team management, handling logistics, performance monitoring, and updates so you can focus on achieving project milestones without administrative burdens."
-                                }
-                            ].map((item, i) => `
+          {
+            title: "Define Your Project Goals",
+            description: "Clarify your project objectives and requirements. By understanding your needs, we ensure a tailored team selection that aligns perfectly with your vision and business objectives."
+          },
+          {
+            title: "Select Specialized Talent",
+            description: "Choose from a curated pool of highly skilled professionals. We connect you with experts in web development, app development, DevOps, and more, all selected to meet your specific project demands."
+          },
+          {
+            title: "Flexible Engagement Models",
+            description: "Enjoy flexibility with our customized hiring options. We offer project-based, hourly, or long-term engagement models, allowing you to choose what works best for your business and budget."
+          },
+          {
+            title: "Seamless Onboarding",
+            description: "Experience a streamlined onboarding process. Our team ensures smooth integration into your project with immediate productivity and minimal setup time, so your project progresses quickly."
+          },
+          {
+            title: "Ongoing Support & Management",
+            description: "We provide continuous support and team management, handling logistics, performance monitoring, and updates so you can focus on achieving project milestones without administrative burdens."
+          }
+        ].map((item, i) => `
                             <div class="flex items-start gap-3">
                               <img 
                                 src="/images/sd1.png"
@@ -283,7 +266,7 @@ export async function GET(request: Request) {
                    
                     <div className="mb-12">
                       <h2 className="text-center text-[32px] font-bold mb-2">
-                        Why <span className="text-[#0066FF]">Algofolks</span>
+                        Why <span className="text-[#0066FF]">Algofolks?</span>
                       </h2>
                       <p className="text-center text-gray-500 text-sm mb-8">
                         Choose us for our expertise and commitment to excellence
@@ -422,12 +405,12 @@ export async function GET(request: Request) {
     {
       _id: "67b71de8bda5a81522122efd",
       title: "Technology Consulting",
-      description: "Contrary To Popular Belief, Lorem Ipsum",
+      description: "Solve IT challenges with Algofolks' expert consulting for optimized infrastructure and digital growth.",
       slug: "Technology-Consulting",
       featured: false,
       icon: "<svg xmlns='http://www.w3.org/2000/svg' class='w-10 h-10 text-[#0561FC] group-hover:text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z'/></svg>",
       __v: 0,
-      detailContent:`<section className="py-16">
+      detailContent: `<section className="py-16">
       <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
         <div className="max-w-9xl mx-auto">
           <h2 className="text-3xl font-bold text-[#0B1B2B] ">
@@ -501,98 +484,83 @@ export async function GET(request: Request) {
                   <div className="col-span-2">
                 
                     <div className="grid grid-cols-3 gap-6 mb-12">
-                      {[...Array(9)].map((_, i) => (
-                        <div key={i} className="flex items-start gap-2">
-                          <span className="text-[#0561FC] text-lg font-bold mt-1">
-                            <Image
-                              src="/images/sd1.png"
-                              alt="Service Illustration"
-                              width={100}
-                              height={100}
-                              className="w-9 h-9 "
-
-                            />
-                          </span>
-                          <p className="text-gray-600 text-[13px] leading-relaxed">
-                            Lorem Ipsum Is Not
-                          </p>
-                        </div>
-                      ))}
+                        ${[...Array(9)].map(() => `
+      <div class="flex items-start gap-2">
+        <span class="text-[#0561FC] text-lg font-bold mt-1">
+          <img
+            src="/images/sd1.png"
+            alt="Service Illustration"
+            width="100"
+            height="100"
+            class="w-9 h-9"
+          />
+        </span>
+        <p class="text-gray-600 text-[13px] leading-relaxed">
+          Lorem Ipsum Is Not
+        </p>
+      </div>
+    `).join('')}
                     </div>
 
-                    <div>
-                      <h3 className="text-[28px] font-bold text-[#0B1B2B] mb-6">
-                        Proin Non Eros Elementumtibulum Vehicula
-                      </h3>
-                      <p className="text-gray-600 text-[13px] leading-[1.8] mb-10">
-                        Vestibulum In Ipsum Velit. Aliquam Libero Sem Asfds
-                        Asf. Rutrum Eu Scelerisque Ut, Vehicula A Erat.
-                        Phasellus Ac Sem Sed Erat Pos Se Quam Dignissim.
-                        Mauris Feugiat, Nisi Nec Dapibusass A Gas Dictum,
-                        Ligula Nulla Gravida Ante, Non Aliquet Odio Elit Ac
-                        Orci. Curabitnc. Nunc Eu Rhoncus Justo,
-                      </p>
+                      <div>
+                        <h3 className="text-[28px] font-bold text-[#0B1B2B] mb-6">
+                          Proin Non Eros Elementumtibulum Vehicula
+                        </h3>
+                        <p className="text-gray-600 text-[13px] leading-[1.8] mb-3">
+                        Transform your brand with strategic visual design. Our designers specialize in branding, logo creation, and product redesign, ensuring every element resonates with your audience for a powerful, cohesive identity.
+                        </p>
+ <p className="text-gray-600 text-[13px] leading-[1.8] mb-3">
+                       Amplify your reach with our marketing specialists. From lifecycle marketing to creative content and digital advertising, we optimize your strategy to attract, engage, and convert your target audience.
+                        </p>
+                        <p className="text-gray-600 text-[13px] leading-[1.8] mb-3">
+Ensure flawless functionality with meticulous QA. Our specialists focus on performance, security, and usability testing, rigorously analyzing every feature for seamless user experiences and reliable performance. </p>
+                     
+ <p className="text-gray-600 text-[13px] leading-[1.8] mb-3">
+Optimize your infrastructure for growth and agility. Our DevOps engineers streamline integration, monitoring, and scaling, ensuring continuous deployment and robust cloud solutions tailored to your specific needs.</p>
+<p className="text-gray-600 text-[13px] leading-[1.8] mb-3">
+Bring ideas to life with our versatile developers. From front-end to back-end and mobile applications, we create dynamic, responsive solutions with automation and best practices for every platform.</p>
+<p className="text-gray-600 text-[13px] leading-[1.8] mb-10">
+Drive your projects forward with our skilled project managers. They coordinate resources, timelines, and communication to ensure seamless project execution, aligning every team's efforts with your strategic goals.
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-                      
-                        <div className=" p-6 rounded-xl">
-                          <Image
-                            src="/images/service 4.png"
-                            alt="Service Illustration"
-                            width={400}
-                            height={300}
-                            className="w-full h-auto"
-                            priority
-                          />
-                        </div>
+</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+                        
+                          <div className=" p-6 rounded-xl">
+                            <Image
+                              src="/images/service 4.png"
+                              alt="Service Illustration"
+                              width={400}
+                              height={300}
+                              className="w-full h-auto"
+                              priority
+                            />
+                          </div>
 
-                      
-                        <div className="mb-12">
-                          <div className="mt-6 space-y-6">
-                            ${[
-                             {
-    title: "Designers",
-    description: "Transform your brand with strategic visual design. Our designers specialize in branding, logo creation, and product redesign, ensuring every element resonates with your audience for a powerful, cohesive identity."
-  },
-  {
-    title: "Marketing Specialists",
-    description: "Amplify your reach with our marketing specialists. From lifecycle marketing to creative content and digital advertising, we optimize your strategy to attract, engage, and convert your target audience."
-  },
-  {
-    title: "Quality Assurance Specialists",
-    description: "Ensure flawless functionality with meticulous QA. Our specialists focus on performance, security, and usability testing, rigorously analyzing every feature for seamless user experiences and reliable performance."
-  },
-  {
-    title: "DevOps Engineers",
-    description: "Optimize your infrastructure for growth and agility. Our DevOps engineers streamline integration, monitoring, and scaling, ensuring continuous deployment and robust cloud solutions tailored to your specific needs."
-  },
-  {
-    title: "Developers",
-    description: "Bring ideas to life with our versatile developers. From front-end to back-end and mobile applications, we create dynamic, responsive solutions with automation and best practices for every platform."
-  },
-  {
-    title: "Project Managers",
-    description: "Drive your projects forward with our skilled project managers. They coordinate resources, timelines, and communication to ensure seamless project execution, aligning every team's efforts with your strategic goals."
-  }
-].map((item, i) => `
-<div class="flex items-start gap-3">
-  <img 
-    src="/images/sd1.png"
-    alt="bullet point"
-    width="24"
-    height="24"
-    class="mt-1"
-  />
-  <div>
-    <h3 class="text-[#0B1B2B] text-lg font-semibold mb-2">
-      ${item.title}
-    </h3>
-    <p class="text-gray-600 text-[13px] leading-relaxed">
-      ${item.description}
-    </p>
-  </div>
-</div>
-`).join('')}
+                          <div className="mb-8">
+                            <div className="mt-6 space-y-3">
+                               ${[
+          "Designers",
+          "Marketing Specialists",
+          "Quality Assurance Specialists",
+          "DevOps Engineers",
+          "Developers",
+          "Project Managers"
+        ].map(title => `
+            <div class="flex items-start ">
+              <img 
+                src="/images/sd1.png"
+                alt="bullet point"
+                width="24"
+                height="24"
+                class=""
+              />
+              <div>
+                <p class="text-gray-600 text-[13px] ">
+                  ${title}
+                </p>
+              </div>
+            </div>
+          `).join('')}
                           </div>
                         </div>
                       </div>
@@ -616,31 +584,31 @@ export async function GET(request: Request) {
                           
                           <div className="space-y-3">
                             ${[
-                              {
-    title: "Identify Your Business Needs",
-    description: "Define the specific areas where you need technology support, such as web or app development. Our experts help you pinpoint pain points and opportunities, aligning technology solutions to drive your business forward."
-  },
-  {
-    title: "Evaluate Expertise and Experience",
-    description: "Seek consultants with a proven track record in your industry. Our team brings years of experience in custom software, web development, and app solutions to ensure a knowledgeable and hands-on approach."
-  },
-  {
-    title: "Assess Technology Alignment",
-    description: "Choose consultants who understand modern tech trends and align them with your goals. We prioritize scalable, cutting-edge solutions, using the latest frameworks and tools to future-proof your business."
-  },
-  {
-    title: "Tailor Engagement Models",
-    description: "Find a flexible consulting engagement that matches your budget and project scope. We offer options from project-based consulting to ongoing support, ensuring you get the right level of expertise when you need it."
-  },
-  {
-    title: "Ensure Seamless Collaboration",
-    description: "Effective consulting requires strong communication and collaboration. Our team works closely with yours, integrating seamlessly into your workflows and delivering clear, actionable insights every step of the way."
-  },
-  {
-    title: "Evaluate Ongoing Support and Optimization",
-    description: "Technology is ever-evolving, and support shouldn't end at launch. We provide continuous monitoring, optimization, and consulting to keep your solutions competitive, efficient, and aligned with your business objectives."
-  }
-].map((item, i) => `
+          {
+            title: "Identify Your Business Needs",
+            description: "Define the specific areas where you need technology support, such as web or app development. Our experts help you pinpoint pain points and opportunities, aligning technology solutions to drive your business forward."
+          },
+          {
+            title: "Evaluate Expertise and Experience",
+            description: "Seek consultants with a proven track record in your industry. Our team brings years of experience in custom software, web development, and app solutions to ensure a knowledgeable and hands-on approach."
+          },
+          {
+            title: "Assess Technology Alignment",
+            description: "Choose consultants who understand modern tech trends and align them with your goals. We prioritize scalable, cutting-edge solutions, using the latest frameworks and tools to future-proof your business."
+          },
+          {
+            title: "Tailor Engagement Models",
+            description: "Find a flexible consulting engagement that matches your budget and project scope. We offer options from project-based consulting to ongoing support, ensuring you get the right level of expertise when you need it."
+          },
+          {
+            title: "Ensure Seamless Collaboration",
+            description: "Effective consulting requires strong communication and collaboration. Our team works closely with yours, integrating seamlessly into your workflows and delivering clear, actionable insights every step of the way."
+          },
+          {
+            title: "Evaluate Ongoing Support and Optimization",
+            description: "Technology is ever-evolving, and support shouldn't end at launch. We provide continuous monitoring, optimization, and consulting to keep your solutions competitive, efficient, and aligned with your business objectives."
+          }
+        ].map((item, i) => `
 <div class="flex items-start gap-3">
   <img 
     src="/images/sd1.png"
@@ -668,7 +636,7 @@ export async function GET(request: Request) {
               
                   <div className="mb-12">
                     <h2 className="text-center text-[32px] font-bold mb-2">
-                      Why <span className="text-[#0066FF]">Algofolks</span>
+                      Why <span className="text-[#0066FF]">Algofolks?</span>
                     </h2>
                     <p className="text-center text-gray-500 text-sm mb-8">
                       Choose us for our expertise and commitment to excellence
@@ -834,14 +802,14 @@ export async function GET(request: Request) {
     },
 
     {
-        _id: "67b71e53bda5a81522122f03",
-        title: "Support & Maintenance",
-        description: "Contrary To Popular Belief, Lorem Ipsum",
-        slug: "support-and-maintenance",
-        featured: false,
-        icon: "<svg xmlns='http://www.w3.org/2000/svg' class='w-10 h-10 text-[#0561FC] group-hover:text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5'/></svg>",
-        __v: 0,
-        detailContent:`<section className="py-16">
+      _id: "67b71e53bda5a81522122f03",
+      title: "Support & Maintenance",
+      description: "Ensure smooth operations with Algofolks' proactive support and maintenance services.",
+      slug: "support-and-maintenance",
+      featured: false,
+      icon: "<svg xmlns='http://www.w3.org/2000/svg' class='w-10 h-10 text-[#0561FC] group-hover:text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5'/></svg>",
+      __v: 0,
+      detailContent: `<section className="py-16">
         <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           <div className="max-w-9xl mx-auto">
             <h2 className="text-3xl font-bold text-[#0B1B2B] ">
@@ -917,96 +885,80 @@ export async function GET(request: Request) {
                     <div className="col-span-2">
                    
                       <div className="grid grid-cols-3 gap-6 mb-12">
-                        {[...Array(9)].map((_, i) => (
-                          <div key={i} className="flex items-start gap-2">
-                            <span className="text-[#0561FC] text-lg font-bold mt-1">
-                              <Image
-                                src="/images/sd1.png"
-                                alt="Service Illustration"
-                                width={100}
-                                height={100}
-                                className="w-9 h-9 "
-
-                              />
-                            </span>
-                            <p className="text-gray-600 text-[13px] leading-relaxed">
-                              Lorem Ipsum Is Not
-                            </p>
-                          </div>
-                        ))}
+                          ${[...Array(9)].map(() => `
+      <div class="flex items-start gap-2">
+        <span class="text-[#0561FC] text-lg font-bold mt-1">
+          <img
+            src="/images/sd1.png"
+            alt="Service Illustration"
+            width="100"
+            height="100"
+            class="w-9 h-9"
+          />
+        </span>
+        <p class="text-gray-600 text-[13px] leading-relaxed">
+          Lorem Ipsum Is Not
+        </p>
+      </div>
+    `).join('')}
                       </div>
 
                     
-                      <div>
-                        <h3 className="text-[28px] font-bold text-[#0B1B2B] mb-6">
-                          Proin Non Eros Elementumtibulum Vehicula
-                        </h3>
-                        <p className="text-gray-600 text-[13px] leading-[1.8] mb-10">
-                          Vestibulum In Ipsum Velit. Aliquam Libero Sem Asfds
-                          Asf. Rutrum Eu Scelerisque Ut, Vehicula A Erat.
-                          Phasellus Ac Sem Sed Erat Pos Se Quam Dignissim.
-                          Mauris Feugiat, Nisi Nec Dapibusass A Gas Dictum,
-                          Ligula Nulla Gravida Ante, Non Aliquet Odio Elit Ac
-                          Orci. Curabitnc. Nunc Eu Rhoncus Justo,
-                        </p>
+                     <div>
+    <h3 class="text-[28px] font-bold text-[#0B1B2B] mb-6">
+      Proin Non Eros Elementumtibulum Vehicula
+    </h3>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-3">
+      Bug fixing and troubleshooting are essential to maintaining software stability. Bugs are usually identified through user feedback, testing, or automated monitoring systems. The main goals in this process include reproducing the issue, identifying its root cause, and implementing a fix without introducing new problems.
+    </p>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-3">
+      Optimizing performance can significantly enhance the user experience by reducing load times, improving responsiveness, and lowering resource usage. This process involves analyzing and identifying bottlenecks, refining code, and improving data handling techniques.
+    </p>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-3">
+      Security patching is critical for protecting software from vulnerabilities that could be exploited by malicious actors. Regular updates keep systems compliant with the latest security standards and reduce risks.
+    </p>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-3">
+      Feature enhancements aim to improve software functionality, often based on user feedback, market trends, or technological advances. This keeps software competitive and responsive to user needs.
+    </p>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-10">
+      UX refinements involve improving software interactions to make them more intuitive, accessible, and satisfying. A positive user experience increases adoption, satisfaction, and retention.
+    </p>
 
-                     
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-                       
-                          <div className=" p-6 rounded-xl">
-                            <Image
-                              src="/images/service 4.png"
-                              alt="Service Illustration"
-                              width={400}
-                              height={300}
-                              className="w-full h-auto"
-                              priority
-                            />
-                          </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+      <div class="p-6 rounded-xl">
+        <img
+          src="/images/service 4.png"
+          alt="Service Illustration"
+          width="400"
+          height="300"
+          class="w-full h-auto"
+        />
+      </div>
 
-                          <div className="mb-12">
-                            <div className="mt-6 space-y-6">
-                              ${[
-                                {
-                                  title: "Bug Fixes and Troubleshooting",
-                                  description: "Bug fixing and troubleshooting are essential to maintaining software stability. Bugs are usually identified through user feedback, testing, or automated monitoring systems. The main goals in this process include reproducing the issue, identifying its root cause, and implementing a fix without introducing new problems."
-                                },
-                                {
-                                  title: "Performance Optimization",
-                                  description: "Optimizing performance can significantly enhance the user experience by reducing load times, improving responsiveness, and lowering resource usage. This process involves analyzing and identifying bottlenecks, refining code, and improving data handling techniques."
-                                },
-                                {
-                                  title: "Security Patching and Updates",
-                                  description: "Security patching is critical for protecting software from vulnerabilities that could be exploited by malicious actors. Regular updates keep systems compliant with the latest security standards and reduce risks."
-                                },
-                                {
-                                  title: "Feature Enhancements",
-                                  description: "Feature enhancements aim to improve software functionality, often based on user feedback, market trends, or technological advances. This keeps software competitive and responsive to user needs."
-                                },
-                                {
-                                  title: "User Experience (UX) Refinements",
-                                  description: "UX refinements involve improving software interactions to make them more intuitive, accessible, and satisfying. A positive user experience increases adoption, satisfaction, and retention."
-                                },
-                               
-                            ].map((item, i) => `
-                            <div class="flex items-start gap-3">
-                              <img 
-                                src="/images/sd1.png"
-                                alt="bullet point"
-                                width="24"
-                                height="24"
-                                class="mt-1"
-                              />
-                              <div>
-                                <h3 class="text-[#0B1B2B] text-lg font-semibold mb-2">
-                                  ${item.title}
-                                </h3>
-                                <p class="text-gray-600 text-[13px] leading-relaxed">
-                                  ${item.description}
-                                </p>
-                              </div>
-                            </div>
-                          `).join('')}
+      <div class="mb-8">
+        <div class="mt-6 space-y-3">
+          ${[
+          "Bug Fixes and Troubleshooting",
+          "Performance Optimization",
+          "Security Patching and Updates",
+          "Feature Enhancements",
+          "User Experience (UX) Refinements"
+        ].map(title => `
+            <div class="flex items-start">
+              <img 
+                src="/images/sd1.png"
+                alt="bullet point"
+                width="24"
+                height="24"
+                class=""
+              />
+              <div>
+                <p class="text-gray-600 text-[13px]">
+                  ${title}
+                </p>
+              </div>
+            </div>
+          `).join('')}
                             </div>
                           </div>
                         </div>
@@ -1025,60 +977,121 @@ export async function GET(request: Request) {
                           </p>
 
                        
-                          <div>
-                            <h4 className="text-[22px] font-bold text-[#0B1B2B] mb-4">
-                              How to hire Managed Teams
-                            </h4>
-                            <div className="space-y-3">
-                              ${[
-                                {
-                                  title: "Define Your Project Goals",
-                                  description: "Clarify your project objectives and requirements. By understanding your needs, we ensure a tailored team selection that aligns perfectly with your vision and business objectives."
-                                },
-                                {
-                                  title: "Select Specialized Talent",
-                                  description: "Choose from a curated pool of highly skilled professionals. We connect you with experts in web development, app development, DevOps, and more, all selected to meet your specific project demands."
-                                },
-                                {
-                                  title: "Flexible Engagement Models",
-                                  description: "Enjoy flexibility with our customized hiring options. We offer project-based, hourly, or long-term engagement models, allowing you to choose what works best for your business and budget."
-                                },
-                                {
-                                  title: "Seamless Onboarding",
-                                  description: "Experience a streamlined onboarding process. Our team ensures smooth integration into your project with immediate productivity and minimal setup time, so your project progresses quickly."
-                                },
-                                {
-                                  title: "Ongoing Support & Management",
-                                  description: "We provide continuous support and team management, handling logistics, performance monitoring, and updates so you can focus on achieving project milestones without administrative burdens."
-                                }
-                            ].map((item, i) => `
-                            <div class="flex items-start gap-3">
-                              <img 
-                                src="/images/sd1.png"
-                                alt="bullet point"
-                                width="24"
-                                height="24"
-                                class="mt-1"
-                              />
-                              <div>
-                                <h3 class="text-[#0B1B2B] text-lg font-semibold mb-2">
-                                  ${item.title}
-                                </h3>
-                                <p class="text-gray-600 text-[13px] leading-relaxed">
-                                  ${item.description}
-                                </p>
-                              </div>
+                        <div>
+    <h4 class="text-[22px] font-bold text-[#0B1B2B] mb-4">
+      DevOps Support & Maintenance
+    </h4>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-6">
+      Streamline your development and operations with our expert DevOps services. We help you achieve smoother deployments, automated workflows, and efficient infrastructure management, enabling your team to deliver build and more reliably.
+    </p>
+
+    <div class="space-y-6">
+      ${[
+          {
+            title: "Continuous Integration & Continuous Deployment (CI/CD) Setup and Support",
+            description: "CI/CD enables continuous development and testing, and money move quickly ensuring faster release cycles and more stable builds. By automating the integration and deployment process, CI/CD improves software quality and reduces manual errors."
+          },
+          {
+            title: "Infrastructure Monitoring and Management",
+            description: "Monitoring and managing infrastructure is crucial for maintaining system health, ensuring optimal performance, and preventing downtime. Real-time monitoring helps teams identify and address issues before they impact users."
+          },
+          {
+            title: "Cloud Services Management (AWS, Azure, Google Cloud)",
+            description: "Cloud services management involves configuring, managing, and scaling applications in cloud environments like AWS, Azure, or Google Cloud. This includes optimizing cloud costs, ensuring compliance, and optimizing resources."
+          },
+          {
+            title: "Automation of Repetitive Tasks",
+            description: "Automating repetitive tasks improves productivity, reduces errors, and frees up teams to focus on more complex activities. Automation can apply to various areas, from infrastructure management to code testing and deployment."
+          },
+          {
+            title: "Security and Compliance Checks",
+            description: "Security and compliance checks ensure that systems and applications meet regulatory standards and industry best practices. These checks reduce the risk of breaches, protect sensitive data, and help organizations stay compliant."
+          }
+        ].map((item, i) => `
+        <div class="flex items-start gap-3">
+          <img 
+            src="/images/sd1.png"
+            alt="bullet point"
+            width="24"
+            height="24"
+            class="mt-1"
+          />
+          <div>
+            <h3 class="text-[#0B1B2B] text-lg font-semibold mb-2">
+              ${item.title}
+            </h3>
+            <p class="text-gray-600 text-[13px] leading-relaxed">
+              ${item.description}
+            </p>
+          </div>
+        </div>
+      `).join('')}
                             </div>
-                          `).join('')}
-                            </div>
+                             <div>
+    <h4 class="text-[22px] font-bold text-[#0B1B2B] my-6">
+      Experts
+    </h4>
+   
+
+    <div class="space-y-6">
+      ${[
+          {
+            title: "Designers",
+            description: "Transform your brand with strategic visual design. Our designers specialize in branding, logo creation, and product redesign, ensuring every element resonates with your audience for a powerful, cohesive identity."
+          },
+          {
+            title: "Marketing Specialists",
+            description: "Amplify your reach with our marketing specialists. From lifecycle marketing to creative content and digital advertising, we optimize your strategy to attract, engage, and convert your target audience."
+          },
+          {
+            title: "Quality Assurance Specialists",
+            description: "Ensure flawless functionality with meticulous QA. Our specialists focus on performance, security and usability testing, rigorously analyzing every feature for seamless user experiences and reliable performance."
+          },
+          {
+            title: "DevOps Engineers",
+            description: "Optimize your infrastructure for growth and agility. Our DevOps engineers streamline integration, monitoring, and scaling, ensuring continuous deployment and robust cloud solutions tailored to your specific needs."
+          },
+          {
+            title: "Developers",
+            description: "Bring ideas to life with our versatile developers. From front-end to back-end and mobile applications, we create dynamic, responsive solutions with automation and best practices for every platform."
+          },
+          {
+            title: "Project Managers",
+            description: "Drive your projects forward with our skilled project managers. They coordinate resources, timelines, and communication to ensure seamless project execution, aligning every team's efforts with your strategic goals."
+          }
+        ].map((item, i) => `
+        <div class="flex items-start gap-3">
+          <img 
+            src="/images/sd1.png"
+            alt="bullet point"
+            width="24"
+            height="24"
+            class="mt-1"
+          />
+          <div>
+            <h3 class="text-[#0B1B2B] text-lg font-semibold mb-2">
+              ${item.title}
+            </h3>
+            <p class="text-gray-600 text-[13px] leading-relaxed">
+              ${item.description}
+            </p>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  </div>
                           </div>
+                          
                         </div>
+                        
                       </div>
+                      
                     </div>
+                    
 
                     <div className="mb-12">
                       <h2 className="text-center text-[32px] font-bold mb-2">
-                        Why <span className="text-[#0066FF]">Algofolks</span>
+                        Why <span className="text-[#0066FF]">Choose Us?</span>
                       </h2>
                       <p className="text-center text-gray-500 text-sm mb-8">
                         Choose us for our expertise and commitment to excellence
@@ -1142,10 +1155,22 @@ export async function GET(request: Request) {
                             <div className="flex items-center justify-center w-8 h-8 bg-white/10 rounded-full">
                               <span className="text-base font-medium">05</span>
                             </div>
-                            <h4 className="text-base font-medium">Scandinavian work culture</h4>
+                            <h4 className="text-base font-medium">Experienced Team of Experts</h4>
                           </div>
                           <p className="text-[13px] text-white/70 leading-relaxed">
-                            We've adopted a Scandinavian work culture that prioritizes well-being and productivity. This fosters a sense of happiness and ensures a high quality of life for our specialists. We believe a happy and engaged team is a successful team.
+                          Our support team comprises skilled developers, DevOps engineers, and quality assurance specialists with extensive experience across various industries. We ensure your projects receive dedicated attention, expert handling, and swift problem resolution.
+                          </p>
+                        </div>
+
+                         <div className="bg-[#0561FC] p-6 rounded-2xl text-white">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="flex items-center justify-center w-8 h-8 bg-white/10 rounded-full">
+                              <span className="text-base font-medium">06</span>
+                            </div>
+                            <h4 className="text-base font-medium">Contact Us for Reliable Support</h4>
+                          </div>
+                          <p className="text-[13px] text-white/70 leading-relaxed">
+                            Whether you’re looking for a full-scale support solution or specialized assistance in DevOps, web, or app development, [Your Company Name] is here to help. Get in touch with us to learn more about how our support and maintenance services can keep your digital infrastructure performing at its best.
                           </p>
                         </div>
                       </div>
@@ -1218,16 +1243,16 @@ export async function GET(request: Request) {
           </div>
         </div>
       </section>`
-      },
-      {
-        _id: "67b71e53bda5a81522122f03",
-        title: "Product Development",
-        description: "Contrary To Popular Belief, Lorem Ipsum",
-        slug: "product-development",
-        featured: false,
-        icon: "<svg xmlns='http://www.w3.org/2000/svg' class='w-10 h-10 text-[#0561FC] group-hover:text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5'/></svg>",
-        __v: 0,
-        detailContent:`<section className="py-16">
+    },
+    {
+      _id: "67b71e53bda5a81522122f03",
+      title: "Product Development",
+      description: "Turn ideas into market-ready products with Algofolks' end-to-end development services.",
+      slug: "product-development",
+      featured: false,
+      icon: "<svg xmlns='http://www.w3.org/2000/svg' class='w-10 h-10 text-[#0561FC] group-hover:text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5'/></svg>",
+      __v: 0,
+      detailContent: `<section className="py-16">
         <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           <div className="max-w-9xl mx-auto">
             <h2 className="text-3xl font-bold text-[#0B1B2B] ">
@@ -1299,100 +1324,84 @@ export async function GET(request: Request) {
                     <div className="col-span-2">
                     
                       <div className="grid grid-cols-3 gap-6 mb-12">
-                        {[...Array(9)].map((_, i) => (
-                          <div key={i} className="flex items-start gap-2">
-                            <span className="text-[#0561FC] text-lg font-bold mt-1">
-                              <Image
-                                src="/images/sd1.png"
-                                alt="Service Illustration"
-                                width={100}
-                                height={100}
-                                className="w-9 h-9 "
-
-                              />
-                            </span>
-                            <p className="text-gray-600 text-[13px] leading-relaxed">
-                              Lorem Ipsum Is Not
-                            </p>
-                          </div>
-                        ))}
+                           ${[...Array(9)].map(() => `
+      <div class="flex items-start gap-2">
+        <span class="text-[#0561FC] text-lg font-bold mt-1">
+          <img
+            src="/images/sd1.png"
+            alt="Service Illustration"
+            width="100"
+            height="100"
+            class="w-9 h-9"
+          />
+        </span>
+        <p class="text-gray-600 text-[13px] leading-relaxed">
+          Lorem Ipsum Is Not
+        </p>
+      </div>
+    `).join('')}
                       </div>
 
-                      <div>
-                        <h3 className="text-[28px] font-bold text-[#0B1B2B] mb-6">
-                          Proin Non Eros Elementumtibulum Vehicula
-                        </h3>
-                        <p className="text-gray-600 text-[13px] leading-[1.8] mb-10">
-                          Vestibulum In Ipsum Velit. Aliquam Libero Sem Asfds
-                          Asf. Rutrum Eu Scelerisque Ut, Vehicula A Erat.
-                          Phasellus Ac Sem Sed Erat Pos Se Quam Dignissim.
-                          Mauris Feugiat, Nisi Nec Dapibusass A Gas Dictum,
-                          Ligula Nulla Gravida Ante, Non Aliquet Odio Elit Ac
-                          Orci. Curabitnc. Nunc Eu Rhoncus Justo,
-                        </p>
+                     <div>
+    <h3 class="text-[28px] font-bold text-[#0B1B2B] mb-6">
+      Proin Non Eros Elementumtibulum Vehicula
+    </h3>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-3">
+      Transform your brand with strategic visual design. Our designers specialize in branding, logo creation, and product redesign, ensuring every element resonates with your audience for a powerful, cohesive identity.
+    </p>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-3">
+      Amplify your reach with our marketing specialists. From lifecycle marketing to creative content and digital advertising, we optimize your strategy to attract, engage, and convert your target audience.
+    </p>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-3">
+      Ensure flawless functionality with meticulous QA. Our specialists focus on performance, security, and usability testing, rigorously analyzing every feature for seamless user experiences and reliable performance.
+    </p>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-3">
+      Optimize your infrastructure for growth and agility. Our DevOps engineers streamline integration, monitoring, and scaling, ensuring continuous deployment and robust cloud solutions tailored to your specific needs.
+    </p>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-3">
+      Bring ideas to life with our versatile developers. From front-end to back-end and mobile applications, we create dynamic, responsive solutions with automation and best practices for every platform.
+    </p>
+    <p class="text-gray-600 text-[13px] leading-[1.8] mb-10">
+      Drive your projects forward with our skilled project managers. They coordinate resources, timelines, and communication to ensure seamless project execution, aligning every team's efforts with your strategic goals.
+    </p>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-                        
-                          <div className=" p-6 rounded-xl">
-                            <Image
-                              src="/images/service 4.png"
-                              alt="Service Illustration"
-                              width={400}
-                              height={300}
-                              className="w-full h-auto"
-                              priority
-                            />
-                          </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+      <div class="p-6 rounded-xl">
+        <img
+          src="/images/service 4.png"
+          alt="Service Illustration"
+          width="400"
+          height="300"
+          class="w-full h-auto"
+        />
+      </div>
 
-                          <div className="mb-12">
-                            <div className="mt-6 space-y-6">
-                              ${[
-                                {
-                                  title: "Designers",
-                                  description: "Transform your brand with strategic visual design. Our designers specialize in branding, logo creation, and product redesign, ensuring every element resonates with your audience for a powerful, cohesive identity."
-                                },
-                                {
-                                  title: "Marketing Specialists",
-                                  description: "Amplify your reach with our marketing specialists. From lifecycle marketing to creative content and digital advertising, we optimize your strategy to attract, engage, and convert your target audience."
-                                },
-                                {
-                                  title: "Quality Assurance Specialists",
-                                  description: "Ensure flawless functionality with meticulous QA. Our specialists focus on performance, security, and usability testing, rigorously analyzing every feature for seamless user experiences and reliable performance."
-                                },
-                                {
-                                  title: "DevOps Engineers",
-                                  description: "Optimize your infrastructure for growth and agility. Our DevOps engineers streamline integration, monitoring, and scaling, ensuring continuous deployment and robust cloud solutions tailored to your specific needs."
-                                },
-                                {
-                                  title: "Developers",
-                                  description: "Bring ideas to life with our versatile developers. From front-end to back-end and mobile applications, we create dynamic, responsive solutions with automation and best practices for every platform."
-                                },
-                               
-                                 {
-                                  title: "Project Managers",
-                                  description: "Drive your projects forward with our skilled project managers. They coordinate resources, timelines, and communication to ensure seamless project execution, aligning every team’s efforts with your strategic goals."
-                                },
-                               
-                            ].map((item, i) => `
-                            <div class="flex items-start gap-3">
-                              <img 
-                                src="/images/sd1.png"
-                                alt="bullet point"
-                                width="24"
-                                height="24"
-                                class="mt-1"
-                              />
-                              <div>
-                                <h3 class="text-[#0B1B2B] text-lg font-semibold mb-2">
-                                  ${item.title}
-                                </h3>
-                                <p class="text-gray-600 text-[13px] leading-relaxed">
-                                  ${item.description}
-                                </p>
-                              </div>
-                            </div>
-                          `).join('')}
-                            </div>
+      <div class="mb-8">
+        <div class="mt-6 space-y-3">
+          ${[
+          "Designers",
+          "Marketing Specialists",
+          "Quality Assurance Specialists",
+          "DevOps Engineers",
+          "Developers",
+          "Project Managers"
+        ].map(title => `
+            <div class="flex items-start">
+              <img 
+                src="/images/sd1.png"
+                alt="bullet point"
+                width="24"
+                height="24"
+                class=""
+              />
+              <div>
+                <p class="text-gray-600 text-[13px]">
+                  ${title}
+                </p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
                           </div>
                         </div>
 
@@ -1416,12 +1425,12 @@ export async function GET(request: Request) {
                             </h4>
                             <div className="space-y-3">
                               ${[
-                               "Vestibulum In Ipsum Velit. Aliquam Libero Sem Asfds Asf.",
-                              "Ut, Vehicula A Erat. Phasellus Ac Sem Sed Erat Pos Se",
-                              "Feugiat, Nisi Nec Dapibusass A Gas Dictum, Ligula Nulla",
-                              "Odio Elit Ac Orci. Curabitnc. Nunc Eu Rhoncus Justo.",
-                              "Consequat Viverra Sapien Id Lobortis. Vivamus Auctor",
-                            ].map((item, i) => `
+          "Vestibulum In Ipsum Velit. Aliquam Libero Sem Asfds Asf.",
+          "Ut, Vehicula A Erat. Phasellus Ac Sem Sed Erat Pos Se",
+          "Feugiat, Nisi Nec Dapibusass A Gas Dictum, Ligula Nulla",
+          "Odio Elit Ac Orci. Curabitnc. Nunc Eu Rhoncus Justo.",
+          "Consequat Viverra Sapien Id Lobortis. Vivamus Auctor",
+        ].map((item, i) => `
                             <div class="flex items-start gap-3">
                               <img 
                                 src="/images/sd1.png"
@@ -1445,7 +1454,7 @@ export async function GET(request: Request) {
 
                     <div className="mb-12">
                       <h2 className="text-center text-[32px] font-bold mb-2">
-                        Why <span className="text-[#0066FF]">Algofolks</span>
+                        Why <span className="text-[#0066FF]">Algofolks?</span>
                       </h2>
                       <p className="text-center text-gray-500 text-sm mb-8">
                         Choose us for our expertise and commitment to excellence
@@ -1580,12 +1589,12 @@ export async function GET(request: Request) {
           </div>
         </div>
       </section>`
-      },
+    },
   ];
 
   if (slug) {
     const service = services.find(service => service.slug === slug);
-    
+
     if (!service) {
       return NextResponse.json(
         { success: false, message: 'Service not found' },

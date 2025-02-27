@@ -238,7 +238,7 @@ We ensure seamless integration of various technologies across your platform, ena
             title: "Ongoing Support & Management",
             description: "We provide continuous support and team management, handling logistics, performance monitoring, and updates so you can focus on achieving project milestones without administrative burdens."
           }
-        ].map((item, i) => `
+        ].map((item) => `
                             <div class="flex items-start gap-3">
                               <img 
                                 src="/images/sd1.png"
@@ -608,7 +608,7 @@ Drive your projects forward with our skilled project managers. They coordinate r
             title: "Evaluate Ongoing Support and Optimization",
             description: "Technology is ever-evolving, and support shouldn't end at launch. We provide continuous monitoring, optimization, and consulting to keep your solutions competitive, efficient, and aligned with your business objectives."
           }
-        ].map((item, i) => `
+        ].map((item) => `
 <div class="flex items-start gap-3">
   <img 
     src="/images/sd1.png"
@@ -1007,7 +1007,7 @@ Drive your projects forward with our skilled project managers. They coordinate r
             title: "Security and Compliance Checks",
             description: "Security and compliance checks ensure that systems and applications meet regulatory standards and industry best practices. These checks reduce the risk of breaches, protect sensitive data, and help organizations stay compliant."
           }
-        ].map((item, i) => `
+        ].map((item) => `
         <div class="flex items-start gap-3">
           <img 
             src="/images/sd1.png"
@@ -1059,7 +1059,7 @@ Drive your projects forward with our skilled project managers. They coordinate r
             title: "Project Managers",
             description: "Drive your projects forward with our skilled project managers. They coordinate resources, timelines, and communication to ensure seamless project execution, aligning every team's efforts with your strategic goals."
           }
-        ].map((item, i) => `
+        ].map((item) => `
         <div class="flex items-start gap-3">
           <img 
             src="/images/sd1.png"
@@ -1430,7 +1430,7 @@ Drive your projects forward with our skilled project managers. They coordinate r
           "Feugiat, Nisi Nec Dapibusass A Gas Dictum, Ligula Nulla",
           "Odio Elit Ac Orci. Curabitnc. Nunc Eu Rhoncus Justo.",
           "Consequat Viverra Sapien Id Lobortis. Vivamus Auctor",
-        ].map((item, i) => `
+        ].map((item) => `
                             <div class="flex items-start gap-3">
                               <img 
                                 src="/images/sd1.png"

@@ -158,7 +158,7 @@ export function GetQuoteSection({ title }: GetQuoteSectionProps) {
           Oops! Content Unavailable
         </h2>
         <p className="text-gray-600 text-[15px] leading-relaxed mb-8">
-          We're unable to display this content at the moment. This could be temporary, 
+          We&apos;re unable to display this content at the moment. This could be temporary, 
           or the content might have been moved or removed.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

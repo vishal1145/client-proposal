@@ -354,13 +354,13 @@ We ensure seamless integration of various technologies across your platform, ena
                         Exclusive Technology To Provide IT Solutions
                       </h2>
                     </div>
-                    <Link
-                      href="/services"
-                      className="text-[#0561FC] text-sm font-medium flex items-center gap-2"
-                    >
-                      VIEW ALL
-                      <span className="text-lg">→</span>
-                    </Link>
+                     <a
+    href="/services"
+    className="inline-flex items-center gap-2 text-gray-900 text-sm font-medium hover:text-blue-700 transition-colors"
+  >
+    VIEW ALL
+    <span className="text-lg">→</span>
+  </a>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -724,13 +724,13 @@ Drive your projects forward with our skilled project managers. They coordinate r
                       Exclusive Technology To Provide IT Solutions
                     </h2>
                   </div>
-                  <Link
-                    href="/services"
-                    className="text-[#0561FC] text-sm font-medium flex items-center gap-2"
-                  >
-                    VIEW ALL
-                    <span className="text-lg">→</span>
-                  </Link>
+                    <a
+    href="/services"
+    className="inline-flex items-center gap-2 text-gray-900 text-sm font-medium hover:text-blue-700 transition-colors"
+  >
+    VIEW ALL
+    <span className="text-lg">→</span>
+  </a>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -1195,13 +1195,13 @@ Drive your projects forward with our skilled project managers. They coordinate r
                         Exclusive Technology To Provide IT Solutions
                       </h2>
                     </div>
-                    <Link
-                      href="/services"
-                      className="text-[#0561FC] text-sm font-medium flex items-center gap-2"
-                    >
-                      VIEW ALL
-                      <span className="text-lg">→</span>
-                    </Link>
+                     <a
+    href="/services"
+    className="inline-flex items-center gap-2 text-gray-900 text-sm font-medium hover:text-blue-700 transition-colors"
+  >
+    VIEW ALL
+    <span className="text-lg">→</span>
+  </a>
                   </div>
 
                 
@@ -1542,13 +1542,13 @@ Drive your projects forward with our skilled project managers. They coordinate r
                         Exclusive Technology To Provide IT Solutions
                       </h2>
                     </div>
-                    <Link
-                      href="/services"
-                      className="text-[#0561FC] text-sm font-medium flex items-center gap-2"
-                    >
-                      VIEW ALL
-                      <span className="text-lg">→</span>
-                    </Link>
+                     <a
+    href="/services"
+    className="inline-flex items-center gap-2 text-gray-900 text-sm font-medium hover:text-blue-700 transition-colors"
+  >
+    VIEW ALL
+    <span className="text-lg">→</span>
+  </a>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

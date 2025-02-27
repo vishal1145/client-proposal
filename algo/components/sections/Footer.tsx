@@ -135,7 +135,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                 </svg>
               </a>
             </div>
-            <div className="absolute -top-28 right-0 h-[865px] w-[1px] bg-gray-700"></div>
+            <div className="absolute -top-28 right-0 h-[760px] w-[1px] bg-gray-700"></div>
           </div>
 
           {/* Right Side - Content Section (75%) */}

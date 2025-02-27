@@ -2,11 +2,47 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+
+interface Service {
+  title: string;
+  slug: string;
+}
 export function FooterSection() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState({ type: "", message: "" });
   const [loading, setLoading] = useState(false);
+   
+  const [services, setServices] = useState<Service[]>([]);
+  const [servicesLoading, setServicesLoading] = useState(true);
+
+  // Fetch services
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch('/api/services');
+        const data = await response.json();
+        if (data.success) {
+          setServices(data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching services:', error);
+      } finally {
+        setServicesLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  // Services list loading skeleton
+  const ServicesSkeleton = () => (
+    <div className="animate-pulse space-y-4">
+      {[...Array(8)].map((_, i) => (
+        <div key={i} className="h-4 bg-gray-700 rounded w-3/4"></div>
+      ))}
+    </div>
+  );
   const handleSubscribe = async () => {
     if (!email) {
       setStatus({ type: "error", message: "Please enter an email address" });
@@ -268,108 +304,25 @@ export function FooterSection() {
 
           {/* Information */}
           <div className="">
-            <h3 className="text-[16px] font-bold text-[#0B1B2B] mb-4">
-              Services
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/services/cybersecurity-services"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Cybersecurity Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/managed-it-services"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Managed IT Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/network-and-infrastructure"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Network And Infrastructure
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/it-consulting-services"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  IT Consulting Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/legal-technology-services"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Legal Technology Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/software-development"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Software Development
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/designing-it-services"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Designing IT Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/cloud-it-services"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Cloud IT Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/managed-teams"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Managed Teams
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/technology-consulting"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Technology Consulting
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/support-and-maintenance"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Support & Maintenance
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/product-development"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Product Development
-                </Link>
-              </li>
+          <h3 className="text-[16px] font-bold text-[#0B1B2B] mb-4">Services</h3>
+          {servicesLoading ? (
+            <ServicesSkeleton />
+          ) : (
+            <ul className="space-y-4">
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                  >
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          )}
+        </div>
+       
 
           <div className="">
             <h3 className="text-[16px] font-bold text-[#0B1B2B] mb-4">Expert</h3>

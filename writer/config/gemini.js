@@ -132,11 +132,11 @@ export async function generateBusinessProposal(service) {
 
     //var html = fs.readFileSync('./config/prompts/business-proposal.html', 'utf8');
     //html = html.replace('$$$proposaltext$$$', contentStr);  
-    var html = contentStr;
-    fs.writeFileSync('./config/prompts/business-proposal.html', html);
+    const templateHtml = fs.readFileSync('./config/prompts/business-proposal.html', 'utf8');
+    
+    const finalHtml = templateHtml.replace('{data}', contentStr);
 
-    return html;
-}   
+    // fs.writeFileSync('./config/prompts/business-proposal.html', finalHtml);
 
-
-
+    return finalHtml;
+}

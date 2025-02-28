@@ -1,5 +1,11 @@
 <template>
   <div class="analysis-container">
+    <!-- Add loading overlay -->
+    <div v-if="isGenerating" class="loading-overlay">
+      <div class="loader"></div>
+      <p>Generating proposals...</p>
+    </div>
+
     <!-- Replace table with tabs -->
     <div class="tabs-container">
       <div class="header-container">
@@ -17,9 +23,7 @@
             Services
           </button>
         </div>
-        <button class="proposal-button" @click="fetchProposals">
-          Generate Proposals
-        </button>
+       
       </div>
 
       <div class="tab-content">
@@ -30,18 +34,138 @@
         
         <!-- Links tab -->
         <div v-else-if="activeTab === 'links'" class="links-list">
-          <div v-for="(link, index) in links" :key="`link-${index}`" class="link-item">
-            {{ link.url }}
+          <div v-for="(link, index) in links" 
+               :key="`link-${index}`" 
+               class="link-item"
+               :class="{ 'selected': selectedLinks.includes(link.url) }">
+            <div class="link-content">
+              <input type="checkbox" 
+                     :checked="selectedLinks.includes(link.url)"
+                     @change="toggleLinkSelection(link.url)">
+              <span>{{ link.url }}</span>
+            </div>
           </div>
         </div>
 
         <!-- Services tab -->
         <div v-else-if="activeTab === 'services'" class="services-list">
-          <div v-for="(service, index) in services" :key="`service-${index}`" class="service-item">
-            {{ service }}
+          <div v-for="(service, index) in services" 
+               :key="`service-${index}`" 
+               class="service-card">
+            
+            <div class="service-content">
+              <div class="service-section"
+                   :class="{ 'selected': isServiceSectionSelected(service, 'business_summary') }">
+                <div class="section-header">
+                  <input type="checkbox" 
+                         :checked="isServiceSectionSelected(service, 'business_summary')"
+                         @change="toggleServiceSection(service, 'business_summary')">
+                  <h3>Business Summary</h3>
+                </div>
+                <p>{{ service.business_summary }}</p>
+              </div>
+
+              <div class="service-section"
+                   :class="{ 'selected': isServiceSectionSelected(service, 'key_services') }">
+                <div class="section-header">
+                  <input type="checkbox" 
+                         :checked="isServiceSectionSelected(service, 'key_services')"
+                         @change="toggleServiceSection(service, 'key_services')">
+                  <h3>Key Services</h3>
+                </div>
+                <p>{{ service.key_services }}</p>
+              </div>
+
+              <div class="service-section"
+                   :class="{ 'selected': isServiceSectionSelected(service, 'possible_software') }">
+                <div class="section-header">
+                  <input type="checkbox" 
+                         :checked="isServiceSectionSelected(service, 'possible_software')"
+                         @change="toggleServiceSection(service, 'possible_software')">
+                  <h3>Possible Software</h3>
+                </div>
+                <p>{{ service.possible_software }}</p>
+              </div>
+
+              <div class="service-section"
+                   :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_description') }">
+                <div class="section-header">
+                  <input type="checkbox" 
+                         :checked="isServiceSectionSelected(service, 'possible_software_solutions_description')"
+                         @change="toggleServiceSection(service, 'possible_software_solutions_description')">
+                  <h3>Software Solutions Description</h3>
+                </div>
+                <p>{{ service.possible_software_solutions_description }}</p>
+              </div>
+
+              <div class="service-section"
+                   :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions') }">
+                <div class="section-header">
+                  <input type="checkbox" 
+                         :checked="isServiceSectionSelected(service, 'possible_software_solutions')"
+                         @change="toggleServiceSection(service, 'possible_software_solutions')">
+                  <h3>Software Solutions</h3>
+                </div>
+                <p>{{ service.possible_software_solutions }}</p>
+              </div>
+
+              <div class="service-section"
+                   :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_features') }">
+                <div class="section-header">
+                  <input type="checkbox" 
+                         :checked="isServiceSectionSelected(service, 'possible_software_solutions_features')"
+                         @change="toggleServiceSection(service, 'possible_software_solutions_features')">
+                  <h3>Features</h3>
+                </div>
+                <p>{{ service.possible_software_solutions_features }}</p>
+              </div>
+
+              <div class="service-section"
+                   :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_benefits') }">
+                <div class="section-header">
+                  <input type="checkbox" 
+                         :checked="isServiceSectionSelected(service, 'possible_software_solutions_benefits')"
+                         @change="toggleServiceSection(service, 'possible_software_solutions_benefits')">
+                  <h3>Benefits</h3>
+                </div>
+                <p>{{ service.possible_software_solutions_benefits }}</p>
+              </div>
+
+              <div class="service-section"
+                   :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_pricing') }">
+                <div class="section-header">
+                  <input type="checkbox" 
+                         :checked="isServiceSectionSelected(service, 'possible_software_solutions_pricing')"
+                         @change="toggleServiceSection(service, 'possible_software_solutions_pricing')">
+                  <h3>Pricing</h3>
+                </div>
+                <p>{{ service.possible_software_solutions_pricing }}</p>
+              </div>
+
+              <div class="service-section"
+                   :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_comparison') }">
+                <div class="section-header">
+                  <input type="checkbox" 
+                         :checked="isServiceSectionSelected(service, 'possible_software_solutions_comparison')"
+                         @change="toggleServiceSection(service, 'possible_software_solutions_comparison')">
+                  <h3>Comparison</h3>
+                </div>
+                <p>{{ service.possible_software_solutions_comparison }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Update selection summary -->
+    <div class="selection-summary" v-if="hasSelections">
+      <p style="font-size: 14px;">Selected: {{ selectedLinks.length }} links, {{ selectedSections.length }} sections</p>
+      <button class="proposal-button" 
+              @click="generateProposals" 
+              :disabled="!hasSelections || isGenerating">
+        {{ isGenerating ? 'Generating...' : 'Generate Proposals' }}
+      </button>
     </div>
   </div>
 </template>
@@ -57,6 +181,14 @@ export default {
       links: [],
       isLoading: true,
       activeTab: 'links',
+      selectedLinks: [],
+      selectedSections: [],
+      isGenerating: false,
+    }
+  },
+  computed: {
+    hasSelections() {
+      return this.selectedLinks.length > 0 || this.selectedSections.length > 0;
     }
   },
   async created() {
@@ -75,15 +207,67 @@ export default {
     }
   },
   methods: {
-    async fetchProposals() {
+    toggleLinkSelection(url) {
+      const index = this.selectedLinks.indexOf(url);
+      if (index === -1) {
+        this.selectedLinks.push(url);
+      } else {
+        this.selectedLinks.splice(index, 1);
+      }
+    },
+    toggleServiceSection(service, sectionName) {
+      const selection = {
+        serviceId: service.id,
+        section: sectionName,
+        content: service[sectionName]
+      };
+      
+      const index = this.selectedSections.findIndex(
+        item => item.serviceId === service.id && item.section === sectionName
+      );
+      
+      if (index === -1) {
+        this.selectedSections.push(selection);
+      } else {
+        this.selectedSections.splice(index, 1);
+      }
+    },
+    isServiceSectionSelected(service, sectionName) {
+      return this.selectedSections.some(
+        item => item.serviceId === service.id && item.section === sectionName
+      );
+    },
+    async generateProposals() {
       try {
+        this.isGenerating = true;
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-        const response = await axios.post(`${apiUrl}/proposals/generate-proposal`, {
-          analysisId: this.$route.params.id
-        });
-        console.log("proposals", response.data.proposal);
+        
+        const formattedData = {
+          links: this.selectedLinks,
+          services: this.selectedSections.map(section => {
+            const service = {};
+            service[section.section] = section.content;
+            return service;
+          })
+        };
+
+        const response = await axios.post(`${apiUrl}/proposals/generate-proposal`, formattedData);
+        const html = response.data.data;
+
+        // Create and open new tab with the HTML content
+        const newTab = window.open();
+        if (!newTab) {
+          alert("Popup might be blocked. Please enable popups for this site.");
+          throw new Error("Failed to open new tab. Popup might be blocked.");
+        }
+
+        newTab.document.open();
+        newTab.document.write(html);
+        newTab.document.close();
       } catch (error) {
-        console.error('Error fetching proposals:', error);
+        console.error('Error generating proposals:', error);
+      } finally {
+        this.isGenerating = false;
       }
     }
   },
@@ -121,24 +305,26 @@ export default {
 .service-card {
   background: white;
   border-radius: 10px;
-  padding: 1.5rem;
+  padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
 }
 
 .service-card h3 {
   color: #2c3e50;
-  margin-bottom: 1rem;
+  margin: 1.5rem 0 0.5rem 0;
   font-size: 1.25rem;
+}
+
+.service-card h3:first-child {
+  margin-top: 0;
 }
 
 .service-card p {
   color: #666;
   line-height: 1.6;
+  margin: 0;
 }
 
 .links-grid {
@@ -246,7 +432,7 @@ export default {
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 16px;
   color: #666;
   transition: all 0.3s ease;
 }
@@ -300,5 +486,179 @@ export default {
 
 .proposal-button:hover {
   background-color: #0056b3;
+}
+
+.link-item, .service-card {
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.link-item.selected, .service-card.selected {
+  background-color: #e3f2fd;
+  border: 1px solid #2196f3;
+}
+
+.link-content, .service-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.selection-summary {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.selection-summary p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.proposal-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.service-content {
+  margin-left: 2rem;
+}
+
+.service-section {
+  margin-bottom: 1.5rem;
+}
+
+.service-section:last-child {
+  margin-bottom: 0;
+}
+
+.service-section h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.service-section p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 14px;
+}
+
+.link-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #e0e0e0;
+}
+
+.link-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link-content span {
+  flex: 1;
+  font-size: 14px;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #2196f3;
+}
+
+.selected {
+  background-color: #e3f2fd;
+  border-color: #2196f3;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-section {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.service-section.selected {
+  background-color: #e3f2fd;
+  border-color: #2196f3;
+}
+
+.service-section h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.service-section p {
+  margin: 0.5rem 0 0 2rem;
+  font-size: 14px;
+}
+
+/* Add loading overlay styles */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #007bff;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+  font-size: 16px;
+  color: #333;
 }
 </style>

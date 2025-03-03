@@ -11,7 +11,7 @@ export function Header() {
   // const isActive = useActiveLink();
   const [isClient, setIsClient] = useState(false);
 
-const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -153,7 +153,6 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
             {/* Right Section */}
             <div className="flex items-center gap-6">
-            
               {/* <button className="text-gray-600 hover:text-blue-600 transition-colors">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -174,7 +173,7 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
               </button> */}
 
               {/* Get Quote Button */}
-              <Button 
+              <Button
                 className="bg-[#4461F2] hover:bg-blue-700 text-white rounded-full px-6 transition-colors"
                 onClick={() => window.location.href = '/get-quote'}
               >
@@ -206,7 +205,7 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 <div className={`
   fixed top-0 right-0 h-full w-[300px] bg-white z-50 
   transform transition-transform duration-300 ease-in-out
-  ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}
+  ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}
   lg:hidden
 `}>
   <div className="p-6 space-y-6">

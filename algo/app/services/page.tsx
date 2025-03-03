@@ -38,7 +38,13 @@ export default function Page() {
     const fetchServices = async () => {
       try {
         const response = await axios.get("/api/services");
-        setServices(response.data.data);
+
+        // Filter to only include services where `detailcontent` exists and is not empty
+        const filteredServices = response.data.data.filter(
+          (service: any) => service.detailContent && service.detailContent.trim() !== ""
+        );
+debugger
+        setServices(filteredServices);
       } catch (error) {
         console.error("Error fetching services:", error);
       } finally {
@@ -47,7 +53,8 @@ export default function Page() {
     };
 
     fetchServices();
-  }, []);
+}, []);
+
 
   return (
     <main className="min-h-screen bg-white">

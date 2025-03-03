@@ -89,7 +89,7 @@ export function BlogSection() {
           </Link>
 
           {/* Blog Card 2 */}
-          <Link href={`/blog/cybersecurity-tips-for-law-firms`} passHref>
+          <Link href={`/blog/Cybersecurity-Tips-For-Law-Firms-Its-Legal-Aids`} passHref>
             <div className="bg-white rounded-3xl overflow-hidden group hover:bg-[#E0EFFF]">
               <div className="relative h-[300px]">
                 <Image
@@ -124,7 +124,7 @@ export function BlogSection() {
           </Link>
 
           {/* Blog Card 3 */}
-          <Link href={`/blog/it-compliance-and-data-protection-for-law-firms`} passHref>
+          <Link href={`/blog/IT-Compliance-And-Data-Protection-For-Law-Firms`} passHref>
             <div className="bg-white rounded-3xl overflow-hidden group hover:bg-[#E0EFFF]">
               <div className="relative h-[300px]">
                 <Image

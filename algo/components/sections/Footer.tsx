@@ -27,8 +27,13 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
       try {
         const response = await fetch('/api/services');
         const data = await response.json();
+
         if (data.success) {
-          setServices(data.data);
+          // Filter services to only include items where `detailcontent` exists and is not empty
+          const filteredServices = data.data.filter(
+            (service: any) => service.detailContent && service.detailContent.trim() !== ''
+          );
+          setServices(filteredServices);
         }
       } catch (error) {
         console.error('Error fetching services:', error);
@@ -38,7 +43,8 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
     };
 
     fetchServices();
-  }, []);
+}, []);
+
 
   // Services list loading skeleton
   const ServicesSkeleton = () => (

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState,useEffect } from "react";
-
+import axios from "axios"
 interface Service {
   title: string;
   slug: string;
@@ -22,8 +22,13 @@ export function FooterSection() {
       try {
         const response = await fetch('/api/services');
         const data = await response.json();
+
         if (data.success) {
-          setServices(data.data);
+          // Filter services to only include items where `detailcontent` exists and is not empty
+          const filteredServices = data.data.filter(
+            (service: any) => service.detailContent && service.detailContent.trim() !== ''
+          );
+          setServices(filteredServices);
         }
       } catch (error) {
         console.error('Error fetching services:', error);
@@ -33,7 +38,8 @@ export function FooterSection() {
     };
 
     fetchServices();
-  }, []);
+}, []);
+
 
   // Services list loading skeleton
   const ServicesSkeleton = () => (

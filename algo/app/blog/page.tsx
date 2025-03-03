@@ -4,37 +4,77 @@ import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
+
 interface Blog {
-  id: string;
+  _id: string;
   title: string;
   imageUrl: string;
   category: string;
   content: string;
   link: string;
+  mainImage: string;
 }
+
 export default function BlogPage() {
+  const router = useRouter();
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 6;
+
+  // useEffect(() => {
+  //   const token = Cookies.get("token");
+  //   if (!token) {
+  //     router.push("/signin");
+  //     return;
+  //   }
+
+  //   // Set auth header for all requests
+  //   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  //   setIsAuthenticated(true);
+  // }, [router]);
+
+  // useEffect(() => {
+  //   // if (isAuthenticated) {
+  //     const fetchBlogs = async () => {
+  //       try {
+  //         const res = await axios.get("/api/addBlogData");
+  //         setBlogs(res.data.data);
+  //       } catch (error) {
+  //         console.error("Error fetching blogs:", error);
+  //         // if (error.response?.status === 401) {
+  //         //   router.push("/signin");
+  //         // }
+  //       }
+  //     // };
+
+  //     fetchBlogs();
+  //   }
+  // }, []);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("/api/blog-detail");
-        debugger;
-        setBlogs(res.data);
+        const res = await axios.get("/api/addBlogData");
+        setBlogs(res.data.data);
       } catch (error) {
         console.error("Error fetching blogs:", error);
       }
     };
 
-    fetchBlogs();
+    fetchBlogs(); // ✅ Always fetch
   }, []);
 
   // Pagination Logic
   const totalPages = Math.ceil(blogs.length / blogsPerPage);
   const startIndex = (currentPage - 1) * blogsPerPage;
   const currentBlogs = blogs.slice(startIndex, startIndex + blogsPerPage);
+
+  // if (!isAuthenticated) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <main className="min-h-screen bg-white">
@@ -115,7 +155,7 @@ export default function BlogPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {currentBlogs.map((blog: Blog) => (
                 <div
-                  key={blog.id}
+                  key={blog._id}
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:bg-[#E0EFFF]"
                 >
                   <div className="relative h-48">

@@ -18,6 +18,8 @@ interface BlogUpdateData {
   testimonial?: { text: string };
   imageUrl?: string;
   mainImage?: string;
+  displayOnHome?: boolean;
+  displayOnFooter?: boolean;
 }
 
 
@@ -113,6 +115,9 @@ export async function POST(request: NextRequest) {
       additionalImages: additionalImageUrls,
       afterAdditionalImage: JSON.parse(formData.get("afterAdditionalImage") as string || "[]"),
       testimonial: JSON.parse(formData.get("testimonial") as string || '{"text": ""}'),
+      // In both POST and PUT methods, change the boolean conversion to:
+displayOnHome: formData.get("displayOnHome") === "true",    // Correct
+displayOnFooter: formData.get("displayOnFooter") === "true" // Correct
     };
 
     const blog = await Blog.create(blogData);
@@ -159,6 +164,9 @@ export async function PUT(request: NextRequest) {
   beforeAdditionalImage: JSON.parse(formData.get("beforeAdditionalImage")?.toString() || "[]"),
   afterAdditionalImage: JSON.parse(formData.get("afterAdditionalImage")?.toString() || "[]"),
   testimonial: JSON.parse(formData.get("testimonial")?.toString() || '{"text": ""}'),
+  // In both POST and PUT methods, change the boolean conversion to:
+displayOnHome: formData.get("displayOnHome") === "true",    // Correct
+displayOnFooter: formData.get("displayOnFooter") === "true" // Correct
     };
 
     // Handle thumbnail image update

@@ -112,8 +112,6 @@ export default function SignInPage() {
                 {loading ? "Signing in..." : "Sign In"}
               </button>
             </form>
-
-            
           </div>
         </div>
 
@@ -121,11 +119,11 @@ export default function SignInPage() {
         <div className="hidden lg:flex flex-1 relative bg-[#F6F0E4]">
           <div className="absolute inset-0 flex items-center justify-center p-8">
             <Image
-              src="/images/auth-illustration.png"
+              src="/images/sign.jpg"
               alt="Authentication Illustration"
               width={600}
               height={600}
-              className="object-contain"
+              className="object-cover rounded-2xl"
             />
           </div>
         </div>

@@ -20,6 +20,8 @@ interface BlogFormData {
     text: string;
   };
   imageUrl: string;
+  displayOnHome: boolean;    // Add this
+  displayOnFooter: boolean;  
 }
 
 export default function AddBlogPage() {
@@ -41,6 +43,8 @@ export default function AddBlogPage() {
       text: "",
     },
     imageUrl: "",
+    displayOnHome: false,    // Add this
+    displayOnFooter: false, 
   });
 
   const [images, setImages] = useState({
@@ -136,7 +140,8 @@ export default function AddBlogPage() {
         day: "numeric",
         year: "numeric",
       }));
-  
+      formData.append("displayOnHome", blogData.displayOnHome.toString());
+    formData.append("displayOnFooter", blogData.displayOnFooter.toString());
       const response = await axios.post("/api/addBlogData", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -595,6 +600,41 @@ export default function AddBlogPage() {
         rows={2}
       />
     </div>
+    
+    <div className="flex-1">
+        <label className="block text-xs font-medium text-gray-700 mb-1">
+          Display on Home
+        </label>
+        <select
+          value={blogData.displayOnHome.toString()}
+          onChange={(e) => setBlogData({
+            ...blogData,
+            displayOnHome: e.target.value === "true"
+          })}
+          className="w-full p-2 text-sm border rounded-md focus:ring-1 focus:ring-blue-500"
+        >
+          <option value="false">No</option>
+          <option value="true">Yes</option>
+        </select>
+      </div>
+
+      {/* Display on Footer */}
+      <div className="flex-1">
+        <label className="block text-xs font-medium text-gray-700 mb-1">
+          Display on Footer
+        </label>
+        <select
+          value={blogData.displayOnFooter.toString()}
+          onChange={(e) => setBlogData({
+            ...blogData,
+            displayOnFooter: e.target.value === "true"
+          })}
+          className="w-full p-2 text-sm border rounded-md focus:ring-1 focus:ring-blue-500"
+        >
+          <option value="false">No</option>
+          <option value="true">Yes</option>
+        </select>
+      </div>
 
     {/* Submit Button */}
    

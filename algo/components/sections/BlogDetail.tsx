@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -56,8 +57,42 @@ export function BlogDetail() {
     return <div>Blog not found</div>;
   }
 
+
+// Helper to render different types of content
+const renderContentItem = (text: string, index: number) => {
+  if (text.startsWith("# ")) {
+    return (
+      <h3 key={index} className="text-xl font-bold text-[#0B1B2B] mb-4">
+        {text.replace("# ", "")}
+      </h3>
+    );
+  } else if (text.startsWith("```")) {
+    return (
+      <pre
+        key={index}
+        className="bg-gray-100 p-4 rounded-xl text-[14px] text-[#0B1B2B] font-mono overflow-x-auto mb-4"
+      >
+        {text.replace(/```/g, "")}
+      </pre>
+    );
+  } else if (text.startsWith("- ")) {
+    return (
+      <li key={index} className="ml-6 list-disc text-gray-600 text-[15px] leading-relaxed">
+        {text.replace("- ", "")}
+      </li>
+    );
+  } else {
+    return (
+      <p key={index} className="text-gray-600 text-[15px] leading-relaxed mb-4">
+        {text}
+      </p>
+    );
+  }
+};
+
   return (
     <>
+    
       {/* Hero Section */}
       <section className="relative bg-[#F6F0E4] py-20 overflow-x-hidden">
         <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
@@ -126,7 +161,7 @@ export function BlogDetail() {
 
             <div className="prose max-w-none">
               <p className="text-gray-600 text-[15px] leading-relaxed mb-8">
-                {blog.content}
+                {blog.fullContent}
               </p>
 
               {/* Quote Section */}
@@ -142,11 +177,15 @@ export function BlogDetail() {
               )}
 
               {/* Before Additional Images Content */}
-              {blog.beforeAdditionalImage?.map((text, index) => (
+              {/* {blog.beforeAdditionalImage?.map((text, index) => (
                 <p key={index} className="text-gray-600 text-[15px] leading-relaxed mb-8">
                   {text}
                 </p>
-              ))}
+              ))} */}
+
+<div className="mb-8">
+                  {blog.beforeAdditionalImage.map(renderContentItem)}
+                </div>
 
               {/* Additional Images Grid */}
               {blog.additionalImages?.length > 0 && (
@@ -166,14 +205,20 @@ export function BlogDetail() {
               )}
 
               {/* After Additional Images Content */}
-              {blog.afterAdditionalImage?.map((text, index) => (
+              {/* {blog.afterAdditionalImage?.map((text, index) => (
   <p
     key={index}
     className="text-gray-600 text-[15px] leading-relaxed mb-8  pb-4"
   >
     {text}
   </p>
-))}
+))} */}
+
+{blog.afterAdditionalImage && blog.afterAdditionalImage.length > 0 && (
+                <div className="mb-8">
+                  {blog.afterAdditionalImage.map(renderContentItem)}
+                </div>
+              )}
 
 
               {/* Social Share Buttons */}

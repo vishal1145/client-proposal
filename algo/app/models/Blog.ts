@@ -18,6 +18,8 @@ const BlogSchema = new mongoose.Schema({
   testimonial: {
     text: { type: String, required: true },
   },
+  displayOnHome: { type: Boolean, default: false },     // New property
+  displayOnFooter: { type: Boolean, default: false }    // New property
 }, { timestamps: true });
 
 export default mongoose.models.Blog || mongoose.model("Blog", BlogSchema);

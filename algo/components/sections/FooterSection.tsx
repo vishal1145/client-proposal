@@ -9,6 +9,16 @@ interface Service {
   slug: string;
   detailContent?: string;  
 }
+
+interface Blog {
+  _id: string;
+  title: string;
+  mainImage: string;
+  content: string;
+  displayOnFooter: boolean;
+  link:string;
+  slug?:string;
+}
 export function FooterSection() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState({ type: "", message: "" });
@@ -16,7 +26,8 @@ export function FooterSection() {
    
   const [services, setServices] = useState<Service[]>([]);
   const [servicesLoading, setServicesLoading] = useState(true);
-
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [blogsLoading, setBlogsLoading] = useState(true);
   // Fetch services
   useEffect(() => {
     const fetchServices = async () => {
@@ -80,10 +91,45 @@ export function FooterSection() {
       setLoading(false); // Stop loading
     }
   };
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch('/api/addBlogData');
+        const data = await response.json();
+  
+        if (data.success) {
+          // Filter blogs where displayOnFooter is true and limit to 3
+          const footerBlogs = data.data
+            .filter((blog: Blog) => blog.displayOnFooter)
+            .slice(0, 3);
+          setBlogs(footerBlogs);
+        }
+      } catch (error) {
+        console.error('Error fetching blogs:', error);
+      } finally {
+        setBlogsLoading(false);
+      }
+    };
+  
+    fetchBlogs();
+  }, []);
+  
+  // Add BlogsSkeleton component
+  const BlogsSkeleton = () => (
+    <div className="space-y-4">
+      {[...Array(3)].map((_, i) => (
+        <div key={i} className="flex items-center gap-3 animate-pulse">
+          <div className="w-14 h-14 bg-gray-200 rounded-lg flex-shrink-0" />
+          <div className="h-4 bg-gray-200 rounded w-3/4" />
+        </div>
+      ))}
+    </div>
+  );
   return (
     <footer className="bg-white text-white py-8">
       <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-8 md:gap-6">
           {/* Logo and Description */}
           <div className="space-y-6">
             <Link href="/">
@@ -362,55 +408,40 @@ export function FooterSection() {
           </div>
 
           {/* News Feeds */}
-          <div className="hidden">
-            <h3 className="text-[16px] font-bold text-[#0B1B2B] mb-4">
-              News Feeds
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-14 h-14 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                  <Image
-                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
-                    alt="News Feed"
-                    width={56}
-                    height={56}
-                    className="w-full h-full object-cover"
-                  />
+          <div className="md:col-span-1"> {/* Remove hidden class */}
+  <h3 className="text-[16px] font-bold text-[#0B1B2B] mb-4">
+    News Feeds
+  </h3>
+  {blogsLoading ? (
+    <BlogsSkeleton />
+  ) : (
+    <div className="space-y-4">
+    <div className="space-y-4">
+            {blogs.map((blog) => (
+              <Link 
+                href={blog.link || `/blog/${blog.slug}`} // Use blog.link if available, fallback to constructed slug URL
+                key={blog._id}
+              >
+                <div className="flex items-center gap-3 group cursor-pointer">
+                  <div className="w-14 h-14 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0 mb-2">
+                    <Image
+                      src={blog.mainImage}
+                      alt={blog.title}
+                      width={56}
+                      height={56}
+                      className="w-full h-full object-cover transition-transform group-hover:scale-110"
+                    />
+                  </div>
+                  <p className="text-[14px] text-gray-600 group-hover:text-[#0066FF] transition-colors line-clamp-2">
+                    {blog.title}
+                  </p>
                 </div>
-                <p className="text-[14px] text-gray-600">
-                  Search amanzign individuals
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-14 h-14 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                  <Image
-                    src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf"
-                    alt="News Feed"
-                    width={56}
-                    height={56}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="text-[14px] text-gray-600">
-                  Search amanzign individuals
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-14 h-14 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                  <Image
-                    src="https://images.unsplash.com/photo-1557597774-9d273605dfa9"
-                    alt="News Feed"
-                    width={56}
-                    height={56}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="text-[14px] text-gray-600">
-                  Search amanzign individuals
-                </p>
-              </div>
-            </div>
+              </Link>
+            ))}
           </div>
+    </div>
+  )}
+</div>
         </div>
 
         {/* Copyright */}

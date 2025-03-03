@@ -124,11 +124,11 @@ export function Header() {
                 Services
               </Link>
               {/* <Link href="/pages" className="text-gray-600 hover:text-blue-600 transition-colors">Pages</Link>
-              <Link href="/projects" className="text-gray-600 hover:text-blue-600 transition-colors ">Projects</Link>
-              <Link href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">Blogs</Link> */}
+              <Link href="/projects" className="text-gray-600 hover:text-blue-600 transition-colors ">Projects</Link> */}
+              <Link href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">Blogs</Link>
               <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact Us</Link>
             
-                    <Link
+                    {/* <Link
                       href="/developers"
                       className="text-gray-600 hover:text-blue-600 transition-colors"
                     >
@@ -140,7 +140,7 @@ export function Header() {
                       className="text-gray-600 hover:text-blue-600 transition-colors"
                     >
                       Designers
-                    </Link>
+                    </Link> */}
                 
                     {/* <Link
                       href="/skill-directory"

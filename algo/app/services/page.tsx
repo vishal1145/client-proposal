@@ -45,7 +45,6 @@ export default function Page() {
         const filteredServices = response.data.data.filter(
           (service: Service) => service.detailContent && service.detailContent.trim() !== ""
         );
-debugger
         setServices(filteredServices);
       } catch (error) {
         console.error("Error fetching services:", error);

@@ -23,13 +23,16 @@ export default function SignInPage() {
       const response = await axios.post("/api/auth/signin", formData);
 
       if (response.data.success) {
-        router.push("/blog");
+        router.push("/admin/BlogData");
       }
-    } catch (error: any) {
-      setError(error.response?.data?.message || "Invalid credentials");
-    } finally {
-      setLoading(false);
+    }  catch (error) {
+      if (axios.isAxiosError(error)) {
+        setError(error.response?.data?.message || "Invalid credentials");
+      } else {
+        setError("An unexpected error occurred");
+      }
     }
+    
   };
 
   return (
@@ -110,15 +113,7 @@ export default function SignInPage() {
               </button>
             </form>
 
-            <p className="mt-4 text-center text-sm text-gray-600">
-              Don&apos;t have an account?{" "}
-              <Link
-                href="/signup"
-                className="font-medium text-[#4461F2] hover:text-blue-500"
-              >
-                Sign Up
-              </Link>
-            </p>
+            
           </div>
         </div>
 

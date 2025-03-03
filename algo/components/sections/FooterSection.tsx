@@ -3,10 +3,11 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState,useEffect } from "react";
-import axios from "axios"
+
 interface Service {
   title: string;
   slug: string;
+  detailContent?: string;  
 }
 export function FooterSection() {
   const [email, setEmail] = useState("");
@@ -26,7 +27,7 @@ export function FooterSection() {
         if (data.success) {
           // Filter services to only include items where `detailcontent` exists and is not empty
           const filteredServices = data.data.filter(
-            (service: any) => service.detailContent && service.detailContent.trim() !== ''
+            (service: Service) => service.detailContent && service.detailContent.trim() !== ''
           );
           setServices(filteredServices);
         }

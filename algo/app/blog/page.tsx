@@ -4,8 +4,6 @@ import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
 
 interface Blog {
   _id: string;
@@ -18,41 +16,12 @@ interface Blog {
 }
 
 export default function BlogPage() {
-  const router = useRouter();
+ 
   const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
+ 
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 6;
 
-  // useEffect(() => {
-  //   const token = Cookies.get("token");
-  //   if (!token) {
-  //     router.push("/signin");
-  //     return;
-  //   }
-
-  //   // Set auth header for all requests
-  //   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  //   setIsAuthenticated(true);
-  // }, [router]);
-
-  // useEffect(() => {
-  //   // if (isAuthenticated) {
-  //     const fetchBlogs = async () => {
-  //       try {
-  //         const res = await axios.get("/api/addBlogData");
-  //         setBlogs(res.data.data);
-  //       } catch (error) {
-  //         console.error("Error fetching blogs:", error);
-  //         // if (error.response?.status === 401) {
-  //         //   router.push("/signin");
-  //         // }
-  //       }
-  //     // };
-
-  //     fetchBlogs();
-  //   }
-  // }, []);
 
   useEffect(() => {
     const fetchBlogs = async () => {

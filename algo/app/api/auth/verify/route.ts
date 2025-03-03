@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import jwt from "jsonwebtoken";
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
     const headersList = headers();
     const token = (await headersList).get("authorization")?.split(" ")[1];
@@ -24,12 +24,14 @@ export async function GET(req: Request) {
         { status: 200 }
       );
     } catch (error) {
+      console.error("Token validation error:", error); 
       return NextResponse.json(
         { success: false, message: "Invalid token" },
         { status: 401 }
       );
     }
   } catch (error) {
+    console.error("Token validation error:", error); 
     return NextResponse.json(
       { success: false, message: "Server error" },
       { status: 500 }

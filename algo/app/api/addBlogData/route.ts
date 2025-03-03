@@ -4,6 +4,23 @@ import Blog from "@/app/models/Blog"
 import fs from "fs";
 import path from "path";
 
+interface BlogUpdateData {
+  title?: string;
+  category?: string;
+  content?: string;
+  link?: string;
+  date?: string;
+  fullContent?: string[];  // Ideally type this more strictly if possible
+  quote?: { text: string };
+  beforeAdditionalImage?: string[];
+  additionalImages?: string[];
+  afterAdditionalImage?: string[];
+  testimonial?: { text: string };
+  imageUrl?: string;
+  mainImage?: string;
+}
+
+
 // Helper to save files to /public/uploads
 async function saveFile(file: File): Promise<string> {
   const buffer = Buffer.from(await file.arrayBuffer());
@@ -130,24 +147,18 @@ export async function PUT(request: NextRequest) {
     }
 
     // Parse all form data
-    const updateData: any = {
-      title: formData.get("title"),
-      category: formData.get("category"),
-      content: formData.get("content"),
-      link: formData.get("link"),
-      date: formData.get("date"),
-      fullContent: JSON.parse(formData.get("fullContent") as string || "[]"),
-      quote: JSON.parse(formData.get("quote") as string || '{"text": ""}'),
-      beforeAdditionalImage: JSON.parse(
-        formData.get("beforeAdditionalImage") as string || "[]"
-      ),
-      additionalImages: [], // Will be updated if new images are provided
-      afterAdditionalImage: JSON.parse(
-        formData.get("afterAdditionalImage") as string || "[]"
-      ),
-      testimonial: JSON.parse(
-        formData.get("testimonial") as string || '{"text": ""}'
-      ),
+    const updateData: BlogUpdateData = {
+      title: formData.get("title")?.toString() || undefined,
+      category: formData.get("category")?.toString() || undefined,
+      content: formData.get("content")?.toString() || undefined,
+      link: formData.get("link")?.toString() || undefined,
+      date: formData.get("date")?.toString() || undefined,
+     
+  fullContent: JSON.parse(formData.get("fullContent")?.toString() || "[]"),
+  quote: JSON.parse(formData.get("quote")?.toString() || '{"text": ""}'),
+  beforeAdditionalImage: JSON.parse(formData.get("beforeAdditionalImage")?.toString() || "[]"),
+  afterAdditionalImage: JSON.parse(formData.get("afterAdditionalImage")?.toString() || "[]"),
+  testimonial: JSON.parse(formData.get("testimonial")?.toString() || '{"text": ""}'),
     };
 
     // Handle thumbnail image update
@@ -226,10 +237,10 @@ export async function PUT(request: NextRequest) {
     if (!updateData.mainImage) {
       updateData.mainImage = existingBlog.mainImage;
     }
-    if (updateData.additionalImages.length === 0) {
+    if ((updateData.additionalImages?.length ?? 0) === 0) {
       updateData.additionalImages = existingBlog.additionalImages;
-    }
-
+  }
+  
     // Update the blog
     const updatedBlog = await Blog.findByIdAndUpdate(
       id,

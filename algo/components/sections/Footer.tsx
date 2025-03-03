@@ -10,6 +10,7 @@ interface FooterProps {
 interface Service {
   title: string;
   slug: string;
+  detailContent?: string;  
 }
 
 
@@ -31,7 +32,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
         if (data.success) {
           // Filter services to only include items where `detailcontent` exists and is not empty
           const filteredServices = data.data.filter(
-            (service: any) => service.detailContent && service.detailContent.trim() !== ''
+            (service: Service) => service.detailContent && service.detailContent.trim() !== ''
           );
           setServices(filteredServices);
         }

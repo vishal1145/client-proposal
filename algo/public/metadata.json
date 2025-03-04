@@ -1,0 +1,13 @@
+{
+  "default": {
+      "title": "Algofolks - Innovate with Us",
+      "description": "Explore the future of technology with Algofolks. Your partner in innovation and digital transformation.",
+      "image": "/images/logo(1).png"
+  },
+ 
+  "blog": {
+      "title": "Our Blog - Algofolks",
+      "description": "Stay updated with the latest insights, tutorials, and technology trends on the Algofolks blog.",
+      "image": "/images/logo(1).png"
+  }
+}

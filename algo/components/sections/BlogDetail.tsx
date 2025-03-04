@@ -132,6 +132,21 @@ const renderContentItem = (text: string, index: number) => {
   }
 };
 
+
+const getBlogPageUrl = () => {
+  if (typeof window !== "undefined") {
+    return window.location.href;
+  }
+  return "";
+};
+
+// Function to handle Facebook share
+const shareOnFacebook = () => {
+  const url = getBlogPageUrl();
+  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  window.open(facebookShareUrl, "_blank", "width=600,height=400");
+  
+};
 export function BlogDetail({ slug }: BlogDetailProps) {
   const [blog, setBlog] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);
@@ -297,22 +312,34 @@ export function BlogDetail({ slug }: BlogDetailProps) {
 
               {/* Social Share Buttons */}
               <div className="flex items-center gap-4 mb-8">
-                <button className="flex items-center justify-center w-8 h-8 rounded-full">
-                  <span className="text-gray-600 text-sm">TW</span>
-                </button>
-                <span className="text-gray-300">|</span>
-                <button className="flex items-center justify-center w-8 h-8 rounded-full">
-                  <span className="text-gray-600 text-sm">YU</span>
-                </button>
-                <span className="text-gray-300">|</span>
-                <button className="flex items-center justify-center w-8 h-8 rounded-full">
-                  <span className="text-gray-600 text-sm">FB</span>
-                </button>
-                <span className="text-gray-300">|</span>
-                <button className="flex items-center justify-center w-8 h-8 rounded-full">
-                  <span className="text-gray-600 text-sm">IN</span>
-                </button>
-              </div>
+  <button
+    onClick={() => window.open(`https://twitter.com/intent/tweet?url=${getBlogPageUrl()}`, "_blank")}
+    className="flex items-center justify-center w-8 h-8 rounded-full"
+  >
+    <span className="text-gray-600 text-sm">TW</span>
+  </button>
+  <span className="text-gray-300">|</span>
+  <button
+    onClick={() => window.open(`https://www.youtube.com`, "_blank")} 
+    className="flex items-center justify-center w-8 h-8 rounded-full"
+  >
+    <span className="text-gray-600 text-sm">YU</span>
+  </button>
+  <span className="text-gray-300">|</span>
+  <button
+    onClick={shareOnFacebook}
+    className="flex items-center justify-center w-8 h-8 rounded-full"
+  >
+    <span className="text-gray-600 text-sm">FB</span>
+  </button>
+  <span className="text-gray-300">|</span>
+  <button
+    onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${getBlogPageUrl()}`, "_blank")}
+    className="flex items-center justify-center w-8 h-8 rounded-full"
+  >
+    <span className="text-gray-600 text-sm">IN</span>
+  </button>
+</div>
 
               {/* Testimonial Section */}
               {blog.testimonial?.text && (

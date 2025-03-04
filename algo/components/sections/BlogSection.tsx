@@ -51,7 +51,7 @@ export function BlogSection() {
   }
 
   return (
-    <section className="py-12 bg-[#FDF8F3] overflow-x-hidden">
+    <section className="py-12  overflow-x-hidden">
       <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
         <div className="text-center mb-20">
           <span className="text-sm text-gray-600 mb-2 block">Recent Updated</span>

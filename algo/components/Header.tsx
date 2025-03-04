@@ -236,6 +236,7 @@ export function Header() {
               >
                 Services
               </Link>
+              <Link href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors">Blogs</Link>
       <Link 
         href="/contact" 
         className="block text-gray-600 hover:text-blue-600 transition-colors"
@@ -243,7 +244,7 @@ export function Header() {
       >
         Contact Us
       </Link>
-      <Link
+      {/* <Link
                       href="/developers"
                       className="text-gray-600 hover:text-blue-600 transition-colors"
                     >
@@ -256,7 +257,7 @@ export function Header() {
                     >
                       Designers
                     </Link>
-                
+                 */}
                     {/* <Link
                       href="/skill-directory"
                       className="text-gray-600 hover:text-blue-600 transition-colors"

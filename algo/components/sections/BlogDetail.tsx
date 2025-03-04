@@ -1,9 +1,11 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "next/navigation";
-
+// import { useParams } from "next/navigation";
+interface BlogDetailProps {
+  slug: string;
+}
 interface Blog {
   _id: string;
   title: string;
@@ -24,39 +26,79 @@ interface Blog {
   };
 }
 
-export function BlogDetail() {
-  const [blog, setBlog] = useState<Blog | null>(null);
-  const [loading, setLoading] = useState(true);
-  const params = useParams();
-  const slug = params.slug;
+// Loading Skeleton Component
+const BlogSkeleton = () => (
+  <>
+    {/* Hero Section Skeleton */}
+    <section className="relative bg-[#F6F0E4] py-20 overflow-x-hidden">
+      <div className="container mx-auto px-4 relative z-20">
+        <div className="text-center max-w-2xl mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-8 bg-gray-300 rounded-lg w-3/4 animate-pulse"></div>
+          </div>
+          <div className="flex items-center justify-center gap-2">
+            <div className="h-4 bg-gray-300 rounded w-24 animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const res = await axios.get(`/api/addBlogData?link=/blog/${slug}`);
-        if (res.data.success) {
-          setBlog(res.data.data);
-        }
-      } catch (error) {
-        console.error("Error fetching blog:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    {/* Content Skeleton */}
+    <section className="py-16 overflow-x-hidden">
+      <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
+        <div className="max-w-8xl mx-auto">
+          {/* Image Skeleton */}
+          <div className="mb-3">
+            <div className="w-full h-[400px] bg-gray-300 rounded-2xl animate-pulse"></div>
+          </div>
 
-    if (slug) {
-      fetchBlog();
-    }
-  }, [slug]);
+          {/* Date Skeleton */}
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-4 bg-gray-300 rounded w-24 animate-pulse"></div>
+          </div>
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+          {/* Title Skeleton */}
+          <div className="h-8 bg-gray-300 rounded-lg w-3/4 mb-6 animate-pulse"></div>
 
-  if (!blog) {
-    return <div>Blog not found</div>;
-  }
+          {/* Content Skeleton */}
+          <div className="space-y-4">
+            {[...Array(6)].map((_, index) => (
+              <div
+                key={index}
+                className="h-4 bg-gray-300 rounded w-full animate-pulse"
+              ></div>
+            ))}
+          </div>
 
+          {/* Quote Skeleton */}
+          <div className="bg-gray-50 p-8 rounded-xl my-8">
+            <div className="h-20 bg-gray-300 rounded animate-pulse"></div>
+          </div>
+
+          {/* Additional Content Skeleton */}
+          <div className="space-y-4 mb-8">
+            {[...Array(4)].map((_, index) => (
+              <div
+                key={index}
+                className="h-4 bg-gray-300 rounded w-full animate-pulse"
+              ></div>
+            ))}
+          </div>
+
+          {/* Images Grid Skeleton */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            {[...Array(2)].map((_, index) => (
+              <div
+                key={index}
+                className="h-[300px] bg-gray-300 rounded-xl animate-pulse"
+              ></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </>
+);
 
 // Helper to render different types of content
 const renderContentItem = (text: string, index: number) => {
@@ -90,6 +132,49 @@ const renderContentItem = (text: string, index: number) => {
   }
 };
 
+export function BlogDetail({ slug }: BlogDetailProps) {
+  const [blog, setBlog] = useState<Blog | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  // const params = useParams();
+  // const slug = params.slug;
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`/api/addBlogData?link=/blog/${slug}`);
+        setBlog(response.data.data);
+      } catch (err) {
+        console.error("Error fetching blog:", err);
+        setError("Failed to load blog post");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (slug) {
+      fetchBlog();
+    }
+  }, [slug]);
+
+  if (loading) {
+    return <BlogSkeleton />;
+  }
+
+  if (error || !blog) {
+    return (
+      <div className="container mx-auto px-4 py-16 text-center">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          {error || "Blog post not found"}
+        </h2>
+        <p className="text-gray-600">
+          Please try again later or check another blog post.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <>
     
@@ -118,7 +203,9 @@ const renderContentItem = (text: string, index: number) => {
         <div className="container mx-auto px-4 relative z-20">
           <div className="text-center max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <h1 className="text-3xl font-bold text-[#0B1B2B]">{blog.title}</h1>
+              <h1 className="text-3xl font-bold text-[#0B1B2B]">
+                {blog.title}
+              </h1>
             </div>
             <div className="flex items-center justify-center gap-2 text-gray-600">
               <span>Home</span>
@@ -152,12 +239,14 @@ const renderContentItem = (text: string, index: number) => {
                 className="w-full h-[400px] object-cover rounded-2xl"
               />
             </div>
-            
+
             <div className="flex items-center gap-4 mb-4">
               <div className="text-gray-500 text-sm">{blog.date}</div>
             </div>
-            
-            <h2 className="text-2xl font-bold text-[#0B1B2B] mb-6">{blog.title}</h2>
+
+            <h2 className="text-2xl font-bold text-[#0B1B2B] mb-6">
+              {blog.title}
+            </h2>
 
             <div className="prose max-w-none">
               <p className="text-gray-600 text-[15px] leading-relaxed mb-8">
@@ -177,15 +266,9 @@ const renderContentItem = (text: string, index: number) => {
               )}
 
               {/* Before Additional Images Content */}
-              {/* {blog.beforeAdditionalImage?.map((text, index) => (
-                <p key={index} className="text-gray-600 text-[15px] leading-relaxed mb-8">
-                  {text}
-                </p>
-              ))} */}
-
-<div className="mb-8">
-                  {blog.beforeAdditionalImage.map(renderContentItem)}
-                </div>
+              <div className="mb-8">
+                {blog.beforeAdditionalImage.map(renderContentItem)}
+              </div>
 
               {/* Additional Images Grid */}
               {blog.additionalImages?.length > 0 && (
@@ -205,21 +288,12 @@ const renderContentItem = (text: string, index: number) => {
               )}
 
               {/* After Additional Images Content */}
-              {/* {blog.afterAdditionalImage?.map((text, index) => (
-  <p
-    key={index}
-    className="text-gray-600 text-[15px] leading-relaxed mb-8  pb-4"
-  >
-    {text}
-  </p>
-))} */}
-
-{blog.afterAdditionalImage && blog.afterAdditionalImage.length > 0 && (
-                <div className="mb-8">
-                  {blog.afterAdditionalImage.map(renderContentItem)}
-                </div>
-              )}
-
+              {blog.afterAdditionalImage &&
+                blog.afterAdditionalImage.length > 0 && (
+                  <div className="mb-8">
+                    {blog.afterAdditionalImage.map(renderContentItem)}
+                  </div>
+                )}
 
               {/* Social Share Buttons */}
               <div className="flex items-center gap-4 mb-8">
@@ -247,7 +321,7 @@ const renderContentItem = (text: string, index: number) => {
                     {blog.testimonial.text}
                   </p>
 
-                  <div className="flex items-center gap-3">
+                  {/* <div className="flex items-center gap-3">
                     <Image
                       src="/images/Group 35.png"
                       alt="Jhon Wick"
@@ -267,7 +341,7 @@ const renderContentItem = (text: string, index: number) => {
                         Jhon Wick - Manager
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               )}
             </div>

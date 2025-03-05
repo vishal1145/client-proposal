@@ -158,7 +158,7 @@ export function FooterSection() {
                 C-104 Sector 65 Noida
               </p>
             </div>
-            <div className="relative w-full sm:w-[400px]">
+            <div className="relative w-full sm:w-[350px]">
   <input
     type="email"
     value={email}

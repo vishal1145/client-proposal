@@ -11,13 +11,13 @@ const BlogSchema = new mongoose.Schema(
     mainImage: { type: String, required: true },
     fullContent: { type: [String], required: true },
     quote: {
-      text: { type: String, required: true },
+      text: { type: String, required: false },
     },
     beforeAdditionalImage: { type: [String], default: [] },
     additionalImages: { type: [String], required: true },
     afterAdditionalImage: { type: [String], default: [] },
     testimonial: {
-      text: { type: String, required: true },
+      text: { type: String, required: false },
     },
     displayOnHome: { type: Boolean, default: false }, // New property
     displayOnFooter: { type: Boolean, default: false }, // New property

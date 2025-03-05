@@ -476,7 +476,7 @@ Cookies Policy
                 </ul>
               </div>
               <div className="md:col-span-1"> {/* Remove hidden class */}
-  <h3 className="text-[18px] font-semibold text-[#0B1B2B] mb-4">
+  <h3 className="text-[18px] font-semibold mb-6">
     News Feeds
   </h3>
   {blogsLoading ? (

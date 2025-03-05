@@ -75,27 +75,15 @@ export async function POST(request: NextRequest) {
     await ConnectDB();
     const formData = await request.formData();
 
-    // Handle thumbnail image
+    // Handle thumbnail image (optional)
     const thumbnailImageFile = formData.get("thumbnailImage") as File;
-    if (!thumbnailImageFile) {
-      return NextResponse.json({ 
-        success: false, 
-        message: "Thumbnail image is required" 
-      }, { status: 400 });
-    }
-    const thumbnailImageUrl = await saveFile(thumbnailImageFile);
+    const thumbnailImageUrl = thumbnailImageFile ? await saveFile(thumbnailImageFile) : "";
 
-    // Handle main image
+    // Handle main image (optional)
     const mainImageFile = formData.get("mainImage") as File;
-    if (!mainImageFile) {
-      return NextResponse.json({ 
-        success: false, 
-        message: "Main image is required" 
-      }, { status: 400 });
-    }
-    const mainImageUrl = await saveFile(mainImageFile);
+    const mainImageUrl = mainImageFile ? await saveFile(mainImageFile) : "";
 
-    // Handle additional images
+    // Handle additional images (optional)
     const additionalImages = formData.getAll("additionalImages") as File[];
     const additionalImageUrls = await Promise.all(
       additionalImages.map(file => saveFile(file))
@@ -105,19 +93,22 @@ export async function POST(request: NextRequest) {
       title: formData.get("title"),
       category: formData.get("category"),
       content: formData.get("content"),
-      imageUrl: thumbnailImageUrl,  // Use thumbnail URL for imageUrl
+      imageUrl: thumbnailImageUrl,  // Use thumbnail URL if exists
       link: formData.get("link"),
       date: formData.get("date"),
-      mainImage: mainImageUrl,  // Use main image URL for mainImage
+      mainImage: mainImageUrl,  // Use main image URL if exists
       fullContent: JSON.parse(formData.get("fullContent") as string || "[]"),
-      quote: JSON.parse(formData.get("quote") as string || '{"text": ""}'),
+      quote: formData.get("quote") 
+        ? JSON.parse(formData.get("quote")!.toString()) 
+        : null,  // If missing, set to null
       beforeAdditionalImage: JSON.parse(formData.get("beforeAdditionalImage") as string || "[]"),
       additionalImages: additionalImageUrls,
       afterAdditionalImage: JSON.parse(formData.get("afterAdditionalImage") as string || "[]"),
-      testimonial: JSON.parse(formData.get("testimonial") as string || '{"text": ""}'),
-      // In both POST and PUT methods, change the boolean conversion to:
-displayOnHome: formData.get("displayOnHome") === "true",    // Correct
-displayOnFooter: formData.get("displayOnFooter") === "true" // Correct
+      testimonial: formData.get("testimonial")
+        ? JSON.parse(formData.get("testimonial")!.toString()) 
+        : null,  // If missing, set to null
+      displayOnHome: formData.get("displayOnHome") === "true",  
+      displayOnFooter: formData.get("displayOnFooter") === "true" 
     };
 
     const blog = await Blog.create(blogData);
@@ -135,6 +126,7 @@ displayOnFooter: formData.get("displayOnFooter") === "true" // Correct
     }, { status: 500 });
   }
 }
+
 
 // PUT: Update existing blog
 export async function PUT(request: NextRequest) {

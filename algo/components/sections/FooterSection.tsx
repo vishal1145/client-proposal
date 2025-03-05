@@ -344,38 +344,7 @@ export function FooterSection() {
                       Payment
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href="/client"
-                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                    >
-                      Client
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/history"
-                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                    >
-                      History
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/core-values"
-                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                    >
-                      Core-Values
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/social-responsibilty"
-                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                    >
-                     Social-Responsibilty
-                    </Link>
-                  </li>
+                 
                   
               <li>
                 <Link
@@ -445,6 +414,46 @@ export function FooterSection() {
                   Skills Directory
                 </Link>
               </li>
+              <li>
+                    <Link
+                      href="/client"
+                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                    >
+                      Client
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/history"
+                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                    >
+                      History
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/core-values"
+                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                    >
+                      Core-Values
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/social-responsibilty"
+                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                    >
+                     Social-Responsibilty
+                    </Link>
+                  </li>
+                  <li>
+                  <Link
+                      href="/carrer"
+                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                    >
+                     Careers
+                    </Link>
+                  </li>
             </ul>
           </div>
 

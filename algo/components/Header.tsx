@@ -244,13 +244,7 @@ export function Header() {
       >
         Contact Us
       </Link>
-      <Link 
-        href="/carrer" 
-        className="block text-gray-600 hover:text-blue-600 transition-colors"
-        onClick={() => setIsMobileMenuOpen(false)}
-      >
-        Careers
-      </Link>
+      
       {/* <Link
                       href="/developers"
                       className="text-gray-600 hover:text-blue-600 transition-colors"

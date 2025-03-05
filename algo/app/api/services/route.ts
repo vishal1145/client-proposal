@@ -791,16 +791,7 @@ Drive your projects forward with our skilled project managers. They coordinate r
       icon: "<svg xmlns='http://www.w3.org/2000/svg' class='w-10 h-10 text-[#0561FC] group-hover:text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971z'/></svg>",
       __v: 0,
     },
-    {
-      _id: "67b71e53bda5a81522122f03",
-      title: "Software Development",
-      description: "Contrary To Popular Belief, Lorem Ipsum",
-      slug: "software-development",
-      featured: false,
-      icon: "<svg xmlns='http://www.w3.org/2000/svg' class='w-10 h-10 text-[#0561FC] group-hover:text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5'/></svg>",
-      __v: 0,
-    },
-
+   
     {
       _id: "67b71e53bda5a81522122f03",
       title: "Support & Maintenance",
@@ -1590,6 +1581,66 @@ Drive your projects forward with our skilled project managers. They coordinate r
         </div>
       </section>`
     },
+    {
+      "_id": "67b71e53bda5a81522122f04",
+      "title": "Graphic Designing",
+      "description": "Transform your brand with creative visual solutions and stunning designs.",
+      "slug": "graphic-designing",
+      "featured": false,
+      "image": "/images/services/graphic-design.jpg",
+      "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='w-10 h-10 text-[#0561FC] group-hover:text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z'/></svg>",
+      "__v": 0,
+      "detailContent": `<section className="py-16">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
+          <div className="max-w-9xl mx-auto">
+            <h2 className="text-3xl font-bold text-[#0B1B2B]">
+              Creative Design Solutions for Your Brand Identity
+            </h2>
+            // ... rest of the content structure
+          </div>
+        </div>
+      </section>`
+    },
+    {
+      "_id": "67b71e53bda5a81522122f05",
+      "title": "Web Development",
+      "description": "Create powerful, responsive websites that drive results and engage users.",
+      "slug": "web-development",
+      "featured": false,
+      "image": "/images/services/web-development.jpg",
+      "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='w-10 h-10 text-[#0561FC] group-hover:text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'/></svg>",
+      "__v": 0,
+      "detailContent": `<section className="py-16">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
+          <div className="max-w-9xl mx-auto">
+            <h2 className="text-3xl font-bold text-[#0B1B2B]">
+              Custom Web Solutions for Modern Businesses
+            </h2>
+            // ... rest of the content structure
+          </div>
+        </div>
+      </section>`
+    },
+    {
+      "_id": "67b71e53bda5a81522122f06",
+      "title": "Software Development",
+      "description": "Build robust, scalable software solutions tailored to your business needs.",
+      "slug": "software-development",
+      "featured": false,
+      "image": "/images/services/software-development.jpg",
+      "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='w-10 h-10 text-[#0561FC] group-hover:text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'/></svg>",
+      "__v": 0,
+      "detailContent": `<section className="py-16">
+        <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
+          <div className="max-w-9xl mx-auto">
+            <h2 className="text-3xl font-bold text-[#0B1B2B]">
+              Enterprise-Grade Software Solutions
+            </h2>
+            // ... rest of the content structure
+          </div>
+        </div>
+      </section>`
+    }
   ];
 
   if (slug) {

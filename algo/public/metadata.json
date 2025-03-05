@@ -1,13 +1,82 @@
 {
   "default": {
-      "title": "Algofolks - Innovate with Us",
-      "description": "Explore the future of technology with Algofolks. Your partner in innovation and digital transformation.",
-      "image": "/images/logo(1).png"
+    "title": "Algofolks - Custom Software Development Company",
+    "description": "Algofolks is a trusted software development company delivering innovative web, mobile, and custom software solutions to businesses worldwide.",
+    "image": "/images/logo(1).png"
   },
- 
+  "about": {
+    "title": "About Algofolks - Leading Software Development Company",
+    "description": "Learn about Algofolks - a software development company focused on innovation, cutting-edge technology, and delivering tailored solutions to global clients.",
+    "image": "/images/logo(1).png"
+  },
+  "services": {
+    "title": "Software Development Services - Web, Mobile & Cloud | Algofolks",
+    "description": "Explore Algofolks' services including web development, mobile app development, cloud solutions, and custom software tailored for your business needs.",
+    "image": "/images/logo(1).png"
+  },
+  "projects": {
+    "title": "Our Work - Case Studies & Projects | Algofolks",
+    "description": "See how Algofolks has transformed ideas into reality through successful software development projects across various industries.",
+    "image": "/images/logo(1).png"
+  },
   "blog": {
-      "title": "Our Blog - Algofolks",
-      "description": "Stay updated with the latest insights, tutorials, and technology trends on the Algofolks blog.",
-      "image": "/images/logo(1).png"
+    "title": "Tech Blog - Latest Insights from Algofolks",
+    "description": "Read expert insights, technology trends, and software development tips on the Algofolks blog.",
+    "image": "/images/logo(1).png"
+  },
+  "contact": {
+    "title": "Contact Algofolks - Discuss Your Software Project",
+    "description": "Get in touch with Algofolks to discuss your software development requirements, business challenges, and technology needs.",
+    "image": "/images/logo(1).png"
+  },
+  "careers": {
+    "title": "Careers at Algofolks - Join Our Software Development Team",
+    "description": "Grow your career at Algofolks. Join our talented team of developers, designers, and tech innovators working on cutting-edge projects.",
+    "image": "/images/logo(1).png"
+  },
+  "privacy-policy": {
+    "title": "Privacy Policy - Algofolks",
+    "description": "Understand how Algofolks handles your data responsibly and protects your privacy.",
+    "image": "/images/logo(1).png"
+  },
+  "terms": {
+    "title": "Terms & Conditions - Algofolks",
+    "description": "Review Algofolks' terms of service and conditions for working with our software development team.",
+    "image": "/images/logo(1).png"
+  },
+  "cookie-policy": {
+    "title": "Cookie Policy - Algofolks",
+    "description": "Learn about Algofolks' use of cookies to enhance your browsing and user experience.",
+    "image": "/images/logo(1).png"
+  },
+  "refund-policy": {
+    "title": "Refund Policy - Algofolks",
+    "description": "Understand our refund policy for software development services and project cancellations.",
+    "image": "/images/logo(1).png"
+  },
+  "cancellation-policy": {
+    "title": "Cancellation Policy - Algofolks",
+    "description": "Review Algofolks' cancellation policies for ongoing software development projects and services.",
+    "image": "/images/logo(1).png"
+  },
+  "developers": {
+    "title": "Meet Our Developers - Expert Software Team | Algofolks",
+    "description": "Meet the skilled developers at Algofolks who deliver innovative software solutions tailored for your business success.",
+    "image": "/images/logo(1).png"
+  },
+  "designers": {
+    "title": "Meet Our Designers - Creative Design Experts | Algofolks",
+    "description": "Explore the creative talent behind Algofolks' stunning UI/UX designs that elevate digital experiences.",
+    "image": "/images/logo(1).png"
+  },
+  "skill-directory": {
+    "title": "Our Technical Expertise - Skill Directory | Algofolks",
+    "description": "Explore Algofolks' wide range of technical skills - from software development to emerging technologies and industry best practices.",
+    "image": "/images/logo(1).png"
+  },
+  "404": {
+    "title": "404 - Page Not Found | Algofolks",
+    "description": "Oops! This page doesn’t exist. Let’s get you back to Algofolks' homepage.",
+    "image": "/images/logo(1).png"
   }
 }

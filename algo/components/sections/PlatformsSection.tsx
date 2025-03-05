@@ -20,6 +20,7 @@ export function PlatformsSection() {
               {/* Graphic Design */}
               <div className="relative group">
                 <div className="absolute inset-0  rounded-2xl"></div>
+                <Link href="services/graphic-designing">
                 <div
                   className="relative flex items-center justify-between  rounded-2xl p-4  transition-colors cursor-pointer"
                   style={{
@@ -47,11 +48,13 @@ export function PlatformsSection() {
                     </svg>
                   </div>
                 </div>
+                </Link>
               </div>
 
               {/* App Design */}
               <div className="relative group">
                 <div className="absolute inset-0  bg-gradient-to-r from-[#0561FC] via-[#0561FC]/50 to-transparent  "></div>
+                <Link href="services/software-development">
                 <div
                   className="relative flex items-center justify-between rounded-2xl p-4 transition-colors cursor-pointer"
                   style={{
@@ -75,11 +78,14 @@ export function PlatformsSection() {
                     </svg>
                   </div>
                 </div>
+                </Link>
               </div>
 
               {/* Web Development */}
+             
               <div className="relative group">
                 <div className="absolute inset-0 rounded-2xl"></div>
+                 <Link href="services/web-development">
                 <div
                   className="relative flex items-center justify-between rounded-2xl p-4 transition-colors cursor-pointer"
                   style={{
@@ -108,8 +114,11 @@ export function PlatformsSection() {
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </div>
+                
                 </div>
+                  </Link>
               </div>
+              
             </div>
 
             {/* Know More Button */}

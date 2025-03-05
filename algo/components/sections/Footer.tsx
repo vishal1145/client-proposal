@@ -186,7 +186,7 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                 </svg>
               </a>
             </div>
-            <div className="absolute -top-28 right-0 h-[700px] w-[1px] bg-gray-700"></div>
+            <div className="absolute -top-28 right-0 h-[900px] w-[1px] bg-gray-700"></div>
           </div>
 
           {/* Right Side - Content Section (75%) */}
@@ -370,6 +370,46 @@ export default function Footer({ showSubscribe = true }: FooterProps) {
                       className="text-gray-400 text-[14px] hover:text-white"
                     >
                       Blog & News
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/payment"
+                      className="text-gray-400 text-[14px] hover:text-white"
+                    >
+                      Payment
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/client"
+                      className="text-gray-400 text-[14px] hover:text-white"
+                    >
+                      Client
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/history"
+                      className="text-gray-400 text-[14px] hover:text-white"
+                    >
+                      History
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/core-values"
+                      className="text-gray-400 text-[14px] hover:text-white"
+                    >
+                      Core-Values
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/social-responsibilty"
+                      className="text-gray-400 text-[14px] hover:text-white"
+                    >
+                     Social-Responsibilty
                     </Link>
                   </li>
                   <li>

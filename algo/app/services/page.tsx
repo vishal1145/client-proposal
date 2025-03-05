@@ -7,15 +7,15 @@ import Footer from "@/components/sections/Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 interface Service {
   slug: string;
   featured: boolean;
   icon: string;
   title: string;
   description: string;
-  detailContent?: string;   // Add this if needed
+  detailContent?: string; // Add this if needed
 }
-
 
 const CardSkeleton = () => (
   <div className="bg-white rounded-2xl p-4 md:p-6 border border-gray-200 shadow-sm animate-pulse">
@@ -43,7 +43,8 @@ export default function Page() {
 
         // Filter to only include services where `detailcontent` exists and is not empty
         const filteredServices = response.data.data.filter(
-          (service: Service) => service.detailContent && service.detailContent.trim() !== ""
+          (service: Service) =>
+            service.detailContent && service.detailContent.trim() !== ""
         );
         setServices(filteredServices);
       } catch (error) {
@@ -54,8 +55,7 @@ export default function Page() {
     };
 
     fetchServices();
-}, []);
-
+  }, []);
 
   return (
     <main className="min-h-screen bg-white">

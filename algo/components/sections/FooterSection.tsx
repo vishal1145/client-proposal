@@ -337,6 +337,47 @@ export function FooterSection() {
                 </Link>
               </li>
               <li>
+                    <Link
+                      href="/payment"
+                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                    >
+                      Payment
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/client"
+                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                    >
+                      Client
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/history"
+                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                    >
+                      History
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/core-values"
+                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                    >
+                      Core-Values
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/social-responsibilty"
+                      className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
+                    >
+                     Social-Responsibilty
+                    </Link>
+                  </li>
+                  
+              <li>
                 <Link
                   href="/terms"
                   className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"

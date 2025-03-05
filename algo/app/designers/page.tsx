@@ -3,7 +3,12 @@ import Image from "next/image";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getMetadata } from "../utils/metadata";
+import { Metadata } from "next";
 
+export const generateMetadata = (): Metadata => {
+  return getMetadata("designers");
+};
 const page = () => {
   return (
     <div>

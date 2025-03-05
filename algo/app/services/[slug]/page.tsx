@@ -103,7 +103,7 @@ const serviceDetails: Record<string, ServiceDetail> = {
     image:
       "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
   },
-  "Graphic-Design": {
+  "graphic-designing": {
     title: "Graphic Design",
     subtitle: "Innovative Product Solutions",
     description:
@@ -111,7 +111,7 @@ const serviceDetails: Record<string, ServiceDetail> = {
     image:
       "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070",
   },
-  "Web-development": {
+  "web-development": {
     title: "Web development",
     subtitle: "Innovative Product Solutions",
     description:

@@ -84,12 +84,12 @@ export function BlogSection() {
                       </Button>
                     </Link>
                   </div>
-                  <div className="relative h-[400px]">
+                  <div className="relative h-[400px] ">
                     <Image
                       src={blogs[0].mainImage}
                       alt={blogs[0].title}
                       fill
-                      className="object-cover"
+                      className="object-cover rounded-3xl"
                     />
                   </div>
                 </div>

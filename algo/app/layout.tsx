@@ -10,8 +10,8 @@ const publicSans = Public_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Algofolks",
-  description: "Expert IT Services in Design, App & Development",
+  title: "Algofolks - Custom Software Development Company",
+  description: "Algofolks is a trusted software development company delivering innovative web, mobile, and custom software solutions to businesses worldwide.",
 };
 
 export default function RootLayout({

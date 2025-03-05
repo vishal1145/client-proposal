@@ -1,6 +1,11 @@
 import Footer from "@/components/sections/Footer";
 import Image from "next/image";
+import { getMetadata } from "../utils/metadata";
+import { Metadata } from "next";
 
+export const generateMetadata = (): Metadata => {
+  return getMetadata("cancellation-policy");
+};
 export default function CancellationPolicyPage() {
   return (
     <>

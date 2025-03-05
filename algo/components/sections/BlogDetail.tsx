@@ -319,12 +319,12 @@ export function BlogDetail({ slug }: BlogDetailProps) {
     <span className="text-gray-600 text-sm">TW</span>
   </button>
   <span className="text-gray-300">|</span>
-  <button
+  {/* <button
     onClick={() => window.open(`https://www.youtube.com`, "_blank")} 
     className="flex items-center justify-center w-8 h-8 rounded-full"
   >
     <span className="text-gray-600 text-sm">YU</span>
-  </button>
+  </button> */}
   <span className="text-gray-300">|</span>
   <button
     onClick={shareOnFacebook}

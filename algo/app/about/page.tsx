@@ -3,13 +3,11 @@ import Footer from "@/components/sections/Footer";
 import Image from "next/image";
 import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
 import Link from "next/link";
+import { getMetadata } from "../utils/metadata";
 
-export const metadata: Metadata = {
-  title: "About Us - IT Solutions",
-  description:
-    "Learn about our company and our 25 years of experience in providing exclusive technology and IT solutions.",
+export const generateMetadata = (): Metadata => {
+  return getMetadata("about");
 };
-
 const stats = [
   {
     number: "25",
@@ -223,31 +221,32 @@ export default function AboutPage() {
               <div className="space-y-8">
                 {/* Feature 1 */}
                 <div className="flex items-start gap-5">
-  <div className="flex-shrink-0 mt-2 relative w-4 h-4">
-    {/* Black border circle */}
-    <div className="absolute w-5 h-5 border-[1.5px] border-gray-600 rounded-full"></div>
-    {/* Blue overlapping circle */}
-    <div className="absolute w-5 h-5 bg-[#0561FC] rounded-full bottom-[-10px] right-[-9px]"></div>
-  </div>
-  <div className="space-y-3">
-    <h3 className="text-[26px] font-medium text-[#0B1B2B]">
-      Artificial Intelligence And Machine Learning
-    </h3>
-    <p className="text-[#64748B] text-[15px] leading-[1.8]">
-      Contrary To Popular Belief, Lorem Ipsum Is Not Simply Random Text. It Has Roots In A Piece Latin Literature From 45 BC, Making It Over 2000 Years Old.
-    </p>
-  </div>
-</div>
-
+                  <div className="flex-shrink-0 mt-2 relative w-4 h-4">
+                    {/* Black border circle */}
+                    <div className="absolute w-5 h-5 border-[1.5px] border-gray-600 rounded-full"></div>
+                    {/* Blue overlapping circle */}
+                    <div className="absolute w-5 h-5 bg-[#0561FC] rounded-full bottom-[-10px] right-[-9px]"></div>
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="text-[26px] font-medium text-[#0B1B2B]">
+                      Artificial Intelligence And Machine Learning
+                    </h3>
+                    <p className="text-[#64748B] text-[15px] leading-[1.8]">
+                      Contrary To Popular Belief, Lorem Ipsum Is Not Simply
+                      Random Text. It Has Roots In A Piece Latin Literature From
+                      45 BC, Making It Over 2000 Years Old.
+                    </p>
+                  </div>
+                </div>
 
                 {/* Feature 2 */}
                 <div className="flex items-start gap-5">
-                <div className="flex-shrink-0 mt-2 relative w-4 h-4">
-    {/* Black border circle */}
-    <div className="absolute w-5 h-5 border-[1.5px] border-gray-600 rounded-full"></div>
-    {/* Blue overlapping circle */}
-    <div className="absolute w-5 h-5 bg-[#0561FC] rounded-full bottom-[-10px] right-[-9px]"></div>
-  </div>
+                  <div className="flex-shrink-0 mt-2 relative w-4 h-4">
+                    {/* Black border circle */}
+                    <div className="absolute w-5 h-5 border-[1.5px] border-gray-600 rounded-full"></div>
+                    {/* Blue overlapping circle */}
+                    <div className="absolute w-5 h-5 bg-[#0561FC] rounded-full bottom-[-10px] right-[-9px]"></div>
+                  </div>
                   <div className="space-y-3">
                     <h3 className="text-[26px] font-medium text-[#0B1B2B]">
                       Techno Services Through IT Solutions
@@ -264,11 +263,10 @@ export default function AboutPage() {
               {/* Action Buttons */}
               <div className="flex items-center gap-8 pt-2">
                 <Link href="/contact">
-                <button className="bg-[#0561FC] text-white px-7 py-2 rounded-full text-[15px] font-medium hover:bg-blue-700 transition-colors">
-                  Get In Touch 
-                </button>
+                  <button className="bg-[#0561FC] text-white px-7 py-2 rounded-full text-[15px] font-medium hover:bg-blue-700 transition-colors">
+                    Get In Touch
+                  </button>
                 </Link>
-               
               </div>
             </div>
           </div>
@@ -283,41 +281,40 @@ export default function AboutPage() {
           </h2>
 
           <div className="max-w-5xl mx-auto mb-12 sm:mb-20">
-          <div className="flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-20">
-            {stats.map((stat, index) => (
-              <div key={index} className="w-full">
-                <div className="relative flex items-end justify-center">
-                  {/* Number (Left Side) */}
-                  <span className="text-4xl sm:text-[80px] text-[#0B1B2B] font-light leading-none">
-                    {stat.number}
-                  </span>
+            <div className="flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-20">
+              {stats.map((stat, index) => (
+                <div key={index} className="w-full">
+                  <div className="relative flex items-end justify-center">
+                    {/* Number (Left Side) */}
+                    <span className="text-4xl sm:text-[80px] text-[#0B1B2B] font-light leading-none">
+                      {stat.number}
+                    </span>
 
-                  {/* Right Side: Icon + Text */}
-                  <div className="flex flex-col items-center ml-4 relative">
-                    {/* Icon Above Text */}
-                    <div className="absolute -top-8 left-14">{stat.icon}</div>
+                    {/* Right Side: Icon + Text */}
+                    <div className="flex flex-col items-center ml-4 relative">
+                      {/* Icon Above Text */}
+                      <div className="absolute -top-8 left-14">{stat.icon}</div>
 
-                    {/* Text (Right Bottom of Number) */}
-                    <div className="text-gray-500 text-xs sm:text-sm">
-                      {stat.text}
+                      {/* Text (Right Bottom of Number) */}
+                      <div className="text-gray-500 text-xs sm:text-sm">
+                        {stat.text}
+                      </div>
                     </div>
+
+                    {/* Vertical Divider (Only visible on larger screens) */}
+                    {index < stats.length - 1 && (
+                      <div className="hidden lg:block w-[1px] h-16 bg-gray-200 absolute right-[-25px] sm:right-[-30px] top-1/2 -translate-y-1/2"></div>
+                    )}
                   </div>
 
-                  {/* Vertical Divider (Only visible on larger screens) */}
+                  {/* Horizontal Divider (Only visible on mobile) */}
                   {index < stats.length - 1 && (
-                    <div className="hidden lg:block w-[1px] h-16 bg-gray-200 absolute right-[-25px] sm:right-[-30px] top-1/2 -translate-y-1/2"></div>
+                    <div className="lg:hidden w-full h-[1px] bg-gray-200 my-7"></div>
                   )}
                 </div>
-
-                {/* Horizontal Divider (Only visible on mobile) */}
-                {index < stats.length - 1 && (
-                  <div className="lg:hidden w-full h-[1px] bg-gray-200 my-7"></div>
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-
         </div>
       </section>
 
@@ -618,9 +615,9 @@ export default function AboutPage() {
             {/* View More Button */}
             <div className="text-center mt-8">
               <Link href="/projects">
-              <button className="bg-[#4461F2] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-blue-600 transition-colors">
-                View More
-              </button>
+                <button className="bg-[#4461F2] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-blue-600 transition-colors">
+                  View More
+                </button>
               </Link>
             </div>
           </div>

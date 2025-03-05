@@ -5,6 +5,8 @@ import Footer from "@/components/sections/Footer";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+
+
 const Page = () => {
   // State to track active section
   const [activeSection, setActiveSection] = useState("environments");

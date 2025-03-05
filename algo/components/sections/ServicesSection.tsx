@@ -124,7 +124,7 @@ export function ServicesSection() {
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-6">
           {/* Graphic Design Card */}
           <div className="col-span-1 sm:col-span-6 group">
-            <Link href="services/Graphic-Design">
+            <Link href="services/graphic-designing">
             <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
               <Image
                 src="/images/homes1.png"
@@ -152,7 +152,7 @@ export function ServicesSection() {
 
           {/* Web Development Card */}
           <div className="col-span-1 sm:col-span-3 group">
-          <Link href="services/Web-development">
+          <Link href="services/web-development">
             <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
               <Image
                 src="/images/home2.png"

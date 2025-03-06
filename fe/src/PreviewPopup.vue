@@ -57,9 +57,10 @@ export default {
     border: none;
     font-size: 1rem;
     cursor: pointer;
+    color: #c6a54c;
 }
 .scroll-container {
-    max-height: 500px;
+    max-height: 100%;
     overflow-y: auto;
 }
 </style>

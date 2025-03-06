@@ -2,27 +2,32 @@ import { createRouter, createWebHistory } from 'vue-router'
  
 import WebsiteReviewPage from './WebsiteReviewPage.vue'
 import ViewAnalysis from './ViewAnalysis.vue'
-
+import ServiceDetail from './ServiceDetail.vue'
 const routes = [
-  { 
-    path: '/', 
+  {
+    path: '/',
     component: WebsiteReviewPage,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true },
   },
-  { 
-    path: '/website-review', 
+  {
+    path: '/website-review',
     component: WebsiteReviewPage,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true },
   },
-  { 
-    path: '/analysis/:id', 
+  {
+    path: '/analysis/:id',
     component: ViewAnalysis,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true },
   },
   {
     path: '/login',
-    component: () => import('./LoginPage.vue')  // You'll need to create this component
-  }
+    component: () => import('./LoginPage.vue'), // You'll need to create this component
+  },
+  {
+    path: '/service-detail',
+    name: 'ServiceDetail',
+    component: ServiceDetail,
+  },
 ]
 
 const router = createRouter({

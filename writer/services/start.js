@@ -43,6 +43,13 @@ export const startProcess = async (url) => {
 
   allServices = Array.from(allServices);
  
+  allServices = (allServices || []).map((service) => {
+    return {
+      ...service,
+      id: new Date().getTime()
+    }
+  });
+  
   var analysis = {};
   analysis.url = url;
   analysis.links = links;

@@ -62,7 +62,7 @@
                   </div>
                 </td>
                 <td class="px-6 py-5">
-                   <div class="flex items-center">
+                  <div class="flex items-center">
                     <div v-if="item.email" class="flex items-center">
                       <span class="text-sm font-medium text-gray-900 mr-2">{{ item.email }}</span>
                       <button
@@ -94,6 +94,16 @@
                       </svg>
                       View
                     </button>
+                    <button
+                      class="inline-flex items-center px-4 py-2 bg-red-50 hover:bg-red-100 text-red-700 font-medium rounded-lg transition-colors"
+                      @click="deleteItem(item._id)">
+                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                      Delete
+                    </button>
+
                     <button
                       class="inline-flex items-center px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-700 font-medium rounded-lg transition-colors"
                       @click="reanalyzeUrl(item)" :disabled="reanalyzingIds.has(item._id)">
@@ -181,7 +191,7 @@
         </div>
       </div>
     </div>
-     <!-- Add/Update Email Modal -->
+    <!-- Add/Update Email Modal -->
     <div v-if="showEmailModal" class="fixed inset-0 overflow-y-auto z-50" role="dialog" aria-modal="true">
       <div class="flex items-center justify-center min-h-screen">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
@@ -266,6 +276,22 @@ export default {
       } finally {
         this.isLoading = false;
       }
+    },
+    async deleteItem(id) {
+        try {
+          const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+          const response = await axios.delete(`${apiUrl}/analysis/${id}`);
+
+          if (response.data.success) {
+            // Remove the deleted item from the urlList
+            this.urlList = this.urlList.filter(item => item._id !== id);
+            console.log('Analysis deleted successfully');
+          } else {
+            console.error('Failed to delete analysis');
+          }
+        } catch (error) {
+          console.error('Error deleting analysis:', error);
+        }
     },
     async saveUrl() {
       if (this.newUrl.trim()) {

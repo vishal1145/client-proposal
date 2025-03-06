@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Footer from '@/components/sections/Footer'
+import { Button } from '@/components/ui/button'
+
 
 export default function ApplyPage() {
   return (
@@ -52,6 +54,11 @@ export default function ApplyPage() {
             {/* Left Content */}
             <div className="md:w-1/2">
               <div className="max-w-xl">
+              <div className="inline-block px-4 py-1 rounded-full bg-blue-50 mb-6">
+    <span className="text-[13px] text-gray-600 uppercase tracking-wider font-medium">
+      START YOUR JOURNEY
+    </span>
+  </div>
                 <h2 className="text-4xl md:text-5xl font-bold text-[#0B1B2B] mb-6">
                   Jump-start your career with Algofolks
                 </h2>
@@ -90,10 +97,11 @@ export default function ApplyPage() {
 <section className="py-20 bg-gray-50">
   <div className="container mx-auto px-4">
     <div className="text-center max-w-3xl mx-auto">
+    <div className="inline-block px-4 py-1 rounded-full bg-blue-100 mb-3">
       <span className="text-[13px] text-gray-600 uppercase tracking-wider">
         VALUES DESIGNED FOR YOUR SUCCESS
       </span>
-      
+      </div>
       <h2 className="text-[26px] font-normal leading-[1.15] mt-4 mb-8">
         Reshaped the operating model of the global <br />asset
         management industry and our work continues to<br />
@@ -133,6 +141,15 @@ export default function ApplyPage() {
 <section className="py-20">
   <div className="container mx-auto px-4">
     <div className="max-w-3xl mx-auto">
+    <div className="text-center">
+  {/* Added Centered Chip */}
+  <div className="flex justify-center mb-6">
+    <div className="inline-block px-4 py-1 rounded-full bg-blue-50">
+      <span className="text-[13px] text-gray-600 uppercase tracking-wider font-medium">
+        COMPANY CULTURE
+      </span>
+    </div>
+    </div>
       <h2 className="text-[36px] font-normal mb-6">
         Life at Algofolks
       </h2>
@@ -145,7 +162,7 @@ export default function ApplyPage() {
         and forward-thinking people who are passionately focused on 
         using their skills and expertise to move FinanceForeward®.
       </p>
-
+</div>
       <div className="mb-16">
         <h3 className="text-[13px] uppercase tracking-wider text-gray-600 mb-8">
           ARE YOU READY TO WORK WITH US?
@@ -196,10 +213,11 @@ export default function ApplyPage() {
 <section className="pb-10">
   <div className="container mx-auto px-4">
     <div className="max-w-3xl mx-auto text-center">
+    <div className="inline-block px-4 py-1 rounded-full bg-blue-50">
       <span className="text-[13px] text-gray-600 uppercase tracking-wider ">
         JOB OPENINGS
       </span>
-
+</div>
       <h2 className="text-[36px] font-normal mt-4 mb-8">
         Join us and Move Finance Forward
       </h2>
@@ -230,69 +248,132 @@ export default function ApplyPage() {
 
       {/* Job Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Job Card 1 */}
-        <div className="bg-white p-8 rounded-[20px] shadow-sm hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer">
-          <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
-            Junior Business Analyst
-          </h3>
-          <p className="text-[13px] text-gray-600 group-hover:text-white/90">
-            Dallas, TX, USA
-          </p>
-        </div>
+  {/* Job Card 1 */}
+  <div className="bg-white p-8 rounded-[20px] shadow-2xl hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer text-left">
+    <div className="w-12 h-12 rounded-full  flex  justify-center mb-6 transition-colors">
+      <svg className="w-9 h-9 text-[#0561FC] group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    </div>
+    <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
+      Junior Business Analyst
+    </h3>
+    <p className="text-[13px] text-gray-600 group-hover:text-white/90">
+      Dallas, TX, USA
+    </p>
+  </div>
 
-        {/* Job Card 2 */}
-        <div className="bg-white p-8 rounded-[20px] shadow-sm hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer">
-          <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
-            Associate Director Internal Application Development
-          </h3>
-          <p className="text-[13px] text-gray-600 group-hover:text-white/90">
-            Noida, Uttar Pradesh, India
-          </p>
-        </div>
+  {/* Job Card 2 */}
+  <div className="bg-white p-8 rounded-[20px] shadow-2xl hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer text-left">
+    <div className="w-12 h-12 rounded-full flex items-center justify-center mb-6 transition-colors">
+      <svg className="w-9 h-9 text-[#0561FC] group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    </div>
+    <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
+      Associate Director Internal Application Development
+    </h3>
+    <p className="text-[13px] text-gray-600 group-hover:text-white/90">
+      Noida, Uttar Pradesh, India
+    </p>
+  </div>
 
-        {/* Job Card 3 */}
-        <div className="bg-white p-8 rounded-[20px] shadow-sm hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer">
-          <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
-            Team Lead - Tech Application Support
-          </h3>
-          <p className="text-[13px] text-gray-600 group-hover:text-white/90">
-            Noida, Uttar Pradesh, India
-          </p>
-        </div>
+  {/* Job Card 3 */}
+  <div className="bg-white p-8 rounded-[20px] shadow-2xl hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer text-left">
+    <div className="w-12 h-12 rounded-full  flex items-center justify-center mb-6 transition-colors">
+      <svg className="w-9 h-9 text-[#0561FC] group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    </div>
+    <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
+      Team Lead - Tech Application Support
+    </h3>
+    <p className="text-[13px] text-gray-600 group-hover:text-white/90">
+      Noida, Uttar Pradesh, India
+    </p>
+  </div>
 
-        {/* Job Card 4 */}
-        <div className="bg-white p-8 rounded-[20px] shadow-sm hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer">
-          <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
-            Team Lead
-          </h3>
-          <p className="text-[13px] text-gray-600 group-hover:text-white/90">
-            Noida, Uttar Pradesh, India
-          </p>
-        </div>
+  {/* Job Card 4 */}
+  <div className="bg-white p-8 rounded-[20px] shadow-2xl hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer text-left">
+    <div className="w-12 h-12 rounded-full  flex items-center justify-center mb-6 transition-colors">
+      <svg className="w-9 h-9 text-[#0561FC] group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    </div>
+    <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
+      Team Lead
+    </h3>
+    <p className="text-[13px] text-gray-600 group-hover:text-white/90">
+      Noida, Uttar Pradesh, India
+    </p>
+  </div>
 
-        {/* Job Card 5 */}
-        <div className="bg-white p-8 rounded-[20px] shadow-sm hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer">
-          <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
-            Scrum Master
-          </h3>
-          <p className="text-[13px] text-gray-600 group-hover:text-white/90">
-            Noida, Uttar Pradesh, India
-          </p>
-        </div>
+  {/* Job Card 5 */}
+  <div className="bg-white p-8 rounded-[20px] shadow-2xl hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer text-left">
+    <div className="w-12 h-12 rounded-full  flex items-center justify-center mb-6 transition-colors">
+      <svg className="w-9 h-9 text-[#0561FC] group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
+      Scrum Master
+    </h3>
+    <p className="text-[13px] text-gray-600 group-hover:text-white/90">
+      Noida, Uttar Pradesh, India
+    </p>
+  </div>
 
-        {/* Job Card 6 */}
-        <div className="bg-white p-8 rounded-[20px] shadow-sm hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer">
-          <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
-            Senior Engineer / Team Lead
-          </h3>
-          <p className="text-[13px] text-gray-600 group-hover:text-white/90">
-            Noida, Uttar Pradesh, India
-          </p>
-        </div>
-      </div>
+  {/* Job Card 6 */}
+  <div className="bg-white p-8 rounded-[20px] shadow-2xl hover:bg-[#0561FC] group transition-all duration-300 cursor-pointer text-left">
+    <div className="w-12 h-12 rounded-full  flex items-center justify-center mb-6 transition-colors">
+      <svg className="w-9 h-9 text-[#0561FC] group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    </div>
+    <h3 className="text-[17px] font-medium text-gray-900 group-hover:text-white mb-2">
+      Senior Engineer / Team Lead
+    </h3>
+    <p className="text-[13px] text-gray-600 group-hover:text-white/90">
+      Noida, Uttar Pradesh, India
+    </p>
+  </div>
+</div>
     </div>
   </div>
 </section>
+
+<div className="my-16 text-center">
+            <h3 className="text-2xl font-semibold text-[#0B1B2B] mb-4">
+              Ready to Start Your Project?
+            </h3>
+            <p className="text-gray-600 text-[14px] mb-8 max-w-2xl mx-auto">
+              Let&apos;s collaborate to build innovative solutions using the latest
+              technologies and best coding practices. Our team is ready to help
+              you achieve your goals.
+            </p>
+
+            <Link href="/contact" >
+              <Button
+                variant="default"
+                className="bg-[#0066FF] hover:bg-blue-700 text-white rounded-full px-8 py-3 flex items-center gap-2 mx-auto"
+              >
+                Contact Us
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Button>
+            </Link>
+          </div>
       {/* Footer */}
       <Footer />
     </main>

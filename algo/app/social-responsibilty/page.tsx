@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Social Responsibility - Algofolks",
@@ -118,6 +119,16 @@ export default function SocialResponsibilityPage() {
                     initiative.align === "right" ? "lg:pl-12" : "lg:pr-12"
                   }`}
                 >
+                  <div className="inline-block px-4 py-1 rounded-full bg-blue-50 mb-2">
+              <span className="text-[13px] text-gray-600 uppercase tracking-wider font-medium">
+                {initiative.title === "Support for charities" && "SOCIAL RESPONSIBILITY"}
+                {initiative.title === "Social impact projects" && "COMMUNITY IMPACT"}
+                {initiative.title === "Health and Safety Initiatives" && "WORKPLACE SAFETY"}
+                {initiative.title === "Diversity, Equity, and Inclusion (DEI) Programs" && "INCLUSION"}
+                {initiative.title === "Employee Volunteering Initiatives" && "GIVING BACK"}
+              </span>
+            </div>
+
                   <h2 className="text-2xl font-bold text-[#0B1B2B]">
                     {initiative.title}
                   </h2>
@@ -157,7 +168,38 @@ export default function SocialResponsibilityPage() {
           ))}
         </div>
       </section>
+      <div className="my-16 text-center">
+            <h3 className="text-2xl font-semibold text-[#0B1B2B] mb-4">
+              Ready to Start Your Project?
+            </h3>
+            <p className="text-gray-600 text-[14px] mb-8 max-w-2xl mx-auto">
+              Let&apos;s collaborate to build innovative solutions using the latest
+              technologies and best coding practices. Our team is ready to help
+              you achieve your goals.
+            </p>
 
+            <Link href="/contact" >
+              <Button
+                variant="default"
+                className="bg-[#0066FF] hover:bg-blue-700 text-white rounded-full px-8 py-3 flex items-center gap-2 mx-auto"
+              >
+                Contact Us
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Button>
+            </Link>
+          </div>
       <Footer />
     </main>
   );

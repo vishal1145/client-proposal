@@ -138,13 +138,13 @@ export function WhyChooseUsSection() {
                   className="w-auto h-12"
                 />
 
-                <Image
+                {/* <Image
                   src="/images/about10.png"
                   alt="Hex"
                   width={120}
                   height={40}
                   className="w-auto h-12"
-                />
+                /> */}
               </div>
             </div>
           </div>

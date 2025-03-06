@@ -545,7 +545,7 @@ Cookies Policy
                       alt={blog.title}
                       width={56}
                       height={56}
-                      className="w-full h-full object-cover transition-transform group-hover:scale-110"
+                      className="w-full h-full object-contain transition-transform group-hover:scale-110"
                     />
                   </div>
                   <p className="text-[14px] text-gray-400 group-hover:text-[#fcfcfc] transition-colors line-clamp-2">

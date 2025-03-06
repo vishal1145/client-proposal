@@ -28,14 +28,32 @@
 
         <!-- Links tab -->
         <div v-else-if="activeTab === 'links'" class="links-list">
-          <div v-for="(link, index) in links" :key="`link-${index}`" class="link-item"
+          <div v-for="(link, index) in links" :key="`link-${index}`" class="link-item flex justify-between gap-10"
             :class="{ 'selected': selectedLinks.includes(link.url) }">
             <div class="link-content">
-              <input type="checkbox" :checked="selectedLinks.includes(link.url)"
-                @change.stop="toggleLinkSelection(link.url)">
+              <!-- <input type="checkbox" :checked="selectedLinks.includes(link.url)"
+                @change.stop="toggleLinkSelection(link.url)"> -->
               <span>{{ link.url }}</span>
             </div>
+            <button
+              class="inline-flex items-center px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-700 font-medium rounded-lg transition-colors">
+              <!-- <svg v-if="reanalyzingIds.has(item._id)" class="animate-spin w-4 h-4 mr-2"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                </circle>
+                <path class="opacity-75" fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                </path>
+              </svg> -->
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              <!-- {{ reanalyzingIds.has(item._id) ? 'Reanalyzing...' : 'Reanalyze' }} -->
+              Reanalyze
+            </button>
           </div>
+
         </div>
 
         <!-- Services tab -->
@@ -47,8 +65,8 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'business_summary') }"
                 @click="navigateToServiceDetail('Business Summary', service.business_summary)">
                 <div class="section-header">
-                  <input type="checkbox" :checked="isServiceSectionSelected(service, 'business_summary')"
-                    @change.stop="toggleServiceSection(service, 'business_summary')">
+                  <!-- <input type="checkbox" :checked="isServiceSectionSelected(service, 'business_summary')"
+                    @change.stop="toggleServiceSection(service, 'business_summary')"> -->
                   <h3>Business Summary</h3>
                 </div>
                 <p>{{ service.business_summary }}</p>
@@ -59,8 +77,8 @@
               <div class="service-section" :class="{ 'selected': isServiceSectionSelected(service, 'key_services') }"
                 @click="navigateToServiceDetail('Key Services', service.key_services)">
                 <div class="section-header">
-                  <input type="checkbox" :checked="isServiceSectionSelected(service, 'key_services')"
-                    @change.stop="toggleServiceSection(service, 'key_services')">
+                  <!-- <input type="checkbox" :checked="isServiceSectionSelected(service, 'key_services')"
+                    @change.stop="toggleServiceSection(service, 'key_services')"> -->
                   <h3>Key Services</h3>
                 </div>
                 <p>{{ service.key_services }}</p>
@@ -71,8 +89,8 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software') }"
                 @click="navigateToServiceDetail('Possible Software', service.possible_software)">
                 <div class="section-header">
-                  <input type="checkbox" :checked="isServiceSectionSelected(service, 'possible_software')"
-                    @change.stop="toggleServiceSection(service, 'possible_software')">
+                  <!-- <input type="checkbox" :checked="isServiceSectionSelected(service, 'possible_software')"
+                    @change.stop="toggleServiceSection(service, 'possible_software')"> -->
                   <h3>Possible Software</h3>
                 </div>
                 <p>{{ service.possible_software }}</p>
@@ -83,9 +101,9 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_description') }"
                 @click="navigateToServiceDetail('Software Solutions Description', service.possible_software_solutions_description)">
                 <div class="section-header">
-                  <input type="checkbox"
+                  <!-- <input type="checkbox"
                     :checked="isServiceSectionSelected(service, 'possible_software_solutions_description')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_description')">
+                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_description')"> -->
                   <h3>Software Solutions Description</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_description }}</p>
@@ -96,8 +114,8 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions') }"
                 @click="navigateToServiceDetail('Software Solutions', service.possible_software_solutions)">
                 <div class="section-header">
-                  <input type="checkbox" :checked="isServiceSectionSelected(service, 'possible_software_solutions')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions')">
+                  <!-- <input type="checkbox" :checked="isServiceSectionSelected(service, 'possible_software_solutions')"
+                    @change.stop="toggleServiceSection(service, 'possible_software_solutions')"> -->
                   <h3>Software Solutions</h3>
                 </div>
                 <p>{{ service.possible_software_solutions }}</p>
@@ -108,9 +126,9 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_features') }"
                 @click="navigateToServiceDetail('Features', service.possible_software_solutions_features)">
                 <div class="section-header">
-                  <input type="checkbox"
+                  <!-- <input type="checkbox"
                     :checked="isServiceSectionSelected(service, 'possible_software_solutions_features')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_features')">
+                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_features')"> -->
                   <h3>Features</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_features }}</p>
@@ -121,9 +139,9 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_benefits') }"
                 @click="navigateToServiceDetail('Benefits', service.possible_software_solutions_benefits)">
                 <div class="section-header">
-                  <input type="checkbox"
+                  <!-- <input type="checkbox"
                     :checked="isServiceSectionSelected(service, 'possible_software_solutions_benefits')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_benefits')">
+                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_benefits')"> -->
                   <h3>Benefits</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_benefits }}</p>
@@ -133,9 +151,9 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_pricing') }"
                 @click="navigateToServiceDetail('Pricing', service.possible_software_solutions_pricing)">
                 <div class="section-header">
-                  <input type="checkbox"
+                  <!-- <input type="checkbox"
                     :checked="isServiceSectionSelected(service, 'possible_software_solutions_pricing')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_pricing')">
+                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_pricing')"> -->
                   <h3>Pricing</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_pricing }}</p>
@@ -146,9 +164,9 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_comparison') }"
                 @click="navigateToServiceDetail('Comparison', service.possible_software_solutions_comparison)">
                 <div class="section-header">
-                  <input type="checkbox"
+                  <!-- <input type="checkbox"
                     :checked="isServiceSectionSelected(service, 'possible_software_solutions_comparison')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_comparison')">
+                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_comparison')"> -->
                   <h3>Comparison</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_comparison }}</p>
@@ -344,14 +362,14 @@ export default {
   margin-bottom: 4rem;
 }
 
-.service-card {
+/* .service-card {
   background: white;
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
   border: 1px solid #e0e0e0;
-}
+} */
 
 .service-card h3 {
   color: #2c3e50;
@@ -582,9 +600,9 @@ export default {
   border-bottom: 1px solid #eee;
 }
 
-.service-content {
+/* .service-content {
   margin-left: 2rem;
-}
+} */
 
 .service-section {
   margin-bottom: 1.5rem;

@@ -62,47 +62,24 @@
                   </div>
                 </td>
                 <td class="px-6 py-5">
-                  <!-- <div class="flex items-center">
-                    <div v-if="item.email">
-                      <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
-                        <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M16 4H8c-2.2 0-4 1.8-4 4v8c0 2.2 1.8 4 4 4h8c2.2 0 4-1.8 4-4V8c0-2.2-1.8-4-4-4zm0 4l-4 4-4-4" />
-                        </svg>
-                      </div>
-                      <span class="text-sm font-medium text-gray-900">{{ item.email }}</span>
-                    </div>
-                    <button v-else
-                      class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-[14px] text-white font-semibold rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md"
-                      @click="openEmailModal(item)">
-                      <svg class="w-4 h-4 mr-2 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                      </svg>
-                      Add Email
-                    </button>
-                  </div> -->
-                  <div class="flex items-center">
+                   <div class="flex items-center">
                     <div v-if="item.email" class="flex items-center">
-                      <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-2">
-                        <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M16 4H8c-2.2 0-4 1.8-4 4v8c0 2.2 1.8 4 4 4h8c2.2 0 4-1.8 4-4V8c0-2.2-1.8-4-4-4zm0 4l-4 4-4-4" />
-                        </svg>
-                      </div>
-                      <span class="text-sm font-medium text-gray-900">{{ item.email }}</span>
+                      <span class="text-sm font-medium text-gray-900 mr-2">{{ item.email }}</span>
+                      <button
+                        class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-[14px] text-white font-semibold rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md"
+                        @click="openEmailModal(item, true)">
+                        Update Email
+                      </button>
                     </div>
                     <button v-else
                       class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-[14px] text-white font-semibold rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md"
-                      @click="openEmailModal(item)">
+                      @click="openEmailModal(item, false)">
                       <svg class="w-4 h-4 mr-2 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                       </svg>
                       Add Email
                     </button>
                   </div>
-
                 </td>
                 <td class="pl-0 pr-8 py-5">
                   <div class="flex space-x-4">
@@ -204,65 +181,32 @@
         </div>
       </div>
     </div>
-    <!-- Add Email Modal -->
-    <div v-if="showEmailModal" class="fixed inset-0 overflow-y-auto z-50" aria-labelledby="modal-title" role="dialog"
-      aria-modal="true">
-      <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <div
-          class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 relative">
-          <div class="absolute top-0 right-0 pt-4 pr-4">
-            <button @click="closeEmailModal"
-              class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              <span class="sr-only">Close</span>
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <div class="sm:flex sm:items-start">
-            <div
-              class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 sm:mx-0 sm:h-10 sm:w-10">
-              <svg class="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M16 12a4 4 0 01-8 0 4 4 0 018 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9 5-9 5-9-5 9-5z" />
-              </svg>
-            </div>
-            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-              <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                Add Email
-              </h3>
-              <div class="mt-4">
-                <input type="email" v-model="newEmail" placeholder="Enter email address"
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm text-sm" />
-              </div>
-            </div>
-          </div>
-          <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-            <button type="button"
-              class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
+     <!-- Add/Update Email Modal -->
+    <div v-if="showEmailModal" class="fixed inset-0 overflow-y-auto z-50" role="dialog" aria-modal="true">
+      <div class="flex items-center justify-center min-h-screen">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
+        <div class="bg-white rounded-lg p-6 shadow-xl transition-all relative max-w-lg w-full mx-4">
+          <button @click="closeEmailModal"
+            class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">
+            {{ isUpdateMode ? 'Update Email' : 'Add Email' }}
+          </h3>
+          <input type="email" v-model="newEmail" placeholder="Enter email address"
+            class="w-full mb-4 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+          <div class="flex justify-end">
+            <button class="px-4 py-2 bg-gray-300 rounded-lg mr-2" @click="closeEmailModal">Cancel</button>
+            <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg transition-transform transform hover:scale-105"
               @click="saveEmail" :disabled="isSaving">
-              <svg v-if="isSaving" class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg"
-                fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                </path>
-              </svg>
-              {{ isSaving ? 'Adding...' : 'Add' }}
-            </button>
-            <button type="button"
-              class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-              @click="closeEmailModal">
-              Cancel
+              {{ isSaving ? 'Saving...' : (isUpdateMode ? 'Update' : 'Add') }}
             </button>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -281,6 +225,7 @@ export default {
       urlList: [],
       isLoading: false,
       isSaving: false,
+      isUpdateMode: false,
       reanalyzingIds: new Set() // Track which items are being reanalyzed
     }
   },
@@ -295,14 +240,18 @@ export default {
     closeModal() {
       this.showModal = false
     },
-    openEmailModal(item) {
+   
+    openEmailModal(item, isUpdate = false) {
       this.showEmailModal = true;
       this.currentItemId = item._id;
+      this.isUpdateMode = isUpdate;
+      this.newEmail = isUpdate ? item.email : '';
     },
     closeEmailModal() {
       this.showEmailModal = false;
       this.newEmail = '';
       this.currentItemId = null;
+      this.isUpdateMode = false;
     },
     async fetchAnalyses() {
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
@@ -358,18 +307,7 @@ export default {
         this.reanalyzingIds.delete(item._id);
       }
     },
-    // saveEmail() {
-    //   this.isSaving = true;
-    //   console.log("id:", this.currentItemId)
-    //   console.log("email:",this.newEmail)
-    //   // Your API call or save logic here
-    //   setTimeout(() => {
-    //     this.isSaving = false;
-    //     this.closeEmailModal();
-    //     // Additional logic to handle the saved email
-    //   }, 1000);
-    //   this.newEmail = '';
-    // },
+
     async saveEmail() {
       if (!this.currentItemId || !this.newEmail.trim()) {
         console.error('Invalid data: Missing ID or Email');
@@ -384,20 +322,18 @@ export default {
         });
 
         if (response.data.success) {
-          console.log('Email updated successfully');
+          console.log(`${this.isUpdateMode ? 'Email updated' : 'Email added'} successfully`);
           await this.fetchAnalyses(); // Optionally refresh the list
           this.closeEmailModal();
         } else {
-          console.error('Failed to update email');
+          console.error('Failed to save email');
         }
       } catch (error) {
-        console.error('Error updating email:', error);
+        console.error('Error saving email:', error);
       } finally {
         this.isSaving = false;
       }
-    }
-
-    
+    },
   }
 }
 </script>

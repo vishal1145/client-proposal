@@ -537,10 +537,10 @@ export default {
     padding-bottom: 1rem;
     border-bottom: 1px solid #eee;
 }
-
+/* 
 .service-content {
     margin-left: 2rem;
-}
+} */
 
 .service-section {
     margin-bottom: 1.5rem;

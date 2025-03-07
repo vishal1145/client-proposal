@@ -56,6 +56,72 @@ export default function DeveloperProfile() {
 
   return (
     <main className="min-h-screen bg-white">
+         <div className="relative bg-[#F6F0E4] py-20 overflow-hidden">
+        {/* Left Side Illustration */}
+        <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
+          <div className="relative">
+            <Image
+              src="/images/hand.png"
+              alt="Hand with Rocket"
+              width={300}
+              height={200}
+              className="w-auto h-auto"
+            />
+          </div>
+        </div>
+
+        {/* Right Side Icon */}
+        <div className="absolute right-20 top-1/2 -translate-y-1/2 z-10">
+          <Image
+            src="/images/message.png"
+            alt="Message Icon"
+            width={80}
+            height={80}
+            className="w-auto h-auto"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-20">
+          <div className="text-center max-w-2xl mx-auto">
+            <h1 className="text-4xl font-bold text-[#0B1B2B] mb-4">
+              Developer Profile
+            </h1>
+            <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+              <Link href="/" className="hover:text-[#0561FC]">
+                Home
+              </Link>
+              <span>-</span>
+              <Link href="/hire-developers" className="hover:text-[#0561FC]">
+                Developers
+              </Link>
+              <span>-</span>
+              <span className="text-[#0561FC]">{developer.name}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-1/4 z-10">
+          <Image
+            src="/images/decorative.png"
+            alt="Decorative Element"
+            width={100}
+            height={100}
+            className="w-auto h-auto opacity-30"
+          />
+        </div>
+        <div className="absolute bottom-0 right-1/4 z-10">
+          <Image
+            src="/images/decorative.png"
+            alt="Decorative Element"
+            width={80}
+            height={80}
+            className="w-auto h-auto opacity-30"
+          />
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 py-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Column - Content */}

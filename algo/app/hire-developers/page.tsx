@@ -151,9 +151,11 @@ export default function HireDeveloperPage() {
               Hire Developers
             </h1>
             <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
-              <span>Home</span>
-              <span>/</span>
-              <span className="text-[#0561FC]">Hire Developers</span>
+            <Link href="/" className="hover:text-[#0561FC]">
+                Home
+              </Link>
+              <span>-</span>
+              <span className="">Hire Developers</span>
             </div>
           </div>
         </div>

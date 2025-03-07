@@ -186,7 +186,9 @@ export default function PaymentPage() {
               Secure Payment
             </h1>
             <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
-              <span>Home</span>
+            <Link href="/" className="hover:text-[#0561FC]">
+                Home
+              </Link>
               <span>/</span>
               <span className="text-[#0561FC]">Payment</span>
             </div>

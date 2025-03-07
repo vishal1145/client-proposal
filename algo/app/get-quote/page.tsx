@@ -238,136 +238,173 @@ export default function GetQuotePage() {
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="mb-2">
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    placeholder="Full Name"
-                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
-                    required
-                  />
-                </div>
+  {/* Name and Email row */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="mb-2">
+      <input
+        type="text"
+        name="fullName"
+        value={formData.fullName}
+        onChange={handleInputChange}
+        placeholder="Full Name"
+        className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
+        required
+      />
+    </div>
+    <div className="mb-2">
+      <input
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleInputChange}
+        placeholder="Email Address"
+        className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
+        required
+      />
+    </div>
+  </div>
 
-                <div className="mb-2">
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="Email Address"
-                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
-                    required
-                  />
-                </div>
+  {/* Phone and Company row */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="mb-2">
+      <input
+        type="tel"
+        name="phone"
+        value={formData.phone}
+        onChange={handleInputChange}
+        placeholder="Phone Number"
+        className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
+        required
+      />
+    </div>
+    <div className="mb-2">
+      <input
+        type="text"
+        name="company"
+        value={formData.company}
+        onChange={handleInputChange}
+        placeholder="Company Name"
+        className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
+        required
+      />
+    </div>
+  </div>
 
-                <div className="mb-2">
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder="Phone Number"
-                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
-                    required
-                  />
-                </div>
+  {/* Project Type Chips */}
+  <div className="mb-6">
+    <label className="text-white text-sm mb-2 block">Project Type</label>
+    <div className="flex flex-wrap gap-2">
+      {[
+        { value: "web", label: "Web Development" },
+        { value: "mobile", label: "Mobile App" },
+        { value: "design", label: "UI/UX Design" },
+        { value: "other", label: "Other" },
+      ].map((option) => (
+        <button
+          key={option.value}
+          type="button"
+          onClick={() => setFormData({ ...formData, projectType: option.value })}
+          className={`px-4 py-2 rounded-full text-sm transition-colors ${
+            formData.projectType === option.value
+              ? "bg-white text-[#0561FC] border-white"
+              : "border border-white/20 text-white hover:border-white"
+          }`}
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  </div>
 
-                <div className="mb-2">
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    placeholder="Company Name"
-                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
-                    required
-                  />
-                </div>
+  {/* Budget Range Chips */}
+  <div className="mb-6">
+    <label className="text-white text-sm mb-2 block">Budget Range</label>
+    <div className="flex flex-wrap gap-2">
+      {[
+        { value: "5k", label: "$1,000 - $5,000" },
+        { value: "10k", label: "$5,000 - $10,000" },
+        { value: "25k", label: "$10,000 - $25,000" },
+        { value: "50k+", label: "$25,000+" },
+      ].map((option) => (
+        <button
+          key={option.value}
+          type="button"
+          onClick={() => setFormData({ ...formData, budget: option.value })}
+          className={`px-4 py-2 rounded-full text-sm transition-colors ${
+            formData.budget === option.value
+              ? "bg-white text-[#0561FC] border-white"
+              : "border border-white/20 text-white hover:border-white"
+          }`}
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  </div>
 
-                <div className="mb-2">
-                  <select
-                    name="projectType"
-                    value={formData.projectType}
-                    onChange={handleInputChange}
-                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm"
-                    required
-                  >
-                    <option value="" className="bg-[#0561FC]">Select Project Type</option>
-                    <option value="web" className="bg-[#0561FC]">Web Development</option>
-                    <option value="mobile" className="bg-[#0561FC]">Mobile App</option>
-                    <option value="design" className="bg-[#0561FC]">UI/UX Design</option>
-                    <option value="other" className="bg-[#0561FC]">Other</option>
-                  </select>
-                </div>
+  {/* Timeline Chips */}
+  <div className="mb-6">
+    <label className="text-white text-sm mb-2 block">Expected Timeline</label>
+    <div className="flex flex-wrap gap-2">
+      {[
+        { value: "1month", label: "< 1 month" },
+        { value: "3months", label: "1-3 months" },
+        { value: "6months", label: "3-6 months" },
+        { value: "6months+", label: "6+ months" },
+      ].map((option) => (
+        <button
+          key={option.value}
+          type="button"
+          onClick={() => setFormData({ ...formData, timeline: option.value })}
+          className={`px-4 py-2 rounded-full text-sm transition-colors ${
+            formData.timeline === option.value
+              ? "bg-white text-[#0561FC] border-white"
+              : "border border-white/20 text-white hover:border-white"
+          }`}
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  </div>
 
-                <div className="mb-2">
-                  <select
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleInputChange}
-                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm"
-                    required
-                  >
-                    <option value="" className="bg-[#0561FC]">Select Budget Range</option>
-                    <option value="5k" className="bg-[#0561FC]">$1,000 - $5,000</option>
-                    <option value="10k" className="bg-[#0561FC]">$5,000 - $10,000</option>
-                    <option value="25k" className="bg-[#0561FC]">$10,000 - $25,000</option>
-                    <option value="50k+" className="bg-[#0561FC]">$25,000+</option>
-                  </select>
-                </div>
+  {/* Project Description */}
+  <div className="mb-6">
+    <textarea
+      name="description"
+      value={formData.description}
+      onChange={handleInputChange}
+      placeholder="Project Description"
+      rows={4}
+      className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white resize-none"
+      required
+    ></textarea>
+  </div>
 
-                <div className="mb-2">
-                  <select
-                    name="timeline"
-                    value={formData.timeline}
-                    onChange={handleInputChange}
-                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm"
-                    required
-                  >
-                    <option value="" className="bg-[#0561FC]">Expected Timeline</option>
-                    <option value="1month" className="bg-[#0561FC]">Less than 1 month</option>
-                    <option value="3months" className="bg-[#0561FC]">1-3 months</option>
-                    <option value="6months" className="bg-[#0561FC]">3-6 months</option>
-                    <option value="6months+" className="bg-[#0561FC]">6+ months</option>
-                  </select>
-                </div>
+  {/* Terms Checkbox */}
+  <div className="flex items-start gap-2">
+    <input type="checkbox" id="terms" className="mt-1" required />
+    <label htmlFor="terms" className="text-sm text-white">
+      I agree to the processing of my data as per the privacy policy.
+    </label>
+  </div>
 
-                <div className="mb-2">
-                  <textarea
-                    name="description"
-                    value={formData.description}
-                    onChange={handleInputChange}
-                    placeholder="Project Description"
-                    rows={4}
-                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white resize-none"
-                    required
-                  ></textarea>
-                </div>
-
-                <div className="flex items-start gap-2">
-                  <input type="checkbox" id="terms" className="mt-1" required />
-                  <label htmlFor="terms" className="text-sm text-white">
-                    I agree to the processing of my data as per the privacy policy.
-                  </label>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors w-full disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    "Submitting..."
-                  ) : (
-                    <>
-                      Submit Quote Request
-                      <span>→</span>
-                    </>
-                  )}
-                </button>
-              </form>
+  {/* Submit Button */}
+  <button
+    type="submit"
+    disabled={isSubmitting}
+    className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors w-full disabled:opacity-50 disabled:cursor-not-allowed"
+  >
+    {isSubmitting ? (
+      "Submitting..."
+    ) : (
+      <>
+        Submit Quote Request
+        <span>→</span>
+      </>
+    )}
+  </button>
+</form>
             </div>
           </div>
         </div>

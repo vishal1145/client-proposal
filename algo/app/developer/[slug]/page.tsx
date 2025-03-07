@@ -279,6 +279,31 @@ export default function DeveloperProfile() {
       <div className="container mx-auto px-4 py-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Column - Content */}
+         
+
+          <div className="relative">
+            <div className="sticky top-12">
+              <Image
+                src={developer.image}
+                alt={developer.name}
+                width={500}
+                height={600}
+                className="rounded-lg shadow-lg w-full h-[600px] object-cover"
+              />
+              <div className="mt-4 text-center">
+                <h3 className="text-xl font-semibold text-[#0B1B2B]">
+                  {developer.name}
+                </h3>
+                <p className="text-gray-600">{developer.location}</p>
+                <Link href="/payment" className="block mt-4">
+                  <Button className="bg-[#0561FC] text-white px-8 py-3 rounded-full hover:bg-[#0561FC] transition-colors w-full">
+                    BOOK {developer.name.toUpperCase()}
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+          {/* Right Column - Image */}
           <div>
             <div className="inline-block px-4 py-1 rounded-full bg-blue-900/20 mb-6">
               <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium">
@@ -420,29 +445,6 @@ export default function DeveloperProfile() {
             </div>
           </div>
 
-          {/* Right Column - Image */}
-          <div className="relative">
-            <div className="sticky top-12">
-              <Image
-                src={developer.image}
-                alt={developer.name}
-                width={500}
-                height={600}
-                className="rounded-lg shadow-lg w-full h-[600px] object-cover"
-              />
-              <div className="mt-4 text-center">
-                <h3 className="text-xl font-semibold text-[#0B1B2B]">
-                  {developer.name}
-                </h3>
-                <p className="text-gray-600">{developer.location}</p>
-                <Link href="/payment" className="block mt-4">
-                  <Button className="bg-[#0561FC] text-white px-8 py-3 rounded-full hover:bg-[#0561FC] transition-colors w-full">
-                    BOOK {developer.name.toUpperCase()}
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <Footer />

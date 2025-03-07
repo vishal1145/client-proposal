@@ -95,7 +95,7 @@ const Page = () => {
     Our Software <span className="text-[#0066FF]">Technology Stack</span>
   </h2>
   
-  <div className="flex justify-center gap-4">
+  <div className="flex flex-wrap justify-center gap-4">
     {sections.map((section) => (
       <button
         key={section.id}

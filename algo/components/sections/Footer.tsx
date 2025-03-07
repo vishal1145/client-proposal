@@ -485,7 +485,7 @@ Cookies Policy
                   <li>
                 <Link
                   href="/hire-developers"
-                  className="ext-gray-400 text-[14px] hover:text-white transition-colors"
+                  className="text-gray-400 text-[14px] hover:text-white transition-colors"
                 >
                   Hire Developers
                 </Link>

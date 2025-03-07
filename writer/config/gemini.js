@@ -136,14 +136,20 @@ export async function generateBusinessProposal(service) {
 
     //var html = fs.readFileSync('./config/prompts/business-proposal.html', 'utf8');
     //html = html.replace('$$$proposaltext$$$', contentStr);  
-    
-    const contentStr ="<html><body><h1>Hello</h1></body></html>"
-
-    const templateHtml = fs.readFileSync('./config/prompts/business-proposal-' + (service.id || '')   +'.html', 'utf8');
-    
-    const finalHtml = templateHtml.replace('{data}', contentStr);
+    const templateHtml = fs.readFileSync(
+      "./config/prompts/business-proposal.html",
+      "utf8"
+    );
+  const contentStr = "<html><body><h1>Hello</h1></body></html>";
+    // const templateHtml = fs.readFileSync('./config/prompts/business-proposal-' + (service.id || '')   +'.html', 'utf8');
+    const finalHtml = templateHtml.replace("{data}", contentStr);
+    // const finalHtml = templateHtml.replace('{data}', contentStr);
 
     // fs.writeFileSync('./config/prompts/business-proposal.html', finalHtml);
+        const outputFilePath = `./config/prompts/business-proposal-${
+          service.id || ""
+        }.html`;
+        fs.writeFileSync(outputFilePath, finalHtml, "utf8");
 
     return finalHtml;
 }

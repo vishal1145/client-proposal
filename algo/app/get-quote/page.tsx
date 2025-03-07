@@ -222,10 +222,10 @@ export default function GetQuotePage() {
                 </h3>
                 <div className="space-y-3">
                   <p className="text-sm text-white">
-                    Email: <a href="mailto:hi@example.com" className="text-[#0561FC] ml-2">hi@example.com</a>
+                    Email: <a href="mailto:hi@algofolks.com" className="text-[#0561FC] ml-2">hi@algofolks.com</a>
                   </p>
                   <p className="text-sm text-white">
-                    Phone: <a href="tel:+1234567890" className="text-[#0561FC] ml-2">+1 (234) 567-890</a>
+                    Phone: <a href="tel:+91 8743045170" className="text-[#0561FC] ml-2">+91 8743045170</a>
                   </p>
                 </div>
               </div>

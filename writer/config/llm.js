@@ -57,6 +57,6 @@ export async function getClientProposal(sections) {
     return await provider.getClientProposal(sections);
 }
 
-export async function generateBusinessProposal(links, services) {
-    return await provider.generateBusinessProposal(links, (services || []));
+export async function generateBusinessProposal(links, service) {
+    return await provider.generateBusinessProposal(links, service);
 }

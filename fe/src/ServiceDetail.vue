@@ -20,19 +20,19 @@
                 <div v-else v-for="(service, index) in services" :key="index" class="service-content">
 
                     <div class="service-section">
-                        <p><strong>{{ service.business_summary }}</strong></p>
-                        <p><strong>{{ service.key_services }}</strong></p>
-                        <p><strong>{{ service.target_audience }}</strong></p>
-                        <p><strong>{{ service.revenue_model }}</strong></p>
-                        <p><strong>{{ service.existing_technology }}</strong></p>
-                        <p><strong>{{ service.operational_challenges }}</strong></p>
-                        <p><strong>{{ service.market_trends }}</strong></p>
-                        <p><strong>{{ service.competitive_gap }}</strong></p>
-                        <p><strong>{{ service.compliance_needs }}</strong></p>
-                        <p><strong>{{ service.most_valuable_software_feature.feature_name }}</strong></p>
-                        <p><strong>{{ service.most_valuable_software_feature.feature_description }}</strong></p>
-                        <p><strong>{{ service.most_valuable_software_feature.expected_benefits }}</strong></p>
-                        <p><strong>{{ service.most_valuable_software_feature.ROI_justification }}</strong></p>
+                        <p><strong>Business Summary:</strong> <br>  {{ service.business_summary }}</p>
+                        <p><strong>Key Services:</strong> <br> {{ service.key_services }}</p>
+                        <p><strong>Target Audience:</strong> <br> {{ service.target_audience }}</p>
+                        <p><strong>Revenue Model:</strong> <br> {{ service.revenue_model }}</p>
+                        <p><strong>Existing Technology:</strong> <br> {{ service.existing_technology }}</p>
+                        <p><strong>Operational Challenges:</strong> <br> {{ service.operational_challenges }}</p>
+                        <p><strong>Market Trends:</strong> <br> {{ service.market_trends }}</p>
+                        <p><strong>Competitive Gap:</strong> <br> {{ service.competitive_gap }}</p>
+                        <p><strong>Compliance Needs:</strong> <br> {{ service.compliance_needs }}</p>
+                        <p><strong>Most Valuable Software Feature:</strong> <br> {{ service.most_valuable_software_feature.feature_name }}</p>
+                        <p><strong>Feature Description:</strong> <br> {{ service.most_valuable_software_feature.feature_description }}</p>
+                        <p><strong>Expected Benefits:</strong> <br> {{ service.most_valuable_software_feature.expected_benefits }}</p>
+                        <p><strong>ROI Justification:</strong> <br> {{ service.most_valuable_software_feature.ROI_justification }}</p>
                         <div class="btn-grp mt-5">
 
                             <button class="proposal-button " style="margin-right: 0px;" @click="generateProposals"
@@ -82,7 +82,7 @@ export default {
             isPreviewPopupVisible: false,
         }
     },
-    
+
     async created() {
         try {
             this.isLoading = true;
@@ -98,8 +98,8 @@ export default {
             console.log("email:", response.data.analysis.email)
             console.log("services", response.data.analysis.allServices);
             console.log("links", response.data.analysis.links);
-            
-        
+
+
         } catch (error) {
             console.error('Error fetching data:', error);
         } finally {
@@ -111,7 +111,7 @@ export default {
             try {
                 this.isGenerating = true;
                 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-                const response = await axios.post(`${apiUrl}/proposals/generate-proposal`, this.serviceId);
+                const response = await axios.post(`${apiUrl}/proposals/generate-proposal`, {service: this.services[0]});
                 console.log(response.data.data);
                 console.log('Proposal generated successfully!');
                 // toast.success('Proposal generated successfully!');
@@ -144,7 +144,7 @@ export default {
             }
         },
     },
-  
+
 }
 </script>
 
@@ -415,7 +415,7 @@ export default {
     border-bottom: 1px solid #eee;
 }
 
-/* 
+/*
 .service-content {
     margin-left: 2rem;
 } */

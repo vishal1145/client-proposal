@@ -75,7 +75,7 @@
               <div class="service-section" :class="{ 'selected': isServiceSectionSelected(service, 'key_services') }"
                 @click="navigateToServiceDetail('Key Services', service.key_services)">
                 <div class="section-header">
-                 
+
                   <h3>Key Services</h3>
                 </div>
                 <p>{{ service.key_services }}</p>
@@ -86,7 +86,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software') }"
                 @click="navigateToServiceDetail('Possible Software', service.possible_software)">
                 <div class="section-header">
-                  
+
                   <h3>Possible Software</h3>
                 </div>
                 <p>{{ service.possible_software }}</p>
@@ -108,7 +108,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions') }"
                 @click="navigateToServiceDetail('Software Solutions', service.possible_software_solutions)">
                 <div class="section-header">
-                  
+
                   <h3>Software Solutions</h3>
                 </div>
                 <p>{{ service.possible_software_solutions }}</p>
@@ -119,7 +119,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_features') }"
                 @click="navigateToServiceDetail('Features', service.possible_software_solutions_features)">
                 <div class="section-header">
-                  
+
                   <h3>Features</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_features }}</p>
@@ -130,7 +130,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_benefits') }"
                 @click="navigateToServiceDetail('Benefits', service.possible_software_solutions_benefits)">
                 <div class="section-header">
-                  
+
                   <h3>Benefits</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_benefits }}</p>
@@ -140,7 +140,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_pricing') }"
                 @click="navigateToServiceDetail('Pricing', service.possible_software_solutions_pricing)">
                 <div class="section-header">
-                 
+
                   <h3>Pricing</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_pricing }}</p>
@@ -151,7 +151,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_comparison') }"
                 @click="navigateToServiceDetail('Comparison', service.possible_software_solutions_comparison)">
                 <div class="section-header">
-                 
+
                   <h3>Comparison</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_comparison }}</p>
@@ -163,19 +163,19 @@
           <div v-for="(service, index) in services" :key="index" class="service-card">
             <div class="service-content">
               <div class="service-section" @click="navigateToServiceDetail(service.id)">
-                <p><strong>{{ service.business_summary }}</strong></p>
-                <p><strong>{{ service.key_services }}</strong></p>
-                <p><strong>{{ service.target_audience }}</strong></p>
-                <p><strong>{{ service.revenue_model }}</strong></p>
-                <p><strong>{{ service.existing_technology }}</strong></p>
-                <p><strong>{{ service.operational_challenges }}</strong></p>
-                <p><strong>{{ service.market_trends }}</strong></p>
-                <p><strong>{{ service.competitive_gap }}</strong></p>
-                <p><strong>{{ service.compliance_needs }}</strong></p>
-                <p><strong>{{ service.most_valuable_software_feature.feature_name }}</strong></p>
-                <p><strong>{{ service.most_valuable_software_feature.feature_description }}</strong></p>
-                <p><strong>{{ service.most_valuable_software_feature.expected_benefits }}</strong></p>
-                <p><strong>{{ service.most_valuable_software_feature.ROI_justification }}</strong></p>
+                <p><strong>Business Summary:</strong> <br> {{ service.business_summary }}</p>
+                <p><strong>Key Services:</strong> <br> {{ service.key_services }}</p>
+                <p><strong>Target Audience:</strong> <br> {{ service.target_audience }}</p>
+                <p><strong>Revenue Model:</strong> <br> {{ service.revenue_model }}</p>
+                <p><strong>Existing Technology:</strong> <br> {{ service.existing_technology }}</p>
+                <p><strong>Operational Challenges:</strong> <br> {{ service.operational_challenges }}</p>
+                <p><strong>Market Trends:</strong> <br> {{ service.market_trends }}</p>
+                <p><strong>Competitive Gap:</strong> <br> {{ service.competitive_gap }}</p>
+                <p><strong>Compliance Needs:</strong> <br> {{ service.compliance_needs }}</p>
+                <p><strong>Most Valuable Software Feature:</strong> <br> {{ service.most_valuable_software_feature.feature_name }}</p>
+                <p><strong>Feature Description:</strong> <br> {{ service.most_valuable_software_feature.feature_description }}</p>
+                <p><strong>Expected Benefits:</strong> <br> {{ service.most_valuable_software_feature.expected_benefits }}</p>
+                <p><strong>ROI Justification:</strong> <br> {{ service.most_valuable_software_feature.ROI_justification }}</p>
               </div>
             </div>
           </div>

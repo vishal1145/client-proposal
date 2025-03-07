@@ -292,121 +292,100 @@ export default function HireDeveloperPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Side - Team Members */}
-            <div className="grid grid-cols-3 gap-4">
-              <div className="space-y-4">
-                <div className="relative">
-                  <Link href={`/developer/vivek-bisth`}>
-                    <Image
-                      src="/images/vivek_bisth.jpeg"
-                      alt="Vivek Bisth"
-                      width={200}
-                      height={350}
-                      className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
-                    />
-                  </Link>
-                  <h3 className="text-lg font-semibold mt-2">Vivek Bisth</h3>
-                  <p className="text-sm text-gray-600">
-                    Client Manager Benelux
-                  </p>
-                  <div className="flex gap-2 mt-2">
-                    <Image
-                      src="/images/dfe4334.svg"
-                      alt="Netherlands"
-                      width={20}
-                      height={15}
-                    />
-                    <Image
-                      src="/images/b90b147.svg"
-                      alt="Belgium"
-                      width={20}
-                      height={15}
-                    />
-                    <Image
-                      src="/images/17cddaa.svg"
-                      alt="Luxembourg"
-                      width={20}
-                      height={15}
-                    />
-                  </div>
-                </div>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {/* Vivek's Card */}
+  <div className="space-y-4">
+    <div className="relative">
+      <Link 
+        href={{
+          pathname: `/developer/vivek-bisth`,
+          query: { 
+            name: "Vivek Bisth",
+            role: "Client Manager Benelux",
+            image: "/images/vivek_bisth.jpeg"
+          }
+        }}
+      >
+        <Image
+          src="/images/vivek_bisth.jpeg"
+          alt="Vivek Bisth"
+          width={200}
+          height={350}
+          className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
+        />
+      </Link>
+      <h3 className="text-lg font-semibold mt-2">Vivek Bisth</h3>
+      <p className="text-sm text-gray-600">Client Manager Benelux</p>
+      <div className="flex gap-2 mt-2">
+        <Image src="/images/dfe4334.svg" alt="Netherlands" width={20} height={15} />
+        <Image src="/images/b90b147.svg" alt="Belgium" width={20} height={15} />
+        <Image src="/images/17cddaa.svg" alt="Luxembourg" width={20} height={15} />
+      </div>
+    </div>
+  </div>
 
-              <div className="space-y-4">
-                <div className="relative">
-                  <Link href={`/developer/shivika-singh`}>
-                    <Image
-                      src="/images/shivika_singh.jpeg"
-                      alt="Shivika Shingh"
-                      width={200}
-                      height={350}
-                      className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
-                    />
-                  </Link>
-                  <h3 className="text-lg font-semibold mt-2">Shivika Shingh</h3>
-                  <p className="text-sm text-gray-600">
-                    Client Manager Nordics
-                  </p>
-                  <div className="flex gap-2 mt-2">
-                    <Image
-                      src="/images/dfe4334.svg"
-                      alt="Denmark"
-                      width={20}
-                      height={15}
-                    />
-                    <Image
-                      src="/images/b90b147.svg"
-                      alt="Norway"
-                      width={20}
-                      height={15}
-                    />
-                    <Image
-                      src="/images/17cddaa.svg"
-                      alt="Sweden"
-                      width={20}
-                      height={15}
-                    />
-                  </div>
-                </div>
-              </div>
+  {/* Shivika's Card */}
+  <div className="space-y-4">
+    <div className="relative">
+      <Link 
+        href={{
+          pathname: `/developer/shivika-singh`,
+          query: { 
+            name: "Shivika Shingh",
+            role: "Client Manager Nordics",
+            image: "/images/shivika_singh.jpeg"
+          }
+        }}
+      >
+        <Image
+          src="/images/shivika_singh.jpeg"
+          alt="Shivika Shingh"
+          width={200}
+          height={350}
+          className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
+        />
+      </Link>
+      <h3 className="text-lg font-semibold mt-2">Shivika Shingh</h3>
+      <p className="text-sm text-gray-600">Client Manager Nordics</p>
+      <div className="flex gap-2 mt-2">
+        <Image src="/images/dfe4334.svg" alt="Denmark" width={20} height={15} />
+        <Image src="/images/b90b147.svg" alt="Norway" width={20} height={15} />
+        <Image src="/images/17cddaa.svg" alt="Sweden" width={20} height={15} />
+      </div>
+    </div>
+  </div>
 
-              <div className="space-y-4">
-                <div className="relative">
-                  <Link href={`/developer/abhishek-garg`}>
-                    <Image
-                      src="/images/abhishek_garg.jpeg"
-                      alt="Abhishek Garg"
-                      width={200}
-                      height={350}
-                      className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
-                    />
-                  </Link>
-                  <h3 className="text-lg font-semibold mt-2">Abhishek Garg</h3>
-                  <p className="text-sm text-gray-600">
-                    Client Manager DACH & FR
-                  </p>
-                  <div className="flex gap-2 mt-2">
-                    <Image
-                      src="/images/dfe4334.svg"
-                      alt="UK"
-                      width={20}
-                      height={15}
-                    />
-                    <Image
-                      src="/images/b90b147.svg"
-                      alt="Netherlands"
-                      width={20}
-                      height={15}
-                    />
-                    <Image
-                      src="/images/17cddaa.svg"
-                      alt="Germany"
-                      width={20}
-                      height={15}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+  {/* Abhishek's Card */}
+  <div className="space-y-4">
+    <div className="relative">
+      <Link 
+        href={{
+          pathname: `/developer/abhishek-garg`,
+          query: { 
+            name: "Abhishek Garg",
+            role: "Client Manager DACH & FR",
+            image: "/images/abhishek_garg.jpeg"
+          }
+        }}
+      >
+        <Image
+          src="/images/abhishek_garg.jpeg"
+          alt="Abhishek Garg"
+          width={200}
+          height={350}
+          className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
+        />
+      </Link>
+      <h3 className="text-lg font-semibold mt-2">Abhishek Garg</h3>
+      <p className="text-sm text-gray-600">Client Manager DACH & FR</p>
+      <div className="flex gap-2 mt-2">
+        <Image src="/images/dfe4334.svg" alt="UK" width={20} height={15} />
+        <Image src="/images/b90b147.svg" alt="Netherlands" width={20} height={15} />
+        <Image src="/images/17cddaa.svg" alt="Germany" width={20} height={15} />
+      </div>
+    </div>
+  </div>
+</div>
 
             {/* Right Side - Content */}
             <div className="space-y-6">

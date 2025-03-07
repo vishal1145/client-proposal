@@ -5,16 +5,18 @@ import Image from "next/image";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-
+import { useSearchParams } from "next/navigation";
 export default function DeveloperProfile() {
-  // const params = useParams();
-  // const slug = params.slug as string;
+  const searchParams = useSearchParams();
 
+  const name = searchParams.get("name") || "";
+  const role = searchParams.get("role") || "";
+  const image = searchParams.get("image") || "";
   // This would come from your API or database
   const developer = {
-    name: "Shivika Shingh",
-    role: "Full Stack Developer",
-    image: "/images/shivika_singh.jpeg", // Image from the clicked developer
+    name: name,
+    role: role,
+    image: image, // Image from the clicked developer
     description: [
       "Professional Symfony and PHP developer with over five years of experience in software development.",
       "Khadija has extensive, robust problem-solving skills and proven experience creating and designing web applications in a test-driven environment.",
@@ -56,7 +58,7 @@ export default function DeveloperProfile() {
 
   return (
     <main className="min-h-screen bg-white">
-         <div className="relative bg-[#F6F0E4] py-20 overflow-hidden">
+      <div className="relative bg-[#F6F0E4] py-20 overflow-hidden">
         {/* Left Side Illustration */}
         <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
           <div className="relative">

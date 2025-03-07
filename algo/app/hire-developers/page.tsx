@@ -301,7 +301,7 @@ export default function HireDeveloperPage() {
           pathname: `/developer/vivek-bisth`,
           query: { 
             name: "Vivek Bisth",
-            role: "Client Manager Benelux",
+            role: "Full Stack Developer",
             image: "/images/vivek_bisth.jpeg"
           }
         }}
@@ -315,11 +315,30 @@ export default function HireDeveloperPage() {
         />
       </Link>
       <h3 className="text-lg font-semibold mt-2">Vivek Bisth</h3>
-      <p className="text-sm text-gray-600">Client Manager Benelux</p>
+      <p className="text-sm text-gray-600">Full Stack Developer</p>
+      {/* Skills instead of flags */}
       <div className="flex gap-2 mt-2">
-        <Image src="/images/dfe4334.svg" alt="Netherlands" width={20} height={15} />
-        <Image src="/images/b90b147.svg" alt="Belgium" width={20} height={15} />
-        <Image src="/images/17cddaa.svg" alt="Luxembourg" width={20} height={15} />
+        <Image 
+          src="/images/react.png" 
+          alt="React" 
+          width={20} 
+          height={20}
+          className="h-10 w-auto" 
+        />
+        <Image 
+          src="/images/node.png" 
+          alt="Node.js" 
+          width={20} 
+          height={20}
+          className="h-10 w-auto" 
+        />
+        <Image 
+          src="/images/typescript.jpeg" 
+          alt="TypeScript" 
+          width={20} 
+          height={20}
+          className="h-10 w-auto" 
+        />
       </div>
     </div>
   </div>
@@ -332,7 +351,7 @@ export default function HireDeveloperPage() {
           pathname: `/developer/shivika-singh`,
           query: { 
             name: "Shivika Shingh",
-            role: "Client Manager Nordics",
+            role: "Backend Developer",
             image: "/images/shivika_singh.jpeg"
           }
         }}
@@ -346,11 +365,30 @@ export default function HireDeveloperPage() {
         />
       </Link>
       <h3 className="text-lg font-semibold mt-2">Shivika Shingh</h3>
-      <p className="text-sm text-gray-600">Client Manager Nordics</p>
+      <p className="text-sm text-gray-600">Backend Developer</p>
+      {/* Skills instead of flags */}
       <div className="flex gap-2 mt-2">
-        <Image src="/images/dfe4334.svg" alt="Denmark" width={20} height={15} />
-        <Image src="/images/b90b147.svg" alt="Norway" width={20} height={15} />
-        <Image src="/images/17cddaa.svg" alt="Sweden" width={20} height={15} />
+        <Image 
+          src="/images/python.png" 
+          alt="Python" 
+          width={20} 
+          height={20}
+          className="h-10 w-auto" 
+        />
+        <Image 
+          src="/images/django.jpeg" 
+          alt="Django" 
+          width={20} 
+          height={20}
+          className="h-10 w-auto" 
+        />
+        <Image 
+          src="/images/postgresql.png" 
+          alt="PostgreSQL" 
+          width={20} 
+          height={20}
+          className="h-10 w-auto" 
+        />
       </div>
     </div>
   </div>
@@ -363,7 +401,7 @@ export default function HireDeveloperPage() {
           pathname: `/developer/abhishek-garg`,
           query: { 
             name: "Abhishek Garg",
-            role: "Client Manager DACH & FR",
+            role: "Frontend Developer",
             image: "/images/abhishek_garg.jpeg"
           }
         }}
@@ -377,11 +415,30 @@ export default function HireDeveloperPage() {
         />
       </Link>
       <h3 className="text-lg font-semibold mt-2">Abhishek Garg</h3>
-      <p className="text-sm text-gray-600">Client Manager DACH & FR</p>
+      <p className="text-sm text-gray-600">Frontend Developer</p>
+      {/* Skills instead of flags */}
       <div className="flex gap-2 mt-2">
-        <Image src="/images/dfe4334.svg" alt="UK" width={20} height={15} />
-        <Image src="/images/b90b147.svg" alt="Netherlands" width={20} height={15} />
-        <Image src="/images/17cddaa.svg" alt="Germany" width={20} height={15} />
+        <Image 
+          src="/images/javascript.png" 
+          alt="JavaScript" 
+          width={20} 
+          height={20}
+          className="h-10 w-auto object-contain" 
+        />
+        <Image 
+          src="/images/vue.png" 
+          alt="Vue.js" 
+          width={20} 
+          height={20}
+          className="h-10 w-auto object-contain" 
+        />
+        <Image 
+          src="/images/tailwind(1).png" 
+          alt="Tailwind CSS" 
+          width={20} 
+          height={20}
+          className="h-10 w-auto object-contain" 
+        />
       </div>
     </div>
   </div>

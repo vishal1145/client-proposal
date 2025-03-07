@@ -129,13 +129,18 @@ export default function DeveloperProfile() {
           {/* Left Column - Content */}
           <div>
             {/* Header Section */}
-            <div className="mb-12">
-              <h1 className="text-4xl font-bold text-[#0B1B2B] mb-2">
+            <div className="inline-block px-4 py-1 rounded-full bg-blue-900/20 mb-6">
+    <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium">
+      DEVELOPER PROFILE
+    </span>
+  </div>
+            <div className="mb-5">
+              <h3 className="text-2xl font-bold text-[#0B1B2B] mb-2">
                 {developer.name}
-              </h1>
-              <h2 className="text-2xl text-[#0561FC] font-medium">
+              </h3>
+              <h5 className="text-lg text-[#0561FC] font-medium">
                 {developer.role}
-              </h2>
+              </h5>
             </div>
 
             {/* Main Content */}

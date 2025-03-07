@@ -311,7 +311,7 @@ export default function DeveloperProfile() {
       </div>
 
       <div className="container mx-auto px-4 py-12 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 py-12">
           {/* Left Column - Content */}
          
 
@@ -338,7 +338,7 @@ export default function DeveloperProfile() {
             </div>
           </div>
           {/* Right Column - Image */}
-          <div>
+          <div className="mt-6">
             <div className="inline-block px-4 py-1 rounded-full bg-blue-900/20 mb-6">
               <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium">
                 DEVELOPER PROFILE

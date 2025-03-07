@@ -1,6 +1,9 @@
 <template>
 
     <div class="analysis-container">
+        <div class="url">
+            <h3>{{ url }}</h3>
+        </div>
         <div class="tabs-container">
             <div class="header-container">
                 <div class="tabs">
@@ -14,35 +17,45 @@
             <div class="tab-content">
                 <div v-if="services.length === 0" class="service-content">
                     <div class="service-section" style="text-align: center;">
-                        <p><strong>No service found</strong></p>
+                        <p><strong class="service-heading">No service found</strong></p>
                     </div>
                 </div>
                 <div v-else v-for="(service, index) in services" :key="index" class="service-content">
 
                     <div class="service-section">
-                        <p><strong>Business Summary:</strong> <br>  {{ service.business_summary }}</p>
-                        <p><strong>Key Services:</strong> <br> {{ service.key_services }}</p>
-                        <p><strong>Target Audience:</strong> <br> {{ service.target_audience }}</p>
-                        <p><strong>Revenue Model:</strong> <br> {{ service.revenue_model }}</p>
-                        <p><strong>Existing Technology:</strong> <br> {{ service.existing_technology }}</p>
-                        <p><strong>Operational Challenges:</strong> <br> {{ service.operational_challenges }}</p>
-                        <p><strong>Market Trends:</strong> <br> {{ service.market_trends }}</p>
-                        <p><strong>Competitive Gap:</strong> <br> {{ service.competitive_gap }}</p>
-                        <p><strong>Compliance Needs:</strong> <br> {{ service.compliance_needs }}</p>
-                        <p><strong>Most Valuable Software Feature:</strong> <br> {{ service.most_valuable_software_feature.feature_name }}</p>
-                        <p><strong>Feature Description:</strong> <br> {{ service.most_valuable_software_feature.feature_description }}</p>
-                        <p><strong>Expected Benefits:</strong> <br> {{ service.most_valuable_software_feature.expected_benefits }}</p>
-                        <p><strong>ROI Justification:</strong> <br> {{ service.most_valuable_software_feature.ROI_justification }}</p>
+                        <p><strong class="service-heading">Business Summary:</strong> <br> {{ service.business_summary
+                            }}</p>
+                        <p><strong class="service-heading">Key Services:</strong> <br> {{ service.key_services }}</p>
+                        <p><strong class="service-heading">Target Audience:</strong> <br> {{ service.target_audience }}
+                        </p>
+                        <p><strong class="service-heading">Revenue Model:</strong> <br> {{ service.revenue_model }}</p>
+                        <p><strong class="service-heading">Existing Technology:</strong> <br> {{
+                            service.existing_technology }}</p>
+                        <p><strong class="service-heading">Operational Challenges:</strong> <br> {{
+                            service.operational_challenges }}</p>
+                        <p><strong class="service-heading">Market Trends:</strong> <br> {{ service.market_trends }}</p>
+                        <p><strong class="service-heading">Competitive Gap:</strong> <br> {{ service.competitive_gap }}
+                        </p>
+                        <p><strong class="service-heading">Compliance Needs:</strong> <br> {{ service.compliance_needs
+                            }}</p>
+                        <p><strong class="service-heading">Most Valuable Software Feature:</strong> <br> {{
+                            service.most_valuable_software_feature.feature_name }}</p>
+                        <p><strong class="service-heading">Feature Description:</strong> <br> {{
+                            service.most_valuable_software_feature.feature_description }}</p>
+                        <p><strong class="service-heading">Expected Benefits:</strong> <br> {{
+                            service.most_valuable_software_feature.expected_benefits }}</p>
+                        <p><strong class="service-heading">ROI Justification:</strong> <br> {{
+                            service.most_valuable_software_feature.ROI_justification }}</p>
                         <div class="btn-grp mt-5">
 
                             <button class="proposal-button " style="margin-right: 0px;" @click="generateProposals"
                                 :disabled="isGenerating">
                                 {{ isGenerating ? 'Generating...' : 'Generate Proposal' }}
                             </button>
-                            <button class="proposal-button" style="margin-right: 0px; " @click="sendEmail">
+                            <button v-if="isProposalGenerated" class="proposal-button" style="margin-right: 0px; " @click="sendEmail">
                                 Send Mail
                             </button>
-                            <button class="proposal-button" style="margin-right: 0px; " @click="openPreviewPopup">
+                            <button v-if="isProposalGenerated" class="proposal-button" style="margin-right: 0px; " @click="openPreviewPopup">
                                 Preview
                             </button>
                         </div>
@@ -72,14 +85,14 @@ export default {
             activeTab: 'links',
             selectedLinks: [],
             selectedSections: [],
-            sectionTitle: this.$route.query.sectionTitle || 'Section',
-            sectionContent: this.$route.query.sectionContent || 'No Content Available',
             emailSend: '',
             analysisId: this.$route.query.analysisId,
             serviceId: this.$route.query.serviceId,
-
+            url:'',
             isGenerating: false,
             isPreviewPopupVisible: false,
+            isProposalGenerated: false,
+            generatedProposal: '', // Store the generated proposal HTML
         }
     },
 
@@ -89,10 +102,8 @@ export default {
             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
             const response = await axios.get(`${apiUrl}/analysis?id=${this.analysisId}`);
             this.services = response.data.analysis.allServices;
-            // Get the serviceId from the route query and convert it to a number
             const serviceId = Number(this.$route.query.serviceId);
-
-            // Filter services based on the serviceId
+            this.url = response.data.analysis.url;
             this.services = response.data.analysis.allServices.filter(service => Number(service.id) === serviceId);
             this.emailSend = response.data.analysis.email;
             console.log("email:", response.data.analysis.email)
@@ -114,10 +125,11 @@ export default {
                 const response = await axios.post(`${apiUrl}/proposals/generate-proposal`, {service: this.services[0]});
                 console.log(response.data.data);
                 console.log('Proposal generated successfully!');
-                // toast.success('Proposal generated successfully!');
+                toast.success('Proposal generated successfully!');
+                this.isProposalGenerated = true;
             } catch (error) {
                 console.log('Failed to generate proposal.');
-                // toast.error('Failed to generate proposal.');
+                toast.error('Failed to generate proposal.');
             } finally {
                 this.isGenerating = false;
             }
@@ -128,21 +140,35 @@ export default {
         closePreviewPopup() {
             this.isPreviewPopupVisible = false;
         },
-        async sendEmail() {
-            try {
-                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-                const response = await axios.post(`${apiUrl}/email/send-email`,
-                    {
-                    to: this.emailSend,
-                    }
-                );
-                console.log(response.data.message);
-                toast.success('Email sent successfully!');
-            } catch (error) {
-                console.error('Error sending email:', error);
-                toast.error('Failed to send email.');
-            }
-        },
+        // async sendEmail() {
+        //     try {
+        //         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+        //         const response = await axios.post(`${apiUrl}/email/send-email`,
+        //             {
+        //             to: this.emailSend,
+        //             }
+        //         );
+        //         console.log(response.data.message);
+        //         toast.success('Email sent successfully!');
+        //     } catch (error) {
+        //         console.error('Error sending email:', error);
+        //         toast.error('Failed to send email.');
+        //     }
+       // },
+       async sendEmail() {
+           try {
+               const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+               const response = await axios.post(`${apiUrl}/email/send-email`, {
+                   to: this.emailSend,
+                   proposal: this.generatedProposal, // Include the generated proposal
+               });
+               console.log(response.data.message);
+               toast.success('Email sent successfully!');
+           } catch (error) {
+               console.error('Error sending email:', error);
+               toast.error('Failed to send email.');
+           }
+       },
     },
 
 }
@@ -162,7 +188,12 @@ export default {
     margin-bottom: 2rem;
     text-align: center;
 }
-
+.url h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 16px;
+    font-weight: 600;
+}
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -177,6 +208,12 @@ export default {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
     border: 1px solid #e0e0e0;
+}
+.service-heading{
+        color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 16px;
+            font-weight: 600;
 }
 
 .service-card h3 {

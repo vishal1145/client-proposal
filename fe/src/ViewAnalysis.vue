@@ -5,7 +5,9 @@
       <div class="loader"></div>
       <p>Generating proposals...</p>
     </div>
-
+    <div class="url">
+      <h3>{{ url }}</h3>
+    </div>
     <!-- Replace table with tabs -->
     <div class="tabs-container">
       <div class="header-container">
@@ -31,151 +33,46 @@
           <div v-for="(link, index) in links" :key="`link-${index}`" class="link-item flex justify-between gap-10"
             :class="{ 'selected': selectedLinks.includes(link.url) }">
             <div class="link-content">
-              <!-- <input type="checkbox" :checked="selectedLinks.includes(link.url)"
-                @change.stop="toggleLinkSelection(link.url)"> -->
               <span>{{ link.url }}</span>
             </div>
             <button
               class="inline-flex items-center px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-700 font-medium rounded-lg transition-colors">
-              <!-- <svg v-if="reanalyzingIds.has(item._id)" class="animate-spin w-4 h-4 mr-2"
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
-                </circle>
-                <path class="opacity-75" fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                </path>
-              </svg> -->
               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
-              <!-- {{ reanalyzingIds.has(item._id) ? 'Reanalyzing...' : 'Reanalyze' }} -->
               Reanalyze
             </button>
           </div>
 
         </div>
 
-        <!-- Services tab -->
-        <!-- <div v-else-if="activeTab === 'services'" class="services-list">
-          <div v-for="(service, index) in services" :key="`service-${index}`" class="service-card">
-
-            <div class="service-content">
-              <div class="service-section"
-                :class="{ 'selected': isServiceSectionSelected(service, 'business_summary') }"
-                @click="navigateToServiceDetail('Business Summary', service.business_summary)">
-                <div class="section-header">
-                  <h3>Business Summary</h3>
-                </div>
-                <p>{{ service.business_summary }}</p>
-              </div>
-
-
-
-              <div class="service-section" :class="{ 'selected': isServiceSectionSelected(service, 'key_services') }"
-                @click="navigateToServiceDetail('Key Services', service.key_services)">
-                <div class="section-header">
-
-                  <h3>Key Services</h3>
-                </div>
-                <p>{{ service.key_services }}</p>
-              </div>
-
-
-              <div class="service-section"
-                :class="{ 'selected': isServiceSectionSelected(service, 'possible_software') }"
-                @click="navigateToServiceDetail('Possible Software', service.possible_software)">
-                <div class="section-header">
-
-                  <h3>Possible Software</h3>
-                </div>
-                <p>{{ service.possible_software }}</p>
-              </div>
-
-
-              <div class="service-section"
-                :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_description') }"
-                @click="navigateToServiceDetail('Software Solutions Description', service.possible_software_solutions_description)">
-                <div class="section-header">
-
-                  <h3>Software Solutions Description</h3>
-                </div>
-                <p>{{ service.possible_software_solutions_description }}</p>
-              </div>
-
-
-              <div class="service-section"
-                :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions') }"
-                @click="navigateToServiceDetail('Software Solutions', service.possible_software_solutions)">
-                <div class="section-header">
-
-                  <h3>Software Solutions</h3>
-                </div>
-                <p>{{ service.possible_software_solutions }}</p>
-              </div>
-
-
-              <div class="service-section"
-                :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_features') }"
-                @click="navigateToServiceDetail('Features', service.possible_software_solutions_features)">
-                <div class="section-header">
-
-                  <h3>Features</h3>
-                </div>
-                <p>{{ service.possible_software_solutions_features }}</p>
-              </div>
-
-
-              <div class="service-section"
-                :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_benefits') }"
-                @click="navigateToServiceDetail('Benefits', service.possible_software_solutions_benefits)">
-                <div class="section-header">
-
-                  <h3>Benefits</h3>
-                </div>
-                <p>{{ service.possible_software_solutions_benefits }}</p>
-              </div>
-
-              <div class="service-section"
-                :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_pricing') }"
-                @click="navigateToServiceDetail('Pricing', service.possible_software_solutions_pricing)">
-                <div class="section-header">
-
-                  <h3>Pricing</h3>
-                </div>
-                <p>{{ service.possible_software_solutions_pricing }}</p>
-              </div>
-
-
-              <div class="service-section"
-                :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_comparison') }"
-                @click="navigateToServiceDetail('Comparison', service.possible_software_solutions_comparison)">
-                <div class="section-header">
-
-                  <h3>Comparison</h3>
-                </div>
-                <p>{{ service.possible_software_solutions_comparison }}</p>
-              </div>
-            </div>
-          </div>
-        </div> -->
+       
         <div v-else-if="activeTab === 'services'" class="services-list">
           <div v-for="(service, index) in services" :key="index" class="service-card">
             <div class="service-content">
               <div class="service-section" @click="navigateToServiceDetail(service.id)">
-                <p><strong>Business Summary:</strong> <br> {{ service.business_summary }}</p>
-                <p><strong>Key Services:</strong> <br> {{ service.key_services }}</p>
-                <p><strong>Target Audience:</strong> <br> {{ service.target_audience }}</p>
-                <p><strong>Revenue Model:</strong> <br> {{ service.revenue_model }}</p>
-                <p><strong>Existing Technology:</strong> <br> {{ service.existing_technology }}</p>
-                <p><strong>Operational Challenges:</strong> <br> {{ service.operational_challenges }}</p>
-                <p><strong>Market Trends:</strong> <br> {{ service.market_trends }}</p>
-                <p><strong>Competitive Gap:</strong> <br> {{ service.competitive_gap }}</p>
-                <p><strong>Compliance Needs:</strong> <br> {{ service.compliance_needs }}</p>
-                <p><strong>Most Valuable Software Feature:</strong> <br> {{ service.most_valuable_software_feature.feature_name }}</p>
-                <p><strong>Feature Description:</strong> <br> {{ service.most_valuable_software_feature.feature_description }}</p>
-                <p><strong>Expected Benefits:</strong> <br> {{ service.most_valuable_software_feature.expected_benefits }}</p>
-                <p><strong>ROI Justification:</strong> <br> {{ service.most_valuable_software_feature.ROI_justification }}</p>
+                <p><strong class="service-heading">Business Summary:</strong> <br> {{ service.business_summary }}</p>
+                <p><strong class="service-heading">Key Services:</strong> <br> {{ service.key_services }}</p>
+                <p><strong class="service-heading">Target Audience:</strong> <br> {{ service.target_audience }}</p>
+                <p><strong class="service-heading">Revenue Model:</strong> <br> {{ service.revenue_model }}</p>
+                <p><strong class="service-heading">Existing Technology:</strong> <br> {{ service.existing_technology }}
+                </p>
+                <p><strong class="service-heading">Operational Challenges:</strong> <br> {{
+                  service.operational_challenges }}</p>
+                <p><strong class="service-heading">Market Trends:</strong> <br> {{ service.market_trends }}</p>
+                <p><strong class="service-heading">Competitive Gap:</strong> <br> {{ service.competitive_gap }}</p>
+                <p><strong class="service-heading">Compliance Needs:</strong> <br> {{ service.compliance_needs }}</p>
+                <p><strong class="service-heading">Most Valuable Software Feature:</strong> <br> {{
+                  service.most_valuable_software_feature.feature_name }}</p>
+                <p><strong class="service-heading">Feature Description:</strong> <br> {{
+                  service.most_valuable_software_feature.feature_description }}</p>
+                <p><strong class="service-heading">Expected Benefits:</strong> <br> {{
+                  service.most_valuable_software_feature.expected_benefits
+                  }}</p>
+                <p><strong class="service-heading">ROI Justification:</strong> <br> {{
+                  service.most_valuable_software_feature.ROI_justification
+                  }}</p>
               </div>
             </div>
           </div>
@@ -222,7 +119,8 @@ export default {
       isGenerating: false,
       isPreviewPopupVisible: false,
       analysisId: this.$route.params.id,
-      serviceid: ''
+      serviceid: '',
+      url:''
     }
   },
   computed: {
@@ -236,6 +134,7 @@ export default {
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
       const response = await axios.get(`${apiUrl}/analysis?id=${this.analysisId}`);
       this.services = response.data.analysis.allServices;
+      this.url = response.data.analysis.url;
       this.links = response.data.analysis.links;
       console.log("services", response.data.analysis.allServices);
       console.log("links", response.data.analysis.links);
@@ -355,7 +254,12 @@ export default {
   margin: 0 auto;
   padding: 2rem;
 }
-
+.service-heading {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  font-weight: 600;
+}
 .section-title {
   font-size: 2rem;
   color: #333;
@@ -370,14 +274,6 @@ export default {
   margin-bottom: 4rem;
 }
 
-/* .service-card {
-  background: white;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-  border: 1px solid #e0e0e0;
-} */
 
 .service-card h3 {
   color: #2c3e50;
@@ -697,6 +593,13 @@ input[type="checkbox"] {
   font-size: 16px;
   color: #2c3e50;
 }
+.url h3 {
+    color: #2c3e50;
+      margin-bottom: 1rem;
+      font-size: 16px;
+      font-weight: 600;
+}
+
 
 .service-section p {
   margin: 0.5rem 0 0.5rem 0;

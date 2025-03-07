@@ -134,16 +134,6 @@
                     <p>info@website.com - www.website.com</p>
                 </div>
 
-                <!-- App Store Links -->
-                <!-- <div class="app-stores">
-                    <a href="#" class="store-button">
-                        <img src="./assets/app-store.png" alt="App Store" />
-                    </a>
-                    <a href="#" class="store-button">
-                        <img src="./assets/play-store.png" alt="Play Store" />
-                    </a>
-                </div> -->
-
                 <div class="footer-links">
                     <a href="#">UNSUBSCRIBE</a>
                     <span class="separator">|</span>
@@ -177,7 +167,6 @@ body {
 
 .main-wrapper {
     max-width: 800px;
-    /* margin: 20px auto; */
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;

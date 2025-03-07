@@ -1,13 +1,6 @@
 <template>
-   
-    <div class="analysis-container">
-        <!-- Add loading overlay -->
-        <!-- <div v-if="isGenerating" class="loading-overlay">
-            <div class="loader"></div>
-            <p>Generating proposals...</p>
-        </div> -->
 
-        <!-- Replace table with tabs -->
+    <div class="analysis-container">
         <div class="tabs-container">
             <div class="header-container">
                 <div class="tabs">
@@ -19,41 +12,30 @@
             </div>
 
             <div class="tab-content">
-                <!-- Loading state -->
-                <!-- <div v-if="isLoading">
-                    <div v-for="i in 3" :key="`loader-${i}`" class="skeleton-loader"></div>
-                </div> -->
-
-                <!-- Links tab -->
-                <!-- <div v-else-if="activeTab === 'links'" class="links-list">
-                    <div v-for="(link, index) in links" :key="`link-${index}`" class="link-item"
-                        :class="{ 'selected': selectedLinks.includes(link.url) }">
-                        <div class="link-content">
-                            <input type="checkbox" :checked="selectedLinks.includes(link.url)"
-                                @change="toggleLinkSelection(link.url)">
-                            <span>{{ link.url }}</span>
-                        </div>
+                <div v-if="services.length === 0" class="service-content">
+                    <div class="service-section" style="text-align: center;">
+                        <p><strong>No service found</strong></p>
                     </div>
-                </div> -->
+                </div>
+                <div v-else v-for="(service, index) in services" :key="index" class="service-content">
 
-                <!-- Services tab -->
-                <!-- <div v-else-if="activeTab === 'services'" class="services-list"> -->
-                <!-- <div v-for="(service, index) in services" :key="`service-${index}`" class="service-card"> -->
-
-                <div class="service-content">
                     <div class="service-section">
-                        <div class="section-header">
-                            <!-- <input type="checkbox"
-                                        :checked="isServiceSectionSelected(service, 'business_summary')"
-                                        @change.stop="toggleServiceSection(service, 'business_summary')"> -->
-                            <h3>{{ sectionTitle }}</h3>
-                        </div>
-                        <p>{{ sectionContent }}</p>
-                        <div class="btn-grp">
-                            <!-- <button class="proposal-button" style="margin-right: 0px;" @click="generateProposals">
-                                {{ isGenerating ? 'Generating...' : 'Generate Proposals' }}
-                            </button> -->
-                            <button class="proposal-button" style="margin-right: 0px;" @click="generateProposals"
+                        <p><strong>{{ service.business_summary }}</strong></p>
+                        <p><strong>{{ service.key_services }}</strong></p>
+                        <p><strong>{{ service.target_audience }}</strong></p>
+                        <p><strong>{{ service.revenue_model }}</strong></p>
+                        <p><strong>{{ service.existing_technology }}</strong></p>
+                        <p><strong>{{ service.operational_challenges }}</strong></p>
+                        <p><strong>{{ service.market_trends }}</strong></p>
+                        <p><strong>{{ service.competitive_gap }}</strong></p>
+                        <p><strong>{{ service.compliance_needs }}</strong></p>
+                        <p><strong>{{ service.most_valuable_software_feature.feature_name }}</strong></p>
+                        <p><strong>{{ service.most_valuable_software_feature.feature_description }}</strong></p>
+                        <p><strong>{{ service.most_valuable_software_feature.expected_benefits }}</strong></p>
+                        <p><strong>{{ service.most_valuable_software_feature.ROI_justification }}</strong></p>
+                        <div class="btn-grp mt-5">
+
+                            <button class="proposal-button " style="margin-right: 0px;" @click="generateProposals"
                                 :disabled="isGenerating">
                                 {{ isGenerating ? 'Generating...' : 'Generate Proposal' }}
                             </button>
@@ -66,28 +48,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- </div> -->
-                <!-- </div> -->
             </div>
         </div>
-
-        <!-- Update selection summary -->
-        <!-- <div class="selection-summary" v-if="hasSelections">
-            <p style="font-size: 14px;">Selected: {{ selectedLinks.length }} links, {{ selectedSections.length }}
-                sections</p>
-            <button class="proposal-button" style="margin-right: 0px;" @click="generateProposals"
-                :disabled="!hasSelections || isGenerating">
-                {{ isGenerating ? 'Generating...' : 'Generate Proposals' }}
-            </button>
-            <button class="proposal-button" style="margin-right: 0px; " @click="sendEmail">
-                Send Mail
-            </button>
-            <button class="proposal-button" style="margin-right: 0px; " @click="openPreviewPopup">
-                Preview
-            </button>
-        </div> -->
-        <!-- Preview Popup Component -->
         <PreviewPopup :visible="isPreviewPopupVisible" @close="closePreviewPopup" />
+
     </div>
 </template>
 
@@ -110,37 +74,44 @@ export default {
             selectedSections: [],
             sectionTitle: this.$route.query.sectionTitle || 'Section',
             sectionContent: this.$route.query.sectionContent || 'No Content Available',
-            emailSend: this.$route.query.email,
+            emailSend: '',
+            analysisId: this.$route.query.analysisId,
+            serviceId: this.$route.query.serviceId,
+
             isGenerating: false,
             isPreviewPopupVisible: false,
         }
     },
-    // computed: {
-    //     hasSelections() {
-    //         return this.selectedLinks.length > 0 || this.selectedSections.length > 0;
-    //     }
-    // },
-    // async created() {
-    //     try {
-    //         this.isLoading = true;
-    //         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-    //         const response = await axios.get(`${apiUrl}/analysis?id=${this.$route.params.id}`);
-    //         this.services = response.data.analysis.allServices;
-    //         this.links = response.data.analysis.links;
-    //         console.log("services", response.data.analysis.allServices);
-    //         console.log("links", response.data.analysis.links);
-    //     } catch (error) {
-    //         console.error('Error fetching data:', error);
-    //     } finally {
-    //         this.isLoading = false;
-    //     }
-    // },
-    methods: {
+    
+    async created() {
+        try {
+            this.isLoading = true;
+            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+            const response = await axios.get(`${apiUrl}/analysis?id=${this.analysisId}`);
+            this.services = response.data.analysis.allServices;
+            // Get the serviceId from the route query and convert it to a number
+            const serviceId = Number(this.$route.query.serviceId);
+
+            // Filter services based on the serviceId
+            this.services = response.data.analysis.allServices.filter(service => Number(service.id) === serviceId);
+            this.emailSend = response.data.analysis.email;
+            console.log("email:", response.data.analysis.email)
+            console.log("services", response.data.analysis.allServices);
+            console.log("links", response.data.analysis.links);
+            
+        
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        } finally {
+            this.isLoading = false;
+        }
+    },
+   methods: {
         async generateProposals() {
             try {
                 this.isGenerating = true;
                 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-                const response = await axios.post(`${apiUrl}/proposals/generate-proposal`);
+                const response = await axios.post(`${apiUrl}/proposals/generate-proposal`, this.serviceId);
                 console.log(response.data.data);
                 console.log('Proposal generated successfully!');
                 // toast.success('Proposal generated successfully!');
@@ -160,9 +131,11 @@ export default {
         async sendEmail() {
             try {
                 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-                const response = await axios.post(`${apiUrl}/email/send-email`, {
+                const response = await axios.post(`${apiUrl}/email/send-email`,
+                    {
                     to: this.emailSend,
-                });
+                    }
+                );
                 console.log(response.data.message);
                 toast.success('Email sent successfully!');
             } catch (error) {
@@ -170,104 +143,8 @@ export default {
                 toast.error('Failed to send email.');
             }
         },
-        // toggleLinkSelection(url) {
-        //     const index = this.selectedLinks.indexOf(url);
-        //     if (index === -1) {
-        //         this.selectedLinks.push(url);
-        //     } else {
-        //         this.selectedLinks.splice(index, 1);
-        //     }
-        // },
-        // toggleServiceSection(service, sectionName) {
-        //     const selection = {
-        //         serviceId: service.id,
-        //         section: sectionName,
-        //         content: service[sectionName]
-        //     };
-
-        //     const index = this.selectedSections.findIndex(
-        //         item => item.serviceId === service.id && item.section === sectionName
-        //     );
-
-        //     if (index === -1) {
-        //         this.selectedSections.push(selection);
-        //     } else {
-        //         this.selectedSections.splice(index, 1);
-        //     }
-        // },
-        // isServiceSectionSelected(service, sectionName) {
-        //     return this.selectedSections.some(
-        //         item => item.serviceId === service.id && item.section === sectionName
-        //     );
-        // },
-        // navigateToServiceDetail(sectionTitle, sectionContent) {
-        //     this.$router.push({
-        //         path: '/service-detail',
-        //         query: { sectionTitle, sectionContent },
-        //     });
-        // },
-
-        // async generateProposals() {
-        //     try {
-        //         this.isGenerating = true;
-        //         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-
-        //         const formattedData = {
-        //             links: this.selectedLinks,
-        //             services: this.selectedSections.map(section => {
-        //                 const service = {};
-        //                 service[section.section] = section.content;
-        //                 return service;
-        //             })
-        //         };
-
-        //         const response = await axios.post(`${apiUrl}/proposals/generate-proposal`, formattedData);
-        //         const html = response.data.data;
-
-        //         // Create and open new tab with the HTML content
-        //         const newTab = window.open();
-        //         if (!newTab) {
-        //             alert("Popup might be blocked. Please enable popups for this site.");
-        //             throw new Error("Failed to open new tab. Popup might be blocked.");
-        //         }
-
-        //         newTab.document.open();
-        //         newTab.document.write(html);
-        //         newTab.document.close();
-        //     } catch (error) {
-        //         console.error('Error generating proposals:', error);
-        //     } finally {
-        //         this.isGenerating = false;
-        //     }
-        // },
-        // async sendEmail() {
-        //     try {
-        //         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-        //         const response = await axios.post(`${apiUrl}/email/send-email`, {
-        //             to: 'shivanijai1201@gmail.com',
-        //         });
-        //         console.log(response.data.message);
-        //         toast.success('Email sent successfully!');
-        //     } catch (error) {
-        //         console.error('Error sending email:', error);
-        //         toast.error('Failed to send email.');
-        //     }
-        // },
-        // openPreviewPopup() {
-        //     this.isPreviewPopupVisible = true;
-        // },
-
-        // closePreviewPopup() {
-        //     this.isPreviewPopupVisible = false;
-        // },
     },
-    // watch: {
-    //     activeTab(newTab) {
-    //         if (newTab === 'proposals') {
-    //             this.fetchProposals();
-    //         }
-    //     }
-    // }
+  
 }
 </script>
 
@@ -537,6 +414,7 @@ export default {
     padding-bottom: 1rem;
     border-bottom: 1px solid #eee;
 }
+
 /* 
 .service-content {
     margin-left: 2rem;
@@ -601,10 +479,12 @@ input[type="checkbox"] {
     gap: 1rem;
     margin-bottom: 0.5rem;
 }
-.btn-grp{
+
+.btn-grp {
     display: flex;
     gap: 10px;
 }
+
 .service-section {
     padding: 1rem;
     margin-bottom: 1rem;

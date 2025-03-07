@@ -57,7 +57,7 @@
         </div>
 
         <!-- Services tab -->
-        <div v-else-if="activeTab === 'services'" class="services-list">
+        <!-- <div v-else-if="activeTab === 'services'" class="services-list">
           <div v-for="(service, index) in services" :key="`service-${index}`" class="service-card">
 
             <div class="service-content">
@@ -65,8 +65,6 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'business_summary') }"
                 @click="navigateToServiceDetail('Business Summary', service.business_summary)">
                 <div class="section-header">
-                  <!-- <input type="checkbox" :checked="isServiceSectionSelected(service, 'business_summary')"
-                    @change.stop="toggleServiceSection(service, 'business_summary')"> -->
                   <h3>Business Summary</h3>
                 </div>
                 <p>{{ service.business_summary }}</p>
@@ -77,8 +75,7 @@
               <div class="service-section" :class="{ 'selected': isServiceSectionSelected(service, 'key_services') }"
                 @click="navigateToServiceDetail('Key Services', service.key_services)">
                 <div class="section-header">
-                  <!-- <input type="checkbox" :checked="isServiceSectionSelected(service, 'key_services')"
-                    @change.stop="toggleServiceSection(service, 'key_services')"> -->
+                 
                   <h3>Key Services</h3>
                 </div>
                 <p>{{ service.key_services }}</p>
@@ -89,8 +86,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software') }"
                 @click="navigateToServiceDetail('Possible Software', service.possible_software)">
                 <div class="section-header">
-                  <!-- <input type="checkbox" :checked="isServiceSectionSelected(service, 'possible_software')"
-                    @change.stop="toggleServiceSection(service, 'possible_software')"> -->
+                  
                   <h3>Possible Software</h3>
                 </div>
                 <p>{{ service.possible_software }}</p>
@@ -101,9 +97,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_description') }"
                 @click="navigateToServiceDetail('Software Solutions Description', service.possible_software_solutions_description)">
                 <div class="section-header">
-                  <!-- <input type="checkbox"
-                    :checked="isServiceSectionSelected(service, 'possible_software_solutions_description')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_description')"> -->
+
                   <h3>Software Solutions Description</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_description }}</p>
@@ -114,8 +108,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions') }"
                 @click="navigateToServiceDetail('Software Solutions', service.possible_software_solutions)">
                 <div class="section-header">
-                  <!-- <input type="checkbox" :checked="isServiceSectionSelected(service, 'possible_software_solutions')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions')"> -->
+                  
                   <h3>Software Solutions</h3>
                 </div>
                 <p>{{ service.possible_software_solutions }}</p>
@@ -126,9 +119,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_features') }"
                 @click="navigateToServiceDetail('Features', service.possible_software_solutions_features)">
                 <div class="section-header">
-                  <!-- <input type="checkbox"
-                    :checked="isServiceSectionSelected(service, 'possible_software_solutions_features')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_features')"> -->
+                  
                   <h3>Features</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_features }}</p>
@@ -139,9 +130,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_benefits') }"
                 @click="navigateToServiceDetail('Benefits', service.possible_software_solutions_benefits)">
                 <div class="section-header">
-                  <!-- <input type="checkbox"
-                    :checked="isServiceSectionSelected(service, 'possible_software_solutions_benefits')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_benefits')"> -->
+                  
                   <h3>Benefits</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_benefits }}</p>
@@ -151,9 +140,7 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_pricing') }"
                 @click="navigateToServiceDetail('Pricing', service.possible_software_solutions_pricing)">
                 <div class="section-header">
-                  <!-- <input type="checkbox"
-                    :checked="isServiceSectionSelected(service, 'possible_software_solutions_pricing')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_pricing')"> -->
+                 
                   <h3>Pricing</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_pricing }}</p>
@@ -164,12 +151,31 @@
                 :class="{ 'selected': isServiceSectionSelected(service, 'possible_software_solutions_comparison') }"
                 @click="navigateToServiceDetail('Comparison', service.possible_software_solutions_comparison)">
                 <div class="section-header">
-                  <!-- <input type="checkbox"
-                    :checked="isServiceSectionSelected(service, 'possible_software_solutions_comparison')"
-                    @change.stop="toggleServiceSection(service, 'possible_software_solutions_comparison')"> -->
+                 
                   <h3>Comparison</h3>
                 </div>
                 <p>{{ service.possible_software_solutions_comparison }}</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div v-else-if="activeTab === 'services'" class="services-list">
+          <div v-for="(service, index) in services" :key="index" class="service-card">
+            <div class="service-content">
+              <div class="service-section" @click="navigateToServiceDetail(service.id)">
+                <p><strong>{{ service.business_summary }}</strong></p>
+                <p><strong>{{ service.key_services }}</strong></p>
+                <p><strong>{{ service.target_audience }}</strong></p>
+                <p><strong>{{ service.revenue_model }}</strong></p>
+                <p><strong>{{ service.existing_technology }}</strong></p>
+                <p><strong>{{ service.operational_challenges }}</strong></p>
+                <p><strong>{{ service.market_trends }}</strong></p>
+                <p><strong>{{ service.competitive_gap }}</strong></p>
+                <p><strong>{{ service.compliance_needs }}</strong></p>
+                <p><strong>{{ service.most_valuable_software_feature.feature_name }}</strong></p>
+                <p><strong>{{ service.most_valuable_software_feature.feature_description }}</strong></p>
+                <p><strong>{{ service.most_valuable_software_feature.expected_benefits }}</strong></p>
+                <p><strong>{{ service.most_valuable_software_feature.ROI_justification }}</strong></p>
               </div>
             </div>
           </div>
@@ -180,7 +186,7 @@
     <!-- Update selection summary -->
     <div class="selection-summary" v-if="hasSelections">
       <p style="font-size: 14px;">Selected: {{ selectedLinks.length }} links, {{ selectedSections.length }} sections</p>
-      <button class="proposal-button" style="margin-right: 0px;" @click=" generateProposals"
+      <button class="proposal-button" style="margin-right: 0px;" @click="generateProposals"
         :disabled="!hasSelections || isGenerating">
         {{ isGenerating ? 'Generating...' : 'Generate Proposals' }}
       </button>
@@ -215,7 +221,8 @@ export default {
       selectedSections: [],
       isGenerating: false,
       isPreviewPopupVisible: false,
-      email:'',
+      analysisId: this.$route.params.id,
+      serviceid: ''
     }
   },
   computed: {
@@ -227,12 +234,13 @@ export default {
     try {
       this.isLoading = true;
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-      const response = await axios.get(`${apiUrl}/analysis?id=${this.$route.params.id}`);
+      const response = await axios.get(`${apiUrl}/analysis?id=${this.analysisId}`);
       this.services = response.data.analysis.allServices;
       this.links = response.data.analysis.links;
       console.log("services", response.data.analysis.allServices);
       console.log("links", response.data.analysis.links);
       this.email = response.data.analysis.email;
+      this.serviceid = response.data.analysis.allServices[0]?.id;
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
@@ -254,11 +262,11 @@ export default {
         section: sectionName,
         content: service[sectionName]
       };
-      
+
       const index = this.selectedSections.findIndex(
         item => item.serviceId === service.id && item.section === sectionName
       );
-      
+
       if (index === -1) {
         this.selectedSections.push(selection);
       } else {
@@ -270,10 +278,10 @@ export default {
         item => item.serviceId === service.id && item.section === sectionName
       );
     },
-    navigateToServiceDetail(sectionTitle, sectionContent) {
+    navigateToServiceDetail(id) {
       this.$router.push({
         path: '/service-detail',
-        query: { sectionTitle, sectionContent, email: this.email },
+        query: { analysisId: this.analysisId, serviceId: id },
       });
     },
 
@@ -281,7 +289,7 @@ export default {
       try {
         this.isGenerating = true;
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-        
+
         const formattedData = {
           links: this.selectedLinks,
           services: this.selectedSections.map(section => {
@@ -339,7 +347,7 @@ export default {
     }
   }
 }
-</script>   
+</script>
 
 <style scoped>
 .analysis-container {
@@ -411,11 +419,11 @@ export default {
   .analysis-container {
     padding: 1rem;
   }
-  
+
   .services-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .section-title {
     font-size: 1.5rem;
   }
@@ -462,6 +470,7 @@ export default {
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
@@ -510,20 +519,23 @@ export default {
   padding: 2rem;
 }
 
-.links-list, .services-list {
+.links-list,
+.services-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.link-item, .service-item {
+.link-item,
+.service-item {
   padding: 1rem;
   background-color: #f8f9fa;
   border-radius: 6px;
   transition: background-color 0.3s ease;
 }
 
-.link-item:hover, .service-item:hover {
+.link-item:hover,
+.service-item:hover {
   background-color: #e9ecef;
 }
 
@@ -548,18 +560,21 @@ export default {
   background-color: #0056b3;
 }
 
-.link-item, .service-card {
+.link-item,
+.service-card {
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease;
 }
 
-.link-item.selected, .service-card.selected {
+.link-item.selected,
+.service-card.selected {
   background-color: #e3f2fd;
   border: 1px solid #2196f3;
 }
 
-.link-content, .service-header {
+.link-content,
+.service-header {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -575,7 +590,7 @@ export default {
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
-  gap:15px;
+  gap: 15px;
   align-items: center;
   z-index: 1000;
 }
@@ -714,14 +729,20 @@ input[type="checkbox"] {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-overlay p {
   font-size: 16px;
   color: #333;
 }
+
 .Mail-btn {
   display: flex;
   gap: 10px;

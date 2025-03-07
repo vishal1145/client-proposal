@@ -365,7 +365,7 @@ export default function DeveloperProfile() {
               </div>
 
               {/* Skills Grid */}
-              <div className="grid grid-cols-1 gap-8 bg-[#F8F9FC] p-8 rounded-xl mt-8">
+              <div className="grid grid-cols-1 gap-8  rounded-xl mt-8">
     <div>
         <h3 className="text-xl font-semibold text-[#0B1B2B] mb-4">
             Skills & Expertise
@@ -377,17 +377,17 @@ export default function DeveloperProfile() {
             ].map((skill, index) => (
                 <div
                     key={index}
-                    className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all"
+                    className="flex flex-col    transition-all"
                 >
                     <div className="relative w-12 h-12 mb-2">
                         <Image
                             src={getTechnologyImagePath(skill)}
                             alt={skill}
                             fill
-                            className="object-contain p-2"
+                            className="object-contain "
                         />
                     </div>
-                    <span className="text-xs text-gray-600 text-center">{skill}</span>
+                    <span className="text-xs text-gray-600 ">{skill}</span>
                 </div>
             ))}
         </div>

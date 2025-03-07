@@ -189,8 +189,8 @@ export default function PaymentPage() {
             <Link href="/" className="hover:text-[#0561FC]">
                 Home
               </Link>
-              <span>/</span>
-              <span className="text-[#0561FC]">Payment</span>
+              <span>-</span>
+              <span className="">Payment</span>
             </div>
           </div>
         </div>
@@ -304,7 +304,7 @@ export default function PaymentPage() {
                   <p className="text-sm text-white">
                     For Business enquiries:
                     <a
-                      href="mailto:hr@algofolks.com"
+                      href="mailto:hi@algofolks.com"
                       className="text-[#0561FC] ml-2"
                     >
                       hi@algofolks.com
@@ -313,7 +313,7 @@ export default function PaymentPage() {
                   <p className="text-sm text-white">
                     For Careers:
                     <a
-                      href="mailto:hr@algofolks.com"
+                      href="mailto:hi@algofolks.com"
                       className="text-[#0561FC] ml-2"
                     >
                       hi@algofolks.com

@@ -1,187 +1,411 @@
 "use client";
 
+import Image from "next/image";
+import Footer from "@/components/sections/Footer";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+
 
 export default function GetQuotePage() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    company: "",
+    projectType: "",
+    budget: "",
+    timeline: "",
+    description: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/send-quote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: "Quote request sent successfully!",
+        });
+        // Reset form
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          company: "",
+          projectType: "",
+          budget: "",
+          timeline: "",
+          description: "",
+        });
+      } else {
+        throw new Error(data.message || "Failed to send quote request");
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: error instanceof Error ? error.message : "Something went wrong",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <section className="bg-[#0B1B2B] min-h-screen py-20">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left Content - Form */}
-          <div className="bg-white rounded-3xl p-10 space-y-8">
-            <div>
-              <h1 className="text-3xl font-semibold text-[#0B1B2B]">Get a Quote</h1>
-              <p className="text-gray-600 mt-2">Fill in your project details and we&apos;ll get back to you with a quote.</p>
+    <main className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative bg-[#F6F0E4] py-20 overflow-hidden">
+        {/* Left Side Illustration */}
+        <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
+          <div className="relative">
+            <Image
+              src="/images/hand.png"
+              alt="Hand with Rocket"
+              width={300}
+              height={200}
+              className="w-auto h-auto"
+            />
+          </div>
+        </div>
+
+        {/* Right Side Icon */}
+        <div className="absolute right-20 top-1/2 -translate-y-1/2 z-10">
+          <Image
+            src="/images/message.png"
+            alt="Quote Icon"
+            width={80}
+            height={80}
+            className="w-auto h-auto"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-20">
+          <div className="text-center max-w-2xl mx-auto">
+            <h1 className="text-4xl font-bold text-[#0B1B2B] mb-4">
+              Get a Quote
+            </h1>
+            <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+              <Link href="/" className="hover:text-[#0561FC]">
+                Home
+              </Link>
+              <span>-</span>
+              <span>Quote</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-1/4 z-10">
+          <Image
+            src="/images/decorative.png"
+            alt="Decorative Element"
+            width={100}
+            height={100}
+            className="w-auto h-auto opacity-30"
+          />
+        </div>
+        <div className="absolute bottom-0 right-1/4 z-10">
+          <Image
+            src="/images/decorative.png"
+            alt="Decorative Element"
+            width={80}
+            height={80}
+            className="w-auto h-auto opacity-30"
+          />
+        </div>
+      </div>
+
+      {/* Description Section */}
+      <div className="container mx-auto px-4 max-w-3xl text-center mb-10 py-16">
+        <div className="inline-block px-4 py-1 rounded-full bg-blue-900/20 mb-6">
+          <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium">
+            REQUEST A QUOTE
+          </span>
+        </div>
+
+        <h2 className="text-xl md:text-3xl font-bold mb-6">
+          <span className="text-gray-900">Get Started with Your</span>{" "}
+          <span className="text-[#0561FC]">Project Today</span>
+        </h2>
+
+        <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+          Tell us about your project and we&apos;ll provide you with a customized quote. Our team is ready to bring your vision to life.
+        </p>
+      </div>
+
+      {/* Form Section */}
+      <div className="py-16 mb-10 bg-black">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Left Column - Information */}
+            <div className="p-8 rounded-2xl">
+              <h2 className="text-2xl font-bold text-white mb-6">
+                Why Work With Us
+              </h2>
+
+              <p className="text-white mb-8">
+                Partner with us for innovative solutions tailored to your needs. Let&apos;s create something extraordinary together.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-[#0561FC] rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-xl">✓</span>
+                  </div>
+                  <div>
+                    <h5 className="font-medium text-white mb-1">Expert Team</h5>
+                    <p className="text-sm text-white">
+                      Our experienced professionals deliver exceptional results.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-[#0561FC] rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-xl">⚡</span>
+                  </div>
+                  <div>
+                    <h5 className="font-medium text-white mb-1">Quick Turnaround</h5>
+                    <p className="text-sm text-white">
+                      We deliver projects on time without compromising quality.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-[#0561FC] rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-xl">💬</span>
+                  </div>
+                  <div>
+                    <h5 className="font-medium text-white mb-1">Dedicated Support</h5>
+                    <p className="text-sm text-white">
+                      Our team is always available to help during and after the project.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Information */}
+              <div className="mt-12 pt-8 border-t border-gray-200">
+                <h3 className="text-lg font-semibold text-white mb-4">
+                  Need Help? Contact Us
+                </h3>
+                <div className="space-y-3">
+                  <p className="text-sm text-white">
+                    Email: <a href="mailto:hi@example.com" className="text-[#0561FC] ml-2">hi@example.com</a>
+                  </p>
+                  <p className="text-sm text-white">
+                    Phone: <a href="tel:+1234567890" className="text-[#0561FC] ml-2">+1 (234) 567-890</a>
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <form className="space-y-6">
-              {/* Basic Information */}
-              <div className="space-y-4">
-                <h2 className="text-xl font-medium text-[#0B1B2B]">Basic Information</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                    <input
-                      type="tel"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="+1 (555) 000-0000"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="Your Company Ltd."
-                    />
-                  </div>
-                </div>
-              </div>
+            {/* Right Column - Quote Form */}
+            <div className="bg-[#0561FC] p-8 rounded-2xl shadow-lg">
+              <h2 className="text-2xl font-bold text-white mb-6">
+                Request a Quote
+              </h2>
 
-              {/* Project Details */}
-              <div className="space-y-4">
-                <h2 className="text-xl font-medium text-[#0B1B2B]">Project Details</h2>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Project Type</label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                      <option value="">Select Project Type</option>
-                      <option value="web">Web Development</option>
-                      <option value="mobile">Mobile App</option>
-                      <option value="design">UI/UX Design</option>
-                      <option value="ecommerce">E-commerce</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Estimated Budget</label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                      <option value="">Select Budget Range</option>
-                      <option value="5k">$1,000 - $5,000</option>
-                      <option value="10k">$5,000 - $10,000</option>
-                      <option value="25k">$10,000 - $25,000</option>
-                      <option value="50k">$25,000 - $50,000</option>
-                      <option value="50k+">$50,000+</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Project Description</label>
-                    <textarea
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-                      placeholder="Tell us about your project requirements..."
-                    ></textarea>
-                  </div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="mb-2">
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    placeholder="Full Name"
+                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
+                    required
+                  />
                 </div>
-              </div>
 
-              {/* Timeline */}
-              <div className="space-y-4">
-                <h2 className="text-xl font-medium text-[#0B1B2B]">Timeline</h2>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Expected Timeline</label>
-                  <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">Select Timeline</option>
-                    <option value="1month">Less than 1 month</option>
-                    <option value="3months">1-3 months</option>
-                    <option value="6months">3-6 months</option>
-                    <option value="6months+">6+ months</option>
+                <div className="mb-2">
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Email Address"
+                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
+                    required
+                  />
+                </div>
+
+                <div className="mb-2">
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="Phone Number"
+                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
+                    required
+                  />
+                </div>
+
+                <div className="mb-2">
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    placeholder="Company Name"
+                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white"
+                    required
+                  />
+                </div>
+
+                <div className="mb-2">
+                  <select
+                    name="projectType"
+                    value={formData.projectType}
+                    onChange={handleInputChange}
+                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm"
+                    required
+                  >
+                    <option value="" className="bg-[#0561FC]">Select Project Type</option>
+                    <option value="web" className="bg-[#0561FC]">Web Development</option>
+                    <option value="mobile" className="bg-[#0561FC]">Mobile App</option>
+                    <option value="design" className="bg-[#0561FC]">UI/UX Design</option>
+                    <option value="other" className="bg-[#0561FC]">Other</option>
                   </select>
                 </div>
-              </div>
 
-              <Button 
-                className="w-full bg-[#4461F2] hover:bg-blue-700 text-white rounded-xl px-8 py-4 text-lg font-medium"
-              >
-                Get Quote
-              </Button>
-            </form>
-          </div>
-
-          {/* Right Content - Information */}
-          <div className="space-y-8">
-            <div className="bg-[#FFE4E0] rounded-3xl p-10 relative overflow-hidden">
-              <div className="relative z-10">
-                <h2 className="text-2xl font-semibold text-[#0B1B2B] mb-4">Why Choose Our Services?</h2>
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#4461F2] flex items-center justify-center flex-shrink-0 mt-1">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-[#0B1B2B]">Expert Team</h3>
-                      <p className="text-gray-600 text-sm">Our team of experts brings years of experience in delivering successful projects.</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#4461F2] flex items-center justify-center flex-shrink-0 mt-1">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-[#0B1B2B]">Competitive Pricing</h3>
-                      <p className="text-gray-600 text-sm">Get the best value for your investment with our competitive pricing models.</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#4461F2] flex items-center justify-center flex-shrink-0 mt-1">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-[#0B1B2B]">Quick Turnaround</h3>
-                      <p className="text-gray-600 text-sm">We deliver projects on time without compromising on quality.</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div className="absolute right-0 bottom-0 w-32 h-32 opacity-10">
-                <svg className="w-full h-full text-[#4461F2]" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0112 18.469c-1.006 0-1.97-.43-2.66-1.183l-.548-.547z" />
-                </svg>
-              </div>
-            </div>
-
-            <div className="bg-[#4461F2] rounded-3xl p-10 text-white">
-              <h2 className="text-2xl font-semibold mb-4">Contact Support</h2>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  <span>+1 (555) 000-0000</span>
+                <div className="mb-2">
+                  <select
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleInputChange}
+                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm"
+                    required
+                  >
+                    <option value="" className="bg-[#0561FC]">Select Budget Range</option>
+                    <option value="5k" className="bg-[#0561FC]">$1,000 - $5,000</option>
+                    <option value="10k" className="bg-[#0561FC]">$5,000 - $10,000</option>
+                    <option value="25k" className="bg-[#0561FC]">$10,000 - $25,000</option>
+                    <option value="50k+" className="bg-[#0561FC]">$25,000+</option>
+                  </select>
                 </div>
-                <div className="flex items-center gap-3">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <span>support@example.com</span>
+
+                <div className="mb-2">
+                  <select
+                    name="timeline"
+                    value={formData.timeline}
+                    onChange={handleInputChange}
+                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm"
+                    required
+                  >
+                    <option value="" className="bg-[#0561FC]">Expected Timeline</option>
+                    <option value="1month" className="bg-[#0561FC]">Less than 1 month</option>
+                    <option value="3months" className="bg-[#0561FC]">1-3 months</option>
+                    <option value="6months" className="bg-[#0561FC]">3-6 months</option>
+                    <option value="6months+" className="bg-[#0561FC]">6+ months</option>
+                  </select>
                 </div>
-              </div>
+
+                <div className="mb-2">
+                  <textarea
+                    name="description"
+                    value={formData.description}
+                    onChange={handleInputChange}
+                    placeholder="Project Description"
+                    rows={4}
+                    className="w-full bg-transparent text-white border-b border-white/20 pb-6 focus:outline-none focus:border-white text-sm placeholder:text-white resize-none"
+                    required
+                  ></textarea>
+                </div>
+
+                <div className="flex items-start gap-2">
+                  <input type="checkbox" id="terms" className="mt-1" required />
+                  <label htmlFor="terms" className="text-sm text-white">
+                    I agree to the processing of my data as per the privacy policy.
+                  </label>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex items-center justify-center gap-2 text-white border border-white px-8 py-3 rounded-full text-sm font-medium hover:bg-white/90 hover:text-blue-600 transition-colors w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    "Submitting..."
+                  ) : (
+                    <>
+                      Submit Quote Request
+                      <span>→</span>
+                    </>
+                  )}
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </div>
-    </section>
+
+      {/* CTA Section */}
+      <div className="my-16 text-center">
+        <h3 className="text-2xl font-semibold text-[#0B1B2B] mb-4">
+          Ready to Start Your Project?
+        </h3>
+        <p className="text-gray-600 text-[14px] mb-8 max-w-2xl mx-auto">
+          Let&apos;s collaborate to build innovative solutions using the latest technologies and best coding practices.
+        </p>
+
+        <Link href="/contact">
+          <Button
+            variant="default"
+            className="bg-[#0066FF] hover:bg-blue-700 text-white rounded-full px-8 py-3 flex items-center gap-2 mx-auto"
+          >
+            Contact Us
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Button>
+        </Link>
+      </div>
+
+      <Footer />
+    </main>
   );
-} 
+}

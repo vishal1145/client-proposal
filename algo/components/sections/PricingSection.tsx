@@ -5,15 +5,15 @@ import React from 'react';
 import Link from 'next/link';
 
 const PricingSection = () => {
-  // Example team member data - you can replace this with your actual data or API call
+ 
  
 
   return (
      <>
-      {/* Hero Section */}
+   
      
       {/* Pricing Cards Section */}
-      <section className="pt-3 pb-10">
+      <section className="pt-3 pb-28">
         <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           {/* Pricing Header */}
           <div className="text-center mb-12">

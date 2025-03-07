@@ -151,7 +151,7 @@ export default function HireDeveloperPage() {
               Hire Developers
             </h1>
             <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-[#0561FC]">
+              <Link href="/" className="hover:text-[#0561FC]">
                 Home
               </Link>
               <span>-</span>
@@ -200,284 +200,257 @@ export default function HireDeveloperPage() {
       </div> */}
 
       {/* Main Content Section */}
-      <div className="container mx-auto px-4 py-16">
-        {/* Header with Chip */}
-        <div className="text-center mb-16">
-          <div className="inline-block px-4 py-1 rounded-full bg-blue-900/20 mb-6">
-            <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium">
-              HIRING PROCESS
-            </span>
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">
-            <span className="text-gray-900">Three Steps to Your Perfect</span>{" "}
-            <span className="text-[#0561FC]">Laravel Developer</span>
-          </h2>
-        </div>
-
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Step 1 */}
-          <div className="bg-white p-8 rounded-2xl border border-[rgba(5,97,252,0.2)] hover:bg-[#0561FC] hover:text-white transition-all duration-300 group">
-            <div className="inline-block px-4 py-1 rounded-full bg-blue-900/20 mb-4 group-hover:bg-white/20">
-              <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium group-hover:text-white">
-                Step 1
-              </span>
-            </div>
-
-            <h3 className="text-xl font-bold mb-4">
-              <span className="text-gray-900 group-hover:text-white">
-                Define
-              </span>{" "}
-              <span className="text-[#0561FC] group-hover:text-white">
-                Your Needs
-              </span>
-            </h3>
-
-            <p className="text-sm text-gray-600 group-hover:text-white/90">
-              Identify the specific skills and experience required for your
-              project to ensure a perfect match.
-            </p>
-          </div>
-
-          {/* Step 2 */}
-          <div className="bg-white p-8 rounded-2xl border border-[rgba(5,97,252,0.2)] hover:bg-[#0561FC] hover:text-white transition-all duration-300 group">
-            <div className="inline-block px-4 py-1 rounded-full bg-blue-900/20 mb-4 group-hover:bg-white/20">
-              <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium group-hover:text-white">
-                Step 2
-              </span>
-            </div>
-
-            <h3 className="text-xl font-bold mb-4">
-              <span className="text-gray-900 group-hover:text-white">
-                Connect
-              </span>{" "}
-              <span className="text-[#0561FC] group-hover:text-white">
-                with Experts
-              </span>
-            </h3>
-
-            <p className="text-sm text-gray-600 group-hover:text-white/90">
-              Access a curated pool of top-tier Laravel developers ready to
-              bring your vision to life.
-            </p>
-          </div>
-
-          {/* Step 3 */}
-          <div className="bg-white p-8 rounded-2xl border border-[rgba(5,97,252,0.2)] hover:bg-[#0561FC] hover:text-white transition-all duration-300 group">
-            <div className="inline-block px-4 py-1 rounded-full bg-blue-900/20 mb-4 group-hover:bg-white/20">
-              <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium group-hover:text-white">
-                Step 3
-              </span>
-            </div>
-
-            <h3 className="text-xl font-bold mb-4">
-              <span className="text-gray-900 group-hover:text-white">
-                Build
-              </span>{" "}
-              <span className="text-[#0561FC] group-hover:text-white">
-                Your Solution
-              </span>
-            </h3>
-
-            <p className="text-sm text-gray-600 group-hover:text-white/90">
-              Collaborate with your chosen developer to deliver high-quality,
-              scalable solutions efficiently.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <PricingSection />
       <div className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Side - Team Members */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-  {/* Vivek's Card */}
-  <div className="space-y-4">
-    <div className="relative">
-      <Link 
-        href={{
-          pathname: `/developer/vivek-bisth`,
-          query: { 
-            name: "Vivek Bisth",
-            role: "Full Stack Developer",
-            image: "/images/vivek_bisth.jpeg"
-          }
-        }}
-      >
-        <Image
-          src="/images/vivek_bisth.jpeg"
-          alt="Vivek Bisth"
-          width={200}
-          height={350}
-          className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
-        />
-      </Link>
-      <h3 className="text-lg font-semibold mt-2">Vivek Bisth</h3>
-      <p className="text-sm text-gray-600">Full Stack Developer</p>
-      {/* Skills instead of flags */}
-      <div className="flex gap-2 mt-2">
-        <Image 
-          src="/images/react.png" 
-          alt="React" 
-          width={20} 
-          height={20}
-          className="h-10 w-auto" 
-        />
-        <Image 
-          src="/images/node.png" 
-          alt="Node.js" 
-          width={20} 
-          height={20}
-          className="h-10 w-auto" 
-        />
-        <Image 
-          src="/images/typescript.jpeg" 
-          alt="TypeScript" 
-          width={20} 
-          height={20}
-          className="h-10 w-auto" 
-        />
+              {/* Vivek's Card */}
+              <div className="space-y-4">
+                <div className="relative">
+                  <Link
+                    href={{
+                      pathname: `/developer/vivek-bisth`,
+                      query: {
+                        name: "Vivek Bisth",
+                        role: "Full Stack Developer",
+                        image: "/images/vivek_bisth.jpeg",
+                      },
+                    }}
+                  >
+                    <Image
+                      src="/images/vivek_bisth.jpeg"
+                      alt="Vivek Bisth"
+                      width={200}
+                      height={350}
+                      className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
+                    />
+                  </Link>
+                  <h3 className="text-lg font-semibold mt-2">Vivek Bisth</h3>
+                  <p className="text-sm text-gray-600">Full Stack Developer</p>
+                  {/* Skills instead of flags */}
+                  <div className="flex gap-2 mt-2">
+                    <Image
+                      src="/images/react.png"
+                      alt="React"
+                      width={20}
+                      height={20}
+                      className="h-7 w-auto"
+                    />
+                    <Image
+                      src="/images/node.png"
+                      alt="Node.js"
+                      width={20}
+                      height={20}
+                      className="h-7 w-auto"
+                    />
+                    <Image
+                      src="/images/typescript.jpeg"
+                      alt="TypeScript"
+                      width={20}
+                      height={20}
+                      className="h-7 w-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Shivika's Card */}
+              <div className="space-y-4">
+                <div className="relative">
+                  <Link
+                    href={{
+                      pathname: `/developer/shivika-singh`,
+                      query: {
+                        name: "Shivika Shingh",
+                        role: "Backend Developer",
+                        image: "/images/shivika_singh.jpeg",
+                      },
+                    }}
+                  >
+                    <Image
+                      src="/images/shivika_singh.jpeg"
+                      alt="Shivika Shingh"
+                      width={200}
+                      height={350}
+                      className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
+                    />
+                  </Link>
+                  <h3 className="text-lg font-semibold mt-2">Shivika Shingh</h3>
+                  <p className="text-sm text-gray-600">Backend Developer</p>
+                  {/* Skills instead of flags */}
+                  <div className="flex gap-2 mt-2">
+                    <Image
+                      src="/images/python.png"
+                      alt="Python"
+                      width={20}
+                      height={20}
+                      className="h-7 w-auto"
+                    />
+                    <Image
+                      src="/images/django.jpeg"
+                      alt="Django"
+                      width={20}
+                      height={20}
+                      className="h-7 w-auto"
+                    />
+                    <Image
+                      src="/images/postgresql.png"
+                      alt="PostgreSQL"
+                      width={20}
+                      height={20}
+                      className="h-7 w-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Abhishek's Card */}
+              <div className="space-y-4">
+                <div className="relative">
+                  <Link
+                    href={{
+                      pathname: `/developer/abhishek-garg`,
+                      query: {
+                        name: "Abhishek Garg",
+                        role: "Frontend Developer",
+                        image: "/images/abhishek_garg.jpeg",
+                      },
+                    }}
+                  >
+                    <Image
+                      src="/images/abhishek_garg.jpeg"
+                      alt="Abhishek Garg"
+                      width={200}
+                      height={350}
+                      className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
+                    />
+                  </Link>
+                  <h3 className="text-lg font-semibold mt-2">Abhishek Garg</h3>
+                  <p className="text-sm text-gray-600">Frontend Developer</p>
+                  {/* Skills instead of flags */}
+                  <div className="flex gap-2 mt-2">
+                    <Image
+                      src="/images/javascript.png"
+                      alt="JavaScript"
+                      width={20}
+                      height={20}
+                      className="h-7 w-auto object-contain"
+                    />
+                    <Image
+                      src="/images/vue.png"
+                      alt="Vue.js"
+                      width={20}
+                      height={20}
+                      className="h-7 w-auto object-contain"
+                    />
+                    <Image
+                      src="/images/tailwind(1).png"
+                      alt="Tailwind CSS"
+                      width={20}
+                      height={20}
+                      className="h-7 w-auto object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+     {/* Right Side - Steps Content */}
+<div className="space-y-6">
+  <div className="container mx-auto text-left">
+    {/* Header */}
+    <div className="mb-10">
+      <div className="inline-block px-4 py-1 rounded-full bg-blue-900/10 mb-6">
+        <span className="text-[10px] text-[#0561FC] uppercase tracking-wider font-medium">
+          PERSONAL MATCHER
+        </span>
+      </div>
+
+      <h2 className="text-2xl md:text-3xl font-bold mb-8">
+        <span className="text-gray-900">
+          Discover a world of talent with your
+        </span>{" "}
+        <span className="text-[#0561FC]">personal matcher</span>
+      </h2>
+    </div>
+
+  
+    <div className="space-y-8">
+ 
+      <div className="flex items-start gap-6 group">
+        <div className="flex-shrink-0">
+          <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+            <span className="text-[#0561FC] font-semibold">01</span>
+          </div>
+        </div>
+        <div>
+         
+          <p className="text-xl mb-2">
+            <span className="text-gray-900">Define</span>{" "}
+            <span className="text-gray-900">Your Needs</span>
+          </p>
+          <p className="text-sm text-gray-600">
+            Tell us about your project requirements and expectations.
+          </p>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-6 group">
+        <div className="flex-shrink-0">
+          <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+            <span className="text-[#0561FC] font-semibold">02</span>
+          </div>
+        </div>
+        <div>
+        
+          <p className="text-xl  mb-2">
+            <span className="text-gray-900">Connect</span>{" "}
+            <span className="text-gray-900">with Experts</span>
+          </p>
+          <p className="text-sm text-gray-600">
+            Get matched with developers who perfectly fit your project needs.
+          </p>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-6 group">
+        <div className="flex-shrink-0">
+          <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+            <span className="text-[#0561FC] font-semibold">03</span>
+          </div>
+        </div>
+        <div>
+        
+          <p className="text-xl  mb-2">
+            <span className="text-gray-900">Build</span>{" "}
+            <span className="text-gray-900">Your Solution</span>
+          </p>
+          <p className="text-sm text-gray-600">
+            Start building your project with dedicated development support.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
 
-  {/* Shivika's Card */}
-  <div className="space-y-4">
-    <div className="relative">
-      <Link 
-        href={{
-          pathname: `/developer/shivika-singh`,
-          query: { 
-            name: "Shivika Shingh",
-            role: "Backend Developer",
-            image: "/images/shivika_singh.jpeg"
-          }
-        }}
-      >
-        <Image
-          src="/images/shivika_singh.jpeg"
-          alt="Shivika Shingh"
-          width={200}
-          height={350}
-          className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
-        />
+   
+    <div className="mt-10">
+      <Link href="/contact">
+        <Button className="bg-[#0561FC] hover:bg-blue-700 text-white px-8 py-3 rounded-full">
+          Contact Us
+        </Button>
       </Link>
-      <h3 className="text-lg font-semibold mt-2">Shivika Shingh</h3>
-      <p className="text-sm text-gray-600">Backend Developer</p>
-      {/* Skills instead of flags */}
-      <div className="flex gap-2 mt-2">
-        <Image 
-          src="/images/python.png" 
-          alt="Python" 
-          width={20} 
-          height={20}
-          className="h-10 w-auto" 
-        />
-        <Image 
-          src="/images/django.jpeg" 
-          alt="Django" 
-          width={20} 
-          height={20}
-          className="h-10 w-auto" 
-        />
-        <Image 
-          src="/images/postgresql.png" 
-          alt="PostgreSQL" 
-          width={20} 
-          height={20}
-          className="h-10 w-auto" 
-        />
-      </div>
-    </div>
-  </div>
-
-  {/* Abhishek's Card */}
-  <div className="space-y-4">
-    <div className="relative">
-      <Link 
-        href={{
-          pathname: `/developer/abhishek-garg`,
-          query: { 
-            name: "Abhishek Garg",
-            role: "Frontend Developer",
-            image: "/images/abhishek_garg.jpeg"
-          }
-        }}
-      >
-        <Image
-          src="/images/abhishek_garg.jpeg"
-          alt="Abhishek Garg"
-          width={200}
-          height={350}
-          className="rounded-lg w-full h-[350px] object-cover cursor-pointer transition-transform hover:scale-105"
-        />
-      </Link>
-      <h3 className="text-lg font-semibold mt-2">Abhishek Garg</h3>
-      <p className="text-sm text-gray-600">Frontend Developer</p>
-      {/* Skills instead of flags */}
-      <div className="flex gap-2 mt-2">
-        <Image 
-          src="/images/javascript.png" 
-          alt="JavaScript" 
-          width={20} 
-          height={20}
-          className="h-10 w-auto object-contain" 
-        />
-        <Image 
-          src="/images/vue.png" 
-          alt="Vue.js" 
-          width={20} 
-          height={20}
-          className="h-10 w-auto object-contain" 
-        />
-        <Image 
-          src="/images/tailwind(1).png" 
-          alt="Tailwind CSS" 
-          width={20} 
-          height={20}
-          className="h-10 w-auto object-contain" 
-        />
-      </div>
     </div>
   </div>
 </div>
-
-            {/* Right Side - Content */}
-            <div className="space-y-6">
-              <div className="container mx-auto px-4 max-w-3xl text-left mb-10 py-16">
-                {/* Chip/Badge */}
-                <div className="inline-block px-4 py-1 rounded-full bg-blue-900/10 mb-6">
-                  <span className="text-[10px] text-[#0561FC] uppercase tracking-wider font-medium">
-                    PERSONAL MATCHER
-                  </span>
-                </div>
-
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  <span className="text-gray-900">
-                    Discover a world of talent with your
-                  </span>{" "}
-                  <span className="text-[#0561FC]">personal matcher</span>
-                </h2>
-
-                <p className="text-base text-gray-600 ">
-                  Get paired with your own personal matcher from our dedicated
-                  team. Why? They listen carefully to you, handpicking tech
-                  experts with perfectly tailored skillsets for your needs.
-                </p>
-                <Link href="/contact">
-                  <Button className="bg-[#0561FC] hover:bg-blue-700 text-white px-8 py-3 rounded-full mt-7">
-                    Contact Us
-                  </Button>
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
-      <section className="py-16 bg-[#E0EFFF]">
+     
+     
+
+      <section className="py-16 my-9 bg-[#E0EFFF]">
         <div className="container mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 md:gap-20 lg:gap-40">
             {/* Left Side - Contact Info */}
@@ -724,7 +697,7 @@ export default function HireDeveloperPage() {
           </div>
         </div>
       </section>
-
+      <PricingSection />
       <Footer />
     </main>
   );

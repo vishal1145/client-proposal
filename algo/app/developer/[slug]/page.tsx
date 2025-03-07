@@ -1,63 +1,215 @@
 "use client";
 
-// import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useSearchParams } from "next/navigation";
-export default function DeveloperProfile() {
-  const searchParams = useSearchParams();
 
-  const name = searchParams.get("name") || "";
-  const role = searchParams.get("role") || "";
-  const image = searchParams.get("image") || "";
-  // This would come from your API or database
-  const developer = {
-    name: name,
-    role: role,
-    image: image, // Image from the clicked developer
+interface Education {
+  degree: string;
+  institution: string;
+  duration: string;
+}
+
+interface Experience {
+  company: string;
+  duration: string;
+  role: string;
+  responsibilities: string[];
+  technologies?: string[];
+}
+
+interface Developer {
+  name: string;
+  role: string;
+  location: string;
+  image: string;
+  description: string[];
+  mainExpertise: string[];
+  otherSkills: string[];
+  experience: Experience[];
+  education: Education;
+}
+
+type DevelopersDataType = {
+  [key: string]: Developer;
+};
+
+const developersData : DevelopersDataType = {
+  "Vivek Bisth": {
+    name: "Vivek Bisth",
+    role: "Full Stack Developer",
+    location: "Noida",
+    image: "/images/vivek_bisth.jpeg",
     description: [
-      "Professional Symfony and PHP developer with over five years of experience in software development.",
-      "Khadija has extensive, robust problem-solving skills and proven experience creating and designing web applications in a test-driven environment.",
-      "Experienced in all five stages of the web development process, including information gathering, planning, design, development, testing, delivery, and maintenance.",
-      "Has profound experience in Shopware 5 and 6, grounded on solid skills in Symfony and Vue.js frameworks.",
-      "Khadija has excellent communication skills and places passion in her work. She is a very enthusiastic Symfony and PHP developer, bringing great spirit to a team.",
+      "Professional Full Stack developer with over five years of experience in MERN stack development.",
+      "Vivek has extensive experience in building scalable web applications using React and Node.js.",
+      "Expert in developing RESTful APIs and working with various databases.",
+      "Has profound experience in modern JavaScript frameworks and cloud technologies.",
+      "Strong team player with excellent problem-solving skills and attention to detail.",
     ],
+    mainExpertise: ["React.js", "Node.js", "TypeScript"],
+    otherSkills: ["MongoDB", "AWS", "Docker"],
     experience: [
       {
-        company: "BLMEDIA GmbH",
-        duration: "1 year",
-        role: "Senior Web Developer",
+        company: "Tech Solutions Inc",
+        duration: "2 years",
+        role: "Senior Full Stack Developer",
         responsibilities: [
-          "Develop easy-to-manage and configurable Shopware plugins",
-          "Fully migrate existing Shopware 5 plugins to a brand new Shopware 6 system",
+          "Led development of enterprise-level React applications",
+          "Implemented microservices architecture using Node.js",
+          "Developed and maintained RESTful APIs",
+          "Optimized application performance and database queries",
+          "Mentored junior developers and conducted code reviews",
         ],
-        technologies: ["Zend", "Symfony", "PHP"],
+        technologies: ["React", "node", "typescript"],
       },
       {
-        company: "Spread Content - Choueiri Group",
-        duration: "3 years 11 months",
-        role: "Senior Web Developer",
+        company: "Digital Innovations",
+        duration: "3 years",
+        role: "Full Stack Developer",
         responsibilities: [
-          "Actively contributed to creating a powerful content management system (CMS) to serve as an interface for clients using the Symfony framework.",
-          "Launched Related engine microservice returns related articles",
-          "Achieved a reusable code structure with CMS that supports multiple projects.",
-          "Set up an API token authentication system using Symfony Custom Authentication System",
-          "Integrated Redis database to create quick access to any needed configuration for the web app.",
-          "Helped design an extensive graph database (Neo4j) to store the live matches score results, teams, players, and stadium details for the Eurosport Arabia website.",
-          "Integrated Webpack Encore for managing the front-end assets and minifying the CSS and JavaScript files.",
+          "Built scalable web applications using MERN stack",
+          "Implemented real-time features using WebSocket",
+          "Developed responsive UI components using React and Material-UI",
+          "Integrated third-party APIs and services",
+          "Participated in agile development processes",
         ],
+        technologies: ["React", "node", "typescript"],
       },
     ],
-  };
+    education: {
+      degree: "B.Tech in Computer Science",
+      institution: "Delhi Technical University",
+      duration: "2015 - 2019",
+    },
+  },
 
+  "Shivika Shingh": {
+    name: "Shivika Singh",
+    role: "Backend Developer",
+    location: "Bangalore",
+    image: "/images/shivika_singh.jpeg",
+    description: [
+      "Professional Python and Django developer with over four years of experience in backend development.",
+      "Shivika has extensive experience in building robust and scalable backend systems.",
+      "Expert in database design, optimization, and API development.",
+      "Has profound experience in Python frameworks and cloud services.",
+      "Excellent problem-solver with strong analytical skills.",
+    ],
+    mainExpertise: ["Python", "Django", "PostgreSQL"],
+    otherSkills: ["Redis", "Docker", "AWS"],
+    experience: [
+      {
+        company: "DataTech Solutions",
+        duration: "2 years",
+        role: "Senior Backend Developer",
+        responsibilities: [
+          "Designed and implemented scalable backend systems",
+          "Developed RESTful APIs using Django REST framework",
+          "Optimized database queries and improved performance",
+          "Implemented caching solutions using Redis",
+          "Led backend architecture discussions and decisions",
+        ],
+        technologies: ["Python", "django", "PostgreSQL"],
+      },
+      {
+        company: "Cloud Systems Ltd",
+        duration: "2 years",
+        role: "Python Developer",
+        responsibilities: [
+          "Developed microservices using Python and FastAPI",
+          "Implemented authentication and authorization systems",
+          "Created automated testing suites",
+          "Managed database migrations and schema updates",
+          "Integrated AWS services for scalable solutions",
+        ],
+        technologies: ["Python", "django", "PostgreSQL"],
+      },
+    ],
+    education: {
+      degree: "M.Tech in Computer Science",
+      institution: "IIT Bangalore",
+      duration: "2016 - 2018",
+    },
+  },
+
+  "Abhishek Garg": {
+    name: "Abhishek Garg",
+    role: "Frontend Developer",
+    location: "Mumbai",
+    image: "/images/abhishek_garg.jpeg",
+    description: [
+      "Professional Frontend developer with over three years of experience in Vue.js development.",
+      "Abhishek has extensive experience in creating responsive and interactive user interfaces.",
+      "Expert in modern JavaScript frameworks and state management.",
+      "Has profound experience in frontend optimization and performance tuning.",
+      "Strong focus on creating accessible and user-friendly applications.",
+    ],
+    mainExpertise: ["Vue.js", "JavaScript", "Tailwind CSS"],
+    otherSkills: ["Nuxt.js", "SASS", "Webpack"],
+    experience: [
+      {
+        company: "Creative Web Solutions",
+        duration: "2 years",
+        role: "Senior Frontend Developer",
+        responsibilities: [
+          "Developed responsive web applications using Vue.js",
+          "Implemented complex UI components and animations",
+          "Optimized frontend performance and loading times",
+          "Created reusable component libraries",
+          "Integrated REST APIs and managed state with Vuex",
+        ],
+        technologies: ["Vue", "JavaScript", "Tailwind"],
+      },
+      {
+        company: "Digital Creatives",
+        duration: "1 year",
+        role: "UI Developer",
+        responsibilities: [
+          "Built interactive user interfaces using modern JavaScript",
+          "Implemented responsive designs using Tailwind CSS",
+          "Created custom animations and transitions",
+          "Optimized web vitals and performance metrics",
+          "Collaborated with UX designers for optimal user experience",
+        ],
+        technologies: ["Vue", "tailwind", "JavaScript"],
+      },
+    ],
+    education: {
+      degree: "B.E. in Information Technology",
+      institution: "Mumbai University",
+      duration: "2014 - 2018",
+    },
+  },
+};
+export default function DeveloperProfile() {
+  const searchParams = useSearchParams();
+  const name = searchParams.get("name") || "";
+  const developer = developersData[name];
+  const technologyImages: { [key: string]: string } = {
+    react: "/images/react.png",
+    node: "/images/node.png",
+   
+    python: "/images/python.png",
+    django: "/images/django.jpeg",
+    postgresql: "/images/postgresql.png",
+    vue: "/images/vue.png",
+    javascript: "/images/javascript.png",
+    typescript: "/images/typescript.jpeg",
+    aws: "/images/aws.png",
+    docker: "/images/docker.jpeg",
+    tailwind: "/images/tailwind(1).png",
+    // Add more technology images as needed
+  };
   if (!developer) {
     return <div>Developer not found</div>;
   }
 
   return (
     <main className="min-h-screen bg-white">
+      {/* Hero Section */}
       <div className="relative bg-[#F6F0E4] py-20 overflow-hidden">
         {/* Left Side Illustration */}
         <div className="absolute left-0 top-1/3 -translate-y-1/2 z-10">
@@ -128,12 +280,11 @@ export default function DeveloperProfile() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Column - Content */}
           <div>
-            {/* Header Section */}
             <div className="inline-block px-4 py-1 rounded-full bg-blue-900/20 mb-6">
-    <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium">
-      DEVELOPER PROFILE
-    </span>
-  </div>
+              <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium">
+                DEVELOPER PROFILE
+              </span>
+            </div>
             <div className="mb-5">
               <h3 className="text-2xl font-bold text-[#0B1B2B] mb-2">
                 {developer.name}
@@ -161,15 +312,14 @@ export default function DeveloperProfile() {
                     Main expertise
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-4 py-2 bg-white text-[#0561FC] rounded-full text-sm border border-[#0561FC]/20">
-                      PHP
-                    </span>
-                    <span className="px-4 py-2 bg-white text-[#0561FC] rounded-full text-sm border border-[#0561FC]/20">
-                      Symfony
-                    </span>
-                    <span className="px-4 py-2 bg-white text-[#0561FC] rounded-full text-sm border border-[#0561FC]/20">
-                      Vue.js
-                    </span>
+                    {developer.mainExpertise.map((skill, index) => (
+                      <span
+                        key={index}
+                        className="px-4 py-2 bg-white text-[#0561FC] rounded-full text-sm border border-[#0561FC]/20"
+                      >
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
@@ -178,15 +328,92 @@ export default function DeveloperProfile() {
                     Other skills
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-4 py-2 bg-white text-gray-600 rounded-full text-sm border border-gray-200">
-                      Shopware
-                    </span>
-                    <span className="px-4 py-2 bg-white text-gray-600 rounded-full text-sm border border-gray-200">
-                      MySQL
-                    </span>
-                    <span className="px-4 py-2 bg-white text-gray-600 rounded-full text-sm border border-gray-200">
-                      Docker
-                    </span>
+                    {developer.otherSkills.map((skill, index) => (
+                      <span
+                        key={index}
+                        className="px-4 py-2 bg-white text-gray-600 rounded-full text-sm border border-gray-200"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Experience Section */}
+            <div className="mt-16">
+              <div className="text-left">
+                <div className="inline-block px-4 py-1 rounded-full bg-blue-900/20 mb-6">
+                  <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium">
+                    EXPERIENCE
+                  </span>
+                </div>
+                <h2 className="text-2xl font-bold text-[#0B1B2B] mb-2">
+                  Selected experience
+                </h2>
+              </div>
+              <h3 className="text-lg text-gray-600 mb-8">Employment</h3>
+              <div className="space-y-8 max-w-3xl">
+                {developer.experience.map((exp, index) => (
+                  <div
+                    key={index}
+                    className="relative pl-8 border-l-2 border-[#0561FC]"
+                  >
+                    <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[#0561FC]" />
+                    <div className="text-[#0561FC] text-sm font-medium mb-1">
+                      {exp.role}
+                    </div>
+                    <div className="text-gray-700 text-sm mb-4">
+                      {exp.company} - {exp.duration}
+                    </div>
+                    <div className="text-gray-700 text-sm mb-2">
+                      Roles and responsibilities:
+                    </div>
+                    <ul className="list-none space-y-2 text-gray-600 text-sm">
+                      {exp.responsibilities.map((resp, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <span className="mr-2">•</span>
+                          <span className="text-gray-700">{resp}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {exp.technologies && (
+                      <div className="mt-4">
+                        <div className="text-gray-700 text-sm mb-2">
+                          Technologies:
+                        </div>
+                        <div className="flex items-center gap-4">
+                          {exp.technologies.map((tech, idx) => (
+                            <Image
+                              key={idx}
+                              src={technologyImages[tech.toLowerCase()] || '/images/default-tech.png'}
+                              alt={tech}
+                              width={20}
+                              height={20}
+                              className="h-5"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+
+                {/* Education Section */}
+                <div className="mt-12">
+                  <h2 className="text-2xl font-bold text-[#0B1B2B] mb-8">
+                    Education
+                  </h2>
+                  <div className="relative pl-8 border-l-2 border-[#0561FC]">
+                    <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[#0561FC]" />
+                    <div className="text-[#0561FC] text-sm font-medium mb-1">
+                      {developer.education.degree}
+                    </div>
+                    <div className="text-gray-700 text-sm">
+                      {developer.education.institution} -{" "}
+                      {developer.education.duration}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -207,206 +434,12 @@ export default function DeveloperProfile() {
                 <h3 className="text-xl font-semibold text-[#0B1B2B]">
                   {developer.name}
                 </h3>
-                <p className="text-gray-600">Noida</p>
+                <p className="text-gray-600">{developer.location}</p>
                 <Link href="/payment" className="block mt-4">
                   <Button className="bg-[#0561FC] text-white px-8 py-3 rounded-full hover:bg-[#0561FC] transition-colors w-full">
                     BOOK {developer.name.toUpperCase()}
                   </Button>
                 </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Experience Section - Below the two columns */}
-        <div className="flex justify-center">
-          <div className="mt-28 ">
-            <div className="text-center">
-              {/* Centered Chip */}
-              <div className="inline-block px-4 py-1 rounded-full bg-blue-900/20 mb-6">
-                <span className="text-[10px] text-gray-600 uppercase tracking-wider font-medium">
-                  EXPERIENCE
-                </span>
-              </div>
-
-              <h2 className="text-2xl font-bold text-[#0B1B2B] mb-2">
-                Selected experience
-              </h2>
-            </div>
-            <h3 className="text-lg text-gray-600 mb-8">Employment</h3>
-            <div className="space-y-8 max-w-3xl">
-              {developer.experience.map((exp, index) => (
-                <div
-                  key={index}
-                  className="relative pl-8 border-l-2 border-[#0561FC]"
-                >
-                  <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[#0561FC]" />
-
-                  {/* Role Title in Blue */}
-                  <div className="text-[#0561FC] text-sm font-medium mb-1">
-                    Senior Web developer
-                  </div>
-
-                  {/* Company and Duration */}
-                  <div className="text-gray-700 text-sm mb-4">
-                    {exp.company} - {exp.duration}
-                  </div>
-
-                  {/* Responsibilities */}
-                  <div className="text-gray-700 text-sm mb-2">
-                    Roles and responsibilities:
-                  </div>
-                  <ul className="list-none space-y-2 text-gray-600 text-sm">
-                    {exp.responsibilities.map((resp, idx) => (
-                      <li key={idx} className="flex items-start">
-                        <span className="mr-2">•</span>
-                        <span className="text-gray-700">{resp}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Technologies */}
-                  {index === 0 && (
-                    <div className="mt-4">
-                      <div className="text-gray-700 text-sm mb-2">
-                        Technologies:
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <Image
-                          src="/images/zend.png"
-                          alt="Zend"
-                          width={20}
-                          height={20}
-                          className="h-5"
-                        />
-                        <Image
-                          src="/images/symfony.png"
-                          alt="Symfony"
-                          width={20}
-                          height={20}
-                          className="h-5"
-                        />
-                        <Image
-                          src="/images/php.png"
-                          alt="PHP"
-                          width={20}
-                          height={20}
-                          className="h-5"
-                        />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-
-              {/* Web Developer Section */}
-              <div className="relative pl-8 border-l-2 border-[#0561FC]">
-                <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[#0561FC]" />
-
-                {/* Role Title in Blue */}
-                <div className="text-[#0561FC] text-sm font-medium mb-1">
-                  Web developer
-                </div>
-
-                {/* Company and Duration */}
-                <div className="text-gray-700 text-sm mb-4">
-                  THALES IT - 1 year 2 months
-                </div>
-
-                {/* Responsibilities */}
-                <div className="text-gray-700 text-sm mb-2">
-                  Roles and responsibilities:
-                </div>
-                <ul className="list-none space-y-2 text-gray-600 text-sm">
-                  <li className="flex items-start">
-                    <span className="mr-2">•</span>
-                    <span className="text-gray-700">
-                      Developed a Swiss transport platform between one
-                      advertiser and several carriers on the Zend framework and
-                      fully designed the MySQL database tables based on the
-                      project and the client requirements; serve as an interface
-                      for clients using the Symfony framework.
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">•</span>
-                    <span className="text-gray-700">
-                      Developed custom modules using Zend Forms, Validations,
-                      and Layouts.
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">•</span>
-                    <span className="text-gray-700">
-                      Worked in a multilingual e-commerce website based on the
-                      Prestashop platform, customized the theme, plugins,
-                      modules, and various functionality to set all the
-                      requested payment gateway.
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">•</span>
-                    <span className="text-gray-700">
-                      Designed and built a WordPress theme from scratch and
-                      created several plugins based on the client&apos;s
-                      requirements.
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">•</span>
-                    <span className="text-gray-700">
-                      Created a WordPress custom post type and transformed the
-                      WordPress site from a blogging platform into a powerful
-                      Content Management System (CMS).
-                    </span>
-                  </li>
-                </ul>
-
-                {/* Technologies */}
-                <div className="mt-4">
-                  <div className="text-gray-700 text-sm mb-2">
-                    Technologies:
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <Image
-                      src="/images/zend.png"
-                      alt="Zend"
-                      width={20}
-                      height={20}
-                      className="h-5"
-                    />
-                    <Image
-                      src="/images/symfony.png"
-                      alt="Symfony"
-                      width={20}
-                      height={20}
-                      className="h-5"
-                    />
-                    <Image
-                      src="/images/wordpress.png"
-                      alt="WordPress"
-                      width={20}
-                      height={20}
-                      className="h-5"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Education Section */}
-              <div className="mt-12">
-                <h2 className="text-2xl font-bold text-[#0B1B2B] mb-8">
-                  Education
-                </h2>
-                <div className="relative pl-8 border-l-2 border-[#0561FC]">
-                  <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[#0561FC]" />
-                  <div className="text-[#0561FC] text-sm font-medium mb-1">
-                    BSc Information Technology
-                  </div>
-                  <div className="text-gray-700 text-sm">
-                    Lebanese University - Faculty of Sciences - 2012 - 2016
-                  </div>
-                </div>
               </div>
             </div>
           </div>

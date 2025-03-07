@@ -74,9 +74,12 @@ const page = () => {
               <p className="text-gray-600 mb-6 text-sm">
                 Empowering businesses with next-gen solutions. At Algofolks, we combine technical expertise and industry insights to build custom solutions tailored to your business needs. From AI-driven innovations to secure cloud architectures, our developers are committed to driving your digital transformation journey.
               </p>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-fit px-6 py-2 flex items-center gap-2">
-                Hire Developers →
-              </button>
+              <Link href="/hire-developers">
+    <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-fit px-6 py-2 flex items-center gap-2">
+        Hire Developers →
+    </button>
+</Link>
+
             </div>
             {/* Right Image */}
             <div className="relative h-[400px]">

@@ -482,14 +482,7 @@ Cookies Policy
                       Skills Directory
                     </Link>
                   </li>
-                  <li>
-                <Link
-                  href="/hire-developers"
-                  className="text-gray-400 text-[14px] hover:text-white transition-colors"
-                >
-                  Hire Developers
-                </Link>
-              </li>
+
                   <li>
                     <Link
                       href="/client"

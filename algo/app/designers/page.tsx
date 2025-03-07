@@ -77,9 +77,12 @@ const page = () => {
                 branding, or visual content, our designers are here to bring
                 your vision to life and ensure your audience stays engaged.
               </p>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-fit px-6 py-2 flex items-center gap-2">
-                Hire Designers →
-              </button>
+              <Link href="/hire-developers">
+    <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-fit px-6 py-2 flex items-center gap-2">
+        Hire Developers →
+    </button>
+</Link>
+
             </div>
             {/* Right Image */}
             <div className="relative h-[400px]">

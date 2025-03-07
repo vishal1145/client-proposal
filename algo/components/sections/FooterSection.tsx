@@ -414,14 +414,7 @@ export function FooterSection() {
                   Skills Directory
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/hire-developers"
-                  className="text-[14px] text-gray-600 hover:text-[#0066FF] transition-colors"
-                >
-                  Hire Developers
-                </Link>
-              </li>
+
 
               <li>
                     <Link

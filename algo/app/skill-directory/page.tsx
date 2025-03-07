@@ -144,9 +144,9 @@ const Page = () => {
                   <Image
                     src="/images/node.png"
                     alt="Node.js"
-                    width={40}
-                    height={40}
-                    className="w-8 h-8"
+                    width={50}
+                    height={50}
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -168,7 +168,7 @@ const Page = () => {
                     alt="Docker"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -191,7 +191,7 @@ const Page = () => {
                     alt="Unity3D"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -214,7 +214,7 @@ const Page = () => {
                     alt="WordPress"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -236,7 +236,7 @@ const Page = () => {
                     alt="Visual Studio"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -258,7 +258,7 @@ const Page = () => {
                     alt="Meta Trader"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -289,7 +289,7 @@ const Page = () => {
                     alt="Google Firebase"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -312,7 +312,7 @@ const Page = () => {
                     alt="Google Compute Engine"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -334,7 +334,7 @@ const Page = () => {
                     alt="Google BigQuery"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -356,7 +356,7 @@ const Page = () => {
                     alt="Atlassian"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -387,7 +387,7 @@ const Page = () => {
                     alt="GitHub"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -409,7 +409,7 @@ const Page = () => {
                     alt="Bitbucket"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -431,7 +431,7 @@ const Page = () => {
                     alt="Stackblitz"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -453,7 +453,7 @@ const Page = () => {
                     alt="NPM"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -476,7 +476,7 @@ const Page = () => {
                     alt="Back4App"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -515,7 +515,7 @@ const Page = () => {
                     alt="Angular"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -538,7 +538,7 @@ const Page = () => {
                     alt="Ionic"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -561,7 +561,7 @@ const Page = () => {
                     alt="Bootstrap"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -584,7 +584,7 @@ const Page = () => {
                     alt="jQuery"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -606,7 +606,7 @@ const Page = () => {
                     alt="Express"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -628,7 +628,7 @@ const Page = () => {
                     alt="Vuforia"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -661,7 +661,7 @@ const Page = () => {
                     alt="Google Maps"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -683,7 +683,7 @@ const Page = () => {
                     alt="Stripe"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-8=16 h-16"
                   />
                 </div>
               </div>
@@ -706,7 +706,7 @@ const Page = () => {
                     alt="Socket.io"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -729,7 +729,7 @@ const Page = () => {
                     alt="Twitter"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -752,7 +752,7 @@ const Page = () => {
                     alt="Dialogflow"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -774,7 +774,7 @@ const Page = () => {
                     alt="Facebook"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -796,7 +796,7 @@ const Page = () => {
                     alt="Parse Server"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -819,7 +819,7 @@ const Page = () => {
                     alt="Jasmine"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>
@@ -841,7 +841,7 @@ const Page = () => {
                     alt="Chart.js"
                     width={40}
                     height={40}
-                    className="w-8 h-8"
+                    className="w-16 h-16"
                   />
                 </div>
               </div>

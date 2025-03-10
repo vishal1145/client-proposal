@@ -142,9 +142,13 @@ export async function generateBusinessProposal(service) {
     "./config/prompts/business-proposal.html",
     "utf8"
   );
-  const contentStr = "<html><body><h1>Proposal Generated... </h1></body></html>";
-  // const templateHtml = fs.readFileSync('./config/prompts/business-proposal-' + (service.id || '')   +'.html', 'utf8');
-  const finalHtml = templateHtml.replace("{data}", contentStr);
+  const contentStr = "<html><body><h1>Proposal Generated asdsd... </h1></body></html>";
+  
+  const existingContent = fs.readFileSync(
+    "./config/prompts/business-proposal.html",
+    "utf8"
+  );
+  const finalHtml = existingContent.replace("$$$contentToReplace$$$", contentStr);
   // const finalHtml = templateHtml.replace('{data}', contentStr);
 
   // fs.writeFileSync('./config/prompts/business-proposal.html', finalHtml);

@@ -5,6 +5,13 @@
       <div class="loader"></div>
       <p>Generating proposals...</p>
     </div>
+    <div class="flex justify-between items-center mb-4 gap-4">
+      <div class="flex items-center gap-2">
+        <img src="./assets/BUSINESS-PROPOSAL.jpg" alt="" class="w-8 h-8">
+        <div class="text-3xl font-semibold text-indigo-600 hover:text-indigo-700">Business Proposal</div>
+      </div>
+      
+    </div>
     <div class="url">
       <h3>{{ url }}</h3>
     </div>
@@ -47,7 +54,7 @@
 
         </div>
 
-       
+
         <div v-else-if="activeTab === 'services'" class="services-list">
           <div v-for="(service, index) in services" :key="index" class="service-card">
             <div class="service-content">

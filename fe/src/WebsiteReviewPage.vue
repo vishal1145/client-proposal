@@ -2,7 +2,21 @@
   <div class="min-h-screen bg-gray-50 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header Section -->
-      <div class="flex justify-end items-center mb-8">
+      <!-- <div class="flex justify-end items-center mb-8">
+        <button
+          class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-[14px] text-white font-semibold rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md"
+          @click="openModal">
+          <svg class="w-4 h-4 mr-2 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+          Add Analysis
+        </button>
+      </div> -->
+      <div class="flex justify-between items-center mb-8 gap-4">
+        <div class="flex items-center gap-2">
+          <img src="./assets/BUSINESS-PROPOSAL.jpg" alt="" class="w-8 h-8">
+          <div class="text-3xl font-semibold text-indigo-600 hover:text-indigo-700">Business Proposal</div>
+        </div>
         <button
           class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-[14px] text-white font-semibold rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md"
           @click="openModal">
@@ -192,7 +206,7 @@
       </div>
     </div>
     <!-- Add/Update Email Modal -->
-    <div v-if="showEmailModal" class="fixed inset-0 overflow-y-auto z-50" role="dialog" aria-modal="true">
+    <!-- <div v-if="showEmailModal" class="fixed inset-0 overflow-y-auto z-50" role="dialog" aria-modal="true">
       <div class="flex items-center justify-center min-h-screen">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
         <div class="bg-white rounded-lg p-6 shadow-xl transition-all relative max-w-lg w-full mx-4">
@@ -216,7 +230,53 @@
           </div>
         </div>
       </div>
+    </div> -->
+    <div v-if="showEmailModal" class="fixed inset-0 overflow-y-auto z-50" role="dialog" aria-modal="true">
+      <div class="flex items-center justify-center min-h-screen">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
+        <div class="bg-white rounded-lg p-6 shadow-xl transition-all relative max-w-lg w-full mx-4">
+          <button @click="closeEmailModal"
+            class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">
+            {{ isUpdateMode ? 'Update Email & Details' : 'Add Email & Details' }}
+          </h3>
+
+          <input type="email" v-model="newEmail" placeholder="Enter email address"
+            class="w-full mb-4 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+
+          <input type="text" v-model="companyName" placeholder="Company Name"
+            class="w-full mb-4 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+
+          <input type="text" v-model="industry" placeholder="Industry"
+            class="w-full mb-4 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+
+          <input type="text" v-model="domain" placeholder="Domain"
+            class="w-full mb-4 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+
+          <input type="text" v-model="personalityType" placeholder="Personality Type"
+            class="w-full mb-4 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+
+          <input type="text" v-model="decisionMakerName" placeholder="Decision Maker Name"
+            class="w-full mb-4 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+
+          <input type="text" v-model="decisionMakerPosition" placeholder="Decision Maker Position (Optional)"
+            class="w-full mb-4 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
+
+          <div class="flex justify-end">
+            <button class="px-4 py-2 bg-gray-300 rounded-lg mr-2" @click="closeEmailModal">Cancel</button>
+            <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg transition-transform transform hover:scale-105"
+              @click="saveEmail" :disabled="isSaving">
+              {{ isSaving ? 'Saving...' : (isUpdateMode ? 'Update' : 'Add') }}
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -225,20 +285,41 @@ import axios from 'axios'
 
 export default {
   name: 'WebsiteReviewPage',
+  // data() {
+  //   return {
+  //     showModal: false,
+  //     showEmailModal: false,
+  //     newUrl: '',
+  //     newEmail: '',
+  //     currentItemId: null,
+  //     urlList: [],
+  //     isLoading: false,
+  //     isSaving: false,
+  //     isUpdateMode: false,
+  //     reanalyzingIds: new Set() // Track which items are being reanalyzed
+  //   }
+  // },
   data() {
     return {
       showModal: false,
       showEmailModal: false,
       newUrl: '',
       newEmail: '',
+      companyName: '',
+      industry: '',
+      domain: '',
+      personalityType: '',
+      decisionMakerName: '',
+      decisionMakerPosition: '',
       currentItemId: null,
       urlList: [],
       isLoading: false,
       isSaving: false,
       isUpdateMode: false,
-      reanalyzingIds: new Set() // Track which items are being reanalyzed
-    }
+      reanalyzingIds: new Set()
+    };
   },
+
   async created() {
     await this.fetchAnalyses()
   },
@@ -251,18 +332,44 @@ export default {
       this.showModal = false
     },
    
+    // openEmailModal(item, isUpdate = false) {
+    //   this.showEmailModal = true;
+    //   this.currentItemId = item._id;
+    //   this.isUpdateMode = isUpdate;
+    //   this.newEmail = isUpdate ? item.email : '';
+    // },
     openEmailModal(item, isUpdate = false) {
       this.showEmailModal = true;
       this.currentItemId = item._id;
       this.isUpdateMode = isUpdate;
       this.newEmail = isUpdate ? item.email : '';
+      this.companyName = isUpdate ? item.companyName || '' : '';
+      this.industry = isUpdate ? item.industry || '' : '';
+      this.domain = isUpdate ? item.domain || '' : '';
+      this.personalityType = isUpdate ? item.personalityType || '' : '';
+      this.decisionMakerName = isUpdate ? item.decisionMakerName || '' : '';
+      this.decisionMakerPosition = isUpdate ? item.decisionMakerPosition || '' : '';
     },
+
+    // closeEmailModal() {
+    //   this.showEmailModal = false;
+    //   this.newEmail = '';
+    //   this.currentItemId = null;
+    //   this.isUpdateMode = false;
+    // },
     closeEmailModal() {
       this.showEmailModal = false;
       this.newEmail = '';
+      this.companyName = '';
+      this.industry = '';
+      this.domain = '';
+      this.personalityType = '';
+      this.decisionMakerName = '';
+      this.decisionMakerPosition = '';
       this.currentItemId = null;
       this.isUpdateMode = false;
     },
+
     async fetchAnalyses() {
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
       this.isLoading = true;
@@ -334,32 +441,67 @@ export default {
       }
     },
 
+    // async saveEmail() {
+    //   if (!this.currentItemId || !this.newEmail.trim()) {
+    //     console.error('Invalid data: Missing ID or Email');
+    //     return;
+    //   }
+
+    //   this.isSaving = true;
+    //   try {
+    //     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+    //     const response = await axios.put(`${apiUrl}/analysis/${this.currentItemId}`, {
+    //       email: this.newEmail.trim(),
+    //     });
+
+    //     if (response.data.success) {
+    //       console.log(`${this.isUpdateMode ? 'Email updated' : 'Email added'} successfully`);
+    //       await this.fetchAnalyses(); // Optionally refresh the list
+    //       this.closeEmailModal();
+    //     } else {
+    //       console.error('Failed to save email');
+    //     }
+    //   } catch (error) {
+    //     console.error('Error saving email:', error);
+    //   } finally {
+    //     this.isSaving = false;
+    //   }
+    // },
     async saveEmail() {
-      if (!this.currentItemId || !this.newEmail.trim()) {
-        console.error('Invalid data: Missing ID or Email');
+      if (!this.currentItemId || !this.newEmail.trim() ) {
+        console.error('Please fill all mandatory fields');
         return;
       }
 
       this.isSaving = true;
       try {
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-        const response = await axios.put(`${apiUrl}/analysis/${this.currentItemId}`, {
+        const payload = {
           email: this.newEmail.trim(),
-        });
+          companyName: this.companyName.trim(),
+          industry: this.industry.trim(),
+          domain: this.domain.trim(),
+          personalityType: this.personalityType.trim(),
+          decisionMakerName: this.decisionMakerName.trim(),
+          decisionMakerPosition: this.decisionMakerPosition.trim() || null
+        };
+
+        const response = await axios.put(`${apiUrl}/analysis/${this.currentItemId}`, payload);
 
         if (response.data.success) {
-          console.log(`${this.isUpdateMode ? 'Email updated' : 'Email added'} successfully`);
+          console.log(`${this.isUpdateMode ? 'Email and details updated' : 'Email and details added'} successfully`);
           await this.fetchAnalyses(); // Optionally refresh the list
           this.closeEmailModal();
         } else {
-          console.error('Failed to save email');
+          console.error('Failed to save email and details');
         }
       } catch (error) {
-        console.error('Error saving email:', error);
+        console.error('Error saving email and details:', error);
       } finally {
         this.isSaving = false;
       }
     },
+
   }
 }
 </script>

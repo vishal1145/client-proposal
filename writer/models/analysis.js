@@ -9,6 +9,24 @@ const analysisSchema = new mongoose.Schema(
     email: {
       type: String,
     },
+    companyName: {
+      type: String,
+    },
+    industry: {
+      type: String,
+    },
+    domain: {
+      type: String,
+    },
+    personalityType: {
+      type: String,
+    },
+    decisionMakerName: {
+      type: String,
+    },
+    decisionMakerPosition: {
+      type: String,
+    },
     timestamp: {
       type: Date,
       default: Date.now,

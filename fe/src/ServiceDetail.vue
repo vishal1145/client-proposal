@@ -1,5 +1,11 @@
 <template>
     <div class="analysis-container">
+        <div class="flex justify-between items-center mb-4 gap-4">
+            <div class="flex items-center gap-2">
+                <img src="./assets/BUSINESS-PROPOSAL.jpg" alt="" class="w-8 h-8">
+                <div class="text-3xl font-semibold text-indigo-600 hover:text-indigo-700">Business Proposal</div>
+            </div>
+        </div>
         <div class="url">
             <h3>{{ url }}</h3>
         </div>
@@ -9,7 +15,7 @@
                     <button :class="['tab-button', { active: activeTab === 'links' }]" @click="activeTab = 'links'">
                         Service Details
                     </button>
-                </div>              
+                </div>
             </div>
 
             <div class="tab-content">
@@ -18,46 +24,58 @@
                         <p><strong class="service-heading">No service found</strong></p>
                     </div>
                 </div>
-                <div v-else v-for="(service, index) in services" :key="index" class="service-content">                  
-                    <div class="service-section">
-                        <p><strong class="service-heading">Business Summary:</strong> <br> {{ service.business_summary
-                            }}</p>
-                        <p><strong class="service-heading">Key Services:</strong> <br> {{ service.key_services }}</p>
-                        <p><strong class="service-heading">Target Audience:</strong> <br> {{ service.target_audience }}
-                        </p>
-                        <p><strong class="service-heading">Revenue Model:</strong> <br> {{ service.revenue_model }}</p>
-                        <p><strong class="service-heading">Existing Technology:</strong> <br> {{
-                            service.existing_technology }}</p>
-                        <p><strong class="service-heading">Operational Challenges:</strong> <br> {{
-                            service.operational_challenges }}</p>
-                        <p><strong class="service-heading">Market Trends:</strong> <br> {{ service.market_trends }}</p>
-                        <p><strong class="service-heading">Competitive Gap:</strong> <br> {{ service.competitive_gap }}
-                        </p>
-                        <p><strong class="service-heading">Compliance Needs:</strong> <br> {{ service.compliance_needs
-                            }}</p>
-                        <p><strong class="service-heading">Most Valuable Software Feature:</strong> <br> {{
-                            service.most_valuable_software_feature.feature_name }}</p>
-                        <p><strong class="service-heading">Feature Description:</strong> <br> {{
-                            service.most_valuable_software_feature.feature_description }}</p>
-                        <p><strong class="service-heading">Expected Benefits:</strong> <br> {{
-                            service.most_valuable_software_feature.expected_benefits }}</p>
-                        <p><strong class="service-heading">ROI Justification:</strong> <br> {{
-                            service.most_valuable_software_feature.ROI_justification }}</p>
-                        <div class="btn-grp mt-5">
-                            <button class="proposal-button" style="margin-right: 0px; " :disabled="isGenerating"
-                                @click="generateProposals">
-                                {{ isGenerating ? 'Generating...' : 'Generate Proposal' }}
-                            </button>
+                <div v-else v-for="(service, index) in services" :key="index" class="service-content">
+                    <div class="service-section flex gap-4">
+                        <div style="width: 70%;">
+                            <p><strong class="service-heading">Business Summary:</strong> <br> {{
+                                service.business_summary
+                                }}</p>
+                            <p><strong class="service-heading">Key Services:</strong> <br> {{ service.key_services }}
+                            </p>
+                            <p><strong class="service-heading">Target Audience:</strong> <br> {{ service.target_audience
+                                }}
+                            </p>
+                            <p><strong class="service-heading">Revenue Model:</strong> <br> {{ service.revenue_model }}
+                            </p>
+                            <p><strong class="service-heading">Existing Technology:</strong> <br> {{
+                                service.existing_technology }}</p>
+                            <p><strong class="service-heading">Operational Challenges:</strong> <br> {{
+                                service.operational_challenges }}</p>
+                            <p><strong class="service-heading">Market Trends:</strong> <br> {{ service.market_trends }}
+                            </p>
+                            <p><strong class="service-heading">Competitive Gap:</strong> <br> {{ service.competitive_gap
+                                }}
+                            </p>
+                            <p><strong class="service-heading">Compliance Needs:</strong> <br> {{
+                                service.compliance_needs
+                                }}</p>
+                            <p><strong class="service-heading">Most Valuable Software Feature:</strong> <br> {{
+                                service.most_valuable_software_feature.feature_name }}</p>
+                            <p><strong class="service-heading">Feature Description:</strong> <br> {{
+                                service.most_valuable_software_feature.feature_description }}</p>
+                            <p><strong class="service-heading">Expected Benefits:</strong> <br> {{
+                                service.most_valuable_software_feature.expected_benefits }}</p>
+                            <p><strong class="service-heading">ROI Justification:</strong> <br> {{
+                                service.most_valuable_software_feature.ROI_justification }}</p>
 
-                            <button v-if="hasProposal" class="proposal-button" style="margin-right: 0px; "
-                                @click="sendEmail">
-                                Send Mail
-                            </button>
+                        </div>
+                        <div style="width: 30%;">
+                            <div class="btn-grp">
+                                <button class="proposal-button" style="margin-right: 0px; " :disabled="isGenerating"
+                                    @click="generateProposals">
+                                    {{ isGenerating ? 'Generating...' : 'Generate Proposal' }}
+                                </button>
 
-                            <button v-if="hasProposal" class="proposal-button" style="margin-right: 0px; "
-                                @click="openPreviewPopup">
-                                Preview
-                            </button>
+                                <button v-if="hasProposal" class="proposal-button" style="margin-right: 0px; "
+                                    @click="sendEmail">
+                                    Send Mail
+                                </button>
+
+                                <button v-if="hasProposal" class="proposal-button" style="margin-right: 0px; "
+                                    @click="openPreviewPopup">
+                                    Preview
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

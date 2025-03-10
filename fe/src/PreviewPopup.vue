@@ -2,20 +2,22 @@
     <div v-if="visible" class="popup-overlay">
         <div class="popup-content scroll-container">
             <button class="close-button" @click="closePopup">X</button>
-            <ProjectProposal />
+            <!-- <ProjectProposal /> -->
+            <div v-html="htmlContent"></div>
         </div>
     </div>
 </template>
 
 <script>
-import ProjectProposal from './Project-Proposal.vue';
+// import ProjectProposal from './Project-Proposal.vue';
 export default {
     name: 'PreviewPopup',
-    components: {
-        ProjectProposal
-    },
+    // components: {
+    //     ProjectProposal
+    // },
     props: {
         visible: Boolean,
+        htmlContent: String, // Accept the HTML content as a prop
     },
     emits: ['close'],
     methods: {

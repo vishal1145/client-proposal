@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1>Proposal Generated... </h1>
-        <!-- <div class="main-wrapper">
+        <div class="main-wrapper">
             <header class="header">
                 <div class="logo">
                     <img src="./assets/logo.webp" alt="Logo" class="company-logo" />
@@ -133,7 +132,7 @@
                     <a href="#">SEND TO A FRIEND</a>
                 </div>
             </footer>
-        </div> -->
+        </div>
     </div>
 </template>
 

@@ -52,10 +52,12 @@
                                 :disabled="isGenerating">
                                 {{ isGenerating ? 'Generating...' : 'Generate Proposal' }}
                             </button>
-                            <button v-if="isProposalGenerated" class="proposal-button" style="margin-right: 0px; " @click="sendEmail">
+                            <button v-if="isProposalGenerated" class="proposal-button" style="margin-right: 0px; "
+                                @click="sendEmail">
                                 Send Mail
                             </button>
-                            <button v-if="isProposalGenerated" class="proposal-button" style="margin-right: 0px; " @click="openPreviewPopup">
+                            <button v-if="isProposalGenerated" class="proposal-button" style="margin-right: 0px; "
+                                @click="openPreviewPopup">
                                 Preview
                             </button>
                         </div>
@@ -63,7 +65,8 @@
                 </div>
             </div>
         </div>
-        <PreviewPopup :visible="isPreviewPopupVisible" @close="closePreviewPopup" />
+        <!-- <PreviewPopup :visible="isPreviewPopupVisible" @close="closePreviewPopup" /> -->
+        <PreviewPopup :visible="isPreviewPopupVisible" :htmlContent="previewHtmlContent" @close="closePreviewPopup" />
 
     </div>
 </template>
@@ -92,7 +95,7 @@ export default {
             isGenerating: false,
             isPreviewPopupVisible: false,
             isProposalGenerated: false,
-            generatedProposal: '', // Store the generated proposal HTML
+            previewHtmlContent: '',
         }
     },
 
@@ -106,7 +109,6 @@ export default {
             this.url = response.data.analysis.url;
             this.services = response.data.analysis.allServices.filter(service => Number(service.id) === serviceId);
             this.emailSend = response.data.analysis.email;
-            console.log("email:", response.data.analysis.email)
             console.log("services", response.data.analysis.allServices);
             console.log("links", response.data.analysis.links);
 
@@ -123,7 +125,7 @@ export default {
                 this.isGenerating = true;
                 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
                 const response = await axios.post(`${apiUrl}/proposals/generate-proposal`, {service: this.services[0]});
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 console.log('Proposal generated successfully!');
                 toast.success('Proposal generated successfully!');
                 this.isProposalGenerated = true;
@@ -134,40 +136,31 @@ export default {
                 this.isGenerating = false;
             }
         },
-        async openPreviewPopup() {
-          // api call to get the proposal html based on the service id
-          const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-          const response = await axios.get(`${apiUrl}/email/get-proposal-email?serviceId=${this.serviceId}`);
-          console.log(response.data.data);
-          this.isPreviewPopupVisible = true;
-        },
-        closePreviewPopup() {
+       async openPreviewPopup() {
+           try {
+               const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+               const response = await axios.get(`${apiUrl}/email/get-proposal-email?serviceId=${this.serviceId}`);
+               console.log(response.data.data);
+
+               // Store the HTML content for the popup
+               this.previewHtmlContent = response.data.data;
+               this.isPreviewPopupVisible = true;
+           } catch (error) {
+               console.error('Error fetching proposal HTML:', error);
+           }
+       },
+
+       closePreviewPopup() {
             this.isPreviewPopupVisible = false;
         },
-        // async sendEmail() {
-        //     try {
-        //         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-        //         const response = await axios.post(`${apiUrl}/email/send-email`,
-        //             {
-        //             to: this.emailSend,
-        //             }
-        //         );
-        //         console.log(response.data.message);
-        //         toast.success('Email sent successfully!');
-        //     } catch (error) {
-        //         console.error('Error sending email:', error);
-        //         toast.error('Failed to send email.');
-        //     }
-       // },
+        
        async sendEmail() {
            try {
                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
                const response = await axios.post(`${apiUrl}/email/send-email`, {
                    to: this.emailSend,
-                   //    proposal: this.generatedProposal, // Include the generated proposal
                    serviceId: this.serviceId
                });
-               console.log("mail-service-id:", this.serviceId);
                console.log(response.data.message);
                toast.success('Email sent successfully!');
            } catch (error) {

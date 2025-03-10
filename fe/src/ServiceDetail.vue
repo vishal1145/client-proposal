@@ -134,8 +134,12 @@ export default {
                 this.isGenerating = false;
             }
         },
-        openPreviewPopup() {
-            this.isPreviewPopupVisible = true;
+        async openPreviewPopup() {
+          // api call to get the proposal html based on the service id
+          const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+          const response = await axios.get(`${apiUrl}/email/get-proposal-email?serviceId=${this.serviceId}`);
+          console.log(response.data.data);
+          this.isPreviewPopupVisible = true;
         },
         closePreviewPopup() {
             this.isPreviewPopupVisible = false;

@@ -82,6 +82,17 @@ import dotenv from "dotenv";
 dotenv.config();
 const router = express.Router();
 
+router.get("/get-proposal-email", async (req, res) => {
+  const { serviceId } = req.query; // Get service ID from frontend
+  // Read the dynamically generated HTML template
+  const emailTemplatePath = path.join(
+    process.cwd(),
+    `./config/prompts/business-proposal-${serviceId}.html`
+  );  
+  const proposalHtml = fs.readFileSync(emailTemplatePath, "utf-8");
+  res.status(200).json({ success: true, data: proposalHtml });
+});
+
 // Email sending API
 router.post("/send-email", async (req, res) => {
   try {

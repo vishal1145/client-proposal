@@ -21,33 +21,33 @@ export function PlatformsSection() {
               <div className="relative group">
                 <div className="absolute inset-0  rounded-2xl"></div>
                 <Link href="services/graphic-designing">
-                <div
-                  className="relative flex items-center justify-between  rounded-2xl p-4  transition-colors cursor-pointer"
-                  style={{
-                    borderImage:
-                      "linear-gradient(to right, rgba(22, 36, 50, 1) 60%, rgba(22, 36, 50, 0)) 1",
-                    borderWidth: "1px",
-                    borderStyle: "solid",
-                  }}
-                >
-                  <span className="text-[17px] text-gray-200">
-                    Graphic Design
-                  </span>
-                  <div className="w-6 h-6 rounded-full bg-[#FF6B00] flex items-center justify-center">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                  <div
+                    className="relative flex items-center justify-between  rounded-2xl p-4  transition-colors cursor-pointer"
+                    style={{
+                      borderImage:
+                        "linear-gradient(to right, rgba(22, 36, 50, 1) 60%, rgba(22, 36, 50, 0)) 1",
+                      borderWidth: "1px",
+                      borderStyle: "solid",
+                    }}
+                  >
+                    <span className="text-[17px] text-gray-200">
+                      Graphic Design
+                    </span>
+                    <div className="w-6 h-6 rounded-full bg-[#FF6B00] flex items-center justify-center">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
                 </Link>
               </div>
 
@@ -55,70 +55,70 @@ export function PlatformsSection() {
               <div className="relative group">
                 <div className="absolute inset-0  bg-gradient-to-r from-[#0561FC] via-[#0561FC]/50 to-transparent  "></div>
                 <Link href="services/software-development">
-                <div
-                  className="relative flex items-center justify-between rounded-2xl p-4 transition-colors cursor-pointer"
-                  style={{
-                    background:
-                      "linear-gradient(to right, #0561FC 40%, #0561FC/30 70%, transparent 100%)",
-                  }}
-                >
-                  <span className="text-[17px] text-white">App Design</span>
-                  <div className="w-6 h-6 rounded-full bg-[#FF6B00] flex items-center justify-center">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                  <div
+                    className="relative flex items-center justify-between rounded-2xl p-4 transition-colors cursor-pointer"
+                    style={{
+                      background:
+                        "linear-gradient(to right, #0561FC 40%, #0561FC/30 70%, transparent 100%)",
+                    }}
+                  >
+                    <span className="text-[17px] text-white">App Design</span>
+                    <div className="w-6 h-6 rounded-full bg-[#FF6B00] flex items-center justify-center">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
                 </Link>
               </div>
 
               {/* Web Development */}
-             
+
               <div className="relative group">
                 <div className="absolute inset-0 rounded-2xl"></div>
-                 <Link href="services/web-development">
-                <div
-                  className="relative flex items-center justify-between rounded-2xl p-4 transition-colors cursor-pointer"
-                  style={{
-                    background: "transparent",
-                    borderImage:
-                      "linear-gradient(to right, rgba(22, 36, 50, 1) 60%, transparent) 1",
-                    borderWidth: "1px",
-                    borderStyle: "solid",
-                    borderRadius: "16px",
-                  }}
-                >
-                  <span className="text-[17px] text-gray-200">
-                    Web Development
-                  </span>
-                  <div className="w-6 h-6 rounded-full bg-[#FF6B00] flex items-center justify-center">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                <Link href="services/web-development">
+                  <div
+                    className="relative flex items-center justify-between rounded-2xl p-4 transition-colors cursor-pointer"
+                    style={{
+                      background: "transparent",
+                      borderImage:
+                        "linear-gradient(to right, rgba(22, 36, 50, 1) 60%, transparent) 1",
+                      borderWidth: "1px",
+                      borderStyle: "solid",
+                      borderRadius: "16px",
+                    }}
+                  >
+                    <span className="text-[17px] text-gray-200">
+                      Web Development
+                    </span>
+                    <div className="w-6 h-6 rounded-full bg-[#FF6B00] flex items-center justify-center">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </div>
+
                   </div>
-                
-                </div>
-                  </Link>
+                </Link>
               </div>
-              
+
             </div>
 
             {/* Know More Button */}
@@ -147,14 +147,14 @@ export function PlatformsSection() {
         {/* Right Image Section */}
         <div className="w-full md:w-1/2 h-[300px] md:h-auto relative">
           <Image
-            src="/images/platform1.png"
+            src="/images/s.jpg"
             alt="Platform Illustration"
             fill
             className="object-cover"
             priority
           />
           {/* Orange Circle Button */}
-          <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#FF6B00] rounded-full flex items-center justify-center hover:bg-[#ff8533] transition-colors">
+          {/* <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#FF6B00] rounded-full flex items-center justify-center hover:bg-[#ff8533] transition-colors">
             <svg
               width="24"
               height="24"
@@ -167,7 +167,7 @@ export function PlatformsSection() {
             >
               <polygon points="5 3 19 12 5 21 5 3" />
             </svg>
-          </button>
+          </button> */}
         </div>
       </div>
     </section>

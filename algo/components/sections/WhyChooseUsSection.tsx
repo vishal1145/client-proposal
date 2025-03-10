@@ -61,7 +61,7 @@ export function WhyChooseUsSection() {
             <div className="relative rounded-2xl overflow-visible">
               {/* Main Image */}
               <Image
-                src="/images/about3.jpeg"
+                src="/images/w.jpg"
                 alt="Why Choose Us Illustration"
                 width={500}
                 height={400}

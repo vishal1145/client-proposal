@@ -125,20 +125,20 @@ export function ServicesSection() {
           {/* Graphic Design Card */}
           <div className="col-span-1 sm:col-span-6 group">
             <Link href="services/graphic-designing">
-            <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
-              <Image
-                src="/images/homes1.png"
-                alt="Graphic Design"
-                fill
-                className="object-cover"
-              />
-            </div>
+              <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
+                <Image
+                  src="/images/homes1.png"
+                  alt="Graphic Design"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </Link>
             <div className="flex flex-col gap-4">
               <h3 className="text-xl sm:text-2xl font-bold text-[#0B1B2B]">
                 Graphic Designing
               </h3>
-              
+
               <Link href="/services">
                 <Button
                   variant="outline"
@@ -152,15 +152,15 @@ export function ServicesSection() {
 
           {/* Web Development Card */}
           <div className="col-span-1 sm:col-span-3 group">
-          <Link href="services/web-development">
-            <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
-              <Image
-                src="/images/home2.png"
-                alt="Web Development"
-                fill
-                className="object-cover"
-              />
-            </div>
+            <Link href="services/web-development">
+              <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
+                <Image
+                  src="/images/home2.png"
+                  alt="Web Development"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </Link>
             <h3 className="text-lg sm:text-xl font-bold text-[#0B1B2B]">
               Web development
@@ -169,15 +169,15 @@ export function ServicesSection() {
 
           {/* App Development Card */}
           <div className="col-span-1 sm:col-span-3 group">
-          <Link href="services/software-development">
-            <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
-              <Image
-                src="/images/homes3.png"
-                alt="App Development"
-                fill
-                className="object-cover"
-              />
-            </div>
+            <Link href="services/software-development">
+              <div className="relative h-[200px] sm:h-[300px] rounded-3xl overflow-hidden mb-4">
+                <Image
+                  src="/images/homes3.png"
+                  alt="App Development"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </Link>
             <h3 className="text-lg sm:text-xl font-bold text-[#0B1B2B]">
               Software development

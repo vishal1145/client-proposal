@@ -148,7 +148,7 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="relative z-20 rounded-2xl">
                   <Image
-                    src="/images/aboutm.jpeg"
+                    src="/images/aiabout6.jpeg"
                     alt="Person working on laptop"
                     width={380}
                     height={280}

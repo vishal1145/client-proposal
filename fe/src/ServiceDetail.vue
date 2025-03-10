@@ -160,8 +160,10 @@ export default {
                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
                const response = await axios.post(`${apiUrl}/email/send-email`, {
                    to: this.emailSend,
-                   proposal: this.generatedProposal, // Include the generated proposal
+                   //    proposal: this.generatedProposal, // Include the generated proposal
+                   serviceId: this.serviceId
                });
+               console.log("mail-service-id:", this.serviceId);
                console.log(response.data.message);
                toast.success('Email sent successfully!');
            } catch (error) {

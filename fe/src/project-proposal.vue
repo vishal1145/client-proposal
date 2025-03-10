@@ -1,8 +1,7 @@
 <template>
     <div>
-
-        <div class="main-wrapper">
-            <!-- Header Section -->
+        <h1>Proposal Generated... </h1>
+        <!-- <div class="main-wrapper">
             <header class="header">
                 <div class="logo">
                     <img src="./assets/logo.webp" alt="Logo" class="company-logo" />
@@ -38,9 +37,7 @@
                 </div>
             </header>
 
-            <!-- Content Section -->
             <div class="content-container">
-                <!-- Overview Section -->
                 <div class="content-section">
                     <h3 class="section-title">Overview</h3>
                     <p>
@@ -51,7 +48,6 @@
                     </p>
                 </div>
 
-                <!-- Goals Section -->
                 <div class="content-section">
                     <h3 class="section-title">Goals</h3>
                     <ul>
@@ -63,7 +59,6 @@
                     </ul>
                 </div>
 
-                <!-- Specifications Section -->
                 <div class="content-section">
                     <h3 class="section-title">Specifications</h3>
                     <p>
@@ -74,7 +69,6 @@
                     </p>
                 </div>
 
-                <!-- Lorem Ipsum Section -->
                 <div class="content-section">
                     <h3 class="section-title">Lorem ipsum</h3>
                     <p>
@@ -84,7 +78,6 @@
                     </p>
                 </div>
 
-                <!-- Milestones Section -->
                 <div class="content-section">
                     <h3 class="section-title">Milestones</h3>
                     <div class="milestone">
@@ -106,7 +99,6 @@
                 </div>
             </div>
 
-            <!-- Footer -->
             <footer class="footer">
                 <div class="social-icons">
                     <a href="#">
@@ -127,7 +119,6 @@
                     </a>
                 </div>
 
-                <!-- Address and Contact -->
                 <div class="footer-address">
                     <p>Address name St. 12, City Name, State, Country Name</p>
                     <p>(738) 479-6719 - (369) 718-1973</p>
@@ -142,7 +133,7 @@
                     <a href="#">SEND TO A FRIEND</a>
                 </div>
             </footer>
-        </div>
+        </div> -->
     </div>
 </template>
 

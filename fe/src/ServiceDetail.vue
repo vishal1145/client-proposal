@@ -1,5 +1,4 @@
 <template>
-
     <div class="analysis-container">
         <div class="url">
             <h3>{{ url }}</h3>
@@ -10,8 +9,7 @@
                     <button :class="['tab-button', { active: activeTab === 'links' }]" @click="activeTab = 'links'">
                         Service Details
                     </button>
-                </div>
-
+                </div>              
             </div>
 
             <div class="tab-content">
@@ -20,8 +18,7 @@
                         <p><strong class="service-heading">No service found</strong></p>
                     </div>
                 </div>
-                <div v-else v-for="(service, index) in services" :key="index" class="service-content">
-
+                <div v-else v-for="(service, index) in services" :key="index" class="service-content">                  
                     <div class="service-section">
                         <p><strong class="service-heading">Business Summary:</strong> <br> {{ service.business_summary
                             }}</p>
@@ -47,16 +44,17 @@
                         <p><strong class="service-heading">ROI Justification:</strong> <br> {{
                             service.most_valuable_software_feature.ROI_justification }}</p>
                         <div class="btn-grp mt-5">
-
-                            <button class="proposal-button " style="margin-right: 0px;" @click="generateProposals"
-                                :disabled="isGenerating">
+                            <button class="proposal-button" style="margin-right: 0px; " :disabled="isGenerating"
+                                @click="generateProposals">
                                 {{ isGenerating ? 'Generating...' : 'Generate Proposal' }}
                             </button>
-                            <button v-if="isProposalGenerated" class="proposal-button" style="margin-right: 0px; "
+
+                            <button v-if="hasProposal" class="proposal-button" style="margin-right: 0px; "
                                 @click="sendEmail">
                                 Send Mail
                             </button>
-                            <button v-if="isProposalGenerated" class="proposal-button" style="margin-right: 0px; "
+
+                            <button v-if="hasProposal" class="proposal-button" style="margin-right: 0px; "
                                 @click="openPreviewPopup">
                                 Preview
                             </button>
@@ -65,9 +63,8 @@
                 </div>
             </div>
         </div>
-        <!-- <PreviewPopup :visible="isPreviewPopupVisible" @close="closePreviewPopup" /> -->
-        <PreviewPopup :visible="isPreviewPopupVisible" :htmlContent="previewHtmlContent" @close="closePreviewPopup" />
 
+        <PreviewPopup :visible="isPreviewPopupVisible" :htmlContent="previewHtmlContent" @close="closePreviewPopup" />
     </div>
 </template>
 
@@ -83,20 +80,17 @@ export default {
     data() {
         return {
             services: [],
-            links: [],
             isLoading: true,
             activeTab: 'links',
-            selectedLinks: [],
-            selectedSections: [],
-            emailSend: '',
+            url: '',
             analysisId: this.$route.query.analysisId,
             serviceId: this.$route.query.serviceId,
-            url:'',
             isGenerating: false,
             isPreviewPopupVisible: false,
-            isProposalGenerated: false,
+            hasProposal: false,
             previewHtmlContent: '',
-        }
+            emailSend: '',
+        };
     },
 
     async created() {
@@ -104,14 +98,12 @@ export default {
             this.isLoading = true;
             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
             const response = await axios.get(`${apiUrl}/analysis?id=${this.analysisId}`);
-            this.services = response.data.analysis.allServices;
             const serviceId = Number(this.$route.query.serviceId);
             this.url = response.data.analysis.url;
             this.services = response.data.analysis.allServices.filter(service => Number(service.id) === serviceId);
             this.emailSend = response.data.analysis.email;
-            console.log("services", response.data.analysis.allServices);
-            console.log("links", response.data.analysis.links);
 
+            await this.checkExistingProposal();
 
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -120,59 +112,60 @@ export default {
         }
     },
    methods: {
+        async checkExistingProposal() {
+            try {
+                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+                const response = await axios.get(`${apiUrl}/email/get-proposal-email?serviceId=${this.serviceId}`);
+                this.hasProposal = !!response.data.data;
+            } catch (error) {
+                console.error('Error checking proposal status:', error);
+            }
+        },
+
         async generateProposals() {
             try {
                 this.isGenerating = true;
                 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-                const response = await axios.post(`${apiUrl}/proposals/generate-proposal`, {service: this.services[0]});
-                // console.log(response.data.data);
-                console.log('Proposal generated successfully!');
+                await axios.post(`${apiUrl}/proposals/generate-proposal`, { service: this.services[0] });
                 toast.success('Proposal generated successfully!');
-                this.isProposalGenerated = true;
+                this.hasProposal = true;
             } catch (error) {
-                console.log('Failed to generate proposal.');
                 toast.error('Failed to generate proposal.');
             } finally {
                 this.isGenerating = false;
             }
         },
-       async openPreviewPopup() {
-           try {
-               const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-               const response = await axios.get(`${apiUrl}/email/get-proposal-email?serviceId=${this.serviceId}`);
-               console.log(response.data.data);
 
-               // Store the HTML content for the popup
-               this.previewHtmlContent = response.data.data;
-               this.isPreviewPopupVisible = true;
-           } catch (error) {
-               console.error('Error fetching proposal HTML:', error);
-           }
-       },
+        async openPreviewPopup() {
+            try {
+                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+                const response = await axios.get(`${apiUrl}/email/get-proposal-email?serviceId=${this.serviceId}`);
+                this.previewHtmlContent = response.data.data;
+                this.isPreviewPopupVisible = true;
+            } catch (error) {
+                console.error('Error fetching proposal HTML:', error);
+            }
+        },
 
-       closePreviewPopup() {
+        closePreviewPopup() {
             this.isPreviewPopupVisible = false;
         },
-        
-       async sendEmail() {
-           try {
-               const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-               const response = await axios.post(`${apiUrl}/email/send-email`, {
-                   to: this.emailSend,
-                   serviceId: this.serviceId
-               });
-               console.log(response.data.message);
-               toast.success('Email sent successfully!');
-           } catch (error) {
-               console.error('Error sending email:', error);
-               toast.error('Failed to send email.');
-           }
-       },
+
+        async sendEmail() {
+            try {
+                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+                await axios.post(`${apiUrl}/email/send-email`, {
+                    to: this.emailSend,
+                    serviceId: this.serviceId,
+                });
+                toast.success('Email sent successfully!');
+            } catch (error) {
+                toast.error('Failed to send email.');
+            }
+        },
     },
-
-}
+};
 </script>
-
 
 <style scoped>
 .analysis-container {

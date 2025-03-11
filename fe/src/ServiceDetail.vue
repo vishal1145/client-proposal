@@ -1,10 +1,7 @@
 <template>
     <div class="analysis-container">
+
         <div class="flex justify-between items-center mb-4 gap-4">
-            <div class="flex items-center gap-2">
-                <img src="./assets/BUSINESS-PROPOSAL.jpg" alt="" class="w-8 h-8">
-                <div class="text-3xl font-semibold text-indigo-600 hover:text-indigo-700">Business Proposal</div>
-            </div>
         </div>
         <div class="url">
             <h3>{{ url }}</h3>
@@ -19,14 +16,15 @@
             </div>
 
             <div class="tab-content">
-                <div v-if="services.length === 0" class="service-content">
-                    <div class="service-section" style="text-align: center;">
-                        <p><strong class="service-heading">No service found</strong></p>
-                    </div>
+
+                <div v-if="services.length === 0" class="text-center text-gray-500 mt-4">
+                    No records found
                 </div>
+
                 <div v-else v-for="(service, index) in services" :key="index" class="service-content">
-                    <div class="service-section flex gap-4">
-                        <div style="width: 70%;">
+                    <div class="service-section flex gap-4" style="padding: 0px;">
+                        <div
+                            style="width: 70%; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; height: 700px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;">
                             <p><strong class="service-heading">Business Summary:</strong> <br> {{
                                 service.business_summary
                                 }}</p>
@@ -59,16 +57,17 @@
                                 service.most_valuable_software_feature.ROI_justification }}</p>
 
                         </div>
-                        <div style="width: 30%;">
+                        <div
+                            style="width: 30%; padding: 1rem; height: 700px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;">
                             <div class="btn-grp">
                                 <button class="proposal-button" style="margin-right: 0px; " :disabled="isGenerating"
                                     @click="generateProposals">
-                                    {{ isGenerating ? 'Generating...' : 'Generate Proposal' }}
+                                    {{ isGenerating ? 'Generating...' : 'Generate' }}
                                 </button>
 
                                 <button v-if="hasProposal" class="proposal-button" style="margin-right: 0px; "
                                     @click="sendEmail">
-                                    Send Mail
+                                    Send
                                 </button>
 
                                 <button v-if="hasProposal" class="proposal-button" style="margin-right: 0px; "
@@ -76,10 +75,15 @@
                                     Preview
                                 </button>
                             </div>
+                            <button class="proposal-button" style="margin-right: 0px; margin-top: 1rem;"
+                                @click="followUp">
+                                Follow Up
+                            </button>
                             <div class="email-history mt-4">
                                 <h3 class="email-heading">Email Sent Details :</h3>
                                 <ul>
-                                    <li v-for="email in emailHistory" :key="email._id" class="border-b py-2">
+                                    <li v-for="email in emailHistory" :key="email._id"
+                                        class="border-b py-2 last:border-b-0">
                                         <p style="margin: 0px;"><strong class="email-heading">To:</strong> {{ email.to
                                             }}</p>
                                         <p style="margin: 0px;"><strong class="email-heading">Subject:</strong> {{
@@ -148,7 +152,7 @@ export default {
             this.isLoading = false;
         }
     },
-   methods: {
+    methods: {
         async checkExistingProposal() {
             try {
                 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
@@ -172,14 +176,14 @@ export default {
                 this.isGenerating = false;
             }
         },
-       async fetchEmailHistory() {
-           try {
-               const response = await axios.get('http://localhost:9000/email/sent-emails');
-               this.emailHistory = response.data.data.filter(email => email.serviceId === this.serviceId);
-           } catch (error) {
-               console.error('Error fetching email history:', error);
-           }
-       },
+        async fetchEmailHistory() {
+            try {
+                const response = await axios.get('http://localhost:9000/email/sent-emails');
+                this.emailHistory = response.data.data.filter(email => email.serviceId === this.serviceId);
+            } catch (error) {
+                console.error('Error fetching email history:', error);
+            }
+        },
         async openPreviewPopup() {
             try {
                 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
@@ -207,6 +211,18 @@ export default {
                 toast.error('Failed to send email.');
             }
         },
+        async followUp() {
+            try {
+                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+                await axios.post(`${apiUrl}/send/followup-email`, {
+                    to: this.emailSend,
+                    serviceId: this.serviceId,
+                });
+                toast.success('Email sent successfully!');
+            } catch (error) {
+                toast.error('Failed to send email.');
+            }
+        },
     },
 };
 </script>
@@ -224,12 +240,14 @@ export default {
     margin-bottom: 2rem;
     text-align: center;
 }
+
 .url h3 {
     color: #2c3e50;
     margin-bottom: 1rem;
     font-size: 16px;
     font-weight: 600;
 }
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -245,17 +263,19 @@ export default {
     margin-bottom: 2rem;
     border: 1px solid #e0e0e0;
 }
-.email-heading{
+
+.email-heading {
     color: #2c3e50;
-        margin-bottom: 0.5rem;
-        font-size: 16px;
-        font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-weight: 600;
 }
-.service-heading{
-        color: #2c3e50;
-            margin-bottom: 0.5rem;
-            font-size: 16px;
-            font-weight: 600;
+
+.service-heading {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .service-card h3 {
@@ -567,7 +587,7 @@ input[type="checkbox"] {
 .service-section {
     padding: 1rem;
     margin-bottom: 1rem;
-    border: 1px solid #e0e0e0;
+    /* border: 1px solid #e0e0e0; */
     border-radius: 6px;
     transition: all 0.3s ease;
 }

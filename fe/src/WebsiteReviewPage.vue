@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-50 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header Section -->
-      <!-- <div class="flex justify-end items-center mb-8">
+      <div class="flex justify-end items-center mb-8">
         <button
           class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-[14px] text-white font-semibold rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md"
           @click="openModal">
@@ -11,8 +11,8 @@
           </svg>
           Add Analysis
         </button>
-      </div> -->
-      <div class="flex justify-between items-center mb-8 gap-4">
+      </div>
+      <!-- <div class="flex justify-between items-center mb-8 gap-4">
         <div class="flex items-center gap-2">
           <img src="./assets/BUSINESS-PROPOSAL.jpg" alt="" class="w-8 h-8">
           <div class="text-3xl font-semibold text-indigo-600 hover:text-indigo-700">Business Proposal</div>
@@ -25,7 +25,7 @@
           </svg>
           Add Analysis
         </button>
-      </div>
+      </div> -->
 
       <!-- Table Section -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -33,7 +33,19 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-100">
               <tr>
-                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">URL</th>
+                <th class="px-3 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">URL</th>
+
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Company
+                  Name</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Decision
+                  Maker Name</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Decision
+                  Maker Position</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Domain</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Industry
+                </th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Personality
+                  Type</th>
                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Email</th>
                 <th class="pl-0 pr-8 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider w-48">
                   Actions</th>
@@ -65,7 +77,7 @@
               </tr>
               <tr v-for="(item, index) in urlList" :key="index" class="hover:bg-gray-50 transition-colors">
                 <td class="px-6 py-5">
-                  <div class="flex items-center">
+                  <div class="flex items-center cursor-pointer" @click="viewUrl(item)">
                     <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
                       <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -76,7 +88,39 @@
                   </div>
                 </td>
                 <td class="px-6 py-5">
+                  <div class="flex items-center ">
+                    <span class="text-sm font-medium text-gray-900">{{ item.companyName }}</span>
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <div class="flex items-center " >
+                    <span class="text-sm font-medium text-gray-900">{{ item.decisionMakerName }}</span>
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <div class="flex items-center " >
+                    <span class="text-sm font-medium text-gray-900">{{ item.decisionMakerPosition }}</span>
+                  </div>
+                </td>
+                <td class="px-6 py-5">
                   <div class="flex items-center">
+                    <span class="text-sm font-medium text-gray-900">{{ item.domain }}</span>
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <div class="flex items-center " >
+                    <span class="text-sm font-medium text-gray-900">{{ item.industry }}</span>
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <div class="flex items-center " >
+                    <span class="text-sm font-medium text-gray-900">{{ item.personalityType }}</span>
+                  </div>
+                </td>
+
+
+                <td class="px-6 py-5">
+                  <!-- <div class="flex items-center">
                     <div v-if="item.email" class="flex items-center">
                       <span class="text-sm font-medium text-gray-900 mr-2">{{ item.email }}</span>
                       <button
@@ -93,10 +137,35 @@
                       </svg>
                       Add Email
                     </button>
+                  </div> -->
+                  <div class="flex items-center">
+                    <div v-if="item.email" class="flex items-center">
+                      <span class="text-sm font-medium text-gray-900 mr-2">{{ item.email }}</span>
+                      <button
+                        class="p-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md"
+                        @click="openEmailModal(item, true)">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15.232 5l3.536 3.536L8.268 19H4v-4.268L15.232 5z" />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <button v-else
+                      class="p-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md"
+                      @click="openEmailModal(item, false)">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                      </svg>
+                    </button>
                   </div>
+
+
+
+
                 </td>
                 <td class="pl-0 pr-8 py-5">
-                  <div class="flex space-x-4">
+                  <!-- <div class="flex space-x-4">
                     <button
                       class="inline-flex items-center px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-medium rounded-lg transition-colors"
                       @click="viewUrl(item)">
@@ -135,7 +204,33 @@
                       </svg>
                       {{ reanalyzingIds.has(item._id) ? 'Reanalyzing...' : 'Reanalyze' }}
                     </button>
+                  </div> -->
+                  <div class="flex space-x-4">
+                    <button class="p-2 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg transition-colors"
+                      @click="deleteItem(item._id)">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M6 6h12M9 6v12m6-12v12M4 6h16M10 18h4M8 6v12m8-12v12M5 6l1 12h12l1-12M9 6V4h6v2" />
+                      </svg>
+                    </button>
+
+                    <button class="p-2 bg-amber-50 hover:bg-amber-100 text-amber-700 rounded-lg transition-colors"
+                      @click="reanalyzeUrl(item)" :disabled="reanalyzingIds.has(item._id)">
+                      <svg v-if="reanalyzingIds.has(item._id)" class="animate-spin w-5 h-5"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                      </svg>
+                      <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                    </button>
                   </div>
+
                 </td>
               </tr>
             </tbody>

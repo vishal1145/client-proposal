@@ -238,28 +238,28 @@ router.post("/send-email", async (req, res) => {
       to,
       subject: "Project Proposal",
       html: emailTemplate,
-      attachments: [
-        {
-          filename: "logo.webp",
-          path: path.join(process.cwd(), "logo.webp"),
-          cid: "logo",
-        },
-        {
-          filename: "bg1.png",
-          path: path.join(process.cwd(), "bg1.png"),
-          cid: "background",
-        },
-        {
-          filename: "cir-img.jpg",
-          path: path.join(process.cwd(), "cir-img.jpg"),
-          cid: "profile",
-        },
-        {
-          filename: "circle.png",
-          path: path.join(process.cwd(), "circle.png"),
-          cid: "decorative",
-        },
-      ],
+      // attachments: [
+      //   {
+      //     filename: "logo.webp",
+      //     path: path.join(process.cwd(), "logo.webp"),
+      //     cid: "logo",
+      //   },
+      //   {
+      //     filename: "bg1.png",
+      //     path: path.join(process.cwd(), "bg1.png"),
+      //     cid: "background",
+      //   },
+      //   {
+      //     filename: "cir-img.jpg",
+      //     path: path.join(process.cwd(), "cir-img.jpg"),
+      //     cid: "profile",
+      //   },
+      //   {
+      //     filename: "circle.png",
+      //     path: path.join(process.cwd(), "circle.png"),
+      //     cid: "decorative",
+      //   },
+      // ],
     };
 
     // Send email

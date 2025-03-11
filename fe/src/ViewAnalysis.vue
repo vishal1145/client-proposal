@@ -6,11 +6,11 @@
       <p>Generating proposals...</p>
     </div>
     <div class="flex justify-between items-center mb-4 gap-4">
-      <div class="flex items-center gap-2">
+      <!-- <div class="flex items-center gap-2">
         <img src="./assets/BUSINESS-PROPOSAL.jpg" alt="" class="w-8 h-8">
         <div class="text-3xl font-semibold text-indigo-600 hover:text-indigo-700">Business Proposal</div>
-      </div>
-      
+      </div> -->
+
     </div>
     <div class="url">
       <h3>{{ url }}</h3>
@@ -37,8 +37,12 @@
 
         <!-- Links tab -->
         <div v-else-if="activeTab === 'links'" class="links-list">
-          <div v-for="(link, index) in links" :key="`link-${index}`" class="link-item flex justify-between gap-10"
-            :class="{ 'selected': selectedLinks.includes(link.url) }">
+          <div v-if="links.length === 0" class="text-center text-gray-500 mt-4">
+            No records found
+          </div>
+
+          <div v-else v-for="(link, index) in links" :key="`link-${index}`"
+            class="link-item flex justify-between gap-10" :class="{ 'selected': selectedLinks.includes(link.url) }">
             <div class="link-content">
               <span>{{ link.url }}</span>
             </div>
@@ -56,7 +60,11 @@
 
 
         <div v-else-if="activeTab === 'services'" class="services-list">
-          <div v-for="(service, index) in services" :key="index" class="service-card">
+          <div v-if="services.length === 0" class="text-center text-gray-500 mt-4">
+            No records found
+          </div>
+          <div v-else v-for="(service, index) in services" :key="index" class="service-card">
+
             <div class="service-content">
               <div class="service-section" @click="navigateToServiceDetail(service.id)">
                 <p><strong class="service-heading">Business Summary:</strong> <br> {{ service.business_summary }}</p>

@@ -168,9 +168,8 @@ export async function generateBusinessProposal(service) {
   const dynamicContent = {
     overview: "<p>Custom Overview content...</p>",
     goals: `
-    <ul>
-      <li>Custom Goal 1</li>
-    </ul>`,
+      Custom Goal 1
+    `,
     specifications: "<p>Custom Specifications details...</p>",
     loremIpsum: "<p>Custom Lorem Ipsum section...</p>",
     milestones: `<div class="milestone">

@@ -5,6 +5,7 @@ import cors from 'cors';
 import userRoutes from './routes/user.js';
 import proposalRouter from './routes/proposal.js';
 import emailRouter from "./routes/email.js";  
+import followupEmailRouter from "./routes/followupEmail.js";  
 const app = express();
 
 // Middleware
@@ -34,6 +35,7 @@ app.use('/users', userRoutes);
 app.use('/analysis', analysisRouter);
 app.use('/proposals', proposalRouter);
 app.use("/email", emailRouter);
+app.use("/send", followupEmailRouter); 
 
 // Start server after initializing connections
 initializeConnections().then(() => {

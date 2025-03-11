@@ -138,24 +138,67 @@ export async function generateBusinessProposal(service) {
 
   //var html = fs.readFileSync('./config/prompts/business-proposal.html', 'utf8');
   //html = html.replace('$$$proposaltext$$$', contentStr);
+
+  // const templateHtml = fs.readFileSync(
+  //   "./config/prompts/business-proposal.html",
+  //   "utf8"
+  // );
+  // const contentStr = "<html><body><p>Proposal Generated... </p></body></html>";
+
+  // const existingContent = fs.readFileSync(
+  //   "./config/prompts/business-proposal.html",
+  //   "utf8"
+  // );
+  // const finalHtml = existingContent.replace("$$$contentToReplace$$$", contentStr);
+  // // const finalHtml = templateHtml.replace('{data}', contentStr);
+
+  // // fs.writeFileSync('./config/prompts/business-proposal.html', finalHtml);
+  // const outputFilePath = `./config/prompts/business-proposal-${
+  //   service.id || ""
+  // }.html`;
+  // fs.writeFileSync(outputFilePath, finalHtml, "utf8");
+
+  // Read the template file
   const templateHtml = fs.readFileSync(
     "./config/prompts/business-proposal.html",
     "utf8"
   );
-  const contentStr = "<html><body><p>Proposal Generated... </p></body></html>";
-  
-  const existingContent = fs.readFileSync(
-    "./config/prompts/business-proposal.html",
-    "utf8"
-  );
-  const finalHtml = existingContent.replace("$$$contentToReplace$$$", contentStr);
-  // const finalHtml = templateHtml.replace('{data}', contentStr);
 
-  // fs.writeFileSync('./config/prompts/business-proposal.html', finalHtml);
+  // Define dynamic content
+  const dynamicContent = {
+    overview: "<p>Custom Overview content...</p>",
+    goals: `
+    <ul>
+      <li>Custom Goal 1</li>
+    </ul>`,
+    specifications: "<p>Custom Specifications details...</p>",
+    loremIpsum: "<p>Custom Lorem Ipsum section...</p>",
+    milestones: `<div class="milestone">
+                <h4>I. Custom Milestone 1</h4>
+                <p>Milestone details...</p>
+              </div>
+              <div class="milestone">
+                <h4>II. Custom Milestone 2</h4>
+                <p>Milestone details...</p>
+              </div>`,
+  };
+
+  // Replace placeholders dynamically
+  let finalHtml = templateHtml
+   
+    .replace("$$$contentToReplace$$$", dynamicContent.overview)
+    .replace("$$$goals$$$", dynamicContent.goals)
+    .replace("$$$specifications$$$", dynamicContent.specifications)
+    .replace("$$$loremIpsum$$$", dynamicContent.loremIpsum)
+    .replace("$$$milestones$$$", dynamicContent.milestones);
+
+  // Generate output file
   const outputFilePath = `./config/prompts/business-proposal-${
-    service.id || ""
+    service?.id || "default"
   }.html`;
   fs.writeFileSync(outputFilePath, finalHtml, "utf8");
+
+  console.log("Generated Proposal File:", outputFilePath);
 
   return finalHtml;
 }

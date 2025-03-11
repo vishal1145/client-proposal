@@ -76,6 +76,24 @@
                                     Preview
                                 </button>
                             </div>
+                            <div class="email-history mt-4">
+                                <h3 class="email-heading">Email Sent Details :</h3>
+                                <ul>
+                                    <li v-for="email in emailHistory" :key="email._id" class="border-b py-2">
+                                        <p style="margin: 0px;"><strong class="email-heading">To:</strong> {{ email.to
+                                            }}</p>
+                                        <p style="margin: 0px;"><strong class="email-heading">Subject:</strong> {{
+                                            email.subject
+                                            }}</p>
+                                        <p style="margin: 0px;"><strong class="email-heading">Status:</strong> {{
+                                            email.status
+                                            }}</p>
+                                        <p style="margin: 0px;"><strong class="email-heading">Sent At:</strong> {{ new
+                                            Date(email.timestamp).toLocaleString() }}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,6 +126,7 @@ export default {
             hasProposal: false,
             previewHtmlContent: '',
             emailSend: '',
+            emailHistory: [],
         };
     },
 
@@ -122,7 +141,7 @@ export default {
             this.emailSend = response.data.analysis.email;
 
             await this.checkExistingProposal();
-
+            await this.fetchEmailHistory();
         } catch (error) {
             console.error('Error fetching data:', error);
         } finally {
@@ -153,7 +172,14 @@ export default {
                 this.isGenerating = false;
             }
         },
-
+       async fetchEmailHistory() {
+           try {
+               const response = await axios.get('http://localhost:9000/email/sent-emails');
+               this.emailHistory = response.data.data.filter(email => email.serviceId === this.serviceId);
+           } catch (error) {
+               console.error('Error fetching email history:', error);
+           }
+       },
         async openPreviewPopup() {
             try {
                 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
@@ -218,6 +244,12 @@ export default {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
     border: 1px solid #e0e0e0;
+}
+.email-heading{
+    color: #2c3e50;
+        margin-bottom: 0.5rem;
+        font-size: 16px;
+        font-weight: 600;
 }
 .service-heading{
         color: #2c3e50;

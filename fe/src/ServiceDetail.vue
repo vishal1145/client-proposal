@@ -79,8 +79,11 @@
                                 @click="followUp">
                                 Follow Up
                             </button>
-                            <div class="email-history mt-4">
-                                <h3 class="email-heading">Email Sent Details :</h3>
+                            <!-- <div v-if="emailHistory.length === 0" class="text-center text-gray-500 mt-4">
+                                No records found
+                            </div> -->
+                            <div class="email-history mt-4" v-if="emailHistory.length>0">
+                                <h3 class=" email-heading">Email Sent Details :</h3>
                                 <ul>
                                     <li v-for="email in emailHistory" :key="email._id"
                                         class="border-b py-2 last:border-b-0">

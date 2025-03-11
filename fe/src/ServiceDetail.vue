@@ -218,9 +218,9 @@ export default {
                     to: this.emailSend,
                     serviceId: this.serviceId,
                 });
-                toast.success('Email sent successfully!');
+                toast.success('Followup email sent successfully!');
             } catch (error) {
-                toast.error('Failed to send email.');
+                toast.error('Failed to send Followup email.');
             }
         },
     },

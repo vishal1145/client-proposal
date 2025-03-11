@@ -61,9 +61,24 @@ export default {
     cursor: pointer;
     color: #c6a54c;
 }
-.scroll-container {
+/* .scroll-container {
     max-height: 100%;
     overflow-y: auto;
-}
+} */
+ .scroll-container {
+     max-height: 100%;
+     overflow-y: auto;
+
+     /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+     scrollbar-width: none;
+     /* Firefox */
+     -ms-overflow-style: none;
+     /* IE & Edge */
+ }
+
+ .scroll-container::-webkit-scrollbar {
+     display: none;
+     /* Hide scrollbar for Chrome, Safari, and Edge */
+ }
 </style>
 

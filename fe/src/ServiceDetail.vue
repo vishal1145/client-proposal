@@ -24,7 +24,7 @@
                 <div v-else v-for="(service, index) in services" :key="index" class="service-content">
                     <div class="service-section flex gap-4" style="padding: 0px;">
                         <div
-                            style="width: 70%; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; height: 700px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;">
+                            style="width: 70%; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; height: 700px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; margin-bottom: 1rem;">
                             <p><strong class="service-heading">Business Summary:</strong> <br> {{
                                 service.business_summary
                                 }}</p>
@@ -58,13 +58,13 @@
 
                         </div>
                         <div
-                            style="width: 30%; padding: 1rem; height: 700px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;">
+                            style="width: 30%; padding: 1rem; height: 700px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; margin-bottom: 1rem;">
                             <div class="btn-grp">
                                 <button class="proposal-button" style="margin-right: 0px; " :disabled="isGenerating"
                                     @click="generateProposals">
                                     {{ isGenerating ? 'Generating...' : 'Generate' }}
                                 </button>
-
+            
                                 <button v-if="hasProposal" class="proposal-button" style="margin-right: 0px; "
                                     @click="sendEmail">
                                     Send

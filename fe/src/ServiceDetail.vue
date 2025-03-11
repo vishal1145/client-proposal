@@ -4,7 +4,11 @@
         <div class="flex justify-between items-center mb-4 gap-4">
         </div>
         <div class="url">
-            <h3>{{ url }}</h3>
+            <h3>{{ url }} <span style="color: #666;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-weight: 600;">({{ emailSend }})</span></h3>
         </div>
         <div class="tabs-container">
             <div class="header-container">
@@ -64,7 +68,7 @@
                                     @click="generateProposals">
                                     {{ isGenerating ? 'Generating...' : 'Generate' }}
                                 </button>
-            
+
                                 <button v-if="hasProposal" class="proposal-button" style="margin-right: 0px; "
                                     @click="sendEmail">
                                     Send
@@ -79,21 +83,14 @@
                                 @click="followUp">
                                 Follow Up
                             </button>
-                            <!-- <div v-if="emailHistory.length === 0" class="text-center text-gray-500 mt-4">
-                                No records found
-                            </div> -->
-                            <div class="email-history mt-4" v-if="emailHistory.length>0">
+                            
+                            <div class="email-history mt-4 " v-if="emailHistory.length>0">
                                 <h3 class=" email-heading">Email Sent Details :</h3>
                                 <ul>
-                                    <li v-for="email in emailHistory" :key="email._id"
-                                        class="border-b py-2 last:border-b-0">
-                                        <p style="margin: 0px;"><strong class="email-heading">To:</strong> {{ email.to
-                                            }}</p>
+                                    <li v-for="email in emailHistory" :key="email._id" class="my-3 "
+                                        style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem;">
                                         <p style="margin: 0px;"><strong class="email-heading">Subject:</strong> {{
                                             email.subject
-                                            }}</p>
-                                        <p style="margin: 0px;"><strong class="email-heading">Status:</strong> {{
-                                            email.status
                                             }}</p>
                                         <p style="margin: 0px;"><strong class="email-heading">Sent At:</strong> {{ new
                                             Date(email.timestamp).toLocaleString() }}

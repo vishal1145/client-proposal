@@ -13,7 +13,11 @@
 
     </div>
     <div class="url">
-      <h3>{{ url }}</h3>
+      <h3>{{ url }} <span style="color: #666;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-weight: 600;">({{ email }})</span></h3>
     </div>
     <!-- Replace table with tabs -->
     <div class="tabs-container">
@@ -135,7 +139,8 @@ export default {
       isPreviewPopupVisible: false,
       analysisId: this.$route.params.id,
       serviceid: '',
-      url:''
+      url: '',
+      email:''
     }
   },
   computed: {

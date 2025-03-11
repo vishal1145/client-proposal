@@ -35,18 +35,19 @@
               <tr>
                 <th class="px-3 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">URL</th>
 
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider"> Email</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Decision
+                  Maker</th>
+                <!-- <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Decision
+                  Maker Position</th> -->
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Domain and
+                  Industry</th>
+                <!-- <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Industry
+                </th> -->
+                <!-- <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Personality
+                  Type</th> -->
                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Company
                   Name</th>
-                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Decision
-                  Maker Name</th>
-                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Decision
-                  Maker Position</th>
-                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Domain</th>
-                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Industry
-                </th>
-                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Personality
-                  Type</th>
-                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Email</th>
                 <th class="pl-0 pr-8 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider w-48">
                   Actions</th>
 
@@ -87,38 +88,11 @@
                     <span class="text-sm font-medium text-gray-900">{{ item.url }}</span>
                   </div>
                 </td>
-                <td class="px-6 py-5">
+                <!-- <td class="px-6 py-5">
                   <div class="flex items-center ">
                     <span class="text-sm font-medium text-gray-900">{{ item.companyName }}</span>
                   </div>
-                </td>
-                <td class="px-6 py-5">
-                  <div class="flex items-center " >
-                    <span class="text-sm font-medium text-gray-900">{{ item.decisionMakerName }}</span>
-                  </div>
-                </td>
-                <td class="px-6 py-5">
-                  <div class="flex items-center " >
-                    <span class="text-sm font-medium text-gray-900">{{ item.decisionMakerPosition }}</span>
-                  </div>
-                </td>
-                <td class="px-6 py-5">
-                  <div class="flex items-center">
-                    <span class="text-sm font-medium text-gray-900">{{ item.domain }}</span>
-                  </div>
-                </td>
-                <td class="px-6 py-5">
-                  <div class="flex items-center " >
-                    <span class="text-sm font-medium text-gray-900">{{ item.industry }}</span>
-                  </div>
-                </td>
-                <td class="px-6 py-5">
-                  <div class="flex items-center " >
-                    <span class="text-sm font-medium text-gray-900">{{ item.personalityType }}</span>
-                  </div>
-                </td>
-
-
+                </td> -->
                 <td class="px-6 py-5">
                   <!-- <div class="flex items-center">
                     <div v-if="item.email" class="flex items-center">
@@ -159,10 +133,39 @@
                       </svg>
                     </button>
                   </div>
+                </td>
+                <td class="px-6 py-5">
+                  <div class="flex items-center ">
+                    <span class="text-sm font-medium text-gray-900">{{ item.decisionMakerName }} {{
+                      item.decisionMakerPosition }}</span>
+                  </div>
+                </td>
+                <!-- <td class="px-6 py-5">
+                  <div class="flex items-center ">
+                    <span class="text-sm font-medium text-gray-900">{{ item.decisionMakerPosition }}</span>
+                  </div>
+                </td> -->
+                <td class="px-6 py-5">
+                  <div class="flex items-center">
+                    <span class="text-sm font-medium text-gray-900">{{ item.domain }} {{ item.industry }}</span>
+                  </div>
+                </td>
+                <!-- <td class="px-6 py-5">
+                  <div class="flex items-center " >
+                    <span class="text-sm font-medium text-gray-900">{{ item.industry }}</span>
+                  </div>
+                </td> -->
+                <!-- <td class="px-6 py-5">
+                  <div class="flex items-center " >
+                    <span class="text-sm font-medium text-gray-900">{{ item.personalityType }}</span>
+                  </div>
+                </td> -->
 
 
-
-
+                <td class="px-6 py-5">
+                  <div class="flex items-center ">
+                    <span class="text-sm font-medium text-gray-900">{{ item.companyName }}</span>
+                  </div>
                 </td>
                 <td class="pl-0 pr-8 py-5">
                   <!-- <div class="flex space-x-4">

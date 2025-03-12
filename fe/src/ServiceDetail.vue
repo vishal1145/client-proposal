@@ -70,7 +70,7 @@
                                 </button>
 
                                 <button v-if="hasProposal" class="proposal-button" style="margin-right: 0px; "
-                                    @click="sendEmail">
+                                    @click="openSendEmailPopup">
                                     Send
                                 </button>
 
@@ -83,7 +83,7 @@
                                 @click="followUp">
                                 Follow Up
                             </button>
-                            
+
                             <div class="email-history mt-4 " v-if="emailHistory.length>0">
                                 <h3 class=" email-heading">Email Sent Details :</h3>
                                 <ul>
@@ -105,6 +105,18 @@
         </div>
 
         <PreviewPopup :visible="isPreviewPopupVisible" :htmlContent="previewHtmlContent" @close="closePreviewPopup" />
+        <!-- Send Email Popup -->
+        <div v-if="showModal" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+            <div class="bg-white rounded-lg p-6 shadow-xl w-full max-w-md">
+                <h3 class="text-lg font-semibold">Send Email</h3>
+                <input v-model="emailSubject" type="text" placeholder="Enter email subject"
+                    class="w-full border rounded-lg p-2 mt-3" />
+                <div class="mt-4 flex justify-end">
+                    <button @click="closeSendEmailPopup" class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
+                    <button @click="sendEmail" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Send</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -131,6 +143,8 @@ export default {
             previewHtmlContent: '',
             emailSend: '',
             emailHistory: [],
+            showModal: false,
+            emailSubject: '',
         };
     },
 
@@ -178,7 +192,7 @@ export default {
         },
         async fetchEmailHistory() {
             try {
-                const response = await axios.get('http://localhost:9000/email/sent-emails');
+                const response = await axios.get('http://localhost:9000/email/email-details');
                 this.emailHistory = response.data.data.filter(email => email.serviceId === this.serviceId);
             } catch (error) {
                 console.error('Error fetching email history:', error);
@@ -198,15 +212,41 @@ export default {
         closePreviewPopup() {
             this.isPreviewPopupVisible = false;
         },
-
+        openSendEmailPopup() {
+            this.showModal = true;
+        },
+        closeSendEmailPopup() {
+            this.showModal = false;
+            this.emailSubject = '';
+        },
+        // async sendEmail() {
+        //     try {
+        //         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+        //         await axios.post(`${apiUrl}/email/send-email`, {
+        //             to: this.emailSend,
+        //             serviceId: this.serviceId,
+        //         });
+        //         toast.success('Email sent successfully!');
+        //     } catch (error) {
+        //         toast.error('Failed to send email.');
+        //     }
+        // },
         async sendEmail() {
+            // try {
+            //     await axios.post('http://localhost:4000/api/email/send', {
+            //         to: this.emailSend,
+            //         subject: this.emailSubject,
+            //         serviceId: this.serviceId,
+            //     });
             try {
-                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-                await axios.post(`${apiUrl}/email/send-email`, {
-                    to: this.emailSend,
-                    serviceId: this.serviceId,
-                });
+                    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+                    await axios.post(`${apiUrl}/email/send-email`, {
+                        to: this.emailSend,
+                        serviceId: this.serviceId,
+                        subject: this.emailSubject,
+                    });
                 toast.success('Email sent successfully!');
+                this.closeSendEmailPopup();
             } catch (error) {
                 toast.error('Failed to send email.');
             }

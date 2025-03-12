@@ -113,7 +113,7 @@ router.post("/send-email", async (req, res) => {
 });
 
 // Get sent emails
-router.get("/sent-emails", async (req, res) => {
+router.get("/email-details", async (req, res) => {
   try {
     const emails = await Email.find().sort({ createdAt: -1 });
 

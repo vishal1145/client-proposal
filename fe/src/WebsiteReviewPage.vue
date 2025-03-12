@@ -12,20 +12,6 @@
           Add Analysis
         </button>
       </div>
-      <!-- <div class="flex justify-between items-center mb-8 gap-4">
-        <div class="flex items-center gap-2">
-          <img src="./assets/BUSINESS-PROPOSAL.jpg" alt="" class="w-8 h-8">
-          <div class="text-3xl font-semibold text-indigo-600 hover:text-indigo-700">Business Proposal</div>
-        </div>
-        <button
-          class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-[14px] text-white font-semibold rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md"
-          @click="openModal">
-          <svg class="w-4 h-4 mr-2 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-          </svg>
-          Add Analysis
-        </button>
-      </div> -->
 
       <!-- Table Section -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -38,14 +24,10 @@
                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider"> Email</th>
                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Decision
                   Maker</th>
-                <!-- <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Decision
-                  Maker Position</th> -->
+
                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Domain and
                   Industry</th>
-                <!-- <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Industry
-                </th> -->
-                <!-- <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Personality
-                  Type</th> -->
+
                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Company
                   Name</th>
                 <th class="pl-0 pr-8 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider w-48">
@@ -88,30 +70,9 @@
                     <span class="text-sm font-medium text-gray-900">{{ item.url }}</span>
                   </div>
                 </td>
-                <!-- <td class="px-6 py-5">
-                  <div class="flex items-center ">
-                    <span class="text-sm font-medium text-gray-900">{{ item.companyName }}</span>
-                  </div>
-                </td> -->
+
                 <td class="px-6 py-5">
-                  <!-- <div class="flex items-center">
-                    <div v-if="item.email" class="flex items-center">
-                      <span class="text-sm font-medium text-gray-900 mr-2">{{ item.email }}</span>
-                      <button
-                        class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-[14px] text-white font-semibold rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md"
-                        @click="openEmailModal(item, true)">
-                        Update Email
-                      </button>
-                    </div>
-                    <button v-else
-                      class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-[14px] text-white font-semibold rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md"
-                      @click="openEmailModal(item, false)">
-                      <svg class="w-4 h-4 mr-2 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                      </svg>
-                      Add Email
-                    </button>
-                  </div> -->
+
                   <div class="flex items-center">
                     <div v-if="item.email" class="flex items-center">
                       <span class="text-sm font-medium text-gray-900 mr-2">{{ item.email }}</span>
@@ -140,26 +101,13 @@
                       item.decisionMakerPosition }}</span>
                   </div>
                 </td>
-                <!-- <td class="px-6 py-5">
-                  <div class="flex items-center ">
-                    <span class="text-sm font-medium text-gray-900">{{ item.decisionMakerPosition }}</span>
-                  </div>
-                </td> -->
+
                 <td class="px-6 py-5">
                   <div class="flex items-center">
                     <span class="text-sm font-medium text-gray-900">{{ item.domain }} {{ item.industry }}</span>
                   </div>
                 </td>
-                <!-- <td class="px-6 py-5">
-                  <div class="flex items-center " >
-                    <span class="text-sm font-medium text-gray-900">{{ item.industry }}</span>
-                  </div>
-                </td> -->
-                <!-- <td class="px-6 py-5">
-                  <div class="flex items-center " >
-                    <span class="text-sm font-medium text-gray-900">{{ item.personalityType }}</span>
-                  </div>
-                </td> -->
+
 
 
                 <td class="px-6 py-5">
@@ -210,7 +158,7 @@
                   </div> -->
                   <div class="flex space-x-4">
                     <button class="p-2 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg transition-colors"
-                      @click="deleteItem(item._id)">
+                      @click="openDeleteModal(item._id)">
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M6 6h12M9 6v12m6-12v12M4 6h16M10 18h4M8 6v12m8-12v12M5 6l1 12h12l1-12M9 6V4h6v2" />
@@ -303,32 +251,41 @@
         </div>
       </div>
     </div>
-    <!-- Add/Update Email Modal -->
-    <!-- <div v-if="showEmailModal" class="fixed inset-0 overflow-y-auto z-50" role="dialog" aria-modal="true">
-      <div class="flex items-center justify-center min-h-screen">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
-        <div class="bg-white rounded-lg p-6 shadow-xl transition-all relative max-w-lg w-full mx-4">
-          <button @click="closeEmailModal"
-            class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 focus:outline-none">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-          <h3 class="text-lg font-medium text-gray-900 mb-4">
-            {{ isUpdateMode ? 'Update Email' : 'Add Email' }}
-          </h3>
-          <input type="email" v-model="newEmail" placeholder="Enter email address"
-            class="w-full mb-4 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
-          <div class="flex justify-end">
-            <button class="px-4 py-2 bg-gray-300 rounded-lg mr-2" @click="closeEmailModal">Cancel</button>
-            <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg transition-transform transform hover:scale-105"
-              @click="saveEmail" :disabled="isSaving">
-              {{ isSaving ? 'Saving...' : (isUpdateMode ? 'Update' : 'Add') }}
+    <!-- Delete Confirmation Modal -->
+    <div v-if="showDeleteModal" class="fixed inset-0 overflow-y-auto z-50" role="dialog" aria-modal="true">
+      <div class="flex items-center justify-center min-h-screen p-4 text-center">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75" aria-hidden="true"></div>
+
+        <div class="bg-white rounded-lg shadow-xl transform transition-all sm:max-w-lg sm:w-full sm:p-6 relative">
+          <div class="absolute top-0 right-0 p-4">
+            <button @click="closeDeleteModal" class="text-gray-400 hover:text-gray-500 focus:outline-none">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="text-center">
+            <h3 class="text-lg font-medium text-gray-900 text-start">Confirm Deletion</h3>
+            <p class="mt-2 text-sm text-gray-600">Are you sure you want to delete this item? This action cannot be
+              undone.</p>
+          </div>
+
+          <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse gap-2">
+            <button type="button" @click="deleteItem" :disabled="isSaving"
+              class="w-full inline-flex justify-center rounded-lg px-4 py-2 bg-red-600 text-white font-medium hover:bg-red-700 sm:w-auto">
+              {{ isSaving ? 'Deleting...' : 'Delete' }}
+            </button>
+            <button v-if="!isSaving" type="button" @click="closeDeleteModal"
+              class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:w-auto sm:text-sm">
+              Cancel
             </button>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
+    <!-- Add/Update Email Modal -->
+
     <div v-if="showEmailModal" class="fixed inset-0 overflow-y-auto z-50" role="dialog" aria-modal="true">
       <div class="flex items-center justify-center min-h-screen">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
@@ -380,23 +337,11 @@
 
 <script>
 import axios from 'axios'
-
+import { useToast } from 'vue-toastification';
+const toast = useToast();
 export default {
   name: 'WebsiteReviewPage',
-  // data() {
-  //   return {
-  //     showModal: false,
-  //     showEmailModal: false,
-  //     newUrl: '',
-  //     newEmail: '',
-  //     currentItemId: null,
-  //     urlList: [],
-  //     isLoading: false,
-  //     isSaving: false,
-  //     isUpdateMode: false,
-  //     reanalyzingIds: new Set() // Track which items are being reanalyzed
-  //   }
-  // },
+  
   data() {
     return {
       showModal: false,
@@ -414,7 +359,9 @@ export default {
       isLoading: false,
       isSaving: false,
       isUpdateMode: false,
-      reanalyzingIds: new Set()
+      reanalyzingIds: new Set(),
+      showDeleteModal: false,
+      deleteId: null,
     };
   },
 
@@ -429,13 +376,15 @@ export default {
     closeModal() {
       this.showModal = false
     },
-   
-    // openEmailModal(item, isUpdate = false) {
-    //   this.showEmailModal = true;
-    //   this.currentItemId = item._id;
-    //   this.isUpdateMode = isUpdate;
-    //   this.newEmail = isUpdate ? item.email : '';
-    // },
+    openDeleteModal(id) {
+      this.deleteId = id;
+      this.showDeleteModal = true;
+    },
+    closeDeleteModal() {
+      this.showDeleteModal = false;
+      this.deleteId = null;
+    },
+    
     openEmailModal(item, isUpdate = false) {
       this.showEmailModal = true;
       this.currentItemId = item._id;
@@ -449,12 +398,7 @@ export default {
       this.decisionMakerPosition = isUpdate ? item.decisionMakerPosition || '' : '';
     },
 
-    // closeEmailModal() {
-    //   this.showEmailModal = false;
-    //   this.newEmail = '';
-    //   this.currentItemId = null;
-    //   this.isUpdateMode = false;
-    // },
+   
     closeEmailModal() {
       this.showEmailModal = false;
       this.newEmail = '';
@@ -482,21 +426,42 @@ export default {
         this.isLoading = false;
       }
     },
-    async deleteItem(id) {
-        try {
-          const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-          const response = await axios.delete(`${apiUrl}/analysis/${id}`);
+    // async deleteItem(id) {
+    //     try {
+    //       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+    //       const response = await axios.delete(`${apiUrl}/analysis/${id}`);
 
-          if (response.data.success) {
-            // Remove the deleted item from the urlList
-            this.urlList = this.urlList.filter(item => item._id !== id);
-            console.log('Analysis deleted successfully');
-          } else {
-            console.error('Failed to delete analysis');
-          }
-        } catch (error) {
-          console.error('Error deleting analysis:', error);
+    //       if (response.data.success) {
+    //         this.urlList = this.urlList.filter(item => item._id !== id);
+    //         console.log('Analysis deleted successfully');
+    //       } else {
+    //         console.error('Failed to delete analysis');
+    //       }
+    //     } catch (error) {
+    //       console.error('Error deleting analysis:', error);
+    //     }
+    // },
+    async deleteItem() {
+      if (!this.deleteId) return;
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+        const response = await axios.delete(`${apiUrl}/analysis/${this.deleteId}`);
+
+        if (response.data.success) {
+          // this.urlList = this.urlList.filter(item => item._id !== this.deleteId);
+          await this.fetchAnalyses()
+          this.showDeleteModal = false;
+          console.log('Analysis deleted successfully');
+          toast.success('Analysis deleted successfully');
+        } else {
+          console.error('Failed to delete analysis');
+          toast.error('Failed to delete analysis');
         }
+      } catch (error) {
+        console.error('Error deleting analysis:', error);
+      } finally {
+        this.showDeleteModal = false;
+      }
     },
     async saveUrl() {
       if (this.newUrl.trim()) {
@@ -539,32 +504,7 @@ export default {
       }
     },
 
-    // async saveEmail() {
-    //   if (!this.currentItemId || !this.newEmail.trim()) {
-    //     console.error('Invalid data: Missing ID or Email');
-    //     return;
-    //   }
-
-    //   this.isSaving = true;
-    //   try {
-    //     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-    //     const response = await axios.put(`${apiUrl}/analysis/${this.currentItemId}`, {
-    //       email: this.newEmail.trim(),
-    //     });
-
-    //     if (response.data.success) {
-    //       console.log(`${this.isUpdateMode ? 'Email updated' : 'Email added'} successfully`);
-    //       await this.fetchAnalyses(); // Optionally refresh the list
-    //       this.closeEmailModal();
-    //     } else {
-    //       console.error('Failed to save email');
-    //     }
-    //   } catch (error) {
-    //     console.error('Error saving email:', error);
-    //   } finally {
-    //     this.isSaving = false;
-    //   }
-    // },
+    
     async saveEmail() {
       if (!this.currentItemId || !this.newEmail.trim() ) {
         console.error('Please fill all mandatory fields');

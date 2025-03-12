@@ -1,4 +1,3 @@
-
 import express from "express";
 import nodemailer from "nodemailer";
 import fs from "fs";
@@ -92,7 +91,7 @@ router.post("/send-email", async (req, res) => {
     console.log("Email sent:", info.messageId);
 
     // Save email record in database
-    const emailRecord = new Email({ to, serviceId, status: "sent" });
+    const emailRecord = new Email({ to, serviceId, subject, status: "sent" });
     await emailRecord.save();
 
     res
@@ -102,9 +101,11 @@ router.post("/send-email", async (req, res) => {
     console.error("Error sending email:", error);
 
     // Save failed email record
+    // Save failed email record
     await Email.create({
       to: req.body.to,
       serviceId: req.body.serviceId,
+      subject: req.body.subject || "Project Proposal",
       status: "failed",
     });
 

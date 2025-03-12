@@ -19,7 +19,7 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-100">
               <tr>
-                <th class="px-3 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">URL</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">URL</th>
 
                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider"> Email</th>
                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Decision

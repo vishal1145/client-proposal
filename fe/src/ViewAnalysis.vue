@@ -13,7 +13,7 @@
 
     </div>
     <div class="url">
-      <h3>{{ url }} <span style="color: #666;
+      <h3>{{ url }} <span  v-if="email"  style="color: #666;
     line-height: 1.6;
     margin-bottom: 0.5rem;
     font-size: 16px;

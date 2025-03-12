@@ -4,7 +4,7 @@
         <div class="flex justify-between items-center mb-4 gap-4">
         </div>
         <div class="url">
-            <h3>{{ url }} <span style="color: #666;
+            <h3>{{ url }} <span  v-if="emailSend"  style="color: #666;
     line-height: 1.6;
     margin-bottom: 0.5rem;
     font-size: 16px;

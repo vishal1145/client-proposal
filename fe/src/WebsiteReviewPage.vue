@@ -158,7 +158,7 @@
                   </div> -->
                   <div class="flex space-x-4">
                     <button class="p-2 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg transition-colors"
-                      @click="openDeleteModal(item._id)">
+                      @click="openDeleteModal(item._id)" >
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M6 6h12M9 6v12m6-12v12M4 6h16M10 18h4M8 6v12m8-12v12M5 6l1 12h12l1-12M9 6V4h6v2" />
@@ -258,7 +258,7 @@
 
         <div class="bg-white rounded-lg shadow-xl transform transition-all sm:max-w-lg sm:w-full sm:p-6 relative">
           <div class="absolute top-0 right-0 p-4">
-            <button @click="closeDeleteModal" class="text-gray-400 hover:text-gray-500 focus:outline-none">
+            <button v-if="!isSaving" @click="closeDeleteModal" class="text-gray-400 hover:text-gray-500 focus:outline-none">
               <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -290,7 +290,7 @@
       <div class="flex items-center justify-center min-h-screen">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
         <div class="bg-white rounded-lg p-6 shadow-xl transition-all relative max-w-lg w-full mx-4">
-          <button @click="closeEmailModal"
+          <button v-if="!isSaving"  @click="closeEmailModal"
             class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 focus:outline-none">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -322,7 +322,7 @@
             class="w-full mb-4 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500" />
 
           <div class="flex justify-end">
-            <button class="px-4 py-2 bg-gray-300 rounded-lg mr-2" @click="closeEmailModal">Cancel</button>
+            <button class="px-4 py-2 bg-gray-300 rounded-lg mr-2" v-if="!isSaving"  @click="closeEmailModal">Cancel</button>
             <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg transition-transform transform hover:scale-105"
               @click="saveEmail" :disabled="isSaving">
               {{ isSaving ? 'Saving...' : (isUpdateMode ? 'Update' : 'Add') }}
@@ -371,7 +371,7 @@ export default {
   methods: {
     openModal() {
       this.showModal = true
-      this.newUrl = '' // Reset the input field
+      this.newUrl = '' 
     },
     closeModal() {
       this.showModal = false
@@ -379,10 +379,13 @@ export default {
     openDeleteModal(id) {
       this.deleteId = id;
       this.showDeleteModal = true;
+      this.isSaving = false;
     },
     closeDeleteModal() {
       this.showDeleteModal = false;
       this.deleteId = null;
+      this.isSaving = false;
+
     },
     
     openEmailModal(item, isUpdate = false) {
@@ -443,6 +446,8 @@ export default {
     // },
     async deleteItem() {
       if (!this.deleteId) return;
+      this.isSaving = true; // Start loading
+
       try {
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
         const response = await axios.delete(`${apiUrl}/analysis/${this.deleteId}`);
@@ -460,7 +465,7 @@ export default {
       } catch (error) {
         console.error('Error deleting analysis:', error);
       } finally {
-        this.showDeleteModal = false;
+        this.isSaving = false; // Stop loading
       }
     },
     async saveUrl() {

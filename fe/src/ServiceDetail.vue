@@ -82,11 +82,7 @@
                                     Preview
                                 </button>
                             </div>
-                            <!-- <button class="proposal-button" style="margin-right: 0px; margin-top: 1rem;"
-                                @click="followUp">
-                                Follow Up
-                            </button> -->
-                            <button class="proposal-button" style="margin-right: 0px; margin-top: 1rem;"
+                            <button v-if="hasProposal && emailHistory.length > 0" class="proposal-button" style="margin-right: 0px; margin-top: 1rem;"
                                 @click="openFollowUpPopup">
                                 Follow Up
                             </button>
@@ -133,8 +129,14 @@
                 <input v-model="emailSubject" type="text" placeholder="Enter email subject"
                     class="w-full border rounded-lg p-2 mt-3" />
                 <div class="mt-4 flex justify-end">
-                    <button @click="closeSendEmailPopup" class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
-                    <button @click="sendEmail" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Send</button>
+                    <button v-if="!isSaving" @click="closeSendEmailPopup"
+                        class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
+                    <!-- <button @click="sendEmail" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Send</button> -->
+                    <button @click="sendEmail" :disabled="isSaving" class="px-4 py-2 bg-blue-500 text-white rounded-lg">
+                        <span v-if="isSaving">Sending...</span>
+                        <span v-else>Send</span>
+                    </button>
+
                 </div>
             </div>
         </div>
@@ -147,8 +149,13 @@
                 <textarea v-model="followUpBody" placeholder="Enter follow-up message"
                     class="w-full border rounded-lg p-2 mt-3"></textarea>
                 <div class="mt-4 flex justify-end">
-                    <button @click="closeFollowUpPopup" class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
-                    <button @click="sendFollowUp" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Send</button>
+                    <button v-if="!isSaving" @click="closeFollowUpPopup" class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
+                    <!-- <button @click="sendFollowUp" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Send</button> -->
+                    <button @click="sendFollowUp" :disabled="isSaving"
+                        class="px-4 py-2 bg-blue-500 text-white rounded-lg">
+                        <span v-if="isSaving">Sending...</span>
+                        <span v-else>Send</span>
+                    </button>
                 </div>
             </div>
 
@@ -169,6 +176,7 @@ export default {
         return {
             services: [],
             isLoading: true,
+            isSaving: false,
             activeTab: 'links',
             url: '',
             analysisId: this.$route.query.analysisId,
@@ -264,63 +272,95 @@ export default {
         },
         openSendEmailPopup() {
             this.showModal = true;
+            this.emailSubject = '';
         },
         closeSendEmailPopup() {
             this.showModal = false;
             this.emailSubject = '';
         },
 
+        // async sendEmail() {
+
+        //     try {
+        //             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+        //             await axios.post(`${apiUrl}/email/send-email`, {
+        //                 to: this.emailSend,
+        //                 serviceId: this.serviceId,
+        //                 subject: this.emailSubject,
+        //             });
+        //         toast.success('Email sent successfully!');
+        //         this.closeSendEmailPopup();
+        //     } catch (error) {
+        //         toast.error('Failed to send email.');
+        //     }
+        // },
         async sendEmail() {
-            
+            if (!this.emailSubject.trim()) return;
+
+            this.isSaving = true; // Start loader
             try {
-                    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-                    await axios.post(`${apiUrl}/email/send-email`, {
-                        to: this.emailSend,
-                        serviceId: this.serviceId,
-                        subject: this.emailSubject,
-                    });
+                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+                await axios.post(`${apiUrl}/email/send-email`, {
+                    to: this.emailSend,
+                    serviceId: this.serviceId,
+                    subject: this.emailSubject.trim(),
+                });
                 toast.success('Email sent successfully!');
                 this.closeSendEmailPopup();
             } catch (error) {
+                console.error('Error sending email:', error);
                 toast.error('Failed to send email.');
+            } finally {
+                this.isSaving = false; 
             }
         },
-        // async followUp() {
-        //     try {
-        //         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-        //         await axios.post(`${apiUrl}/send/followup-email`, {
-        //             to: this.emailSend,
-        //             serviceId: this.serviceId,
-        //         });
-        //         toast.success('Followup email sent successfully!');
-        //     } catch (error) {
-        //         toast.error('Failed to send Followup email.');
-        //     }
-        // },
         openFollowUpPopup() {
             this.showFollowUpModal = true;
+            this.followUpSubject = '';
+            this.followUpBody = '';
         },
         closeFollowUpPopup() {
             this.showFollowUpModal = false;
             this.followUpSubject = '';
             this.followUpBody = '';
         },
+        // async sendFollowUp() {
+        //     try {
+        //         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+        //         await axios.post(`${apiUrl}/send/followup-email`, {
+        //             to: this.emailSend,
+        //             serviceId: this.serviceId,
+        //             subject: this.followUpSubject,
+        //             body: this.followUpBody,
+        //         });
+        //         toast.success('Follow-up email sent successfully!');
+        //         this.closeFollowUpPopup();
+        //     } catch (error) {
+        //         toast.error('Failed to send follow-up email.');
+        //     }
+        // }
         async sendFollowUp() {
+            if (!this.followUpSubject.trim() || !this.followUpBody.trim()) return;
+
+            this.isSaving = true; // Start loader
             try {
                 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
                 await axios.post(`${apiUrl}/send/followup-email`, {
                     to: this.emailSend,
                     serviceId: this.serviceId,
-                    subject: this.followUpSubject,
-                    body: this.followUpBody,
+                    subject: this.followUpSubject.trim(),
+                    body: this.followUpBody.trim(),
                 });
                 toast.success('Follow-up email sent successfully!');
                 this.closeFollowUpPopup();
             } catch (error) {
+                console.error('Error sending follow-up email:', error);
                 toast.error('Failed to send follow-up email.');
+            } finally {
+                this.isSaving = false; // Stop loader
             }
-        }
-    },
+        },
+    }
 };
 </script>
 

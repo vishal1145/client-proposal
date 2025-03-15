@@ -4,7 +4,7 @@
         <div class="flex justify-between items-center mb-4 gap-4">
         </div>
         <div class="url">
-            <h3>{{ url }} <span  v-if="emailSend"  style="color: #666;
+            <h3>{{ url }} <span v-if="emailSend" style="color: #666;
     line-height: 1.6;
     margin-bottom: 0.5rem;
     font-size: 16px;
@@ -82,8 +82,12 @@
                                     Preview
                                 </button>
                             </div>
-                            <button class="proposal-button" style="margin-right: 0px; margin-top: 1rem;"
+                            <!-- <button class="proposal-button" style="margin-right: 0px; margin-top: 1rem;"
                                 @click="followUp">
+                                Follow Up
+                            </button> -->
+                            <button class="proposal-button" style="margin-right: 0px; margin-top: 1rem;"
+                                @click="openFollowUpPopup">
                                 Follow Up
                             </button>
 
@@ -98,6 +102,20 @@
                                         <p style="margin: 0px;"><strong class="email-heading"></strong> {{ new
                                             Date(email.timestamp).toLocaleString() }}
                                         </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Follow-up Details -->
+                            <div class="followup-history mt-4" v-if="followupHistory.length > 0">
+                                <h3 class="email-heading">Follow-up Details:</h3>
+                                <ul>
+                                    <li v-for="followup in followupHistory" :key="followup._id" class="my-3"
+                                        style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem;">
+                                        <p style="margin: 0px;"><strong class="email-heading">{{ followup.subject
+                                                }}</strong></p>
+                                        <p style="margin: 0px;">{{ followup.body
+                                        }}</p>
+                                        <p style="margin: 0px;">{{ new Date(followup.createdAt).toLocaleString() }}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -119,6 +137,21 @@
                     <button @click="sendEmail" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Send</button>
                 </div>
             </div>
+        </div>
+        <!-- Follow-up Popup -->
+        <div v-if="showFollowUpModal" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+            <div class="bg-white rounded-lg p-6 shadow-xl w-full max-w-md">
+                <h3 class="text-lg font-semibold">Follow Up</h3>
+                <input v-model="followUpSubject" type="text" placeholder="Enter follow-up subject"
+                    class="w-full border rounded-lg p-2 mt-3" />
+                <textarea v-model="followUpBody" placeholder="Enter follow-up message"
+                    class="w-full border rounded-lg p-2 mt-3"></textarea>
+                <div class="mt-4 flex justify-end">
+                    <button @click="closeFollowUpPopup" class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
+                    <button @click="sendFollowUp" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Send</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
@@ -148,6 +181,11 @@ export default {
             emailHistory: [],
             showModal: false,
             emailSubject: '',
+            showFollowUpModal: false,
+            followUpSubject: '',
+            followUpBody: '',
+            followupHistory: [],
+
         };
     },
 
@@ -163,6 +201,7 @@ export default {
 
             await this.checkExistingProposal();
             await this.fetchEmailHistory();
+            await this.fetchFollowupHistory();
         } catch (error) {
             console.error('Error fetching data:', error);
         } finally {
@@ -201,6 +240,14 @@ export default {
                 console.error('Error fetching email history:', error);
             }
         },
+        async fetchFollowupHistory() {
+            try {
+                const response = await axios.get('http://localhost:9000/send/followup-details');
+                this.followupHistory = response.data.data.filter(followup => followup.serviceId === this.serviceId);
+            } catch (error) {
+                console.error('Error fetching follow-up history:', error);
+            }
+        },
         async openPreviewPopup() {
             try {
                 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
@@ -222,25 +269,9 @@ export default {
             this.showModal = false;
             this.emailSubject = '';
         },
-        // async sendEmail() {
-        //     try {
-        //         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-        //         await axios.post(`${apiUrl}/email/send-email`, {
-        //             to: this.emailSend,
-        //             serviceId: this.serviceId,
-        //         });
-        //         toast.success('Email sent successfully!');
-        //     } catch (error) {
-        //         toast.error('Failed to send email.');
-        //     }
-        // },
+
         async sendEmail() {
-            // try {
-            //     await axios.post('http://localhost:4000/api/email/send', {
-            //         to: this.emailSend,
-            //         subject: this.emailSubject,
-            //         serviceId: this.serviceId,
-            //     });
+            
             try {
                     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
                     await axios.post(`${apiUrl}/email/send-email`, {
@@ -254,18 +285,41 @@ export default {
                 toast.error('Failed to send email.');
             }
         },
-        async followUp() {
+        // async followUp() {
+        //     try {
+        //         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+        //         await axios.post(`${apiUrl}/send/followup-email`, {
+        //             to: this.emailSend,
+        //             serviceId: this.serviceId,
+        //         });
+        //         toast.success('Followup email sent successfully!');
+        //     } catch (error) {
+        //         toast.error('Failed to send Followup email.');
+        //     }
+        // },
+        openFollowUpPopup() {
+            this.showFollowUpModal = true;
+        },
+        closeFollowUpPopup() {
+            this.showFollowUpModal = false;
+            this.followUpSubject = '';
+            this.followUpBody = '';
+        },
+        async sendFollowUp() {
             try {
                 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
                 await axios.post(`${apiUrl}/send/followup-email`, {
                     to: this.emailSend,
                     serviceId: this.serviceId,
+                    subject: this.followUpSubject,
+                    body: this.followUpBody,
                 });
-                toast.success('Followup email sent successfully!');
+                toast.success('Follow-up email sent successfully!');
+                this.closeFollowUpPopup();
             } catch (error) {
-                toast.error('Failed to send Followup email.');
+                toast.error('Failed to send follow-up email.');
             }
-        },
+        }
     },
 };
 </script>

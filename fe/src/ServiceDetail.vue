@@ -82,10 +82,15 @@
                                     Preview
                                 </button>
                             </div>
-                            <button v-if="hasProposal && emailHistory.length > 0" class="proposal-button" style="margin-right: 0px; margin-top: 1rem;"
+                            <!-- <button v-if="hasProposal && emailHistory.length > 0" class="proposal-button" style="margin-right: 0px; margin-top: 1rem;"
                                 @click="openFollowUpPopup">
                                 Follow Up
+                            </button> -->
+                            <button v-if="hasProposal && emailHistory.length > 0" class="proposal-button"
+                                style="margin-right: 0px; margin-top: 1rem;" @click="openFollowUpPopup">
+                                Follow Up
                             </button>
+
 
                             <div class="email-history mt-4 " v-if="emailHistory.length>0">
                                 <h3 class=" email-heading">Email Sent Details :</h3>
@@ -110,7 +115,7 @@
                                         <p style="margin: 0px;"><strong class="email-heading">{{ followup.subject
                                                 }}</strong></p>
                                         <p style="margin: 0px;">{{ followup.body
-                                        }}</p>
+                                            }}</p>
                                         <p style="margin: 0px;">{{ new Date(followup.createdAt).toLocaleString() }}</p>
                                     </li>
                                 </ul>
@@ -141,7 +146,7 @@
             </div>
         </div>
         <!-- Follow-up Popup -->
-        <div v-if="showFollowUpModal" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+        <!-- <div v-if="showFollowUpModal" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
             <div class="bg-white rounded-lg p-6 shadow-xl w-full max-w-md">
                 <h3 class="text-lg font-semibold">Follow Up</h3>
                 <input v-model="followUpSubject" type="text" placeholder="Enter follow-up subject"
@@ -149,8 +154,8 @@
                 <textarea v-model="followUpBody" placeholder="Enter follow-up message"
                     class="w-full border rounded-lg p-2 mt-3"></textarea>
                 <div class="mt-4 flex justify-end">
-                    <button v-if="!isSaving" @click="closeFollowUpPopup" class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
-                    <!-- <button @click="sendFollowUp" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Send</button> -->
+                    <button v-if="!isSaving" @click="closeFollowUpPopup"
+                        class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
                     <button @click="sendFollowUp" :disabled="isSaving"
                         class="px-4 py-2 bg-blue-500 text-white rounded-lg">
                         <span v-if="isSaving">Sending...</span>
@@ -159,6 +164,25 @@
                 </div>
             </div>
 
+        </div> -->
+        <div v-if="showFollowUpModal" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+            <div class="bg-white rounded-lg p-6 shadow-xl w-full max-w-md">
+                <h3 class="text-lg font-semibold">Follow Up</h3>
+                <input v-model="followUpSubject" type="text" placeholder="Enter follow-up subject"
+                    class="w-full border rounded-lg p-2 my-3" />
+                <!-- Replace with QuillEditor -->
+                <QuillEditor v-model:content="followUpBody" contentType="html" placeholder="Enter follow-up message"
+                    class="w-full border rounded-b-lg p-2 mt-3" />
+                <div class="mt-4 flex justify-end">
+                    <button v-if="!isSaving" @click="closeFollowUpPopup"
+                        class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Cancel</button>
+                    <button @click="sendFollowUp" :disabled="isSaving"
+                        class="px-4 py-2 bg-blue-500 text-white rounded-lg">
+                        <span v-if="isSaving">Sending...</span>
+                        <span v-else>Send</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -167,10 +191,12 @@
 import axios from 'axios';
 import { useToast } from 'vue-toastification';
 import PreviewPopup from './PreviewPopup.vue';
+import { QuillEditor } from '@vueup/vue-quill'; 
+import '@vueup/vue-quill/dist/vue-quill.snow.css'; 
 const toast = useToast();
 export default {
     name: 'ServiceDetail',
-    components: { PreviewPopup },
+    components: { PreviewPopup, QuillEditor },
 
     data() {
         return {
@@ -316,8 +342,6 @@ export default {
         },
         openFollowUpPopup() {
             this.showFollowUpModal = true;
-            this.followUpSubject = '';
-            this.followUpBody = '';
         },
         closeFollowUpPopup() {
             this.showFollowUpModal = false;
@@ -339,6 +363,27 @@ export default {
         //         toast.error('Failed to send follow-up email.');
         //     }
         // }
+        // async sendFollowUp() {
+        //     if (!this.followUpSubject.trim() || !this.followUpBody.trim()) return;
+
+        //     this.isSaving = true; // Start loader
+        //     try {
+        //         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+        //         await axios.post(`${apiUrl}/send/followup-email`, {
+        //             to: this.emailSend,
+        //             serviceId: this.serviceId,
+        //             subject: this.followUpSubject.trim(),
+        //             body: this.followUpBody.trim(),
+        //         });
+        //         toast.success('Follow-up email sent successfully!');
+        //         this.closeFollowUpPopup();
+        //     } catch (error) {
+        //         console.error('Error sending follow-up email:', error);
+        //         toast.error('Failed to send follow-up email.');
+        //     } finally {
+        //         this.isSaving = false; // Stop loader
+        //     }
+        // },
         async sendFollowUp() {
             if (!this.followUpSubject.trim() || !this.followUpBody.trim()) return;
 
@@ -349,7 +394,7 @@ export default {
                     to: this.emailSend,
                     serviceId: this.serviceId,
                     subject: this.followUpSubject.trim(),
-                    body: this.followUpBody.trim(),
+                    body: this.followUpBody.trim(), // This will send the HTML content
                 });
                 toast.success('Follow-up email sent successfully!');
                 this.closeFollowUpPopup();
@@ -364,7 +409,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+.ql-toolbar.ql-snow {
+    /* border-radius: 8px !important; */
+border-radius: 8px 8px 0px 0px;
+}
+
 .analysis-container {
     max-width: 1200px;
     margin: 0 auto;

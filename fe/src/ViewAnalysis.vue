@@ -13,7 +13,7 @@
 
     </div>
     <div class="url">
-      <h3>{{ url }} <span  v-if="email"  style="color: #666;
+      <h3>{{ url }} <span v-if="email" style="color: #666;
     line-height: 1.6;
     margin-bottom: 0.5rem;
     font-size: 16px;
@@ -50,71 +50,94 @@
             <div class="link-content">
               <span>{{ link.url }}</span>
             </div>
-            <button
-              class="inline-flex items-center px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-700 font-medium rounded-lg transition-colors">
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- <button class="p-2 bg-amber-50 hover:bg-amber-100 text-amber-700 rounded-lg transition-colors"
+              @click="reanalyzeUrl(link)" :disabled="reanalyzingIds.has(link._id)">
+              <svg v-if="reanalyzingIds.has(link._id)" class="animate-spin w-5 h-5" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                </circle>
+                <path class="opacity-75" fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                </path>
+              </svg>
+              <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
-              Reanalyze
+            </button> -->
+            <button
+              class="inline-flex items-center px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-700 font-medium rounded-lg transition-colors"
+              @click="reanalyzeUrl(link)" :disabled="reanalyzingIds.has(link._id)">
+              <svg v-if="reanalyzingIds.has(link._id)" class="animate-spin w-4 h-4 mr-2"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                </circle>
+                <path class="opacity-75" fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                </path>
+              </svg>
+              <svg v-else class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              {{ reanalyzingIds.has(link._id) ? 'Reanalyzing...' : 'Reanalyze' }}
             </button>
-          </div>
-
         </div>
+      </div>
 
 
-        <div v-else-if="activeTab === 'services'" class="services-list">
-          <div v-if="services.length === 0" class="text-center text-gray-500 mt-4">
-            No records found
-          </div>
-          <div v-else v-for="(service, index) in services" :key="index" class="service-card">
+      <div v-else-if="activeTab === 'services'" class="services-list">
+        <div v-if="services.length === 0" class="text-center text-gray-500 mt-4">
+          No records found
+        </div>
+        <div v-else v-for="(service, index) in services" :key="index" class="service-card">
 
-            <div class="service-content">
-              <div class="service-section" @click="navigateToServiceDetail(service.id)">
-                <p><strong class="service-heading">Business Summary:</strong> <br> {{ service.business_summary }}</p>
-                <p><strong class="service-heading">Key Services:</strong> <br> {{ service.key_services }}</p>
-                <p><strong class="service-heading">Target Audience:</strong> <br> {{ service.target_audience }}</p>
-                <p><strong class="service-heading">Revenue Model:</strong> <br> {{ service.revenue_model }}</p>
-                <p><strong class="service-heading">Existing Technology:</strong> <br> {{ service.existing_technology }}
-                </p>
-                <p><strong class="service-heading">Operational Challenges:</strong> <br> {{
-                  service.operational_challenges }}</p>
-                <p><strong class="service-heading">Market Trends:</strong> <br> {{ service.market_trends }}</p>
-                <p><strong class="service-heading">Competitive Gap:</strong> <br> {{ service.competitive_gap }}</p>
-                <p><strong class="service-heading">Compliance Needs:</strong> <br> {{ service.compliance_needs }}</p>
-                <p><strong class="service-heading">Most Valuable Software Feature:</strong> <br> {{
-                  service.most_valuable_software_feature.feature_name }}</p>
-                <p><strong class="service-heading">Feature Description:</strong> <br> {{
-                  service.most_valuable_software_feature.feature_description }}</p>
-                <p><strong class="service-heading">Expected Benefits:</strong> <br> {{
-                  service.most_valuable_software_feature.expected_benefits
-                  }}</p>
-                <p><strong class="service-heading">ROI Justification:</strong> <br> {{
-                  service.most_valuable_software_feature.ROI_justification
-                  }}</p>
-              </div>
+          <div class="service-content">
+            <div class="service-section" @click="navigateToServiceDetail(service.id)">
+              <p><strong class="service-heading">Business Summary:</strong> <br> {{ service.business_summary }}</p>
+              <p><strong class="service-heading">Key Services:</strong> <br> {{ service.key_services }}</p>
+              <p><strong class="service-heading">Target Audience:</strong> <br> {{ service.target_audience }}</p>
+              <p><strong class="service-heading">Revenue Model:</strong> <br> {{ service.revenue_model }}</p>
+              <p><strong class="service-heading">Existing Technology:</strong> <br> {{ service.existing_technology }}
+              </p>
+              <p><strong class="service-heading">Operational Challenges:</strong> <br> {{
+                service.operational_challenges }}</p>
+              <p><strong class="service-heading">Market Trends:</strong> <br> {{ service.market_trends }}</p>
+              <p><strong class="service-heading">Competitive Gap:</strong> <br> {{ service.competitive_gap }}</p>
+              <p><strong class="service-heading">Compliance Needs:</strong> <br> {{ service.compliance_needs }}</p>
+              <p><strong class="service-heading">Most Valuable Software Feature:</strong> <br> {{
+                service.most_valuable_software_feature.feature_name }}</p>
+              <p><strong class="service-heading">Feature Description:</strong> <br> {{
+                service.most_valuable_software_feature.feature_description }}</p>
+              <p><strong class="service-heading">Expected Benefits:</strong> <br> {{
+                service.most_valuable_software_feature.expected_benefits
+                }}</p>
+              <p><strong class="service-heading">ROI Justification:</strong> <br> {{
+                service.most_valuable_software_feature.ROI_justification
+                }}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Update selection summary -->
-    <div class="selection-summary" v-if="hasSelections">
-      <p style="font-size: 14px;">Selected: {{ selectedLinks.length }} links, {{ selectedSections.length }} sections</p>
-      <button class="proposal-button" style="margin-right: 0px;" @click="generateProposals"
-        :disabled="!hasSelections || isGenerating">
-        {{ isGenerating ? 'Generating...' : 'Generate Proposals' }}
-      </button>
-      <button class="proposal-button" style="margin-right: 0px; " @click="sendEmail">
-        Send Mail
-      </button>
-      <button class="proposal-button" style="margin-right: 0px; " @click="openPreviewPopup">
-        Preview
-      </button>
-    </div>
-    <!-- Preview Popup Component -->
-    <PreviewPopup :visible="isPreviewPopupVisible" @close="closePreviewPopup" />
+  <!-- Update selection summary -->
+  <div class="selection-summary" v-if="hasSelections">
+    <p style="font-size: 14px;">Selected: {{ selectedLinks.length }} links, {{ selectedSections.length }} sections</p>
+    <button class="proposal-button" style="margin-right: 0px;" @click="generateProposals"
+      :disabled="!hasSelections || isGenerating">
+      {{ isGenerating ? 'Generating...' : 'Generate Proposals' }}
+    </button>
+    <button class="proposal-button" style="margin-right: 0px; " @click="sendEmail">
+      Send Mail
+    </button>
+    <button class="proposal-button" style="margin-right: 0px; " @click="openPreviewPopup">
+      Preview
+    </button>
+  </div>
+  <!-- Preview Popup Component -->
+  <PreviewPopup :visible="isPreviewPopupVisible" @close="closePreviewPopup" />
   </div>
 </template>
 
@@ -140,7 +163,8 @@ export default {
       analysisId: this.$route.params.id,
       serviceid: '',
       url: '',
-      email:''
+      email: '',
+      reanalyzingIds: new Set(), 
     }
   },
   computed: {
@@ -149,22 +173,23 @@ export default {
     }
   },
   async created() {
-    try {
-      this.isLoading = true;
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
-      const response = await axios.get(`${apiUrl}/analysis?id=${this.analysisId}`);
-      this.services = response.data.analysis.allServices;
-      this.url = response.data.analysis.url;
-      this.links = response.data.analysis.links;
-      console.log("services", response.data.analysis.allServices);
-      console.log("links", response.data.analysis.links);
-      this.email = response.data.analysis.email;
-      this.serviceid = response.data.analysis.allServices[0]?.id;
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    } finally {
-      this.isLoading = false;
-    }
+    // try {
+    //   this.isLoading = true;
+    //   const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+    //   const response = await axios.get(`${apiUrl}/analysis?id=${this.analysisId}`);
+    //   this.services = response.data.analysis.allServices;
+    //   this.url = response.data.analysis.url;
+    //   this.links = response.data.analysis.links;
+    //   console.log("services", response.data.analysis.allServices);
+    //   console.log("links", response.data.analysis.links);
+    //   this.email = response.data.analysis.email;
+    //   this.serviceid = response.data.analysis.allServices[0]?.id;
+    // } catch (error) {
+    //   console.error('Error fetching data:', error);
+    // } finally {
+    //   this.isLoading = false;
+    // }
+    this.fetchAnalyses();
   },
   methods: {
     toggleLinkSelection(url) {
@@ -203,7 +228,24 @@ export default {
         query: { analysisId: this.analysisId, serviceId: id },
       });
     },
-
+async fetchAnalyses() {
+      try {
+        this.isLoading = true;
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+        const response = await axios.get(`${apiUrl}/analysis?id=${this.analysisId}`);
+        this.services = response.data.analysis.allServices;
+        this.url = response.data.analysis.url;
+        this.links = response.data.analysis.links;
+        console.log("services", response.data.analysis.allServices);
+        console.log("links", response.data.analysis.links);
+        this.email = response.data.analysis.email;
+        this.serviceid = response.data.analysis.allServices[0]?.id;
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
     async generateProposals() {
       try {
         this.isGenerating = true;
@@ -235,6 +277,23 @@ export default {
         console.error('Error generating proposals:', error);
       } finally {
         this.isGenerating = false;
+      }
+    },
+    async reanalyzeUrl(item) {
+      this.reanalyzingIds.add(item._id);
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+        const response = await axios.post(`${apiUrl}/analysis`, {
+          url: item.url
+        });
+
+        if (response.data.success) {
+          await this.fetchAnalyses();
+        }
+      } catch (error) {
+        console.error('Error reanalyzing URL:', error);
+      } finally {
+        this.reanalyzingIds.delete(item._id);
       }
     },
     async sendEmail() {

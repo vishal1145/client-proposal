@@ -15,19 +15,14 @@
 
 // export default followupEmailTemplate;
 
-
 const generateFollowupEmailTemplate = (inquiryDetails) => {
   return `
     <html>
     <head>
       <title>Follow-up on Your Inquiry</title>
     </head>
-    <body>
-      <p>Dear Customer,</p>
-      <p>${inquiryDetails}</p>
-      <p>Please let us know if you need any further information.</p>
-      <p>Best regards,</p>
-      <p>Algofolks</p>
+    <body>  
+      ${inquiryDetails}
     </body>
     </html>
   `;

@@ -82,62 +82,63 @@
               </svg>
               {{ reanalyzingIds.has(link._id) ? 'Reanalyzing...' : 'Reanalyze' }}
             </button>
+          </div>
         </div>
-      </div>
 
 
-      <div v-else-if="activeTab === 'services'" class="services-list">
-        <div v-if="services.length === 0" class="text-center text-gray-500 mt-4">
-          No records found
-        </div>
-        <div v-else v-for="(service, index) in services" :key="index" class="">
+        <div v-else-if="activeTab === 'services'" class="services-list">
+          <div v-if="services.length === 0" class="text-center text-gray-500 mt-4">
+            No records found
+          </div>
+          <div v-else v-for="(service, index) in services" :key="index" class="">
 
-          <div class="service-content">
-            <div class="service-section" @click="navigateToServiceDetail(service.id)">
-              <p><strong class="service-heading">Business Summary:</strong> <br> {{ service.business_summary }}</p>
-              <p><strong class="service-heading">Key Services:</strong> <br> {{ service.key_services }}</p>
-              <p><strong class="service-heading">Target Audience:</strong> <br> {{ service.target_audience }}</p>
-              <p><strong class="service-heading">Revenue Model:</strong> <br> {{ service.revenue_model }}</p>
-              <p><strong class="service-heading">Existing Technology:</strong> <br> {{ service.existing_technology }}
-              </p>
-              <p><strong class="service-heading">Operational Challenges:</strong> <br> {{
-                service.operational_challenges }}</p>
-              <p><strong class="service-heading">Market Trends:</strong> <br> {{ service.market_trends }}</p>
-              <p><strong class="service-heading">Competitive Gap:</strong> <br> {{ service.competitive_gap }}</p>
-              <p><strong class="service-heading">Compliance Needs:</strong> <br> {{ service.compliance_needs }}</p>
-              <p><strong class="service-heading">Most Valuable Software Feature:</strong> <br> {{
-                service.most_valuable_software_feature.feature_name }}</p>
-              <p><strong class="service-heading">Feature Description:</strong> <br> {{
-                service.most_valuable_software_feature.feature_description }}</p>
-              <p><strong class="service-heading">Expected Benefits:</strong> <br> {{
-                service.most_valuable_software_feature.expected_benefits
-                }}</p>
-              <p><strong class="service-heading">ROI Justification:</strong> <br> {{
-                service.most_valuable_software_feature.ROI_justification
-                }}</p>
+            <div class="service-content cursor-pointer
+">
+              <div class="service-section" @click="navigateToServiceDetail(service.id)">
+                <p><strong class="service-heading">Business Summary:</strong> <br> {{ service.business_summary }}</p>
+                <p><strong class="service-heading">Key Services:</strong> <br> {{ service.key_services }}</p>
+                <p><strong class="service-heading">Target Audience:</strong> <br> {{ service.target_audience }}</p>
+                <p><strong class="service-heading">Revenue Model:</strong> <br> {{ service.revenue_model }}</p>
+                <p><strong class="service-heading">Existing Technology:</strong> <br> {{ service.existing_technology }}
+                </p>
+                <p><strong class="service-heading">Operational Challenges:</strong> <br> {{
+                  service.operational_challenges }}</p>
+                <p><strong class="service-heading">Market Trends:</strong> <br> {{ service.market_trends }}</p>
+                <p><strong class="service-heading">Competitive Gap:</strong> <br> {{ service.competitive_gap }}</p>
+                <p><strong class="service-heading">Compliance Needs:</strong> <br> {{ service.compliance_needs }}</p>
+                <p><strong class="service-heading">Most Valuable Software Feature:</strong> <br> {{
+                  service.most_valuable_software_feature.feature_name }}</p>
+                <p><strong class="service-heading">Feature Description:</strong> <br> {{
+                  service.most_valuable_software_feature.feature_description }}</p>
+                <p><strong class="service-heading">Expected Benefits:</strong> <br> {{
+                  service.most_valuable_software_feature.expected_benefits
+                  }}</p>
+                <p><strong class="service-heading">ROI Justification:</strong> <br> {{
+                  service.most_valuable_software_feature.ROI_justification
+                  }}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Update selection summary -->
-  <div class="selection-summary" v-if="hasSelections">
-    <p style="font-size: 14px;">Selected: {{ selectedLinks.length }} links, {{ selectedSections.length }} sections</p>
-    <button class="proposal-button" style="margin-right: 0px;" @click="generateProposals"
-      :disabled="!hasSelections || isGenerating">
-      {{ isGenerating ? 'Generating...' : 'Generate Proposals' }}
-    </button>
-    <button class="proposal-button" style="margin-right: 0px; " @click="sendEmail">
-      Send Mail
-    </button>
-    <button class="proposal-button" style="margin-right: 0px; " @click="openPreviewPopup">
-      Preview
-    </button>
-  </div>
-  <!-- Preview Popup Component -->
-  <PreviewPopup :visible="isPreviewPopupVisible" @close="closePreviewPopup" />
+    <!-- Update selection summary -->
+    <div class="selection-summary" v-if="hasSelections">
+      <p style="font-size: 14px;">Selected: {{ selectedLinks.length }} links, {{ selectedSections.length }} sections</p>
+      <button class="proposal-button" style="margin-right: 0px;" @click="generateProposals"
+        :disabled="!hasSelections || isGenerating">
+        {{ isGenerating ? 'Generating...' : 'Generate Proposals' }}
+      </button>
+      <button class="proposal-button" style="margin-right: 0px; " @click="sendEmail">
+        Send Mail
+      </button>
+      <button class="proposal-button" style="margin-right: 0px; " @click="openPreviewPopup">
+        Preview
+      </button>
+    </div>
+    <!-- Preview Popup Component -->
+    <PreviewPopup :visible="isPreviewPopupVisible" @close="closePreviewPopup" />
   </div>
 </template>
 

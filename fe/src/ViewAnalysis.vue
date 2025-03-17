@@ -90,7 +90,7 @@
         <div v-if="services.length === 0" class="text-center text-gray-500 mt-4">
           No records found
         </div>
-        <div v-else v-for="(service, index) in services" :key="index" class="service-card">
+        <div v-else v-for="(service, index) in services" :key="index" class="">
 
           <div class="service-content">
             <div class="service-section" @click="navigateToServiceDetail(service.id)">

@@ -6,13 +6,14 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: { requiresAuth: false }
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
-    // meta: { requiresAuth: true }
+    meta: { requiresAuth: true }
   },
   {
     path: '/',
@@ -26,28 +27,19 @@ const router = createRouter({
 })
 
 // Navigation guard
-// router.beforeEach((to, from, next) => {
-//   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token');
   
-//   if (to.meta.requiresAuth && !isAuthenticated) {
-//     next('/login')
-//   } else if (to.path === '/login' && isAuthenticated) {
-//     next('/dashboard')
-//   } else {
-//     next()
-//   }
-// })
-
-// router.beforeEach((to, from, next) => {
-//   const token = localStorage.getItem("token"); // Check for token
-
-//   if (to.meta.requiresAuth && !token) {
-//     next("/login"); // Redirect to login if no token
-//   } else if (to.path === "/login" && token) {
-//     next("/dashboard"); // Redirect to dashboard if already authenticated
-//   } else {
-//     next(); // Proceed to the route
-//   }
-// });
+  if (to.meta.requiresAuth && !token) {
+    // If route requires auth and user is not authenticated
+    next('/login');
+  } else if (to.path === '/login' && token) {
+    // If user is already authenticated and tries to access login page
+    next('/dashboard');
+  } else {
+    // In all other cases, proceed normally
+    next();
+  }
+});
 
 export default router 

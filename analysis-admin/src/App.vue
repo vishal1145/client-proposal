@@ -1,46 +1,39 @@
 <template>
-  <div>
-    <Login v-if="!isAuthenticated" />
-    <div v-else>
-      <Navbar />
-      <Dashboard />
-    </div>
+  <div id="app">
+    <!-- Show Navbar only when authenticated -->
+    <Navbar v-if="isAuthenticated" />
+    <router-view @auth-change="handleAuthChange"></router-view>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue';
-import Dashboard from './components/Dashboard.vue';
-import Login from './components/Login.vue';
 
 export default {
   name: 'App',
   components: {
-    Navbar,
-    Dashboard,
-    Login
+    Navbar
   },
-  // data() {
-  //   return {
-  //     isAuthenticated: false
-  //   }
-  // },
-  // created() {
-  //   this.isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
-  // },
-  // watch: {
-  //   '$route': {
-  //     handler() {
-  //       this.isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
-  //     },
-  //     immediate: true
-  //   }
-  // }
-  computed: {
-    isAuthenticated() {
-      return !!localStorage.getItem('token'); // Check if token exists
-    },
+  data() {
+    return {
+      isAuthenticated: false
+    }
   },
+  methods: {
+    handleAuthChange(value) {
+      this.isAuthenticated = value;
+    }
+  },
+  created() {
+    // Check authentication status when app loads
+    this.isAuthenticated = !!localStorage.getItem('token');
+  },
+  // Add watch for route changes to update authentication status
+  watch: {
+    '$route'() {
+      this.isAuthenticated = !!localStorage.getItem('token');
+    }
+  }
 }
 </script>
 

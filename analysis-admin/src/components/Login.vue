@@ -30,27 +30,48 @@
           class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300">
           Sign In
         </button>
+        <!-- Show error message -->
+        <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
       </form>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'Login-component',
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     }
   },
   methods: {
-    handleLogin() {
-      // Here you would typically make an API call to authenticate
-      // For demo purposes, we'll just simulate a successful login
-      localStorage.setItem('isAuthenticated', 'true')
-      this.$router.push('/dashboard')
-    }
+    // handleLogin() {
+    //   localStorage.setItem('isAuthenticated', 'true')
+    //   this.$router.push('/dashboard')
+    // }
+    async handleLogin() {
+      try {
+        const response = await axios.post('http://localhost:5000/api/auth/login', {
+          email: this.email,
+          password: this.password,
+        });
+
+        if (response.data.token) {
+          localStorage.setItem('token', response.data.token); // Store the token
+          this.$router.push('/dashboard'); // Redirect to dashboard
+        } else {
+          alert('Login failed: No token received');
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+        // alert(error.response?.data?.message || 'An error occurred during login');
+        this.errorMessage = error.response?.data?.message;
+      }
+    },
   }
 }
 </script> 

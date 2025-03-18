@@ -20,24 +20,27 @@ export default {
     Dashboard,
     Login
   },
-  data() {
-    return {
-      isAuthenticated: false
-    }
+  // data() {
+  //   return {
+  //     isAuthenticated: false
+  //   }
+  // },
+  // created() {
+  //   this.isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
+  // },
+  // watch: {
+  //   '$route': {
+  //     handler() {
+  //       this.isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
+  //     },
+  //     immediate: true
+  //   }
+  // }
+  computed: {
+    isAuthenticated() {
+      return !!localStorage.getItem('token'); // Check if token exists
+    },
   },
-  created() {
-    // Check authentication status when app loads
-    this.isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
-  },
-  watch: {
-    // Watch for route changes to check authentication
-    '$route': {
-      handler() {
-        this.isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
-      },
-      immediate: true
-    }
-  }
 }
 </script>
 

@@ -24,10 +24,14 @@
 export default {
   name: 'Navbar-component',
   methods: {
+    // handleLogout() {
+    //   localStorage.removeItem('isAuthenticated')
+    //   this.$router.push('/login')
+    // }
     handleLogout() {
-      localStorage.removeItem('isAuthenticated')
-      this.$router.push('/login')
-    }
+      localStorage.removeItem('token'); // Remove the token
+      this.$router.push('/login'); // Redirect to login
+    },
   }
 }
 </script>

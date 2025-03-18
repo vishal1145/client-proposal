@@ -1,5 +1,5 @@
 <template>
-  <nav class=" bg-gray-100 border-b border-gray-300 shadow-lg">
+  <nav class=" bg-gray-100 border-b border-gray-300 ">
     <div class="width-full py-4 px-4">
       <div class="flex justify-between items-center h-16">
         <!-- Logo and Title Section -->
@@ -39,7 +39,7 @@ export default {
   align-items: center;
   padding: 1rem 2rem;
   background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .navbar-brand img {

@@ -114,8 +114,9 @@
                                         style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem;">
                                         <p style="margin: 0px;"><strong class="email-heading">{{ followup.subject
                                                 }}</strong></p>
-                                        <p style="margin: 0px;">{{ followup.body
-                                            }}</p>
+                                        <!-- <p style="margin: 0px;">{{ followup.body
+                                            }}</p> -->
+                                        <div v-html="followup.body" style="color: #666;"></div>
                                         <p style="margin: 0px;">{{ new Date(followup.createdAt).toLocaleString() }}</p>
                                     </li>
                                 </ul>

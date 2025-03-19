@@ -3,7 +3,7 @@
     <!-- Header Section -->
     <div class="flex justify-between items-center mb-6">
       <div>
-        <h1 class="text-2xl font-semibold">Dashboard</h1>
+        <h1 class="text-2xl font-semibold">Reviews</h1>
         <p class="text-gray-600 mt-1">Manage your analysis reviews and approvals</p>
       </div>
       <div class="flex gap-4">

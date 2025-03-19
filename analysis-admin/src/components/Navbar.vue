@@ -3,10 +3,11 @@
     <div class="width-full py-4 px-4">
       <div class="flex justify-between items-center h-16">
         <!-- Logo and Title Section -->
-        <div class="flex items-center cursor-pointer">
+        <router-link to="/" class="flex items-center cursor-pointer">
           <img src="https://algofolks.com/images/logo2.webp" alt="Analysis Logo" class="h-10 w-auto mr-3" />
-          <h1 class="text-xl font-semibold text-gray-800">Admin Analysis</h1>
-        </div>
+          <h1 class="text-xl font-semibold text-gray-800">Dashboard</h1>
+        </router-link>
+
 
         <!-- Only show logout when authenticated -->
         <div class="flex items-center space-x-4">

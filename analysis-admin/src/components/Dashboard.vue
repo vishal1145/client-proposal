@@ -37,6 +37,15 @@
             <div class="flex gap-4 items-center">
               <input type="text" v-model="searchQuery" placeholder="Search..."
                 class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+
+              <!-- Status Filter Dropdown -->
+              <select v-model="statusFilter"
+                class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <option value="">All Status</option>
+                <option value="pending">Pending</option>
+                <option value="accept">Accepted</option>
+                <option value="reject">Rejected</option>
+              </select>
             </div>
           </div>
         </div>
@@ -76,6 +85,25 @@
                     <div class="bg-blue-600 h-2.5 rounded-full" :style="{ width: item.percentage + '%' }"></div>
                   </div>
                   <span class="text-xs text-gray-600 mt-1">{{ item.percentage }}% </span>
+                </div>
+              </td>
+              <td class="px-8 py-6">
+                <div v-if="item.status === 'accept' || item.status === 'reject'">
+                  <span :class="getStatusClass(item.status)">
+                    {{ item.status === 'accept' ? 'Accepted' : 'Rejected' }}
+                  </span>
+                </div>
+                <div v-else class="flex gap-3">
+                  <button 
+                    @click="updateStatus(item._id, 'accept')" 
+                    class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-green-50 text-green-700 hover:bg-green-100">
+                    Accept
+                  </button>
+                  <button 
+                    @click="updateStatus(item._id, 'reject')" 
+                    class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-red-50 text-red-700 hover:bg-red-100">
+                    Reject
+                  </button>
                 </div>
               </td>
               <td class="px-8 py-6 text-sm text-gray-500">
@@ -122,6 +150,7 @@ export default {
     return {
       isLoading: true,
       searchQuery: '',
+      statusFilter: '',
       currentPage: 1,
       itemsPerPage: 5,
       sortColumn: 'createdate',
@@ -130,7 +159,8 @@ export default {
         { key: 'companyname', label: 'COMPANY & LOCATION' },
         { key: 'review', label: 'REVIEW' },
         { key: 'percentage', label: 'PERCENTAGE' },
-        { key: 'createdate', label: 'DATE' }
+        { key: 'status', label: 'STATUS' },
+        { key: 'createdate', label: 'DATE & TIME' }
       ],
       reviewItems: []
     }
@@ -154,6 +184,10 @@ export default {
           item.review.toLowerCase().includes(query) ||
           item.place.toLowerCase().includes(query)
         )
+      }
+
+      if (this.statusFilter) {
+        data = data.filter(item => item.status === this.statusFilter)
       }
 
       data.sort((a, b) => {
@@ -225,10 +259,14 @@ export default {
       }
     },
     formatDate(dateString) {
-      return new Date(dateString).toLocaleDateString('en-US', {
+      return new Date(dateString).toLocaleString('en-US', {
         year: 'numeric',
         month: 'short',
-        day: 'numeric'
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
       });
     },
     sortBy(column) {
@@ -238,7 +276,36 @@ export default {
         this.sortColumn = column;
         this.sortDirection = 'asc';
       }
-    }
+    },
+    getStatusClass(status) {
+      const baseClasses = 'px-4 py-2 rounded-full text-sm font-medium inline-block';
+      switch (status) {
+        case 'accept':
+          return `${baseClasses} bg-green-100 text-green-800`;
+        case 'reject':
+          return `${baseClasses} bg-red-100 text-red-800`;
+        default:
+          return `${baseClasses} bg-yellow-100 text-yellow-800`;
+      }
+    },
+    async updateStatus(id, status) {
+      try {
+        this.isLoading = true;
+        await axios.put(`http://localhost:5000/api/reviews/${id}/status`, {
+          status: status
+        });
+        
+        // Update local state
+        const index = this.reviewItems.findIndex(item => item._id === id);
+        if (index !== -1) {
+          this.reviewItems[index].status = status;
+        }
+      } catch (error) {
+        console.error('Error updating status:', error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
   }
 }
 </script>
@@ -265,5 +332,24 @@ export default {
 
 .animate-spin {
   animation: spin 1s linear infinite;
+}
+
+/* Add smooth transitions for status badges */
+[class*="bg-"] {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Add transition for button states */
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+button:disabled {
+  opacity: 0.7;
+}
+
+/* Add transition for notifications */
+.transition-opacity {
+  transition: opacity 0.5s ease-in-out;
 }
 </style>

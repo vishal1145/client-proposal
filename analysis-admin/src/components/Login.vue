@@ -51,33 +51,6 @@ export default {
     }
   },
   methods: {
-    // async handleLogin() {
-    //   this.isSaving = true;
-    //   try {
-    //     const response = await axios.post('http://localhost:5000/api/auth/login', {
-    //       email: this.email,
-    //       password: this.password,
-    //     });
-
-    //     if (response.data.token) {
-    //       // Store the token
-    //       localStorage.setItem('token', response.data.token);
-
-    //       // Emit authentication event to update the app state
-    //       this.$emit('auth-change', true);
-
-    //       // Use router.replace instead of push to prevent back navigation
-    //       await this.$router.replace('/dashboard');
-    //     } else {
-    //       this.errorMessage = 'Login failed: No token received';
-    //     }
-    //   } catch (error) {
-    //     console.error('Login error:', error);
-    //     this.errorMessage = error.response?.data?.message || 'An error occurred during login';
-    //   } finally {
-    //     this.isSaving = false;
-    //   }
-    // },
     async handleLogin() {
       if (!this.email.trim() || !this.password.trim()) return;
 

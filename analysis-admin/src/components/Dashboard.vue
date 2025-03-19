@@ -93,17 +93,20 @@
                     {{ item.status === 'accept' ? 'Accepted' : 'Rejected' }}
                   </span>
                 </div>
-                <div v-else class="flex gap-3">
-                  <button 
-                    @click="updateStatus(item._id, 'accept')" 
-                    class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-green-50 text-green-700 hover:bg-green-100">
-                    Accept
-                  </button>
-                  <button 
-                    @click="updateStatus(item._id, 'reject')" 
-                    class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-red-50 text-red-700 hover:bg-red-100">
-                    Reject
-                  </button>
+                <div v-else>
+                  <span v-if="!item.status || item.status === 'pending'" :class="getStatusClass('pending')">
+                    Pending
+                  </span>
+                  <div class="flex gap-3">
+                    <button @click="updateStatus(item._id, 'accept')"
+                      class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-green-50 text-green-700 hover:bg-green-100">
+                      Accept
+                    </button>
+                    <button @click="updateStatus(item._id, 'reject')"
+                      class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-red-50 text-red-700 hover:bg-red-100">
+                      Reject
+                    </button>
+                  </div>
                 </div>
               </td>
               <td class="px-8 py-6 text-sm text-gray-500">
@@ -187,7 +190,12 @@ export default {
       }
 
       if (this.statusFilter) {
-        data = data.filter(item => item.status === this.statusFilter)
+        data = data.filter(item => {
+          if (this.statusFilter === 'pending') {
+            return item.status !== 'accept' && item.status !== 'reject';
+          }
+          return item.status === this.statusFilter;
+        });
       }
 
       data.sort((a, b) => {
@@ -284,6 +292,8 @@ export default {
           return `${baseClasses} bg-green-100 text-green-800`;
         case 'reject':
           return `${baseClasses} bg-red-100 text-red-800`;
+        case 'pending':
+          return `${baseClasses} bg-yellow-100 text-yellow-800`;
         default:
           return `${baseClasses} bg-yellow-100 text-yellow-800`;
       }
@@ -294,7 +304,6 @@ export default {
         await axios.put(`http://localhost:5000/api/reviews/${id}/status`, {
           status: status
         });
-        
         // Update local state
         const index = this.reviewItems.findIndex(item => item._id === id);
         if (index !== -1) {

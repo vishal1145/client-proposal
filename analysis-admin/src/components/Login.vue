@@ -25,14 +25,14 @@
             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             placeholder="Enter your password" required />
         </div>
-
+        <!-- Show error message -->
+        <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
+        
         <button type="submit" :disabled="isSaving"
           class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300">
           <span v-if="isSaving">Signing in...</span>
           <span v-else>Sign In</span>
         </button>
-        <!-- Show error message -->
-        <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
       </form>
     </div>
   </div>

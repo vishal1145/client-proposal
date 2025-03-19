@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <table class="min-w-full">
+      <table class="w-full">
         <thead class="bg-gray-50 border-b border-gray-200">
           <tr>
             <th v-for="column in columns" :key="column.key" @click="sortBy(column.key)"

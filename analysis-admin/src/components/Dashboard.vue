@@ -1,105 +1,111 @@
 <template>
   <div class="p-8">
-    <!-- Header Section -->
-    <div class="flex justify-between items-center mb-6">
-      <div>
-        <h1 class="text-2xl font-semibold">Reviews</h1>
-        <p class="text-gray-600 mt-1">Manage your analysis reviews and approvals</p>
-      </div>
-      <div class="flex gap-4">
-        <div class="bg-blue-50 rounded-lg px-4 py-2 cursor-pointer transition-all hover:bg-blue-100 hover:shadow-md">
-          <div class="text-sm text-blue-600">Pending Reviews</div>
-          <div class="text-2xl font-semibold text-blue-700">3</div>
-        </div>
-        <div class="bg-green-50 rounded-lg px-4 py-2 cursor-pointer transition-all hover:bg-green-100 hover:shadow-md">
-          <div class="text-sm text-green-600">Approved</div>
-          <div class="text-2xl font-semibold text-green-700">12</div>
-        </div>
+    <!-- Loading Overlay -->
+    <div v-if="isLoading" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded-lg shadow-xl flex items-center space-x-4">
+        <div class="animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent"></div>
+        <span class="text-gray-700 text-lg">Loading...</span>
       </div>
     </div>
 
-    <!-- Review Requests Section -->
-    <div class="bg-white rounded-lg shadow">
-      <div class="px-6 py-4 border-b border-gray-200">
-        <div class="flex justify-between items-center">
-          <h2 class="text-lg font-medium">Review Requests</h2>
-          <div class="flex gap-4 items-center">
-            <input type="text" v-model="searchQuery" placeholder="Search..."
-              class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-            <select v-model="statusFilter"
-              class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-              <option value="">All Status</option>
-              <option value="pending">Pending</option>
-              <option value="approved">Approved</option>
-              <option value="rejected">Rejected</option>
-            </select>
+    <!-- Rest of the content -->
+    <div :class="{ 'opacity-50': isLoading }">
+      <!-- Header Section -->
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h1 class="text-2xl font-semibold">Reviews</h1>
+          <p class="text-gray-600 mt-1">Manage your company reviews and analysis</p>
+        </div>
+        <div class="flex gap-4">
+          <div class="bg-blue-50 rounded-lg px-4 py-2 cursor-pointer transition-all hover:bg-blue-100 hover:shadow-md">
+            <div class="text-sm text-blue-600">Total Reviews</div>
+            <div class="text-2xl font-semibold text-blue-700">{{ reviewItems.length }}</div>
+          </div>
+          <div
+            class="bg-green-50 rounded-lg px-4 py-2 cursor-pointer transition-all hover:bg-green-100 hover:shadow-md">
+            <div class="text-sm text-green-600">Average Percentage</div>
+            <div class="text-2xl font-semibold text-green-700">{{ averagePercentage }}%</div>
           </div>
         </div>
       </div>
 
-      <table class="w-full">
-        <thead class="bg-gray-50 border-b border-gray-200">
-          <tr>
-            <th v-for="column in columns" :key="column.key" @click="sortBy(column.key)"
-              class="px-8 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer select-none"
-              :class="column.width">
-              <div class="flex items-center gap-2">
-                {{ column.label }}
-                <span v-if="sortColumn === column.key" class="text-gray-900">
-                  {{ sortDirection === 'asc' ? '↑' : '↓' }}
-                </span>
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
-          <tr v-for="item in paginatedData" :key="item.id" class="hover:bg-gray-50">
-            <td class="px-8 py-6">
-              <div class="flex items-center">
-                <img :src="item.profileImage" alt="Profile" class="w-10 h-10 rounded-full mr-4 object-cover" />
-                <div>
-                  <div class="font-medium text-gray-900">{{ item.title }}</div>
-                  <div class="text-sm text-gray-500">{{ item.date }}</div>
-                </div>
-              </div>
-            </td>
-            <td class="px-8 py-6 text-sm text-gray-900">
-              {{ item.description }}
-            </td>
-            <td class="px-8 py-6">
-              <div class="flex gap-3">
-                <button class="px-5 py-2 bg-green-50 text-green-700 rounded-md text-sm font-medium hover:bg-green-100">
-                  Approve
-                </button>
-                <button class="px-5 py-2 bg-red-50 text-red-700 rounded-md text-sm font-medium hover:bg-red-100">
-                  Reject
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- Pagination -->
-      <div class="px-8 py-4 border-t border-gray-200">
-        <div class="flex items-center justify-between">
-          <div class="text-sm text-gray-700">
-            Showing {{ startIndex + 1 }} to {{ endIndex }} of {{ filteredData.length }} results
+      <!-- Review Requests Section -->
+      <div class="bg-white rounded-lg shadow">
+        <div class="px-6 py-4 border-b border-gray-200">
+          <div class="flex justify-between items-center">
+            <h2 class="text-lg font-medium">Review Analysis</h2>
+            <div class="flex gap-4 items-center">
+              <input type="text" v-model="searchQuery" placeholder="Search..."
+                class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+            </div>
           </div>
-          <div class="flex gap-2">
-            <button @click="currentPage--" :disabled="currentPage === 1"
-              class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
-              Previous
-            </button>
-            <button v-for="page in displayedPages" :key="page" @click="currentPage = page"
-              class="px-4 py-2 border rounded-md text-sm font-medium"
-              :class="currentPage === page ? 'bg-blue-50 border-blue-500 text-blue-600' : 'border-gray-300 text-gray-700 hover:bg-gray-50'">
-              {{ page }}
-            </button>
-            <button @click="currentPage++" :disabled="currentPage >= totalPages"
-              class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
-              Next
-            </button>
+        </div>
+
+        <table class="w-full">
+          <thead class="bg-gray-100 border-b border-gray-200">
+            <tr>
+              <th v-for="column in columns" :key="column.key" @click="sortBy(column.key)"
+                class="px-8 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer select-none">
+                <div class="flex items-center gap-2">
+                  {{ column.label }}
+                  <span v-if="sortColumn === column.key" class="text-gray-900">
+                    {{ sortDirection === 'asc' ? '↑' : '↓' }}
+                  </span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr v-for="item in paginatedData" :key="item._id" class="hover:bg-gray-100">
+              <td class="px-8 py-6">
+                <div class="flex items-center">
+                  <!-- <img :src="`https://ui-avatars.com/api/?name=${item.companyname}&background=6366f1&color=fff`"
+                    alt="Company" class="w-10 h-10 rounded-full mr-4 object-cover" /> -->
+                  <div>
+                    <div class="font-medium text-gray-900">{{ item.companyname }}</div>
+                    <div class="text-sm text-gray-500">{{ item.place }}</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-8 py-6">
+                <div class="text-sm text-gray-900">{{ item.review }}</div>
+              </td>
+              <td class="px-8 py-6">
+                <div class="flex flex-col">
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="bg-blue-600 h-2.5 rounded-full" :style="{ width: item.percentage + '%' }"></div>
+                  </div>
+                  <span class="text-xs text-gray-600 mt-1">{{ item.percentage }}% </span>
+                </div>
+              </td>
+              <td class="px-8 py-6 text-sm text-gray-500">
+                {{ formatDate(item.createdate) }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="px-8 py-4 border-t border-gray-200">
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-700">
+              Showing {{ startIndex + 1 }} to {{ endIndex }} of {{ filteredData.length }} results
+            </div>
+            <div class="flex gap-2">
+              <button @click="currentPage--" :disabled="currentPage === 1"
+                class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                Previous
+              </button>
+              <button v-for="page in displayedPages" :key="page" @click="currentPage = page"
+                class="px-4 py-2 border rounded-md text-sm font-medium"
+                :class="currentPage === page ? 'bg-blue-50 border-blue-500 text-blue-600' : 'border-gray-300 text-gray-700 hover:bg-gray-50'">
+                {{ page }}
+              </button>
+              <button @click="currentPage++" :disabled="currentPage >= totalPages"
+                class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -108,95 +114,56 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Dashboard-component',
   data() {
     return {
+      isLoading: true,
       searchQuery: '',
-      statusFilter: '',
       currentPage: 1,
       itemsPerPage: 5,
-      sortColumn: 'date',
+      sortColumn: 'createdate',
       sortDirection: 'desc',
       columns: [
-        { key: 'source', label: 'SOURCE', width: 'w-2/5' },
-        { key: 'review', label: 'REVIEW', width: '' },
-        { key: 'actions', label: 'ACTIONS', width: 'w-56' }
+        { key: 'companyname', label: 'COMPANY & LOCATION' },
+        { key: 'review', label: 'REVIEW' },
+        { key: 'percentage', label: 'PERCENTAGE' },
+        { key: 'createdate', label: 'DATE' }
       ],
-      reviewItems: [
-        {
-          id: 1,
-          title: 'Market Analysis Report',
-          date: '2024-03-15',
-          description: 'Q4 2023 Market Trends Analysis',
-          status: 'pending',
-          profileImage: 'https://ui-avatars.com/api/?name=Market+Analysis&background=6366f1&color=fff'
-        },
-        {
-          id: 2,
-          title: 'Financial Report',
-          date: '2024-03-14',
-          description: 'Annual Financial Performance Review',
-          status: 'approved',
-          profileImage: 'https://ui-avatars.com/api/?name=Financial+Report&background=f59e0b&color=fff'
-        },
-        {
-          id: 3,
-          title: 'Customer Feedback',
-          date: '2024-03-13',
-          description: 'Customer Satisfaction Survey Results',
-          status: 'rejected',
-          profileImage: 'https://ui-avatars.com/api/?name=Customer+Feedback&background=10b981&color=fff'
-        },
-        {
-          id: 4,
-          title: 'Financial Report',
-          date: '2024-03-14',
-          description: 'Annual Financial Performance Review',
-          status: 'approved',
-          profileImage: 'https://ui-avatars.com/api/?name=Financial+Report&background=f59e0b&color=fff'
-        },
-        {
-          id: 5,
-          title: 'Financial Report',
-          date: '2024-03-14',
-          description: 'Annual Financial Performance Review',
-          status: 'approved',
-          profileImage: 'https://ui-avatars.com/api/?name=Financial+Report&background=f59e0b&color=fff'
-        },
-        {
-          id: 6,
-          title: 'Financial Report',
-          date: '2024-03-14',
-          description: 'Annual Financial Performance Review',
-          status: 'approved',
-          profileImage: 'https://ui-avatars.com/api/?name=Financial+Report&background=f59e0b&color=fff'
-        },
-      ]
+      reviewItems: []
     }
   },
+  async created() {
+    await this.fetchReviews();
+  },
   computed: {
+    averagePercentage() {
+      if (this.reviewItems.length === 0) return 0;
+      const total = this.reviewItems.reduce((sum, item) => sum + item.percentage, 0);
+      return Math.round(total / this.reviewItems.length);
+    },
     filteredData() {
       let data = [...this.reviewItems]
 
-      // Apply search filter
       if (this.searchQuery) {
         const query = this.searchQuery.toLowerCase()
         data = data.filter(item =>
-          item.title.toLowerCase().includes(query) ||
-          item.description.toLowerCase().includes(query)
+          item.companyname.toLowerCase().includes(query) ||
+          item.review.toLowerCase().includes(query) ||
+          item.place.toLowerCase().includes(query)
         )
       }
 
-      // Apply status filter
-      if (this.statusFilter) {
-        data = data.filter(item => item.status === this.statusFilter)
-      }
-
-      // Apply sorting
       data.sort((a, b) => {
         let aValue = a[this.sortColumn]
         let bValue = b[this.sortColumn]
+
+        if (this.sortColumn === 'createdate') {
+          aValue = new Date(aValue)
+          bValue = new Date(bValue)
+        }
 
         if (this.sortDirection === 'asc') {
           return aValue > bValue ? 1 : -1
@@ -223,7 +190,7 @@ export default {
     },
     displayedPages() {
       const pages = []
-      const maxPages = 5 // Show max 5 page numbers
+      const maxPages = 5
 
       if (this.totalPages <= maxPages) {
         for (let i = 1; i <= this.totalPages; i++) {
@@ -246,12 +213,30 @@ export default {
     }
   },
   methods: {
+    async fetchReviews() {
+      this.isLoading = true;
+      try {
+        const response = await axios.get('http://localhost:5000/api/reviews');
+        this.reviewItems = response.data;
+      } catch (error) {
+        console.error('Error fetching reviews:', error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    formatDate(dateString) {
+      return new Date(dateString).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    },
     sortBy(column) {
       if (this.sortColumn === column) {
-        this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc'
+        this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
       } else {
-        this.sortColumn = column
-        this.sortDirection = 'asc'
+        this.sortColumn = column;
+        this.sortDirection = 'asc';
       }
     }
   }
@@ -261,5 +246,24 @@ export default {
 <style scoped>
 .hover\:bg-gray-50:hover {
   background-color: rgba(249, 250, 251, 1);
+}
+
+/* Add these styles for smooth transitions */
+.opacity-50 {
+  transition: opacity 0.3s ease-in-out;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 </style>

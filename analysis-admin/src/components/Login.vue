@@ -56,7 +56,7 @@ export default {
 
       this.isSaving = true; // Start loader
       try {
-        const response = await axios.post('http://localhost:5000/api/auth/login', {
+        const response = await axios.post('https://analysis-be.algofolks.com/api/auth/login', {
           email: this.email,
           password: this.password,
         });

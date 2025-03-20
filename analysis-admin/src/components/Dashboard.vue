@@ -258,7 +258,7 @@ export default {
     async fetchReviews() {
       this.isLoading = true;
       try {
-        const response = await axios.get('http://localhost:5000/api/reviews');
+        const response = await axios.get('https://analysis-be.algofolks.com/api/reviews');
         this.reviewItems = response.data;
       } catch (error) {
         console.error('Error fetching reviews:', error);
@@ -301,7 +301,7 @@ export default {
     async updateStatus(id, status) {
       try {
         this.isLoading = true;
-        await axios.put(`http://localhost:5000/api/reviews/${id}/status`, {
+        await axios.put(`https://analysis-be.algofolks.com/api/reviews/${id}/status`, {
           status: status
         });
         // Update local state

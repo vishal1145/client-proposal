@@ -25,7 +25,7 @@
         </div>
         <!-- Show error message -->
         <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
-
+        
         <button type="submit" :disabled="isSaving"
           class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300">
           <span v-if="isSaving">Signing in...</span>

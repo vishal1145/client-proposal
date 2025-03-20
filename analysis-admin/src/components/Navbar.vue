@@ -3,26 +3,23 @@
     <div class="width-full py-4 px-4">
       <div class="flex justify-between items-center h-8">
         <!-- Logo and Title Section -->
-        <div class="flex items-center space-x-8">
+        <div class="flex items-center space-x-0">
           <router-link to="/" class="flex items-center hover:opacity-80 transition duration-300">
             <img src="https://algofolks.com/images/logo2.webp" alt="Analysis Logo" class="h-10 w-auto mr-3" />
-            <h1 class="text-xl font-semibold text-gray-800">Dashboard</h1>
           </router-link>
 
           <!-- Navigation Tabs -->
           <div class="flex space-x-6">
-            <router-link 
-              to="/reviews" 
-              class="px-3 py-2 text-sm font-medium transition-colors duration-200"
-              :class="[$route.path === '/reviews' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-blue-600']"
-            >
+            <router-link to="/dashboard" class="px-3 py-2 text-sm font-medium transition-colors duration-200"
+              :class="[$route.path === '/dashboard' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-blue-600']">
+              Dashboard
+            </router-link>
+            <router-link to="/reviews" class="px-3 py-2 text-sm font-medium transition-colors duration-200"
+              :class="[$route.path === '/reviews' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-blue-600']">
               Reviews
             </router-link>
-            <router-link 
-              to="/settings" 
-              class="px-3 py-2 text-sm font-medium transition-colors duration-200"
-              :class="[$route.path === '/settings' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-blue-600']"
-            >
+            <router-link to="/settings" class="px-3 py-2 text-sm font-medium transition-colors duration-200"
+              :class="[$route.path === '/settings' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-blue-600']">
               Settings
             </router-link>
           </div>

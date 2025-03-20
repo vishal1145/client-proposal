@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/Login.vue'
 import Dashboard from '../components/Dashboard.vue'
-import Reviews from '@/components/Reviews.vue';
+import Reviews from '../components/Reviews.vue'
+import Settings from '../components/Settings.vue'
 import NotFound from '../views/NotFound.vue'
 
 const routes = [
@@ -12,15 +13,21 @@ const routes = [
     meta: { requiresAuth: false },
   },
   {
-    path: "/dashboard",
-    name: "Dashboard",
+    path: "/",
+    name: "Home",
+    component: Reviews,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/reviews",
+    name: "Reviews",
     component: Dashboard,
     meta: { requiresAuth: true },
   },
   {
-    path: "/",
-    name: "Home",
-    component: Reviews,
+    path: "/settings",
+    name: "Settings",
+    component: Settings,
     meta: { requiresAuth: true },
   },
   {
@@ -51,7 +58,7 @@ router.beforeEach((to, from, next) => {
     next('/login');
   } else if (to.path === '/login' && token) {
     // If user is already authenticated and tries to access login page
-    next('/dashboard');
+    next('/reviews');
   } else {
     // In all other cases, proceed normally
     next();

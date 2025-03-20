@@ -1,7 +1,7 @@
 <template>
   <nav class=" bg-gray-100 border-b border-gray-300 ">
     <div class="width-full py-4 px-4">
-      <div class="flex justify-between items-center h-16">
+      <div class="flex justify-between items-center h-8">
         <!-- Logo and Title Section -->
         <router-link to="/" class="flex items-center cursor-pointer">
           <img src="https://algofolks.com/images/logo2.webp" alt="Analysis Logo" class="h-10 w-auto mr-3" />

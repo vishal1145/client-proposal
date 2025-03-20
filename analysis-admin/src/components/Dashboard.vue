@@ -13,19 +13,19 @@
 
       <div class="flex justify-between items-center mb-6">
         <div>
-          <h1 class="text-2xl font-semibold">Reviews</h1>
+          <h1 class="text-xl font-semibold">Reviews</h1>
           <p class="text-gray-600 mt-1">Manage your company reviews and analysis</p>
         </div>
         <!-- Header Section - Only show when there's data -->
         <div class="flex gap-4" v-if="reviewItems.length > 0">
           <div class="bg-blue-50 rounded-lg px-4 py-2 cursor-pointer transition-all hover:bg-blue-100 hover:shadow-md">
             <div class="text-sm text-blue-600">Total Reviews</div>
-            <div class="text-2xl font-semibold text-blue-700">{{ reviewItems.length }}</div>
+            <div class="text-xl font-semibold text-blue-700">{{ reviewItems.length }}</div>
           </div>
           <div
             class="bg-green-50 rounded-lg px-4 py-2 cursor-pointer transition-all hover:bg-green-100 hover:shadow-md">
             <div class="text-sm text-green-600">Average Percentage</div>
-            <div class="text-2xl font-semibold text-green-700">{{ averagePercentage }}%</div>
+            <div class="text-xl font-semibold text-green-700">{{ averagePercentage }}%</div>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
 
             <!-- Existing Records -->
             <tr v-else v-for="item in paginatedData" :key="item._id" class="hover:bg-gray-100">
-              <td class="px-8 py-6">
+              <td class="px-[1rem] py-[0.5rem]">
                 <div class="flex items-center">
                   <!-- <img :src="`https://ui-avatars.com/api/?name=${item.companyname}&background=6366f1&color=fff`"
                     alt="Company" class="w-10 h-10 rounded-full mr-4 object-cover" /> -->
@@ -97,10 +97,10 @@
                   </div>
                 </div>
               </td>
-              <td class="px-8 py-6">
+              <td class="px-[1rem] py-[0.5rem]">
                 <div class="text-sm text-gray-900">{{ item.review }}</div>
               </td>
-              <td class="px-8 py-6">
+              <td class="px-[1rem] py-[0.5rem]">
                 <div class="flex flex-col">
                   <div class="w-full bg-gray-200 rounded-full h-2.5">
                     <div class="bg-blue-600 h-2.5 rounded-full" :style="{ width: item.percentage + '%' }"></div>
@@ -108,7 +108,7 @@
                   <span class="text-xs text-gray-600 mt-1">{{ item.percentage }}% </span>
                 </div>
               </td>
-              <td class="px-8 py-6">
+              <td class="px-[1rem] py-[0.5rem]">
                 <!-- Show status badge only for accepted/rejected items -->
                 <div v-if="item.status === 'accept'" class="mb-3">
                   <span :class="getStatusClass('accept')">
@@ -132,7 +132,7 @@
                   </button>
                 </div>
               </td>
-              <td class="px-8 py-6 text-sm text-gray-500">
+              <td class="px-[1rem] py-[0.5rem] text-sm text-gray-500">
                 {{ formatDate(item.createdate) }}
               </td>
             </tr>
@@ -140,7 +140,7 @@
         </table>
 
         <!-- Pagination -->
-        <div v-if="paginatedData.length > 0" class="px-8 py-4 border-t border-gray-200">
+        <div v-if="paginatedData.length > 0" class="px-[1rem] py-[1rem] border-t border-gray-200">
           <div class="flex items-center justify-between">
             <div class="text-sm text-gray-700">
               Showing {{ startIndex + 1 }} to {{ endIndex }} of {{ filteredData.length }} results

@@ -10,13 +10,14 @@
 
     <!-- Rest of the content -->
     <div :class="{ 'opacity-50': isLoading }">
-      <!-- Header Section -->
+
       <div class="flex justify-between items-center mb-6">
         <div>
           <h1 class="text-2xl font-semibold">Reviews</h1>
           <p class="text-gray-600 mt-1">Manage your company reviews and analysis</p>
         </div>
-        <div class="flex gap-4">
+        <!-- Header Section - Only show when there's data -->
+        <div class="flex gap-4" v-if="reviewItems.length > 0">
           <div class="bg-blue-50 rounded-lg px-4 py-2 cursor-pointer transition-all hover:bg-blue-100 hover:shadow-md">
             <div class="text-sm text-blue-600">Total Reviews</div>
             <div class="text-2xl font-semibold text-blue-700">{{ reviewItems.length }}</div>
@@ -31,7 +32,8 @@
 
       <!-- Review Requests Section -->
       <div class="bg-white rounded-lg shadow">
-        <div class="px-6 py-4 border-b border-gray-200">
+        <!-- Search and Filter - Only show when there's data -->
+        <div v-if="reviewItems.length > 0" class="px-6 py-4 border-b border-gray-200">
           <div class="flex justify-between items-center">
             <h2 class="text-lg font-medium">Review Analysis</h2>
             <div class="flex gap-4 items-center">
@@ -65,7 +67,26 @@
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-            <tr v-for="item in paginatedData" :key="item._id" class="hover:bg-gray-100">
+            <!-- No Records Message -->
+            <tr v-if="paginatedData.length === 0">
+              <td :colspan="columns.length" class="px-8 py-16 text-center">
+                <div class="flex flex-col items-center justify-center text-gray-500">
+                  <svg class="w-16 h-16 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p class="text-xl font-medium mb-2">No Records Found</p>
+                  <p class="text-sm">
+                    {{ searchQuery || statusFilter ?
+                    'Try adjusting your search or filter to find what you\'re looking for.' :
+                    'There are no reviews available at the moment.' }}
+                  </p>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Existing Records -->
+            <tr v-else v-for="item in paginatedData" :key="item._id" class="hover:bg-gray-100">
               <td class="px-8 py-6">
                 <div class="flex items-center">
                   <!-- <img :src="`https://ui-avatars.com/api/?name=${item.companyname}&background=6366f1&color=fff`"
@@ -88,25 +109,27 @@
                 </div>
               </td>
               <td class="px-8 py-6">
-                <div v-if="item.status === 'accept' || item.status === 'reject'">
-                  <span :class="getStatusClass(item.status)">
-                    {{ item.status === 'accept' ? 'Accepted' : 'Rejected' }}
+                <!-- Show status badge only for accepted/rejected items -->
+                <div v-if="item.status === 'accept'" class="mb-3">
+                  <span :class="getStatusClass('accept')">
+                    Accepted
                   </span>
                 </div>
-                <div v-else>
-                  <span v-if="!item.status || item.status === 'pending'" :class="getStatusClass('pending')">
-                    Pending
+                <div v-else-if="item.status === 'reject'" class="mb-3">
+                  <span :class="getStatusClass('reject')">
+                    Rejected
                   </span>
-                  <div class="flex gap-3">
-                    <button @click="updateStatus(item._id, 'accept')"
-                      class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-green-50 text-green-700 hover:bg-green-100">
-                      Accept
-                    </button>
-                    <button @click="updateStatus(item._id, 'reject')"
-                      class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-red-50 text-red-700 hover:bg-red-100">
-                      Reject
-                    </button>
-                  </div>
+                </div>
+                <!-- Show action buttons for pending or no status -->
+                <div v-else-if="!item.status || item.status === 'pending'" class="flex gap-3">
+                  <button @click="updateStatus(item._id, 'accept')"
+                    class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-green-50 text-green-700 hover:bg-green-100">
+                    Accept
+                  </button>
+                  <button @click="updateStatus(item._id, 'reject')"
+                    class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-red-50 text-red-700 hover:bg-red-100">
+                    Reject
+                  </button>
                 </div>
               </td>
               <td class="px-8 py-6 text-sm text-gray-500">
@@ -117,7 +140,7 @@
         </table>
 
         <!-- Pagination -->
-        <div class="px-8 py-4 border-t border-gray-200">
+        <div v-if="paginatedData.length > 0" class="px-8 py-4 border-t border-gray-200">
           <div class="flex items-center justify-between">
             <div class="text-sm text-gray-700">
               Showing {{ startIndex + 1 }} to {{ endIndex }} of {{ filteredData.length }} results
@@ -285,6 +308,16 @@ export default {
         this.sortDirection = 'asc';
       }
     },
+    getStatusText(status) {
+      switch (status) {
+        case 'accept':
+          return 'Accepted';
+        case 'reject':
+          return 'Rejected';
+        default:
+          return 'Pending';
+      }
+    },
     getStatusClass(status) {
       const baseClasses = 'px-4 py-2 rounded-full text-sm font-medium inline-block';
       switch (status) {
@@ -292,8 +325,6 @@ export default {
           return `${baseClasses} bg-green-100 text-green-800`;
         case 'reject':
           return `${baseClasses} bg-red-100 text-red-800`;
-        case 'pending':
-          return `${baseClasses} bg-yellow-100 text-yellow-800`;
         default:
           return `${baseClasses} bg-yellow-100 text-yellow-800`;
       }

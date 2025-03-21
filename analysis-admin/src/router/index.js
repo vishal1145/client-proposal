@@ -14,8 +14,8 @@ const routes = [
   },
   {
     path: "/",
-    // redirect: "/dashboard",
-    component: Reviews,
+    redirect: "/dashboard",
+    // component: Reviews,
   },
   {
     path: "/dashboard",

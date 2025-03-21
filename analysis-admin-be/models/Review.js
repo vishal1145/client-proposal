@@ -5,11 +5,10 @@ const reviewSchema = new mongoose.Schema({
   companyname: { type: String, required: true },
   review: { type: String, required: true },
   percentage: { type: Number, required: true },
-  status: {
+   approval_status: {
     type: String,
-    enum: ["accept", "reject", "pending"],
-    default: "pending",
-    required: true,
+    enum: ["approved", "rejected"],
+    default: null, // Default value is null
   },
   createdate: { type: Date, default: Date.now },
 });

@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
       companyname,
       review,
       percentage,
-      status: "pending", // Always default to pending
+      approval_status: null,
     });
 
     await newReview.save();
@@ -28,17 +28,17 @@ router.post("/", async (req, res) => {
 });
 
 // PUT: Update review status (Accept or Reject)
-router.put("/:id/status", async (req, res) => {
+router.put("/:id/approval", async (req, res) => {
   try {
-    const { status } = req.body;
+    const { approval_status } = req.body;
 
-    if (!["accept", "reject"].includes(status)) {
-      return res.status(400).json({ error: "Invalid status value" });
+    if (!["approved", "rejected"].includes(approval_status)) {
+      return res.status(400).json({ error: "Invalid approval status value" });
     }
 
     const updatedReview = await Review.findByIdAndUpdate(
       req.params.id,
-      { status },
+      { approval_status },
       { new: true } // Returns the updated document
     );
 
@@ -46,7 +46,12 @@ router.put("/:id/status", async (req, res) => {
       return res.status(404).json({ error: "Review not found" });
     }
 
-    res.status(200).json({ message: `Review ${status} successfully`, review: updatedReview });
+    res
+      .status(200)
+      .json({
+        message: `Review ${approval_status} successfully`,
+        review: updatedReview,
+      });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }

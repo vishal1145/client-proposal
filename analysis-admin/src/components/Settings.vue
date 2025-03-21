@@ -41,16 +41,19 @@
           <label class="block text-sm font-medium text-gray-700 mb-2">
             Priority Value
           </label>
-          <input type="text" v-model="priorityValue"
-            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 mb-4"
-            placeholder="Enter priority value" />
+          <input type="number" v-model="priorityValue" min="0" max="100" @input="validatePriority"
+            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 mb-1"
+            placeholder="Enter priority value (0-100)" />
+          <p v-if="priorityError" class="text-sm text-red-500 mb-2">
+            {{ priorityError }}
+          </p>
           <p class="text-sm text-gray-500 mb-4">
-            Set the priority value for review analysis.
+            Set the priority value for review analysis (between 0 and 100).
           </p>
           <div class="flex justify-start">
             <button @click="updatePriority"
               class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-              :disabled="isUpdating">
+              :disabled="isUpdating || !isValidPriority">
               {{ isUpdating ? 'Updating...' : 'Update Priority' }}
             </button>
           </div>
@@ -63,7 +66,7 @@
           <label class="block text-sm font-medium text-gray-700 mb-2">
             Analysis Prompt
           </label>
-          <textarea v-model="promptValue" rows="6"
+          <textarea v-model="promptValue" rows="12"
             class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 mb-4"
             placeholder="Enter your analysis prompt here..."></textarea>
           <p class="text-sm text-gray-500 mb-4">
@@ -96,13 +99,32 @@ export default {
       promptValue: '',
       isUpdating: false,
       isLoading: false,
-      isLoadingPriority: false
+      isLoadingPriority: false,
+      priorityError: ''
+    }
+  },
+  computed: {
+    isValidPriority() {
+      const value = parseInt(this.priorityValue);
+      return !isNaN(value) && value >= 0 && value <= 100;
     }
   },
   async created() {
     await Promise.all([this.fetchPrompt(), this.fetchPriority()]);
   },
   methods: {
+    validatePriority() {
+      const value = parseInt(this.priorityValue);
+      if (isNaN(value)) {
+        this.priorityError = 'Please enter a valid number';
+      } else if (value < 0) {
+        this.priorityError = 'Priority value cannot be negative';
+      } else if (value > 100) {
+        this.priorityError = 'Priority value cannot be greater than 100';
+      } else {
+        this.priorityError = '';
+      }
+    },
     async fetchPriority() {
       this.isLoadingPriority = true;
       try {
@@ -126,16 +148,18 @@ export default {
       }
     },
     async updatePriority() {
+      if (!this.isValidPriority) {
+        toast.error('Priority must be a number between 0 and 100');
+        return;
+      }
+
       this.isUpdating = true;
       try {
         await axios.put('https://analysis-be.algofolks.com/api/settings/priority', {
-          priority: parseInt(this.priorityValue) // Convert string to number
+          priority: parseInt(this.priorityValue)
         });
-
-        // Refresh the priority value
         await this.fetchPriority();
-
-        toast.success('Priority updated successfully'); // Show success message (optional)
+        toast.success('Priority updated successfully');
       } catch (error) {
         console.error('Error updating priority:', error);
         toast.error('Failed to update priority. Please try again.');
@@ -182,5 +206,15 @@ export default {
 
 .animate-spin {
   animation: spin 1s linear infinite;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
 </style>

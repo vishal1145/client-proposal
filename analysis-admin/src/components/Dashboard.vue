@@ -124,8 +124,8 @@
                     Rejected
                   </span>
                 </div>
-                <!-- Show action buttons for pending or no status -->
-                <div v-else class="flex gap-3">
+                <!-- Show action buttons only when AI response is present -->
+                <div v-else-if="item.ai_response && item.ai_response !== false" class="flex gap-3">
                   <button @click="updateStatus(item._id, 'approved')"
                     class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-green-50 text-green-700 hover:bg-green-100">
                     Approve
@@ -182,7 +182,7 @@ export default {
       searchQuery: '',
       statusFilter: '',
       currentPage: 1,
-      itemsPerPage: 5,
+      itemsPerPage: 10,
       sortColumn: 'created_at',
       sortDirection: 'desc',
       columns: [

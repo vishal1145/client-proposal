@@ -104,11 +104,12 @@
                 <div class="text-sm text-gray-900">{{ item.comment }}</div>
               </td>
               <td class="px-[1rem] py-[0.5rem]">
-                <div class="flex flex-col">
+                <div v-if="item.ai_response && item.ai_response !== false && item.ai_percentage" class="flex flex-col">
+                  <div class="text-sm text-gray-900 mb-2">{{ item.ai_response }}</div>
                   <div class="w-full bg-gray-200 rounded-full h-2.5">
-                    <div class="bg-blue-600 h-2.5 rounded-full" :style="{ width: item.percentage + '%' }"></div>
+                    <div class="bg-blue-600 h-2.5 rounded-full" :style="{ width: item.ai_percentage + '%' }"></div>
                   </div>
-                  <span class="text-xs text-gray-600 mt-1">{{ item.percentage }}% </span>
+                  <span class="text-xs text-gray-600 mt-1">{{ item.ai_percentage }}% </span>
                 </div>
               </td>
               <td class="px-[1rem] py-[0.5rem]">
@@ -188,7 +189,7 @@ export default {
         { key: 'place_name', label: 'NAME & LOCATION' },
         { key: 'source', label: 'SOURCE' },
         { key: 'comment', label: 'REVIEW' },
-        { key: 'percentage', label: 'PERCENTAGE' },
+        { key: 'ai_response', label: 'AI ANALYSIS' },
         { key: 'approval_status', label: 'APPROVAL STATUS' },
         { key: 'created_at', label: 'DATE & TIME' }
       ],
@@ -200,9 +201,10 @@ export default {
   },
   computed: {
     averagePercentage() {
-      if (this.reviewItems.length === 0) return 0;
-      const total = this.reviewItems.reduce((sum, item) => sum + item.percentage, 0);
-      return Math.round(total / this.reviewItems.length);
+      const itemsWithAI = this.reviewItems.filter(item => item.ai_response && item.ai_response !== false && item.ai_percentage);
+      if (itemsWithAI.length === 0) return 0;
+      const total = itemsWithAI.reduce((sum, item) => sum + (item.ai_percentage || 0), 0);
+      return Math.round(total / itemsWithAI.length);
     },
     filteredData() {
       let data = [...this.reviewItems]

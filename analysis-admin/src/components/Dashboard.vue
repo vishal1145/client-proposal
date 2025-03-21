@@ -45,8 +45,8 @@
                 class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                 <option value="">All Status</option>
                 <option value="pending">Pending</option>
-                <option value="accept">Accepted</option>
-                <option value="reject">Rejected</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
               </select>
             </div>
           </div>
@@ -78,8 +78,8 @@
                   <p class="text-xl font-medium mb-2">No Records Found</p>
                   <p class="text-sm">
                     {{ searchQuery || statusFilter ?
-                    'Try adjusting your search or filter to find what you\'re looking for.' :
-                    'There are no reviews available at the moment.' }}
+                      'Try adjusting your search or filter to find what you\'re looking for.' :
+                      'There are no reviews available at the moment.' }}
                   </p>
                 </div>
               </td>
@@ -92,13 +92,16 @@
                   <!-- <img :src="`https://ui-avatars.com/api/?name=${item.companyname}&background=6366f1&color=fff`"
                     alt="Company" class="w-10 h-10 rounded-full mr-4 object-cover" /> -->
                   <div>
-                    <div class="font-medium text-gray-900">{{ item.companyname }}</div>
-                    <div class="text-sm text-gray-500">{{ item.place }}</div>
+                    <div class="font-medium text-gray-900">{{ item.place_name }}</div>
+                    <div class="text-sm text-gray-500">{{ item.location_name }}</div>
                   </div>
                 </div>
               </td>
               <td class="px-[1rem] py-[0.5rem]">
-                <div class="text-sm text-gray-900">{{ item.review }}</div>
+                <div class="text-sm text-gray-900">{{ item.source }}</div>
+              </td>
+              <td class="px-[1rem] py-[0.5rem]">
+                <div class="text-sm text-gray-900">{{ item.comment }}</div>
               </td>
               <td class="px-[1rem] py-[0.5rem]">
                 <div class="flex flex-col">
@@ -109,31 +112,31 @@
                 </div>
               </td>
               <td class="px-[1rem] py-[0.5rem]">
-                <!-- Show status badge only for accepted/rejected items -->
-                <div v-if="item.status === 'accept'" class="mb-3">
-                  <span :class="getStatusClass('accept')">
-                    Accepted
+                <!-- Show status badge only for approved/rejected items -->
+                <div v-if="item.approval_status === 'approved'" class="mb-3">
+                  <span :class="getStatusClass('approved')">
+                    Approved
                   </span>
                 </div>
-                <div v-else-if="item.status === 'reject'" class="mb-3">
-                  <span :class="getStatusClass('reject')">
+                <div v-else-if="item.approval_status === 'rejected'" class="mb-3">
+                  <span :class="getStatusClass('rejected')">
                     Rejected
                   </span>
                 </div>
                 <!-- Show action buttons for pending or no status -->
-                <div v-else-if="!item.status || item.status === 'pending'" class="flex gap-3">
-                  <button @click="updateStatus(item._id, 'accept')"
+                <div v-else class="flex gap-3">
+                  <button @click="updateStatus(item._id, 'approved')"
                     class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-green-50 text-green-700 hover:bg-green-100">
-                    Accept
+                    Approve
                   </button>
-                  <button @click="updateStatus(item._id, 'reject')"
+                  <button @click="updateStatus(item._id, 'rejected')"
                     class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-red-50 text-red-700 hover:bg-red-100">
                     Reject
                   </button>
                 </div>
               </td>
               <td class="px-[1rem] py-[0.5rem] text-sm text-gray-500">
-                {{ formatDate(item.createdate) }}
+                {{ formatDate(item.created_at) }}
               </td>
             </tr>
           </tbody>
@@ -179,14 +182,15 @@ export default {
       statusFilter: '',
       currentPage: 1,
       itemsPerPage: 5,
-      sortColumn: 'createdate',
+      sortColumn: 'created_at',
       sortDirection: 'desc',
       columns: [
-        { key: 'companyname', label: 'COMPANY & LOCATION' },
-        { key: 'review', label: 'REVIEW' },
+        { key: 'place_name', label: 'NAME & LOCATION' },
+        { key: 'source', label: 'SOURCE' },
+        { key: 'comment', label: 'REVIEW' },
         { key: 'percentage', label: 'PERCENTAGE' },
-        { key: 'status', label: 'STATUS' },
-        { key: 'createdate', label: 'DATE & TIME' }
+        { key: 'approval_status', label: 'APPROVAL STATUS' },
+        { key: 'created_at', label: 'DATE & TIME' }
       ],
       reviewItems: []
     }
@@ -206,18 +210,19 @@ export default {
       if (this.searchQuery) {
         const query = this.searchQuery.toLowerCase()
         data = data.filter(item =>
-          item.companyname.toLowerCase().includes(query) ||
-          item.review.toLowerCase().includes(query) ||
-          item.place.toLowerCase().includes(query)
+          (item.place_name?.toLowerCase().includes(query)) ||
+          (item.source?.toLowerCase().includes(query)) ||
+          (item.location_name?.toLowerCase().includes(query)) ||
+          (item.comment?.toLowerCase().includes(query))
         )
       }
 
       if (this.statusFilter) {
         data = data.filter(item => {
           if (this.statusFilter === 'pending') {
-            return item.status !== 'accept' && item.status !== 'reject';
+            return !item.approval_status || item.approval_status === null;
           }
-          return item.status === this.statusFilter;
+          return item.approval_status === this.statusFilter;
         });
       }
 
@@ -225,9 +230,12 @@ export default {
         let aValue = a[this.sortColumn]
         let bValue = b[this.sortColumn]
 
-        if (this.sortColumn === 'createdate') {
-          aValue = new Date(aValue)
-          bValue = new Date(bValue)
+        if (aValue === undefined || aValue === null) aValue = '';
+        if (bValue === undefined || bValue === null) bValue = '';
+
+        if (this.sortColumn === 'created_at') {
+          aValue = new Date(aValue).getTime()
+          bValue = new Date(bValue).getTime()
         }
 
         if (this.sortDirection === 'asc') {
@@ -310,9 +318,9 @@ export default {
     },
     getStatusText(status) {
       switch (status) {
-        case 'accept':
-          return 'Accepted';
-        case 'reject':
+        case 'approved':
+          return 'Approved';
+        case 'rejected':
           return 'Rejected';
         default:
           return 'Pending';
@@ -321,9 +329,9 @@ export default {
     getStatusClass(status) {
       const baseClasses = 'px-4 py-2 rounded-full text-sm font-medium inline-block';
       switch (status) {
-        case 'accept':
+        case 'approved':
           return `${baseClasses} bg-green-100 text-green-800`;
-        case 'reject':
+        case 'rejected':
           return `${baseClasses} bg-red-100 text-red-800`;
         default:
           return `${baseClasses} bg-yellow-100 text-yellow-800`;
@@ -332,16 +340,16 @@ export default {
     async updateStatus(id, status) {
       try {
         this.isLoading = true;
-        await axios.put(`https://analysis-be.algofolks.com/api/reviews/${id}/status`, {
-          status: status
+        await axios.put(`https://analysis-be.algofolks.com/api/reviews/${id}/approval`, {
+          approval_status: status
         });
         // Update local state
         const index = this.reviewItems.findIndex(item => item._id === id);
         if (index !== -1) {
-          this.reviewItems[index].status = status;
+          this.reviewItems[index].approval_status = status;
         }
       } catch (error) {
-        console.error('Error updating status:', error);
+        console.error('Error updating approval status:', error);
       } finally {
         this.isLoading = false;
       }
